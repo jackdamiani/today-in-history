@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+
+
+</head>
+<body>
+
+
+    <p>HELLO</p>
+
+    <!-- <script type="text/javascript" src="today_in_history.json"></script> -->
+    <!-- <script type="text/javascript" src="template.json"></script> -->
+    <script type="text/javascript" src="today_in_history.js"></script>
+    <!-- <script type="text/javascript" src="require.js"></script> -->
+
+    <script>
+
+    // Code to work with future dates
+    var find_today = new Date();
+    var dd = String(find_today.getDate()-5).padStart(2, '0');
+    var mm = String(find_today.getMonth() + 2).padStart(2, '0'); //January is 0!
+    var yyyy = find_today.getFullYear();
+
+    // // Actual Code
+    // var find_today = new Date();
+    // var dd = String(find_today.getDate()).padStart(2, '0');
+    // var mm = String(find_today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    // var yyyy = find_today.getFullYear();
+
+    todays_date = mm + dd 
+    document.write(todays_date);
+
+    var today = today_in_history[todays_date]
+    today_keys = Object.keys(today)
+
+    year1 = ""
+    fact1 = ""
+    year2 = ""
+    fact2 = ""
+    year3 = ""
+    fact3 = ""
+    
+    for (let i = 0; i < today_keys.length; i++){
+        
+        if (i==0){
+            year1 = today_keys[i]
+            fact1 = today[today_keys[i]]
+            console.log(year1, fact1)
+        }
+        else if (i==1){
+            year2 = today_keys[i]
+            fact2 = today[today_keys[i]]
+            console.log(year2, fact2)
+        }
+        else if (i==2){
+            year3 = today_keys[i]
+            fact3 = today[today_keys[i]]
+            console.log(year3, fact3)
+        }
+
+    } 
+
+
+    </script>
+    
+
+
+
+
+
+
+</body>
