@@ -6,7 +6,13 @@
 <body>
 
 
-    <p>HELLO</p>
+    <p>TODAY IN HISTORY <p id="date"></p></p>
+
+    <p class="facts", id="fact1">Blah blah</p>
+    <p class="facts", id="fact2">Blah blah</p>
+    <p class="facts", id="fact3">Blah blah</p>
+
+    <input type="tel" pattern="\d*"/>
 
     <!-- <script type="text/javascript" src="today_in_history.json"></script> -->
     <!-- <script type="text/javascript" src="template.json"></script> -->
@@ -14,59 +20,93 @@
     <!-- <script type="text/javascript" src="require.js"></script> -->
 
     <script>
+        setup()
+        function setup(){
+            // Code to work with future dates
+            var find_today = new Date();
+            var dd = String(find_today.getDate()-12).padStart(2, '0');
+            var mm = String(find_today.getMonth() + 2).padStart(2, '0'); //January is 0!
+            var yyyy = find_today.getFullYear();
 
-    // Code to work with future dates
-    var find_today = new Date();
-    var dd = String(find_today.getDate()-5).padStart(2, '0');
-    var mm = String(find_today.getMonth() + 2).padStart(2, '0'); //January is 0!
-    var yyyy = find_today.getFullYear();
+            // // Actual Code
+            // var find_today = new Date();
+            // var dd = String(find_today.getDate()).padStart(2, '0');
+            // var mm = String(find_today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            // var yyyy = find_today.getFullYear();
 
-    // // Actual Code
-    // var find_today = new Date();
-    // var dd = String(find_today.getDate()).padStart(2, '0');
-    // var mm = String(find_today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    // var yyyy = find_today.getFullYear();
+            todays_date = mm + dd
+            var month_dict = {'01':'January', '02': 'February', '03':'March', '04':'April', '05':'May', '06':'June', '07':'July', '08':'August', '09':'September', '10':'October', '11':'November', '12':'December'}
 
-    todays_date = mm + dd 
-    document.write(todays_date);
+            var date_ending = 'th'
 
-    var today = today_in_history[todays_date]
-    today_keys = Object.keys(today)
+            date = document.getElementById("date")
+            if (dd<10){
+                if (dd % 10 == 1){
+                    date_ending = 'st'
+                }
+                else if (dd % 10 == 2){
+                    date_ending = 'nd'
+                }
+                else if (dd % 10 == 3){
+                    date_ending = 'rd'
+                }
 
-    year1 = ""
-    fact1 = ""
-    year2 = ""
-    fact2 = ""
-    year3 = ""
-    fact3 = ""
-    
-    for (let i = 0; i < today_keys.length; i++){
-        
-        if (i==0){
-            year1 = today_keys[i]
-            fact1 = today[today_keys[i]]
-            console.log(year1, fact1)
+                date.textContent = "Today's Date is " + month_dict[mm] + " " + dd[1] + date_ending;
+            }
+            else if(dd>20){
+                if (dd % 10 == 1){
+                    date_ending = 'st'
+                }
+                else if (dd % 10 == 2){
+                    date_ending = 'nd'
+                }
+                else if (dd % 10 == 3){
+                    date_ending = 'rd'
+                }
+                date.textContent = "Today's Date is " + month_dict[mm] + " " + dd + date_ending;
+            }
+            else{
+                date.textContent = "Today's Date is " + month_dict[mm] + " " + dd + date_ending;
+            }
+            
+
+            var today = today_in_history[todays_date]
+            today_keys = Object.keys(today)
+
+            year1 = ""
+            fact1 = ""
+            year2 = ""
+            fact2 = ""
+            year3 = ""
+            fact3 = ""
+            
+            for (let i = 0; i < today_keys.length; i++){
+                if (i==0){
+                    year1 = today_keys[i]
+                    fact1 = today[today_keys[i]]
+                    console.log(year1, fact1)
+                }
+                else if (i==1){
+                    year2 = today_keys[i]
+                    fact2 = today[today_keys[i]]
+                    console.log(year2, fact2)
+                }
+                else if (i==2){
+                    year3 = today_keys[i]
+                    fact3 = today[today_keys[i]]
+                    console.log(year3, fact3)
+                }
         }
-        else if (i==1){
-            year2 = today_keys[i]
-            fact2 = today[today_keys[i]]
-            console.log(year2, fact2)
-        }
-        else if (i==2){
-            year3 = today_keys[i]
-            fact3 = today[today_keys[i]]
-            console.log(year3, fact3)
-        }
+    }
 
-    } 
+    fact1_obj = document.getElementById('fact1')
+    fact1_obj.textContent = fact1
 
+    fact2_obj = document.getElementById('fact2')
+    fact2_obj.textContent = fact2
+
+    fact3_obj = document.getElementById('fact3')
+    fact3_obj.textContent = fact3
 
     </script>
-    
-
-
-
-
-
-
 </body>
