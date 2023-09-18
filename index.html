@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <head>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 <body>
+    <script>
+        function guess_button_onclick(){
+            var year_input = document.getElementById('year_input').value
+            alert(year_input);
+        }
+    </script>
 
 
     <p>TODAY IN HISTORY <p id="date"></p></p>
@@ -12,7 +18,10 @@
     <p class="facts", id="fact2">Blah blah</p>
     <p class="facts", id="fact3">Blah blah</p>
 
-    <input type="tel" pattern="\d*"/>
+    <form>
+        <input id='year_input' pattern="\d+" title="Enter a valid year. For BCE start with negative (-)" required="" type="tel" placeholder="Guess Year" type="submit"/>
+        <input class="game_button" id="guess_button" type="submit" value="Guess" onclick="return guess_button_onclick()" />
+    </form>
 
     <!-- <script type="text/javascript" src="today_in_history.json"></script> -->
     <!-- <script type="text/javascript" src="template.json"></script> -->
@@ -24,7 +33,7 @@
         function setup(){
             // Code to work with future dates
             var find_today = new Date();
-            var dd = String(find_today.getDate()-12).padStart(2, '0');
+            var dd = String(find_today.getDate()-17).padStart(2, '0');
             var mm = String(find_today.getMonth() + 2).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
@@ -97,6 +106,8 @@
                     console.log(year3, fact3)
                 }
         }
+
+        
     }
 
     fact1_obj = document.getElementById('fact1')
@@ -107,6 +118,9 @@
 
     fact3_obj = document.getElementById('fact3')
     fact3_obj.textContent = fact3
+
+
+
 
     </script>
 </body>
