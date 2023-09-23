@@ -5,23 +5,266 @@
 </head>
 <body>
     <script>
+        function get_difference_time_guess(guess, year){
+            return Math.abs(guess-year)
+        }
+
+        function set_colors(box_str, year_diff, year){
+            // Black
+            if (year_diff >= 1000){
+                var opaque_value = 1000/year_diff
+                var rgba_val = "rgba(0,0,0,".concat(opaque_value.toString(), ")")
+                var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
+                return 1;
+            }
+
+            // Blue
+            else if (year_diff >= 100){
+                var opaque_value = 100/year_diff
+                var rgba_val = "rgba(0,0,255,".concat(opaque_value.toString(), ")")
+                var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
+                return 2;
+            }
+
+            // Red
+            else if (year_diff >= 10){
+                var opaque_value = 10/year_diff
+                var rgba_val = "rgba(255,0,0,".concat(opaque_value.toString(), ")")
+                var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
+                return 3;
+            }
+
+            // Yellow
+            else if (year_diff >= 1){
+                var opaque_value = 1/year_diff
+                var rgba_val = "rgba(255,255,0,".concat(opaque_value.toString(), ")")
+                var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
+                return 4;
+            }
+
+            // Green
+            else if (year_diff == 0){
+                var rgba_val = "rgba(0,156,52,1)"
+                var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
+                return 5;
+            }
+            
+            
+        }
+
+
+
+
         function guess_button_onclick(){
+
+            
             var year_input = document.getElementById('year_input').value
-            alert(year_input);
+
+            var year_diff1 = get_difference_time_guess(year_input, year1)
+            var year_diff2 = get_difference_time_guess(year_input, year2)
+            var year_diff3 = get_difference_time_guess(year_input, year3)
+            
+
+
+            var box1_str = "s".concat(guess_number.toString(), "_1");
+            if (guess_number > 1 && output_grid[guess_number-2][0] == 5){
+                output_grid[guess_number-1][0] = set_colors(box1_str, 0, year1)
+            }
+            else{
+                output_grid[guess_number-1][0] = set_colors(box1_str, year_diff1, year1)
+            }
+
+            var box2_str = "s".concat(guess_number.toString(), "_2");
+            if (guess_number > 1 && output_grid[guess_number-2][1] == 5){
+                output_grid[guess_number-1][1] = set_colors(box2_str, 0, year2)
+            }
+            else{
+                output_grid[guess_number-1][1] = set_colors(box2_str, year_diff2, year2)
+            }
+
+            var box3_str = "s".concat(guess_number.toString(), "_3");
+            if (guess_number > 1 && output_grid[guess_number-2][2] == 5){
+                output_grid[guess_number-1][2] = set_colors(box3_str, 0, year3);
+            }
+            else{
+                output_grid[guess_number-1][2] = set_colors(box3_str, year_diff3, year3);
+            }
+
+            var box0_str = "s".concat(guess_number.toString(), "_0");
+            alert(box0_str)
+            document.getElementById(box0_str).innerHTML = year_input
+
+
+            // WIN CONDITION
+            if (output_grid[guess_number-1][0] == 5 && output_grid[guess_number-1][1] == 5 && output_grid[guess_number-1][2] == 5){
+                // TODO: win screen
+                alert("YOU WINN")
+                return false
+            }
+
+            // LOSE CONDITION
+            if (guess_number == 10){
+                // TODO: add lose screen
+                alert("ahhhh you lose :(")
+            }
+
+
+            guess_number += 1;
+            
+            
+            document.getElementById("year_input").value = '';
+
+            return false
+
         }
     </script>
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            /* background-color: #888; */
+            padding-right: 15vw;
+            padding-left: 0vw; 
+            row-gap: 10px;
+        }
+
+        .grid-facts {
+            display: grid;
+            grid-gap: 100px;
+            grid-template-columns: auto auto auto;
+            row-gap: 10px;
+
+            /* padding-right: 5vw; */
+            padding-left: 5vw; 
+            /* row-gap: 10px; */
+        }
+
+        /* .grid-facts > div {
+        background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        padding: 20px 0;
+        font-size: 30px;
+        } */
+
+        .square {
+            height: 5vh;
+            width: 5vh;
+            background-color: #fff;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+
+        .rectangle {
+            width: 20vw;
+            height: 10vh;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            /* padding: 20px; */
+            font-size: 10px;
+            /* text-align: center; */
+        }
+
+        .square_empty {
+            height: 5vh;
+            width: 5vh;
+            background-color: #fff;
+            display: inline-block;
+            text-align: right;
+            vertical-align: middle;
+            line-height: 5vh;
+        }
+
+        div.form
+        {
+            display: block;
+            text-align: center;
+        }
+        form
+        {
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+    </style>
 
 
     <p>TODAY IN HISTORY <p id="date"></p></p>
 
-    <p class="facts", id="fact1">Blah blah</p>
-    <p class="facts", id="fact2">Blah blah</p>
-    <p class="facts", id="fact3">Blah blah</p>
+    <div class="grid_facts">
+        <div class="rectangle" >hello a;sdlkfabb</div>
+        <div class="rectangle">hi</div>
+        <div class="rectangle" >hey</div>
+    </div>
 
+    <p class="facts", id="fact1">Need to add the facts</p>
+    <p class="facts", id="fact2">Contact Jack at his tik tok</p>
+    <p class="facts", id="fact3">@ jack_the_instructor </p>
+
+    <div class="form">
     <form>
         <input id='year_input' pattern="\d+" title="Enter a valid year. For BCE start with negative (-)" required="" type="tel" placeholder="Guess Year" type="submit"/>
         <input class="game_button" id="guess_button" type="submit" value="Guess" onclick="return guess_button_onclick()" />
     </form>
+    </div>
+
+    <div style="color:#fff">hello</div>
+
+    <div class="grid-container">
+        <div class="square_empty" id="s1_0"></div>
+        <div class="square" id="s1_1"></div>
+        <div class="square" id="s1_2"></div>
+        <div class="square" id="s1_3"></div>
+        
+        <div class="square_empty" id="s2_0"></div>
+        <div class="square" id="s2_1"></div>
+        <div class="square" id="s2_2"></div>
+        <div class="square" id="s2_3"></div>
+    
+        <div class="square_empty" id="s3_0"></div>
+        <div class="square" id="s3_1"></div>
+        <div class="square" id="s3_2"></div>
+        <div class="square" id="s3_3"></div>
+
+        <div class="square_empty" id="s4_0"></div>
+        <div class="square" id="s4_1"></div>
+        <div class="square" id="s4_2"></div>
+        <div class="square" id="s4_3"></div>
+
+        <div class="square_empty" id="s5_0"></div>
+        <div class="square" id="s5_1"></div>
+        <div class="square" id="s5_2"></div>
+        <div class="square" id="s5_3"></div>
+
+        <div class="square_empty" id="s6_0"></div>
+        <div class="square" id="s6_1"></div>
+        <div class="square" id="s6_2"></div>
+        <div class="square" id="s6_3"></div>
+
+        <div class="square_empty" id="s7_0"></div>
+        <div class="square" id="s7_1"></div>
+        <div class="square" id="s7_2"></div>
+        <div class="square" id="s7_3"></div>
+
+        <div class="square_empty" id="s8_0"></div>
+        <div class="square" id="s8_1"></div>
+        <div class="square" id="s8_2"></div>
+        <div class="square" id="s8_3"></div>
+
+        <div class="square_empty" id="s9_0"></div>
+        <div class="square" id="s9_1"></div>
+        <div class="square" id="s9_2"></div>
+        <div class="square" id="s9_3"></div>
+
+        <div class="square_empty" id="s10_0"></div>
+        <div class="square" id="s10_1"></div>
+        <div class="square" id="s10_2"></div>
+        <div class="square" id="s10_3"></div>
+
+    </div>
+
 
     <!-- <script type="text/javascript" src="today_in_history.json"></script> -->
     <!-- <script type="text/javascript" src="template.json"></script> -->
@@ -45,7 +288,6 @@
 
             todays_date = mm + dd
             var month_dict = {'01':'January', '02': 'February', '03':'March', '04':'April', '05':'May', '06':'June', '07':'July', '08':'August', '09':'September', '10':'October', '11':'November', '12':'December'}
-
             var date_ending = 'th'
 
             date = document.getElementById("date")
@@ -105,21 +347,34 @@
                     fact3 = today[today_keys[i]]
                     console.log(year3, fact3)
                 }
-        }
+            }
 
         
     }
 
-    fact1_obj = document.getElementById('fact1')
-    fact1_obj.textContent = fact1
+    fact1_obj = document.getElementById('fact1');
+    fact1_obj.innerHTML = fact1;
 
-    fact2_obj = document.getElementById('fact2')
-    fact2_obj.textContent = fact2
+    fact2_obj = document.getElementById('fact2');
+    fact2_obj.textContent = fact2;
 
-    fact3_obj = document.getElementById('fact3')
-    fact3_obj.textContent = fact3
+    fact3_obj = document.getElementById('fact3');
+    fact3_obj.textContent = fact3;
 
+    var guess_number = 1;    
 
+    var output_grid = [
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+    ]
 
 
     </script>
