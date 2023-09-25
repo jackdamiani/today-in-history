@@ -23,12 +23,12 @@ var today_in_history = {
     "1022": {"1836":"Sam Houston becomes the 1st President of the Republic of Texas", "1953":"Laos gains full independence from France", "1981":"US national debt surpasses $1 trillion"},
     "1023": {"1896":"American football coach John Heisman (namesake of the College Football Trophy) was born", "1958":"Smurfs debut on television", "2018":"World's longest sea-crossing bridge, the Hong Kong-Macau-Zhuhai bridge, opened (55km, 34mi)"},
     "1024": {"79":"Mt. Vesuvius erupts burying 4 cities and killing thousands", "1930":"A Brazilian coup d'etat replaces the last President of the First Republic, Washington Luis Pereira de Sousa, with Getulio Vargas", "1962":"Soviet ships during the Cuban Missile Crisis approach the US blockade of Cuba"},
-    "1025": {"":"", " ":"", "  ":""},
-    "1026": {"":"", " ":"", "  ":""},
-    "1027": {"":"", " ":"", "  ":""},
-    "1028": {"":"", " ":"", "  ":""},
-    "1029": {"":"", " ":"", "  ":""},
-    "1030": {"":"", " ":"", "  ":""},
-    "1031": {"":"", " ":"", "  ":""}
+    "1025": {"1780":"John Hancock becomes the first Governor of Massachusetts", "1983":"United States invades Grenada to overthrow communist regime. Lasted 4 days", "1995":"Cliff Richard becomes the first rock star to be knighted by Queen Elizabeth II"},
+    "1026": {"1949":"President Harry Truman increases United States minimum wage from 40 to 75 cents", "1972":"First instant camera, the Polaroid SX-70 is unveiled by Edwin Land","2017":"Jacinda Ardern sworn in as New Zealand Prime Minister. She was the youngest ever female head of state at 37 years old"},
+    "1027": {"1787":"First Federalist Papers published in New York newspapers under psudonym Publius", "1858":"Theodore 'Teddy' Roosevelt, US President, was born", "2017":"Catalan's parliament unanimously declases independence from Spain. Denied by Spanish government"},
+    "1028": {"1858":"The first Macy's department store opens in New York City", "1886":"Statue of Liberty dedicated by President Grover Cleveland in New York City", "1919":"Volstead Act passed in US Congress, establishing prohibition"},
+    "1029": {"1929":"Wall Street crashes, starting the Great Depression", "1987":"Thomas Hearns becomes the first to win a boxing title in 4 different weight classes", "2015":"China ends their one child policy after 35 years"},
+    "1030": {"1873":"The 'Greatest Show on Earth' circus by P.T. Barnum debuts", "1868":"John Menard from Louisiana becomes the first African American elected to US Congress", "1973":"Turkey finishes the Bosphorus Bridge in Istanbul, connecting Europe and Asia over the river for the first time"},
+    "1031": {"1517":"Martin Luther sends his 95 Theses to the Catholic Church, beginning the Protestant Reformation", "1984":"Indian Prime Minister Indira Gandhi is assassinated and her son, Rajiv Gandhi takes office in her place", "2018":"World's biggest statue, the Statue of Unity, is unveiled in Gujarat, India, standing at 182 m (587 ft)"}
 
 }

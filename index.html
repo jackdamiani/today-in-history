@@ -91,21 +91,101 @@
             }
 
             var box0_str = "s".concat(guess_number.toString(), "_0");
-            alert(box0_str)
             document.getElementById(box0_str).innerHTML = year_input
 
 
             // WIN CONDITION
-            if (output_grid[guess_number-1][0] == 5 && output_grid[guess_number-1][1] == 5 && output_grid[guess_number-1][2] == 5){
+            if (output_grid[guess_number-1][0] == 5 && output_grid[guess_number-1][1] == 2 && output_grid[guess_number-1][2] == 2){
                 // TODO: win screen
-                alert("YOU WINN")
+                // alert("YOU WINN")
+                
+
+                var share_text = 'TODAY IN HISTORY' + date.textContent + '\n' + guess_number.toString() + '/10\n'
+                for (let i=0; i<guess_number; i++){
+                    for (let j=0; j<3; j++){
+                        // white square
+                        if (output_grid[i][j] == undefined || output_grid[i][j] == 0){
+                            share_text += String.fromCodePoint(11036)
+                        } 
+
+                        // black square
+                        else if (output_grid[i][j] == 1){
+                            share_text += String.fromCodePoint(11035)
+                        } 
+
+                        // blue square
+                        else if (output_grid[i][j] == 2){
+                            share_text += String.fromCodePoint(128998)
+                        }
+
+                        //red square
+                        else if (output_grid[i][j] == 3){
+                            share_text += String.fromCodePoint(128997)
+                        } 
+
+                        //yellow square
+                        else if (output_grid[i][j] == 4){
+                            share_text += String.fromCodePoint(129000)
+                        } 
+                        // green square                       
+                        else if (output_grid[i][j] == 5){
+                            share_text += String.fromCodePoint(129001)
+                        }                        
+                        // share_text += output_grid[i][j]
+                    }
+                    share_text += '\n'
+                }
+                share_text += 'https://today-in-history.com'
+
+                
+
+                // How to share with people. Put it on a button or something
+                // var shareObject = {title:"Win", text:share_text}
+                // navigator.share(shareObject)
                 return false
             }
 
             // LOSE CONDITION
             if (guess_number == 10){
                 // TODO: add lose screen
-                alert("ahhhh you lose :(")
+                var share_text = 'TODAY IN HISTORY' + date.textContent + '\nX/10\n'
+                for (let i=0; i<guess_number; i++){
+                    for (let j=0; j<3; j++){
+                        // white square
+                        if (output_grid[i][j] == undefined || output_grid[i][j] == 0){
+                            share_text += String.fromCodePoint(11036)
+                        } 
+
+                        // black square
+                        else if (output_grid[i][j] == 1){
+                            share_text += String.fromCodePoint(11035)
+                        } 
+
+                        // blue square
+                        else if (output_grid[i][j] == 2){
+                            share_text += String.fromCodePoint(128998)
+                        }
+
+                        //red square
+                        else if (output_grid[i][j] == 3){
+                            share_text += String.fromCodePoint(128997)
+                        } 
+
+                        //yellow square
+                        else if (output_grid[i][j] == 4){
+                            share_text += String.fromCodePoint(129000)
+                        } 
+                        // green square                       
+                        else if (output_grid[i][j] == 5){
+                            share_text += String.fromCodePoint(129001)
+                        }                        
+                        // share_text += output_grid[i][j]
+                    }
+                    share_text += '\n'
+                }
+                share_text += 'https://today-in-history.com'
+                alert(output_grid)
+                alert(share_text)
             }
 
 
@@ -120,6 +200,11 @@
     </script>
 
     <style>
+        body{
+            font-family: sans-serif;
+        }
+
+
         .grid-container {
             display: grid;
             grid-template-columns: auto auto auto auto;
@@ -130,8 +215,8 @@
         }
 
         .grid-facts {
-            display: grid;
-            grid-gap: 100px;
+            display: table;
+            /* grid-gap: 100px; */
             grid-template-columns: auto auto auto;
             row-gap: 10px;
 
@@ -139,13 +224,6 @@
             padding-left: 5vw; 
             /* row-gap: 10px; */
         }
-
-        /* .grid-facts > div {
-        background-color: rgba(255, 255, 255, 0.8);
-        text-align: center;
-        padding: 20px 0;
-        font-size: 30px;
-        } */
 
         .square {
             height: 5vh;
@@ -156,14 +234,15 @@
         }
 
         .rectangle {
-            width: 20vw;
-            height: 10vh;
-            display: inline-block;
+            width: 15%;
+            height: 12vh;
+            display: table-cell;
             background-color: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(0, 0, 0, 0.8);
-            /* padding: 20px; */
-            font-size: 10px;
-            /* text-align: center; */
+            border: .5px solid #888;
+            padding: 3px;
+            font-size: 70%;
+            text-align: center;
+            vertical-align: middle;
         }
 
         .square_empty {
@@ -181,6 +260,7 @@
             display: block;
             text-align: center;
         }
+
         form
         {
             display: inline-block;
@@ -188,20 +268,35 @@
             margin-right: auto;
             text-align: left;
         }
+
+        .game_button{
+            background-color: #ccc;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 7px;
+        }
+
+        #year_input{
+            padding: 5px;
+            border-radius: 3px;
+            border: .5px solid rgba(0, 0, 0, 0.6);
+        }
     </style>
 
 
-    <p>TODAY IN HISTORY <p id="date"></p></p>
+    <p style="display: inline;">TODAY IN HISTORY <p id="date" style="display: inline;"></p></p>
 
     <div class="grid_facts">
-        <div class="rectangle" >hello a;sdlkfabb</div>
-        <div class="rectangle">hi</div>
-        <div class="rectangle" >hey</div>
+        <div class="rectangle" id="fact1"></div>
+        <div class="rectangle" id="fact2"></div> 
+        <div class="rectangle" id="fact3"></div>
     </div>
 
-    <p class="facts", id="fact1">Need to add the facts</p>
+    <div style="color:white; font-size: 6px;"> \n</div>
+
+    <!-- <p class="facts", id="fact1">Need to add the facts</p>
     <p class="facts", id="fact2">Contact Jack at his tik tok</p>
-    <p class="facts", id="fact3">@ jack_the_instructor </p>
+    <p class="facts", id="fact3">@ jack_the_instructor </p> -->
 
     <div class="form">
     <form>
@@ -276,7 +371,7 @@
         function setup(){
             // Code to work with future dates
             var find_today = new Date();
-            var dd = String(find_today.getDate()-17).padStart(2, '0');
+            var dd = String(find_today.getDate()+6).padStart(2, '0');
             var mm = String(find_today.getMonth() + 2).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
@@ -302,7 +397,7 @@
                     date_ending = 'rd'
                 }
 
-                date.textContent = "Today's Date is " + month_dict[mm] + " " + dd[1] + date_ending;
+                date.textContent = " - " + month_dict[mm] + " " + dd[1] + date_ending;
             }
             else if(dd>20){
                 if (dd % 10 == 1){
@@ -314,10 +409,10 @@
                 else if (dd % 10 == 3){
                     date_ending = 'rd'
                 }
-                date.textContent = "Today's Date is " + month_dict[mm] + " " + dd + date_ending;
+                date.textContent = "  - " + month_dict[mm] + " " + dd + date_ending;
             }
             else{
-                date.textContent = "Today's Date is " + month_dict[mm] + " " + dd + date_ending;
+                date.textContent = "  - " + month_dict[mm] + " " + dd + date_ending;
             }
             
 
