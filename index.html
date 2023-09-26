@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+
 <body>
     <script>
+
+        window.onload = function() {
+            document.getElementById("help_menu_id").style.visiblity = 'visible';
+        }
+
+
+
         function get_difference_time_guess(guess, year){
             return Math.abs(guess-year)
         }
@@ -95,9 +107,9 @@
 
 
             // WIN CONDITION
-            if (output_grid[guess_number-1][0] == 5 && output_grid[guess_number-1][1] == 2 && output_grid[guess_number-1][2] == 2){
+            if (output_grid[guess_number-1][0] == 5 && output_grid[guess_number-1][1] == 5 && output_grid[guess_number-1][2] == 5){
                 // TODO: win screen
-                // alert("YOU WINN")
+                console.log("YOU WINN")
                 
 
                 var share_text = 'TODAY IN HISTORY' + date.textContent + '\n' + guess_number.toString() + '/10\n'
@@ -136,7 +148,7 @@
                     share_text += '\n'
                 }
                 share_text += 'https://today-in-history.com'
-
+                
                 
 
                 // How to share with people. Put it on a button or something
@@ -195,8 +207,11 @@
             document.getElementById("year_input").value = '';
 
             return false
-
         }
+
+        
+
+
     </script>
 
     <style>
@@ -222,6 +237,18 @@
 
             /* padding-right: 5vw; */
             padding-left: 5vw; 
+            /* row-gap: 10px; */
+        }
+
+        .grid-help {
+            display: grid;
+            /* grid-gap: 100px; */
+            grid-template-columns: auto auto auto;
+            row-gap: 10px;
+            column-gap: 10px;
+
+            /* padding-right: 5vw; */
+            /* padding-left: 5vw;  */
             /* row-gap: 10px; */
         }
 
@@ -281,10 +308,160 @@
             border-radius: 3px;
             border: .5px solid rgba(0, 0, 0, 0.6);
         }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            /* overflow: hidden; */
+            background-color: lightblue;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+            /* padding-top: 8px; */
+        }
+
+        li {
+            float: left;
+            padding-top: 8px;
+            padding-left: 8px;
+            padding-bottom: 8px
+        }
+
+        #help_button_div{
+            float: right;
+            padding-right: 8px;
+            height: 28px;
+        }
+
+        #help_button{
+            border-radius: 100%; 
+            background-color: black; 
+            border: none; 
+            display: inline-block;
+        }
+
+        .help_menu{
+            background:rgba(0,0,0,.4);
+            cursor:pointer;
+            display: block;
+            height:100%;
+            position:fixed;
+            text-align:center;
+            top:0;
+            width:100%;
+            z-index:10000;
+        }
+        .help_menu .helper{
+            display:inline-block;
+            height:100%;
+            vertical-align:middle;
+        }
+        .help_menu > div {
+            background-color: #fff;
+            box-shadow: 10px 10px 60px #555;
+            display: inline-block;
+            height: auto;
+            max-width: 250px;
+            min-height: 100px;
+            vertical-align: middle;
+            width: 100%;
+            position: relative;
+            border-radius: 8px;
+            padding: 15px 5%;
+        }
+
+        /* Closes How To Menu */
+        .popupCloseButton {
+            background-color: #fff;
+            border: 3px solid #999;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-block;
+            font-family: arial;
+            font-weight: bold;
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 25px;
+            line-height: 30px;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+        }
+        .popupCloseButton:hover {
+            background-color: #ccc;
+        }
+        .trigger_help_menu {
+            cursor: pointer;
+            font-size: 20px;
+            /* margin: 20px; */
+            display: inline-block;
+            font-weight: bold;
+        }
     </style>
 
+    <div class="help_menu" id="help_menu_id">
+        <span class="helper"></span>
+        <div>
+            <div class="popupCloseButton">&times;</div>
+            <p class="how_to_play">
+                <h2>How to Play:</h2>
+                These major world events 
+                <br>
+                happened today. 
+                <br>
+                Guess which year!
+                <br>
+                <br>
+                <b>Color Code:</b> 
+                <br>
+                Darker is closer.
+                <br>
+                Lighter is further away,                 
+                <br>
+                <br>
+                <div class="grid-help">
+                    <div class="square" style="background-color: rgba(0,156,52,1)"></div>
+                    <div class="square" style="background-color: rgba(0,156,52,.2)"></div>
+                    Green = Correct Year!
 
-    <p style="display: inline;">TODAY IN HISTORY <p id="date" style="display: inline;"></p></p>
+                    <div class="square" style="background-color: rgba(255,255,1);"></div> 
+                    <div class="square" style="background-color: rgba(255,255,0,.2);"></div> 
+                    Yellow = 1-10 Years off
+
+                    <div class="square" style="background-color: rgba(255,0,0,1)"></div> 
+                    <div class="square" style="background-color: rgba(255,0,0,.2)"></div> 
+                    Red = 11-100 Years off
+
+                    <div class="square" style="background-color: rgba(0,0,255,1)"></div>
+                    <div class="square" style="background-color: rgba(0,0,255,.2)"></div> 
+                    Blue = 101-1000 Years off
+
+                    <div class="square" style="background-color: rgba(0,0,0,1)"></div>
+                    <div class="square" style="background-color: rgba(0,0,0,.2)"></div> 
+                    Black = 1000+ Years off
+                </div>
+
+            </p>
+        </div>
+    </div>
+
+    <ul>
+        <li>
+            <p id="date-header" style="display: inline; font-size: 16px;"></p>
+        </li>
+        <!-- <li id="help_button_div"> -->
+            <!-- <button id="help_button">   -->
+                <a class="trigger_help_menu" style="float: right; padding: 5px;">
+                    <i class="fa fa-question-circle" aria-hidden="true" style="color: white;"></i>
+                </a>
+            <!-- </button> -->
+        <!-- </li> -->
+    </ul>
+
+    <div style="font-size: 5px; color: white;">hi!</div>
+
 
     <div class="grid_facts">
         <div class="rectangle" id="fact1"></div>
@@ -292,7 +469,7 @@
         <div class="rectangle" id="fact3"></div>
     </div>
 
-    <div style="color:white; font-size: 6px;"> \n</div>
+    <div style="color:white; font-size: 10px;">How's it going?</div>
 
     <!-- <p class="facts", id="fact1">Need to add the facts</p>
     <p class="facts", id="fact2">Contact Jack at his tik tok</p>
@@ -371,7 +548,7 @@
         function setup(){
             // Code to work with future dates
             var find_today = new Date();
-            var dd = String(find_today.getDate()+6).padStart(2, '0');
+            var dd = String(find_today.getDate()+4).padStart(2, '0');
             var mm = String(find_today.getMonth() + 2).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
@@ -385,7 +562,7 @@
             var month_dict = {'01':'January', '02': 'February', '03':'March', '04':'April', '05':'May', '06':'June', '07':'July', '08':'August', '09':'September', '10':'October', '11':'November', '12':'December'}
             var date_ending = 'th'
 
-            date = document.getElementById("date")
+            date = document.getElementById("date-header")
             if (dd<10){
                 if (dd % 10 == 1){
                     date_ending = 'st'
@@ -397,7 +574,7 @@
                     date_ending = 'rd'
                 }
 
-                date.textContent = " - " + month_dict[mm] + " " + dd[1] + date_ending;
+                date.textContent = "TODAY IN HISTORY - " + month_dict[mm] + " " + dd[1] + date_ending;
             }
             else if(dd>20){
                 if (dd % 10 == 1){
@@ -409,10 +586,10 @@
                 else if (dd % 10 == 3){
                     date_ending = 'rd'
                 }
-                date.textContent = "  - " + month_dict[mm] + " " + dd + date_ending;
+                date.textContent = "TODAY IN HISTORY - " + month_dict[mm] + " " + dd + date_ending;
             }
             else{
-                date.textContent = "  - " + month_dict[mm] + " " + dd + date_ending;
+                date.textContent = "TODAY IN HISTORY - " + month_dict[mm] + " " + dd + date_ending;
             }
             
 
@@ -471,6 +648,17 @@
         [0,0,0]
     ]
 
-
+    $(window).load(function () {
+        $(".trigger_help_menu").click(function(){
+            $('.help_menu').show();
+        });
+        $('.help_menu').click(function(){
+            
+            $('.help_menu').hide();
+        });
+        $('.popupCloseButton').click(function(){
+            $('.help_menu').hide();
+        });
+    });
     </script>
 </body>
