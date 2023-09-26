@@ -13,6 +13,7 @@
 
         window.onload = function() {
             document.getElementById("help_menu_id").style.visiblity = 'visible';
+            document.getElementById("end_id").style.visiblity = 'hidden';
         }
 
 
@@ -109,7 +110,9 @@
             // WIN CONDITION
             if (output_grid[guess_number-1][0] == 5 && output_grid[guess_number-1][1] == 5 && output_grid[guess_number-1][2] == 5){
                 // TODO: win screen
-                console.log("YOU WINN")
+
+                // document.getElementById('end_id').style.visibility = 'visible'
+                document.getElementById('end_id').style.display = 'block'
                 
 
                 var share_text = 'TODAY IN HISTORY' + date.textContent + '\n' + guess_number.toString() + '/10\n'
@@ -209,7 +212,9 @@
             return false
         }
 
-        
+        function close_end(){
+            document.getElementById('end_id').style.visibility = 'hidden'
+        }
 
 
     </script>
@@ -371,6 +376,36 @@
             padding: 15px 5%;
         }
 
+        .end_menu{
+            background:rgba(0,0,0,.4);
+            cursor:pointer;
+            display: none;
+            height:100%;
+            position:fixed;
+            text-align:center;
+            top:0;
+            width:100%;
+            z-index:10000;
+        }
+        .end_menu .helper{
+            display:inline-block;
+            height:100%;
+            vertical-align:middle;
+        }
+        .end_menu > div {
+            background-color: #fff;
+            box-shadow: 10px 10px 60px #555;
+            display: inline-block;
+            height: auto;
+            max-width: 250px;
+            min-height: 100px;
+            vertical-align: middle;
+            width: 100%;
+            position: relative;
+            border-radius: 8px;
+            padding: 15px 5%;
+        }
+
         /* Closes How To Menu */
         .popupCloseButton {
             background-color: #fff;
@@ -400,6 +435,14 @@
             font-weight: bold;
         }
     </style>
+
+    <div class="end_menu" id="end_id">
+        <span class="helper"></span>
+        <div>
+            <div class="popupCloseButton" onclick="close_end()">&times;</div>
+            <p> Hello! </p>
+        </div>
+    </div>
 
     <div class="help_menu" id="help_menu_id">
         <span class="helper"></span>
@@ -449,7 +492,7 @@
 
     <ul>
         <li>
-            <p id="date-header" style="display: inline; font-size: 16px;"></p>
+            <p id="date-header" style="display: inline; font-size: 16px; font-family: 'Courier New', monospace;"></p>
         </li>
         <!-- <li id="help_button_div"> -->
             <!-- <button id="help_button">   -->
@@ -460,7 +503,7 @@
         <!-- </li> -->
     </ul>
 
-    <div style="font-size: 5px; color: white;">hi!</div>
+    <div style="font-size: 5px; color: white;">Hi!</div>
 
 
     <div class="grid_facts">
@@ -655,9 +698,11 @@
         $('.help_menu').click(function(){
             
             $('.help_menu').hide();
+            $('.end_menu').hide();
         });
         $('.popupCloseButton').click(function(){
             $('.help_menu').hide();
+            $('.end_menu').hide();
         });
     });
     </script>
