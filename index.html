@@ -111,46 +111,65 @@
             if (output_grid[guess_number-1][0] == 5 && output_grid[guess_number-1][1] == 5 && output_grid[guess_number-1][2] == 5){
                 // TODO: win screen
 
+                document.getElementById('end_response').textContent = 'YOU WIN!'
+
+
+
+
                 // document.getElementById('end_id').style.visibility = 'visible'
                 document.getElementById('end_id').style.display = 'block'
                 
 
-                var share_text = 'TODAY IN HISTORY' + date.textContent + '\n' + guess_number.toString() + '/10\n'
+                var share_text = date.textContent + '\n' + guess_number.toString() + '/10\n'
+                var display_share_text = ''
                 for (let i=0; i<guess_number; i++){
                     for (let j=0; j<3; j++){
                         // white square
                         if (output_grid[i][j] == undefined || output_grid[i][j] == 0){
                             share_text += String.fromCodePoint(11036)
+                            display_share_text += String.fromCodePoint(11036)
                         } 
 
                         // black square
                         else if (output_grid[i][j] == 1){
                             share_text += String.fromCodePoint(11035)
+                            display_share_text += String.fromCodePoint(11035)
                         } 
 
                         // blue square
                         else if (output_grid[i][j] == 2){
                             share_text += String.fromCodePoint(128998)
+                            display_share_text += String.fromCodePoint(128998)
                         }
 
                         //red square
                         else if (output_grid[i][j] == 3){
                             share_text += String.fromCodePoint(128997)
+                            display_share_text += String.fromCodePoint(128997)
                         } 
 
                         //yellow square
                         else if (output_grid[i][j] == 4){
                             share_text += String.fromCodePoint(129000)
+                            display_share_text += String.fromCodePoint(129000)
                         } 
                         // green square                       
                         else if (output_grid[i][j] == 5){
                             share_text += String.fromCodePoint(129001)
+                            display_share_text += String.fromCodePoint(129001)
                         }                        
                         // share_text += output_grid[i][j]
                     }
                     share_text += '\n'
+                    display_share_text += '\n'
                 }
-                share_text += 'https://today-in-history.com'
+                share_text += '\nhttps://today-in-history.com'
+
+                document.getElementById('share_text').textContent = display_share_text;
+                let date_var = date.textContent
+                alert(date_var.substring(18,date_var.length))
+                document.getElementById('end_date').textContent = date_var.substring(18,date_var.length);
+                document.getElementById('end_score').textContent = guess_number.toString() + '/10\n';
                 
                 
 
@@ -194,7 +213,6 @@
                         else if (output_grid[i][j] == 5){
                             share_text += String.fromCodePoint(129001)
                         }                        
-                        // share_text += output_grid[i][j]
                     }
                     share_text += '\n'
                 }
@@ -440,7 +458,11 @@
         <span class="helper"></span>
         <div>
             <div class="popupCloseButton" onclick="close_end()">&times;</div>
-            <p> Hello! </p>
+            <h2 id="end_response"> </h2>
+            <p id="end_date"></p>
+            <p id="end_score"></p>
+            <p id="share_text" style="white-space: pre-line;"></p>
+
         </div>
     </div>
 
