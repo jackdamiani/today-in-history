@@ -173,7 +173,10 @@
                 document.getElementById('share_text').textContent = display_share_text;
                 let date_var = date.textContent
                 document.getElementById('end_date').textContent = date_var.substring(18,date_var.length);
-                document.getElementById('end_score').textContent = guess_number.toString() + '/10\n';
+                document.getElementById('end_score').textContent = guess_number.toString() + '/10 \n'
+                document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
+                document.getElementById('year_input').disabled = true;
+                document.getElementById("year_input").value = '';
                 
                 
 
@@ -238,6 +241,9 @@
                 // let date_var = date.textContent
                 document.getElementById('end_date').textContent = date_var.substring(19,date_var.length);
                 document.getElementById('end_score').textContent = 'X/10\n';
+                document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
+                document.getElementById('year_input').disabled = true;
+                document.getElementById("year_input").value = '';
             }
 
 
@@ -502,6 +508,7 @@
             <h2 id="end_response"> </h2>
             <p id="end_date"></p>
             <p id="end_score"></p>
+            <p id="correct_answer"></p>
             <p id="share_text" style="white-space: pre-line;"></p>
             <button class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
 
@@ -586,7 +593,7 @@
 
     <div class="form">
     <form>
-        <input id='year_input' pattern="\d+" title="Enter a valid year. For BCE start with negative (-)" required="" type="tel" placeholder="Guess Year" type="submit"/>
+        <input id='year_input' pattern="\d+" title="Enter a valid year" required="" type="tel" placeholder="Guess Year" type="submit"/>
         <input class="game_button" id="guess_button" type="submit" value="Guess" onclick="return guess_button_onclick()" />
     </form>
     </div>
