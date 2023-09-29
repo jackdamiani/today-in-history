@@ -14,6 +14,7 @@
         window.onload = function() {
             document.getElementById("help_menu_id").style.visiblity = 'visible';
             document.getElementById("end_id").style.visiblity = 'hidden';
+            document.getElementsByClassName("stats")[0].style.visibility = 'hidden';
         }
 
 
@@ -72,6 +73,14 @@
 
             
             var year_input = document.getElementById('year_input').value
+            year_input = year_input.replace(/\D/g,'');
+            if (year_input > 2023){
+                alert("Please input a year in the past");
+                document.getElementById('year_input').value = '';
+                return false;
+            }
+
+            
 
             var year_diff1 = get_difference_time_guess(year_input, year1)
             var year_diff2 = get_difference_time_guess(year_input, year2)
@@ -111,12 +120,8 @@
             if (output_grid[guess_number-1][0] == 5 && output_grid[guess_number-1][1] == 5 && output_grid[guess_number-1][2] == 5){
                 // TODO: win screen
 
+                document.getElementsByClassName("stats")[0].style.visibility = 'visible';
                 document.getElementById('end_response').textContent = 'YOU WIN!'
-
-
-
-
-                // document.getElementById('end_id').style.visibility = 'visible'
                 document.getElementById('end_id').style.display = 'block'
                 
 
@@ -167,58 +172,72 @@
 
                 document.getElementById('share_text').textContent = display_share_text;
                 let date_var = date.textContent
-                alert(date_var.substring(18,date_var.length))
                 document.getElementById('end_date').textContent = date_var.substring(18,date_var.length);
                 document.getElementById('end_score').textContent = guess_number.toString() + '/10\n';
                 
                 
 
-                // How to share with people. Put it on a button or something
-                // var shareObject = {title:"Win", text:share_text}
-                // navigator.share(shareObject)
+                
                 return false
             }
 
             // LOSE CONDITION
             if (guess_number == 10){
-                // TODO: add lose screen
-                var share_text = 'TODAY IN HISTORY' + date.textContent + '\nX/10\n'
+                let date_var = date.textContent
+                var share_text = date_var.substring(0,17) + "\n" + date_var.substring(19,date_var.length) + '\nX/10\n'
+                var display_share_text = ''
+
+                document.getElementById('end_response').textContent = 'GAME OVER'
+                document.getElementById('end_id').style.display = 'block'
+                document.getElementsByClassName("stats")[0].style.visibility = 'visible';
+
+
                 for (let i=0; i<guess_number; i++){
                     for (let j=0; j<3; j++){
                         // white square
                         if (output_grid[i][j] == undefined || output_grid[i][j] == 0){
                             share_text += String.fromCodePoint(11036)
+                            display_share_text += String.fromCodePoint(11036)
                         } 
 
                         // black square
                         else if (output_grid[i][j] == 1){
                             share_text += String.fromCodePoint(11035)
+                            display_share_text += String.fromCodePoint(11035)
                         } 
 
                         // blue square
                         else if (output_grid[i][j] == 2){
                             share_text += String.fromCodePoint(128998)
+                            display_share_text += String.fromCodePoint(128998)
                         }
 
                         //red square
                         else if (output_grid[i][j] == 3){
                             share_text += String.fromCodePoint(128997)
+                            display_share_text += String.fromCodePoint(128997)
                         } 
 
                         //yellow square
                         else if (output_grid[i][j] == 4){
                             share_text += String.fromCodePoint(129000)
+                            display_share_text += String.fromCodePoint(129000)
                         } 
                         // green square                       
                         else if (output_grid[i][j] == 5){
                             share_text += String.fromCodePoint(129001)
+                            display_share_text += String.fromCodePoint(129001)
                         }                        
                     }
                     share_text += '\n'
+                    display_share_text += '\n'
                 }
                 share_text += 'https://today-in-history.com'
-                alert(output_grid)
-                alert(share_text)
+
+                document.getElementById('share_text').textContent = display_share_text;
+                // let date_var = date.textContent
+                document.getElementById('end_date').textContent = date_var.substring(19,date_var.length);
+                document.getElementById('end_score').textContent = 'X/10\n';
             }
 
 
@@ -232,6 +251,12 @@
 
         function close_end(){
             document.getElementById('end_id').style.visibility = 'hidden'
+        }
+
+        function share_function(){
+            // How to share with people. Put it on a button or something
+            var shareObject = {title:"Win", text:share_text}
+            navigator.share(shareObject)
         }
 
 
@@ -325,6 +350,14 @@
             padding: 5px 10px;
             border-radius: 7px;
         }
+
+        /* #share_button{
+            background-color: #000;
+            color: ;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+        } */
 
         #year_input{
             padding: 5px;
@@ -452,6 +485,14 @@
             display: inline-block;
             font-weight: bold;
         }
+
+        .stats {
+            cursor: pointer;
+            font-size: 20px;
+            /* margin: 20px; */
+            display: inline-block;
+            font-weight: bold;
+        }
     </style>
 
     <div class="end_menu" id="end_id">
@@ -462,6 +503,7 @@
             <p id="end_date"></p>
             <p id="end_score"></p>
             <p id="share_text" style="white-space: pre-line;"></p>
+            <button class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
 
         </div>
     </div>
@@ -516,13 +558,15 @@
         <li>
             <p id="date-header" style="display: inline; font-size: 16px; font-family: 'Courier New', monospace;"></p>
         </li>
-        <!-- <li id="help_button_div"> -->
-            <!-- <button id="help_button">   -->
-                <a class="trigger_help_menu" style="float: right; padding: 5px;">
-                    <i class="fa fa-question-circle" aria-hidden="true" style="color: white;"></i>
-                </a>
-            <!-- </button> -->
-        <!-- </li> -->
+
+                
+        <a class="trigger_help_menu" style="float: right; padding: 5px;">
+            <i class="fa fa-question-circle" aria-hidden="true" style="color: white;"></i>
+        </a>
+        <a class="stats" style="float: right; padding: 5px;">
+            <i class="fa fa-bar-chart" aria-hidden="true" style="color: white"></i>
+        </a>
+
     </ul>
 
     <div style="font-size: 5px; color: white;">Hi!</div>
@@ -613,7 +657,7 @@
         function setup(){
             // Code to work with future dates
             var find_today = new Date();
-            var dd = String(find_today.getDate()+4).padStart(2, '0');
+            var dd = String(find_today.getDate()).padStart(2, '0');
             var mm = String(find_today.getMonth() + 2).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
@@ -717,9 +761,15 @@
         $(".trigger_help_menu").click(function(){
             $('.help_menu').show();
         });
+        $(".stats").click(function(){
+            $('.end_menu').show();
+            document.getElementsByClassName('end_menu')[0].style.visibility = 'visible'
+        });
         $('.help_menu').click(function(){
-            
             $('.help_menu').hide();
+            // $('.end_menu').hide();
+        });
+        $('.end_menu').click(function(){
             $('.end_menu').hide();
         });
         $('.popupCloseButton').click(function(){
