@@ -11,6 +11,9 @@
 
 <body>
     <script>
+        share_text_ = ''
+
+
 
         window.onload = function() {
             document.getElementById("help_menu_id").style.visiblity = 'visible';
@@ -170,6 +173,7 @@
                     display_share_text += '\n'
                 }
                 share_text += '\nhttps://today-in-history.com'
+                share_text_ = share_text
 
                 document.getElementById('share_text').textContent = display_share_text;
                 let date_var = date.textContent
@@ -237,6 +241,7 @@
                     display_share_text += '\n'
                 }
                 share_text += 'https://today-in-history.com'
+                share_text_ = share_text
 
                 document.getElementById('share_text').textContent = display_share_text;
                 // let date_var = date.textContent
@@ -262,7 +267,8 @@
 
         function share_function(){
             // How to share with people. Put it on a button or something
-            var shareObject = {title:"Win", text:share_text}
+            var shareObject = {title:"Win", text:share_text_}
+            // alert(shareObject[text])
             navigator.share(shareObject)
         }
 
