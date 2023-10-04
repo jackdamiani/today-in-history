@@ -663,16 +663,16 @@
         setup()
         function setup(){
             // Code to work with future dates
-            var find_today = new Date();
-            var dd = String(find_today.getDate()).padStart(2, '0');
-            var mm = String(find_today.getMonth() + 2).padStart(2, '0'); //January is 0!
-            var yyyy = find_today.getFullYear();
-
-            // // Actual Code
             // var find_today = new Date();
             // var dd = String(find_today.getDate()).padStart(2, '0');
-            // var mm = String(find_today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            // var mm = String(find_today.getMonth() + 2).padStart(2, '0'); //January is 0!
             // var yyyy = find_today.getFullYear();
+
+            // Actual Code
+            var find_today = new Date();
+            var dd = String(find_today.getDate()).padStart(2, '0');
+            var mm = String(find_today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = find_today.getFullYear();
 
             todays_date = mm + dd
             var month_dict = {'01':'January', '02': 'February', '03':'March', '04':'April', '05':'May', '06':'June', '07':'July', '08':'August', '09':'September', '10':'October', '11':'November', '12':'December'}
