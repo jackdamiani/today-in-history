@@ -2,6 +2,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -129,7 +130,7 @@
                 document.getElementById('end_id').style.display = 'block'
                 
 
-                var share_text = date.textContent + '\n' + guess_number.toString() + '/10\n'
+                var share_text = date.textContent + '\n' + guess_number.toString() + '/10\n\n'
                 var display_share_text = ''
                 for (let i=0; i<guess_number; i++){
                     for (let j=0; j<3; j++){
@@ -172,7 +173,7 @@
                     share_text += '\n'
                     display_share_text += '\n'
                 }
-                share_text += '\nhttps://today-in-history.com'
+                share_text += '\n\nhttps://today-in-history-game.com'
                 share_text_ = share_text
 
                 document.getElementById('share_text').textContent = display_share_text;
@@ -192,7 +193,7 @@
             // LOSE CONDITION
             if (guess_number == 10){
                 let date_var = date.textContent
-                var share_text = date_var.substring(0,17) + "\n" + date_var.substring(19,date_var.length) + '\nX/10\n'
+                var share_text = date_var.substring(0,17) + "\n" + date_var.substring(19,date_var.length) + '\nX/10\n\n'
                 var display_share_text = ''
 
                 document.getElementById('end_response').textContent = 'GAME OVER'
@@ -240,7 +241,7 @@
                     share_text += '\n'
                     display_share_text += '\n'
                 }
-                share_text += 'https://today-in-history.com'
+                share_text += '\nhttps://today-in-history-game.com'
                 share_text_ = share_text
 
                 document.getElementById('share_text').textContent = display_share_text;
