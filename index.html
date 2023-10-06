@@ -56,11 +56,19 @@
             }
 
             // Red
-            else if (year_diff >= 10){
-                var opaque_value = 10/year_diff
+            else if (year_diff >= 25){
+                var opaque_value = 25/year_diff
                 var rgba_val = "rgba(255,0,0,".concat(opaque_value.toString(), ")")
                 var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
                 return 3;
+            }
+
+            // Orange
+            else if (year_diff >= 10){
+                var opaque_value = 10/year_diff
+                var rgba_val = "rgba(255,165,0,".concat(opaque_value.toString(), ")")
+                var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
+                return 4;
             }
 
             // Yellow
@@ -68,14 +76,14 @@
                 var opaque_value = 1/year_diff
                 var rgba_val = "rgba(255,255,0,".concat(opaque_value.toString(), ")")
                 var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
-                return 4;
+                return 5;
             }
 
             // Green
             else if (year_diff == 0){
                 var rgba_val = "rgba(0,156,52,1)"
                 var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
-                return 5;
+                return 6;
             }
             
             
@@ -89,7 +97,7 @@
             
             var year_input = document.getElementById('year_input').value
             year_input = year_input.replace(/\D/g,'');
-            if (year_input > 2023){
+            if (year_input > 2023 || year_input == ''){
                 alert("Please input a year in the past");
                 document.getElementById('year_input').value = '';
                 return false;
@@ -104,7 +112,7 @@
 
 
             var box1_str = "s".concat(guess_number.toString(), "_1");
-            if (guess_number > 1 && output_grid[guess_number-2][0] == 5){
+            if (guess_number > 1 && output_grid[guess_number-2][0] == 6){
                 output_grid[guess_number-1][0] = set_colors(box1_str, 0, year1)
             }
             else{
@@ -112,7 +120,7 @@
             }
 
             var box2_str = "s".concat(guess_number.toString(), "_2");
-            if (guess_number > 1 && output_grid[guess_number-2][1] == 5){
+            if (guess_number > 1 && output_grid[guess_number-2][1] == 6){
                 output_grid[guess_number-1][1] = set_colors(box2_str, 0, year2)
             }
             else{
@@ -120,7 +128,7 @@
             }
 
             var box3_str = "s".concat(guess_number.toString(), "_3");
-            if (guess_number > 1 && output_grid[guess_number-2][2] == 5){
+            if (guess_number > 1 && output_grid[guess_number-2][2] == 6){
                 output_grid[guess_number-1][2] = set_colors(box3_str, 0, year3);
             }
             else{
@@ -132,15 +140,14 @@
 
 
             // WIN CONDITION
-            if (output_grid[guess_number-1][0] == 5 && output_grid[guess_number-1][1] == 5 && output_grid[guess_number-1][2] == 5){
-                // TODO: win screen
+            if (output_grid[guess_number-1][0] == 6 && output_grid[guess_number-1][1] == 6 && output_grid[guess_number-1][2] == 6){
 
                 document.getElementsByClassName("stats")[0].style.visibility = 'visible';
                 document.getElementById('end_response').textContent = 'YOU WIN!'
                 document.getElementById('end_id').style.display = 'block'
                 
 
-                var share_text = date.textContent + '\n' + guess_number.toString() + '/10\n\n'
+                var share_text = date.textContent + '\n' + guess_number.toString() + '/15\n\n'
                 var display_share_text = ''
                 for (let i=0; i<guess_number; i++){
                     for (let j=0; j<3; j++){
@@ -168,13 +175,19 @@
                             display_share_text += String.fromCodePoint(128997)
                         } 
 
-                        //yellow square
+                        //orange square
                         else if (output_grid[i][j] == 4){
+                            share_text += String.fromCodePoint(128999)
+                            display_share_text += String.fromCodePoint(128999)
+                        } 
+
+                        //yellow square
+                        else if (output_grid[i][j] == 5){
                             share_text += String.fromCodePoint(129000)
                             display_share_text += String.fromCodePoint(129000)
                         } 
                         // green square                       
-                        else if (output_grid[i][j] == 5){
+                        else if (output_grid[i][j] == 6){
                             share_text += String.fromCodePoint(129001)
                             display_share_text += String.fromCodePoint(129001)
                         }                        
@@ -189,7 +202,7 @@
                 document.getElementById('share_text').textContent = display_share_text;
                 let date_var = date.textContent
                 document.getElementById('end_date').textContent = date_var.substring(18,date_var.length);
-                document.getElementById('end_score').textContent = guess_number.toString() + '/10 \n'
+                document.getElementById('end_score').textContent = guess_number.toString() + '/15 \n'
                 document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
                 document.getElementById('year_input').disabled = true;
                 document.getElementById("year_input").value = '';
@@ -201,9 +214,9 @@
             }
 
             // LOSE CONDITION
-            if (guess_number == 10){
+            if (guess_number == 15){
                 let date_var = date.textContent
-                var share_text = date_var.substring(0,17) + "\n" + date_var.substring(19,date_var.length) + '\nX/10\n\n'
+                var share_text = date_var.substring(0,17) + "\n" + date_var.substring(19,date_var.length) + '\nX/15\n\n'
                 var display_share_text = ''
 
                 document.getElementById('end_response').textContent = 'GAME OVER'
@@ -237,13 +250,19 @@
                             display_share_text += String.fromCodePoint(128997)
                         } 
 
-                        //yellow square
+                        //orange square
                         else if (output_grid[i][j] == 4){
+                            share_text += String.fromCodePoint(128999)
+                            display_share_text += String.fromCodePoint(128999)
+                        } 
+
+                        //yellow square
+                        else if (output_grid[i][j] == 5){
                             share_text += String.fromCodePoint(129000)
                             display_share_text += String.fromCodePoint(129000)
                         } 
                         // green square                       
-                        else if (output_grid[i][j] == 5){
+                        else if (output_grid[i][j] == 6){
                             share_text += String.fromCodePoint(129001)
                             display_share_text += String.fromCodePoint(129001)
                         }                        
@@ -257,7 +276,7 @@
                 document.getElementById('share_text').textContent = display_share_text;
                 // let date_var = date.textContent
                 document.getElementById('end_date').textContent = date_var.substring(19,date_var.length);
-                document.getElementById('end_score').textContent = 'X/10\n';
+                document.getElementById('end_score').textContent = 'X/15\n';
                 document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
                 document.getElementById('year_input').disabled = true;
                 document.getElementById("year_input").value = '';
@@ -295,6 +314,7 @@
         .grid-container {
             display: grid;
             grid-template-columns: auto auto auto auto;
+            /* overflow: scroll; */
             /* background-color: #888; */
             padding-right: 15vw;
             padding-left: 0vw; 
@@ -563,9 +583,13 @@
                     <div class="square" style="background-color: rgba(255,255,0,.2);"></div> 
                     Yellow = 1-10 Years off
 
+                    <div class="square" style="background-color: rgba(255,165,1);"></div> 
+                    <div class="square" style="background-color: rgba(255,165,0,.2);"></div> 
+                    Orange = 11-25 Years off
+
                     <div class="square" style="background-color: rgba(255,0,0,1)"></div> 
                     <div class="square" style="background-color: rgba(255,0,0,.2)"></div> 
-                    Red = 11-100 Years off
+                    Red = 26-100 Years off
 
                     <div class="square" style="background-color: rgba(0,0,255,1)"></div>
                     <div class="square" style="background-color: rgba(0,0,255,.2)"></div> 
@@ -670,6 +694,30 @@
         <div class="square" id="s10_2"></div>
         <div class="square" id="s10_3"></div>
 
+        <div class="square_empty" id="s11_0"></div>
+        <div class="square" id="s11_1"></div>
+        <div class="square" id="s11_2"></div>
+        <div class="square" id="s11_3"></div>
+
+        <div class="square_empty" id="s12_0"></div>
+        <div class="square" id="s12_1"></div>
+        <div class="square" id="s12_2"></div>
+        <div class="square" id="s12_3"></div>
+
+        <div class="square_empty" id="s13_0"></div>
+        <div class="square" id="s13_1"></div>
+        <div class="square" id="s13_2"></div>
+        <div class="square" id="s13_3"></div>
+
+        <div class="square_empty" id="s14_0"></div>
+        <div class="square" id="s14_1"></div>
+        <div class="square" id="s14_2"></div>
+        <div class="square" id="s14_3"></div>
+
+        <div class="square_empty" id="s15_0"></div>
+        <div class="square" id="s15_1"></div>
+        <div class="square" id="s15_2"></div>
+        <div class="square" id="s15_3"></div>
     </div>
 
 
@@ -771,6 +819,11 @@
     var guess_number = 1;    
 
     var output_grid = [
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
         [0,0,0],
         [0,0,0],
         [0,0,0],
