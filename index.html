@@ -49,32 +49,32 @@
 
         function set_colors(box_str, year_diff, year){
             // Black
-            if (year_diff >= 1000){
-                var opaque_value = 1000/year_diff
+            if (year_diff >= 1001){
+                var opaque_value = 1001/year_diff
                 var rgba_val = "rgba(0,0,0,".concat(opaque_value.toString(), ")")
                 var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
                 return 1;
             }
 
             // Blue
-            else if (year_diff >= 100){
-                var opaque_value = 100/year_diff
+            else if (year_diff >= 101){
+                var opaque_value = 101/year_diff
                 var rgba_val = "rgba(0,0,255,".concat(opaque_value.toString(), ")")
                 var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
                 return 2;
             }
 
             // Red
-            else if (year_diff >= 25){
-                var opaque_value = 25/year_diff
+            else if (year_diff >= 26){
+                var opaque_value = 26/year_diff
                 var rgba_val = "rgba(255,0,0,".concat(opaque_value.toString(), ")")
                 var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
                 return 3;
             }
 
             // Orange
-            else if (year_diff >= 10){
-                var opaque_value = 10/year_diff
+            else if (year_diff >= 11){
+                var opaque_value = 11/year_diff
                 var rgba_val = "rgba(255,165,0,".concat(opaque_value.toString(), ")")
                 var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
                 return 4;
@@ -82,7 +82,19 @@
 
             // Yellow
             else if (year_diff >= 1){
-                var opaque_value = 1/year_diff
+                var opaque_value = 1 - year_diff/10
+                if (opaque_value <= .1){
+                    opaque_value = opaque_value + .25
+                }
+                else if (opaque_value <= .4){
+                    opaque_value = opaque_value + .2
+                }
+                else if (opaque_value <= .6){
+                    opaque_value = opaque_value + .15
+                }
+                else if (opaque_value <= .9){
+                    opaque_value = opaque_value + .1
+                }
                 var rgba_val = "rgba(255,255,0,".concat(opaque_value.toString(), ")")
                 var box = document.getElementById(box_str).style.backgroundColor = rgba_val;
                 return 5;
@@ -595,7 +607,7 @@
                     Yellow = 1-10 Years off
 
                     <div class="square" style="background-color: rgba(255,165,1);"></div> 
-                    <div class="square" style="background-color: rgba(255,165,0,.2);"></div> 
+                    <div class="square" style="background-color: rgba(255,165,0,.3);"></div> 
                     Orange = 11-25 Years off
 
                     <div class="square" style="background-color: rgba(255,0,0,1)"></div> 
