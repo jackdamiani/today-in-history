@@ -252,7 +252,7 @@
                 addNumGames()
                 addWinGames()
 
-                var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(2) 
+                var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
                 return false
@@ -337,7 +337,7 @@
                 addNumGames()
 
                 if (getCookie("win_games") != ""){
-                    var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(2) 
+                    var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
                     document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
                 }
 
