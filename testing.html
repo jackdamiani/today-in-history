@@ -921,10 +921,34 @@
         setCookie("total_games", (Number(getCookie("total_games"))+1).toString(), 0, 0) 
     }
 
+    console.log("Cookie", getCookie("total_games"));
+
+    
+    
+
+    function parseAvgScore(cname){
+        let arr_str = getCookie(cname)
+        let arr = arr_str.substring(1, arr_str.length-1)
+        console.log("arr:", arr)
+
+        score_vals = arr.split(',');
+        let running_sum = 0
+        for(let score = 0; score <score_vals.length; score++) {
+            running_sum += score
+        }
+        average_score = running_sum / score_vals.length
+        console.log("avg_val", average_score)
+    }
+
     var myAry = [1,2,3,4]
     setCookie("test", JSON.stringify(myAry), 1, 1)
-    console.log("Cookie", getCookie("test"));
-    console.log("Cookie", getCookie("total_games"));
+    parseAvgScore(test)
+    // console.log("Cookie", getCookie("test"));
+
+    var myAry = [0,10,20]
+    setCookie("test", JSON.stringify(myAry), 1, 1)
+    parseAvgScore(test)
+    // console.log("Cookie", getCookie("test"));
     
 
 
