@@ -885,7 +885,7 @@
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
         let ca = decodedCookie.split(';');
-        console.log(ca)
+        // console.log(ca)
         for(let i = 0; i <ca.length; i++) {
             let c = ca[i];
             while (c.charAt(0) == ' ') {
@@ -915,14 +915,17 @@
     }
 
     if (getCookie('total_games') == ''){
-        setCookie("")
+        setCookie("total_games", "1", 0, 0)
     }
+
     console.log(getCookie('total_games'))
 
 
-    var myAry = [1,2,3]
+    var myAry = [1,2,3,4]
     setCookie("test", JSON.stringify(myAry), 1, 1)
     console.log("Cookie", getCookie("test"));
+    console.log("Cookie", getCookie("total_games"));
+    
 
 
 
