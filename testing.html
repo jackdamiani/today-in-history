@@ -329,9 +329,15 @@
 
 
             guess_number += 1;
-            
-            
             document.getElementById("year_input").value = '';
+
+
+            if(getCookie("score_arr") != ""){
+                let avg_score = parseAvgScore("score_arr")
+                console.log("avg_score:", avg_score.toFixed(2))
+                document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toFixed(2).toString()
+            }
+
 
             addNumGames()
 
@@ -965,7 +971,7 @@
             setCookie("win_games", (Number(getCookie("win_games"))+1).toString(), 0, 0) 
         }
     }
-    document.cookie = "total_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // document.cookie = "total_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     console.log("Total Number Games", getCookie("total_games"));
     console.log("Win Games", getCookie("win_games"))
 
