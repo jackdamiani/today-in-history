@@ -235,7 +235,7 @@
                 else{
                     let arr_str = getCookie("score_arr")
                     let arr = arr_str.substring(1, arr_str.length-1)
-                    arr = arr.replace("'", "")
+                    arr = arr.replace("''", "")
                     score_vals = arr.split(',');
                     score_vals.push(guess_number)
                     setCookie("score_arr", JSON.stringify(score_vals), 0, 0)
