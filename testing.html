@@ -914,12 +914,12 @@
         }
     }
 
-    if (getCookie('total_games') == ''){
+    if (getCookie("total_games") == ''){
         setCookie("total_games", "1", 0, 0)
     }
-
-    console.log(getCookie('total_games'))
-
+    else{
+        setCookie("total_games", (Number(getCookie("total_games"))+1).toString(), 0, 0) 
+    }
 
     var myAry = [1,2,3,4]
     setCookie("test", JSON.stringify(myAry), 1, 1)
