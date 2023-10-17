@@ -242,7 +242,8 @@
 
                     console.log("score_vals", score_vals)
 
-                    parseAvgScore("score_arr")
+                    let avg_score = parseAvgScore("score_arr")
+                    console.log("avg_score:", avg_score)
 
                 }
 
@@ -958,6 +959,8 @@
         }
         avg_score = running_sum / score_vals.length
         console.log("avg_val", avg_score)
+
+        return avg_score.toFixed(2)
     }
 
     var myAry = [1,2,3,4]
