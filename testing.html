@@ -226,7 +226,7 @@
                 document.getElementById('year_input').disabled = true;
                 document.getElementById("year_input").value = '';
                 
-                // document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 if(getCookie("score_arr") == ""){
                     let bracket = "["
                     let val = bracket.concat(guess_number.toString(), "]")
