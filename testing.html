@@ -976,8 +976,8 @@
             setCookie("win_games", (Number(getCookie("win_games"))+1).toString(), 0, 0) 
         }
     }
-    document.cookie = "total_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie = "win_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // document.cookie = "total_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // document.cookie = "win_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
     console.log("Total Number Games", getCookie("total_games"));
     console.log("Win Games", getCookie("win_games"))
