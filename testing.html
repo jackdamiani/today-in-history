@@ -933,11 +933,11 @@
 
         score_vals = arr.split(',');
         let running_sum = 0
-        for(let score = 0; score <score_vals.length; score++) {
-            running_sum += score
+        for(let i = 0; i<score_vals.length; i++) {
+            running_sum += score_vals[i]
         }
-        average_score = running_sum / score_vals.length
-        console.log("avg_val", average_score)
+        avg_score = running_sum / score_vals.length
+        console.log("avg_val", avg_score)
     }
 
     var myAry = [1,2,3,4]
