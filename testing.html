@@ -325,6 +325,23 @@
                 document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
                 document.getElementById('year_input').disabled = true;
                 document.getElementById("year_input").value = '';
+
+
+                if(getCookie("score_arr") != ""){
+                    let avg_score = parseAvgScore("score_arr")
+                    console.log("avg_score:", avg_score)
+                    document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
+                }
+
+
+                addNumGames()
+
+                if (getCookie("win_games") != ""){
+                    var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(2) 
+                    document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage
+                }
+
+
             }
 
 
@@ -332,19 +349,7 @@
             document.getElementById("year_input").value = '';
 
 
-            if(getCookie("score_arr") != ""){
-                let avg_score = parseAvgScore("score_arr")
-                console.log("avg_score:", avg_score)
-                document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
-            }
-
-
-            addNumGames()
-
-            if (getCookie("win_games") != ""){
-                var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(2) 
-                document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage
-            }
+            
 
             return false
         }
@@ -971,7 +976,9 @@
             setCookie("win_games", (Number(getCookie("win_games"))+1).toString(), 0, 0) 
         }
     }
-    // document.cookie = "total_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "total_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "win_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
     console.log("Total Number Games", getCookie("total_games"));
     console.log("Win Games", getCookie("win_games"))
 
