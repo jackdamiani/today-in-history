@@ -934,7 +934,7 @@
         score_vals = arr.split(',');
         let running_sum = 0
         for(let i = 0; i<score_vals.length; i++) {
-            running_sum += score_vals[i]
+            running_sum += Number(score_vals[i])
         }
         avg_score = running_sum / score_vals.length
         console.log("avg_val", avg_score)
