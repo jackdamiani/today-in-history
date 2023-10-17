@@ -226,9 +226,11 @@
                 document.getElementById('year_input').disabled = true;
                 document.getElementById("year_input").value = '';
                 
-                
+                document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 if(getCookie("score_arr") == ""){
-                    setCookie("score_arr", "["+guess_number.toString+"]", 0, 0);
+                    let bracket = "["
+                    let val = bracket.concat(guess_number.toString(), "]")
+                    setCookie("score_arr", val, 0, 0);
                 }
                 else{
                     let arr_str = getCookie("score_arr")
