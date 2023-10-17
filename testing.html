@@ -244,10 +244,10 @@
 
                     let avg_score = parseAvgScore("score_arr")
                     console.log("avg_score:", avg_score)
-
                 }
 
                 console.log(getCookie("score_arr"))
+                document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
                 
                 return false
             }
@@ -591,6 +591,7 @@
             <p id="correct_answer"></p>
             <p id="share_text" style="white-space: pre-line;"></p>
             <button class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
+            <p id="avg_score"></p>
 
         </div>
     </div>
