@@ -884,7 +884,6 @@
     function getCookie(cname) {
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
-        console.log(decodedCookie)
         let ca = decodedCookie.split(';');
         console.log(ca)
         for(let i = 0; i <ca.length; i++) {
@@ -900,15 +899,29 @@
     }
 
     // function for setting cookies
-    function setCookie(cname, cvalue, exdays) {
-        const d = new Date();
-        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-        let expires = "expires="+d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    function setCookie(cname, cvalue, exdays, exp=0) {
+        if (exp == 1){
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        else {
+            const d = new Date();
+            // d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            // let expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";"  + "path=/";
+        }
     }
 
+    if (getCookie('total_games') == ''){
+        setCookie("")
+    }
+    console.log(getCookie('total_games'))
+
+
     var myAry = [1,2,3]
-    setCookie("test", JSON.stringify(myAry), 1)
+    setCookie("test", JSON.stringify(myAry), 1, 1)
     console.log("Cookie", getCookie("test"));
 
 
