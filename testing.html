@@ -227,7 +227,12 @@
                 document.getElementById("year_input").value = '';
                 
                 
-
+                if(getCookie("score_arr") == ""){
+                    setCookie("score_arr", "["+guess_number.toString+"]", 0, 0);
+                }
+                else{
+                    pass;
+                }
                 
                 return false
             }
