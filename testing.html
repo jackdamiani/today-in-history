@@ -226,11 +226,12 @@
                 document.getElementById('year_input').disabled = true;
                 document.getElementById("year_input").value = '';
                 
-                // document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 if(getCookie("score_arr") == ""){
                     let bracket = "["
                     let val = bracket.concat(guess_number, "]")
                     setCookie("score_arr", val, 0, 0);
+                    avg_score = guess_number
                 }
                 else{
                     let arr_str = getCookie("score_arr")
@@ -240,13 +241,12 @@
                     score_vals.push(guess_number.toString())
                     setCookie("score_arr", JSON.stringify(score_vals), 0, 0)
 
-                    console.log("score_vals", score_vals)
 
                     let avg_score = parseAvgScore("score_arr")
-                    console.log("avg_score:", avg_score)
+                    
                 }
 
-                console.log(getCookie("score_arr"))
+                console.log("avg_score:", avg_score.toFixed(2))
                 document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toFixed(2).toString()
                 
                 return false
@@ -591,7 +591,8 @@
             <p id="correct_answer"></p>
             <p id="share_text" style="white-space: pre-line;"></p>
             <button class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
-            <p id="avg_score"></p>
+            <p id="avg_score" style="font-weight: bold;"></p>
+            <p id="win_percentage" style="font-weight: bold;"></p>
 
         </div>
     </div>
@@ -906,7 +907,6 @@
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
         let ca = decodedCookie.split(';');
-        // console.log(ca)
         for(let i = 0; i <ca.length; i++) {
             let c = ca[i];
             while (c.charAt(0) == ' ') {
@@ -935,11 +935,13 @@
         }
     }
 
-    if (getCookie("total_games") == ''){
-        setCookie("total_games", "1", 0, 0)
-    }
-    else{
-        setCookie("total_games", (Number(getCookie("total_games"))+1).toString(), 0, 0) 
+    function addNumGames(){
+        if (getCookie("total_games") == ''){
+            setCookie("total_games", "1", 0, 0)
+        }
+        else{
+            setCookie("total_games", (Number(getCookie("total_games"))+1).toString(), 0, 0) 
+        }
     }
 
     console.log("Cookie", getCookie("total_games"));
@@ -950,33 +952,18 @@
     function parseAvgScore(cname){
         let arr_str = getCookie(cname)
         let arr = arr_str.substring(1, arr_str.length-1)
-        console.log("arr:", arr)
         arr = arr.replace(/['"]+/g, '')
         score_vals = arr.split(',');
-        console.log("svs: ", score_vals)
         let running_sum = 0
         for(let i = 0; i<score_vals.length; i++) {
             running_sum += Number(score_vals[i])
         }
         avg_score = running_sum / score_vals.length
-        console.log("avg_val", avg_score)
 
         return avg_score.toFixed(2)
     }
 
-    var myAry = [1,2,3,4]
-    setCookie("test", JSON.stringify(myAry), 1, 1)
-    parseAvgScore("test")
-    // console.log("Cookie", getCookie("test"));
-
-    var myAry = [0,10,20]
-    setCookie("test", JSON.stringify(myAry), 1, 1)
-    parseAvgScore("test")
-    // console.log("Cookie", getCookie("test"));
     
-
-
-
 
     </script>
 </body>
