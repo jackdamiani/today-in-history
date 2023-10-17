@@ -236,7 +236,9 @@
                     let arr_str = getCookie("score_arr")
                     let arr = arr_str.substring(1, arr_str.length-1)
                     score_vals = arr.split(',');
-                    score_vals.push(guess_number)
+                    score_vals.push(guess_number.toString())
+                    setCookie("score_arr", score_vals, 0, 0)
+
                     console.log("score_vals", score_vals)
 
                 }
