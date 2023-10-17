@@ -242,12 +242,12 @@
 
                     console.log("score_vals", score_vals)
 
-                    let avg_score = parseAvgScore("score_arr")
-                    console.log("avg_score:", avg_score)
+                    let avg_score_print = parseAvgScore("score_arr")
+                    console.log("avg_score:", avg_score_print)
                 }
 
                 console.log(getCookie("score_arr"))
-                document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
+                document.getElementById('avg_score').textContent = 'Average Number Guesses = ' + avg_score_print.toString()
                 
                 return false
             }
@@ -958,7 +958,7 @@
         for(let i = 0; i<score_vals.length; i++) {
             running_sum += Number(score_vals[i])
         }
-        avg_score = running_sum / score_vals.length
+        let avg_score = running_sum / score_vals.length
         console.log("avg_val", avg_score)
 
         return avg_score.toFixed(2)
