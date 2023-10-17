@@ -226,17 +226,17 @@
                 document.getElementById('year_input').disabled = true;
                 document.getElementById("year_input").value = '';
                 
-                // document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 if(getCookie("score_arr") == ""){
                     let bracket = "["
-                    let val = bracket.concat(guess_number.toString(), "]")
+                    let val = bracket.concat(guess_number, "]")
                     setCookie("score_arr", val, 0, 0);
                 }
                 else{
                     let arr_str = getCookie("score_arr")
                     let arr = arr_str.substring(1, arr_str.length-1)
                     score_vals = arr.split(',');
-                    score_vals.push(guess_number.toString())
+                    score_vals.push(guess_number)
                     setCookie("score_arr", JSON.stringify(score_vals), 0, 0)
 
                     console.log("score_vals", score_vals)
