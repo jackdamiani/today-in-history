@@ -628,7 +628,7 @@
             <p id="end_score"></p>
             <p id="correct_answer"></p>
             <p id="share_text" style="white-space: pre-line;"></p>
-            <button class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
+            <button id="share_button" class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
             <p id="games_played" style="font-weight: bold;"></p>
             <p id="win_percentage" style="font-weight: bold;"></p>
             <p id="avg_score" style="font-weight: bold;"></p>
@@ -823,6 +823,16 @@
                     document.getElementById('help_message').textContent = "You won today in " + score.toString() + " guesses. Come back tomorrow for more or play again in incognito window"
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
+
+                document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toFixed(2).toString()
+
+                let total_games_played = Number(getCookie("total_games"))
+                document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
+                
+                var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
+                document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
+
+                document.getElementById("share_button").style.visibility = 'hidden';
             }
             // Code to work with future dates
             // var find_today = new Date();
