@@ -823,7 +823,8 @@
                     document.getElementById('help_message').textContent = "You won today in " + score.toString() + " guesses. Come back tomorrow for more or play again in incognito window"
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
-
+                    
+                let avg_score = parseAvgScore("score_arr")
                 document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
 
                 let total_games_played = Number(getCookie("total_games"))
