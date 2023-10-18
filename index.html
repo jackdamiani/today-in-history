@@ -38,7 +38,9 @@
         window.onload = function() {
             document.getElementById("help_menu_id").style.visiblity = 'visible';
             document.getElementById("end_id").style.visiblity = 'hidden';
-            document.getElementsByClassName("stats")[0].style.visibility = 'hidden';
+            if(getCookie("played_today") != "True"){
+                document.getElementsByClassName("stats")[0].style.visibility = 'hidden';
+            }
         }
 
 
@@ -226,9 +228,43 @@
                 document.getElementById('year_input').disabled = true;
                 document.getElementById("year_input").value = '';
                 
-                
+                // document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                if(getCookie("score_arr") == ""){
+                    let bracket = "["
+                    let val = bracket.concat(guess_number, "]")
+                    setCookie("score_arr", val, 0, 0);
+                    avg_score = guess_number
+                }
+                else{
+                    let arr_str = getCookie("score_arr")
+                    let arr = arr_str.substring(1, arr_str.length-1)
+                    arr = arr.replace(/['"]+/g, '')
+                    score_vals = arr.split(',');
+                    score_vals.push(guess_number.toString())
+                    setCookie("score_arr", JSON.stringify(score_vals), 0, 0)
 
+
+                    let avg_score = parseAvgScore("score_arr")
+                    
+                }
+
+                console.log("avg_score:", avg_score)
+                document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
                 
+                addNumGames()
+                addWinGames()
+
+                let total_games_played = Number(getCookie("total_games"))
+                document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
+                
+                var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
+                document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
+
+
+                setCookie("played_today", "True", 0, 2)
+                setCookie("todays_score", guess_number.toString(), 0, 2)
+                console.log("Today's Score", getCookie("todays_score"))
+
                 return false
             }
 
@@ -299,13 +335,35 @@
                 document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
                 document.getElementById('year_input').disabled = true;
                 document.getElementById("year_input").value = '';
+
+
+                if(getCookie("score_arr") != ""){
+                    let avg_score = parseAvgScore("score_arr")
+                    console.log("avg_score:", avg_score)
+                    document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
+                }
+
+
+                addNumGames()
+
+                let total_games_played = Number(getCookie("total_games"))
+                document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
+
+                if (getCookie("win_games") != ""){
+                    var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
+                    document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
+                }
+
+                setCookie("played_today", "True", 0, 2)
+                setCookie("todays_score", "16", 0, 2)
             }
 
 
             guess_number += 1;
-            
-            
             document.getElementById("year_input").value = '';
+
+
+            
 
             return false
         }
@@ -570,7 +628,11 @@
             <p id="end_score"></p>
             <p id="correct_answer"></p>
             <p id="share_text" style="white-space: pre-line;"></p>
-            <button class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
+            <button id="share_button" class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
+            <p id="games_played" style="font-weight: bold;"></p>
+            <p id="win_percentage" style="font-weight: bold;"></p>
+            <p id="avg_score" style="font-weight: bold;"></p>
+            
 
         </div>
     </div>
@@ -649,7 +711,7 @@
         <div class="rectangle" id="fact3"></div>
     </div>
 
-    <div style="color:black; font-size: 10px; padding:2px">To see the colors again hit the ?</div>
+    <div id="help_message" style="color:black; font-size: 10px; padding:2px">To see the colors again hit the ?</div>
     <div style="color:white; font-size: 10px;">To see the colors again hit the ?</div>
 
     <!-- <p class="facts", id="fact1">Need to add the facts</p>
@@ -751,6 +813,29 @@
     <script>
         setup()
         function setup(){
+            if (getCookie("played_today") == "True"){
+                document.getElementById('year_input').disabled = true;
+                let score = Number(getCookie("todays_score"))
+                if (score == 16){
+                    document.getElementById('help_message').textContent = "You didn't get today's answer. Come back tomorrow for more or play again in incognito window"
+                }
+                else{
+                    document.getElementById('help_message').textContent = "You won today in " + score.toString() + " guesses. Come back tomorrow for more or play again in incognito window"
+                }
+                document.getElementById('help_message').style.fontSize = "20px";
+                    
+                let avg_score = parseAvgScore("score_arr")
+                document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
+
+                let total_games_played = Number(getCookie("total_games"))
+                document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
+                
+                var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
+                document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
+
+                document.getElementById("share_button").style.visibility = 'hidden';
+                document.getElementById('end_response').textContent = 'Game Complete!'
+            }
             // Code to work with future dates
             // var find_today = new Date();
             // var dd = String(find_today.getDate()).padStart(2, '0');
@@ -878,7 +963,98 @@
             $('.end_menu').hide();
         });
     });
+    
 
+    // Funtion for getting cookies
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    // function for setting cookies
+    function setCookie(cname, cvalue, exdays, exp=0) {
+        // sets for future days
+        if (exp == 1){
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        // sets cookie until midnight
+        else if (exp == 2){
+            const d = new Date();
+            let year = d.getUTCFullYear()
+            let month = d.getUTCMonth()
+            let day = d.getUTCDate()
+
+            const d_midnight = new Date(year, month, day, 23, 59, 59, 59)
+            let expires = "expires="+d_midnight.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+            // console.log("This cookie is reset at", d_midnight)
+        }
+        else {
+            const d = new Date("2999-12-31");
+            let expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";"  + "path=/";
+        }
+    }
+
+    function addNumGames(){
+        if (getCookie("total_games") == ''){
+            setCookie("total_games", "1", 0, 0)
+        }
+        else{
+            setCookie("total_games", (Number(getCookie("total_games"))+1).toString(), 0, 0) 
+        }
+    }
+
+    function addWinGames(){
+        if (getCookie("win_games") == ''){
+            setCookie("win_games", "1", 0, 0)
+        }
+        else{
+            setCookie("win_games", (Number(getCookie("win_games"))+1).toString(), 0, 0) 
+        }
+    }
+    // document.cookie = "total_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // document.cookie = "win_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    console.log("Total Number Games", getCookie("total_games"));
+    console.log("Win Games", getCookie("win_games"))
+
+    console.log("Played Today", getCookie("played_today"))
+
+
+    
+    
+
+    function parseAvgScore(cname){
+        let arr_str = getCookie(cname)
+        let arr = arr_str.substring(1, arr_str.length-1)
+        arr = arr.replace(/['"]+/g, '')
+        score_vals = arr.split(',');
+        let running_sum = 0
+        for(let i = 0; i<score_vals.length; i++) {
+            running_sum += Number(score_vals[i])
+        }
+        avg_score = running_sum / score_vals.length
+
+        return avg_score.toFixed(2)
+    }
+
+    
 
     </script>
 </body>
