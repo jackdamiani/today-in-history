@@ -821,6 +821,7 @@
                     document.getElementById('help_message').textContent = "You won today in " + score.toString() + " guesses. Come back tomorrow for more or play again in incognito window"
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
+                document.getElementsByClassName("stats")[0].style.visibility = 'visible';
             }
             // Code to work with future dates
             // var find_today = new Date();
