@@ -350,7 +350,7 @@
                     document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
                 }
 
-
+                setCookie("played_today", "True", 0, 2)
             }
 
 
@@ -810,7 +810,7 @@
         function setup(){
             if (getCookie("played_today") == "True"){
                 document.getElementById('year_input').disabled = true;
-                document.getElementById('help_message').textContent = "You already played today. Come back tomorrow for more. Can also play again in incognito window"
+                document.getElementById('help_message').textContent = "You already played today. Come back tomorrow for more or play again in incognito window"
                 document.getElementById('help_message').style.fontSize = "20px";
             }
             // Code to work with future dates
@@ -975,8 +975,7 @@
             let month = d.getUTCMonth()
             let day = d.getUTCDate()
 
-            const d_midnight = new Date(year, month, day, 23, 59, 0, 0)
-            // const d_midnight = new Date(year, month, day, 23, 59, 59, 59)
+            const d_midnight = new Date(year, month, day, 23, 59, 59, 59)
             let expires = "expires="+d_midnight.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 
