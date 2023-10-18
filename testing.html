@@ -258,6 +258,9 @@
                 var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
+
+                setCookie("played_today", "True", 0, 2)
+
                 return false
             }
 
@@ -967,7 +970,8 @@
             let month = d.getUTCMonth()
             let day = d.getUTCDate()
 
-            const d_midnight = new Date(year, month, day, 11, 59, 59, 59)
+            const d_midnight = new Date(year, month, day, 15, 1, 0, 0)
+            // const d_midnight = new Date(year, month, day, 23, 59, 59, 59)
             let expires = "expires="+d_midnight.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 
@@ -1002,6 +1006,8 @@
 
     console.log("Total Number Games", getCookie("total_games"));
     console.log("Win Games", getCookie("win_games"))
+
+    console.log("Played Today", getCookie("played_today"))
 
 
     
