@@ -252,6 +252,9 @@
                 addNumGames()
                 addWinGames()
 
+                let total_games_played = Number(getCookie("total_games"))
+                document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
+                
                 var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
@@ -335,6 +338,9 @@
 
 
                 addNumGames()
+
+                let total_games_played = Number(getCookie("total_games"))
+                document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
 
                 if (getCookie("win_games") != ""){
                     var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
@@ -615,8 +621,10 @@
             <p id="correct_answer"></p>
             <p id="share_text" style="white-space: pre-line;"></p>
             <button class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
-            <p id="avg_score" style="font-weight: bold;"></p>
+            <p id="games_played" style="font-weight: bold;"></p>
             <p id="win_percentage" style="font-weight: bold;"></p>
+            <p id="avg_score" style="font-weight: bold;"></p>
+            
 
         </div>
     </div>
@@ -945,16 +953,29 @@
 
     // function for setting cookies
     function setCookie(cname, cvalue, exdays, exp=0) {
+        // sets for future days
         if (exp == 1){
             const d = new Date();
             d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
             let expires = "expires="+d.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
-        else {
+        // sets cookie until midnight
+        else if (exp == 2){
             const d = new Date();
-            // d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-            // let expires = "expires="+d.toUTCString();
+            let year = d.getUTCFullYear()
+            let month = d.getUTCMonth()
+            let day = d.getUTCDate()
+
+            const d_midnight = new Date(year, month, day, 11, 59, 59, 59)
+            let expires = "expires="+d_midnight.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+            console.log("expiration cookie", d_midnight)
+        }
+        else {
+            const d = new Date("2999-12-31");
+            let expires = "expires="+d.toUTCString();
             document.cookie = cname + "=" + cvalue + ";"  + "path=/";
         }
     }
