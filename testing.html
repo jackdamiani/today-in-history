@@ -975,12 +975,12 @@
             let month = d.getUTCMonth()
             let day = d.getUTCDate()
 
-            const d_midnight = new Date(year, month, day, 15, 19, 0, 0)
+            const d_midnight = new Date(year, month, day, 23, 59, 0, 0)
             // const d_midnight = new Date(year, month, day, 23, 59, 59, 59)
             let expires = "expires="+d_midnight.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 
-            console.log("expiration cookie", d_midnight)
+            console.log("Can play again at", d_midnight)
         }
         else {
             const d = new Date("2999-12-31");
