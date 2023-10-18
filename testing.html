@@ -261,6 +261,7 @@
 
                 setCookie("played_today", "True", 0, 2)
                 setCookie("todays_score", guess_number.toString(), 0, 2)
+                console.log("Today's Score", getCookie("todays_score"))
 
                 return false
             }
