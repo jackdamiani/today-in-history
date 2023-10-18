@@ -706,7 +706,7 @@
         <div class="rectangle" id="fact3"></div>
     </div>
 
-    <div style="color:black; font-size: 10px; padding:2px">To see the colors again hit the ?</div>
+    <div id="help_message" style="color:black; font-size: 10px; padding:2px">To see the colors again hit the ?</div>
     <div style="color:white; font-size: 10px;">To see the colors again hit the ?</div>
 
     <!-- <p class="facts", id="fact1">Need to add the facts</p>
@@ -808,6 +808,11 @@
     <script>
         setup()
         function setup(){
+            if (getCookie("played_today") == "True"){
+                document.getElementById('year_input').disabled = true;
+                document.getElementById('help_message').textContent = "You already played today. Come back tomorrow for more. Can also play again in incognito window"
+                document.getElementById('help_message').style.fontSize = 20;
+            }
             // Code to work with future dates
             // var find_today = new Date();
             // var dd = String(find_today.getDate()).padStart(2, '0');
@@ -970,7 +975,7 @@
             let month = d.getUTCMonth()
             let day = d.getUTCDate()
 
-            const d_midnight = new Date(year, month, day, 15, 1, 0, 0)
+            const d_midnight = new Date(year, month, day, 15, 19, 0, 0)
             // const d_midnight = new Date(year, month, day, 23, 59, 59, 59)
             let expires = "expires="+d_midnight.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
