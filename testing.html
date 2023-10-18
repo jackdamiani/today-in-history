@@ -260,6 +260,7 @@
 
 
                 setCookie("played_today", "True", 0, 2)
+                setCookie("todays_score", guess_number.toString(), 0, 2)
 
                 return false
             }
@@ -351,6 +352,7 @@
                 }
 
                 setCookie("played_today", "True", 0, 2)
+                setCookie("todays_score", "16", 0, 2)
             }
 
 
@@ -810,7 +812,13 @@
         function setup(){
             if (getCookie("played_today") == "True"){
                 document.getElementById('year_input').disabled = true;
-                document.getElementById('help_message').textContent = "You already played today. Come back tomorrow for more or play again in incognito window"
+                let score = Number(getCookie("todays_score"))
+                if (score == 16){
+                    document.getElementById('help_message').textContent = "You didn't get today's answer. Come back tomorrow for more or play again in incognito window"
+                }
+                else{
+                    document.getElementById('help_message').textContent = "You won today in " + score.toString() + " guesses. Come back tomorrow for more or play again in incognito window"
+                }
                 document.getElementById('help_message').style.fontSize = "20px";
             }
             // Code to work with future dates
