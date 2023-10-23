@@ -1003,7 +1003,7 @@
             let expires = "expires="+d_midnight.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 
-            // console.log("This cookie is reset at", d_midnight)
+            console.log("Resetable cookies expire at at", d_midnight)
         }
         else {
             const d = new Date("2999-12-31");
