@@ -357,6 +357,8 @@
 
                 setCookie("played_today", "True", 0, 2)
                 setCookie("todays_score", "16", 0, 2)
+
+                return false;
             }
 
 
@@ -995,15 +997,15 @@
         // sets cookie until midnight
         else if (exp == 2){
             const d = new Date();
-            let year = d.getUTCFullYear()
-            let month = d.getUTCMonth()
-            let day = d.getUTCDate()
+            let year = d.getFullYear()
+            let month = d.getMonth()
+            let day = d.getDate()
 
             const d_midnight = new Date(year, month, day, 23, 59, 59, 59)
             let expires = "expires="+d_midnight.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 
-            console.log("Resetable cookies expire at at", d_midnight)
+            // console.log("Resetable cookies expire at at", d_midnight)
         }
         else {
             const d = new Date("2999-12-31");
