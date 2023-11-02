@@ -245,7 +245,7 @@
                     setCookie("score_arr", JSON.stringify(score_vals), 0, 0)
 
 
-                    let avg_score = parseAvgScore("score_arr")
+                    avg_score = parseAvgScore("score_arr")
                     
                 }
 
@@ -1054,7 +1054,6 @@
             running_sum += Number(score_vals[i])
         }
         avg_score = running_sum / score_vals.length
-
         return avg_score.toFixed(2)
     }
 
