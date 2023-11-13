@@ -4,6 +4,7 @@
     <meta name="decription" content="Every day major world events have happened. Guess the year of 3 major events today!" />
     <link rel="canonical" href="https://today-in-hisory-game.com/" />
 
+    <meta name="robots" content="nosnippet">
     <meta property="og:title" content="Today in History Game">
     <meta property="og:description" content="Every day major world events have happened. Guess the year of 3 major events today!">
     <meta property="og:type" content="game">
@@ -36,9 +37,9 @@
 
 
         window.onload = function() {
-            document.getElementById("help_menu_id").style.visiblity = 'visible';
             document.getElementById("end_id").style.visiblity = 'hidden';
             if(getCookie("played_today") != "True"){
+                document.getElementById("help_menu_id").style.visiblity = 'visible';
                 document.getElementsByClassName("stats")[0].style.visibility = 'hidden';
             }
         }
@@ -244,7 +245,7 @@
                     setCookie("score_arr", JSON.stringify(score_vals), 0, 0)
 
 
-                    let avg_score = parseAvgScore("score_arr")
+                    avg_score = parseAvgScore("score_arr")
                     
                 }
 
@@ -356,6 +357,8 @@
 
                 setCookie("played_today", "True", 0, 2)
                 setCookie("todays_score", "16", 0, 2)
+
+                return false;
             }
 
 
@@ -837,16 +840,16 @@
                 document.getElementById('end_response').textContent = 'Game Complete!'
             }
             // Code to work with future dates
-            // var find_today = new Date();
-            // var dd = String(find_today.getDate()).padStart(2, '0');
-            // var mm = String(find_today.getMonth() + 2).padStart(2, '0'); //January is 0!
-            // var yyyy = find_today.getFullYear();
-
-            // Actual Code
             var find_today = new Date();
-            var dd = String(find_today.getDate()).padStart(2, '0');
+            var dd = String(find_today.getDate() +3).padStart(2, '0');
             var mm = String(find_today.getMonth() + 1).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
+
+            // // Actual Code
+            // var find_today = new Date();
+            // var dd = String(find_today.getDate()).padStart(2, '0');
+            // var mm = String(find_today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            // var yyyy = find_today.getFullYear();
 
             todays_date = mm + dd
             var month_dict = {'01':'January', '02': 'February', '03':'March', '04':'April', '05':'May', '06':'June', '07':'July', '08':'August', '09':'September', '10':'October', '11':'November', '12':'December'}
@@ -994,20 +997,20 @@
         // sets cookie until midnight
         else if (exp == 2){
             const d = new Date();
-            let year = d.getUTCFullYear()
-            let month = d.getUTCMonth()
-            let day = d.getUTCDate()
+            let year = d.getFullYear()
+            let month = d.getMonth()
+            let day = d.getDate()
 
             const d_midnight = new Date(year, month, day, 23, 59, 59, 59)
             let expires = "expires="+d_midnight.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 
-            // console.log("This cookie is reset at", d_midnight)
+            // console.log("Resetable cookies expire at at", d_midnight)
         }
         else {
             const d = new Date("2999-12-31");
             let expires = "expires="+d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";"  + "path=/";
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
     }
 
@@ -1035,6 +1038,7 @@
     console.log("Win Games", getCookie("win_games"))
 
     console.log("Played Today", getCookie("played_today"))
+    console.log("Today's Score", getCookie("todays_score"))
 
 
     
@@ -1050,7 +1054,6 @@
             running_sum += Number(score_vals[i])
         }
         avg_score = running_sum / score_vals.length
-
         return avg_score.toFixed(2)
     }
 
