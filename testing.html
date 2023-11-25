@@ -841,7 +841,7 @@
             }
             // Code to work with future dates
             var find_today = new Date();
-            var dd = String(find_today.getDate() +3).padStart(2, '0');
+            var dd = String(find_today.getDate() ).padStart(2, '0');
             var mm = String(find_today.getMonth() + 1).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
