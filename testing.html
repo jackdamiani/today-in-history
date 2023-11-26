@@ -842,13 +842,22 @@
         function post_play_display(display){
             let display_ = ''
             let count = 0
-            for (let i = 0; i < display.length; i+=2) {
-                display_ += display.slice(i,i+2)
+            for (let i = 0; i < display.length; i++) {
+                if(user.slice(i,i+1) == String.fromCodePoint(11035)){
+                    display_ += display.slice(i,i+1)
+                }
+                else{
+                    display_ += display.slice(i,i+2)
+                    i++
+                }
+                
                 count += 1
                 if (count % 3 == 0){
                     display_ += '\n'
                 }
+                
             }
+            alert(display_)
             return display_
         }
 
