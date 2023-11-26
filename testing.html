@@ -37,14 +37,16 @@
 
 
         window.onload = function() {
-            document.getElementById("end_id").style.visiblity = 'hidden';
+            
             if(getCookie("played_today") != "True"){
                 document.getElementById("help_menu_id").style.visiblity = 'visible';
                 document.getElementsByClassName("stats")[0].style.visibility = 'hidden';
+                document.getElementById("end_id").style.visiblity = 'hidden';
             }
             else{
                 document.getElementById("help_menu_id").style.visiblity = 'hidden';
                 document.getElementsByClassName("stats")[0].style.visibility = 'visible';
+                document.getElementById("end_id").style.visiblity = 'visible';
             }
         }
 
