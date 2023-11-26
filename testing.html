@@ -360,7 +360,7 @@
                     var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
                     document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
                 }
-
+                
                 setCookie("display_share_text", display_share_text, 0, 2)
                 setCookie("share_text", share_text, 0, 2)
                 setCookie("played_today", "True", 0, 2)
@@ -1033,6 +1033,11 @@
             const d_midnight = new Date(year, month, day, 23, 59, 59, 59)
             let expires = "expires="+d_midnight.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+            if (cname == "display_share_text"){
+            alert("getting display cookie" + getCookie("display_share_text") )
+            }
+            
 
             // console.log("Resetable cookies expire at at", d_midnight)
         }
