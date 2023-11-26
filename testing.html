@@ -843,6 +843,7 @@
                 }
                 else{
                     document.getElementById('help_message').textContent = "You won today in " + score.toString() + " guesses. Come back tomorrow for more!"
+                    alert("debug " + getCookie("todays_score") + "/15")
                     document.getElementById('end_score') = getCookie("todays_score") + "/15"
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
