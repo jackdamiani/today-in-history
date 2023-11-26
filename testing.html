@@ -832,6 +832,19 @@
     <!-- <script type="text/javascript" src="require.js"></script> -->
 
     <script>
+        function post_play_display(display){
+            let display_
+            let count = 0
+            for (let i = 0; i < display.length; i+=2) {
+                display_ += display.slice(i,i+1)
+                count += 1
+                if (count % 3 == 0){
+                    display_ += '\n'
+                }
+            }
+            return display_
+        }
+
         setup()
         function setup(){
             if (getCookie("played_today") == "True"){
@@ -865,7 +878,8 @@
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
                 var display_share_text_post = getCookie("display_share_text_cookie")
-                document.getElementById("share_text").textContent = display_share_text_post
+                display_share_text_post_post = post_play_display(display_share_text_post)
+                document.getElementById("share_text").textContent = display_share_text_post_post
 
                 // document.getElementById("share_button").style.visibility = 'hidden';
                 document.getElementById('end_response').textContent = 'Game Complete!'
