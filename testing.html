@@ -285,6 +285,7 @@
                 let date_var = date.textContent
                 var share_text = date_var.substring(0,17) + "\n" + date_var.substring(19,date_var.length) + '\nX/15\n\n'
                 var display_share_text = ''
+                var display_share_text_cookie = ''
 
                 document.getElementById('end_response').textContent = 'GAME OVER'
                 document.getElementById('end_id').style.display = 'block'
@@ -297,41 +298,48 @@
                         if (output_grid[i][j] == undefined || output_grid[i][j] == 0){
                             share_text += String.fromCodePoint(11036)
                             display_share_text += String.fromCodePoint(11036)
+                            display_share_text_cookie += String.fromCodePoint(11036)
                         } 
 
                         // black square
                         else if (output_grid[i][j] == 1){
                             share_text += String.fromCodePoint(11035)
                             display_share_text += String.fromCodePoint(11035)
+                            display_share_text_cookie += String.fromCodePoint(11035)
                         } 
 
                         // blue square
                         else if (output_grid[i][j] == 2){
                             share_text += String.fromCodePoint(128998)
                             display_share_text += String.fromCodePoint(128998)
+                            display_share_text_cookie += String.fromCodePoint(128998)
                         }
 
                         //red square
                         else if (output_grid[i][j] == 3){
                             share_text += String.fromCodePoint(128997)
                             display_share_text += String.fromCodePoint(128997)
+                            display_share_text_cookie += String.fromCodePoint(128997)
                         } 
 
                         //orange square
                         else if (output_grid[i][j] == 4){
                             share_text += String.fromCodePoint(128999)
                             display_share_text += String.fromCodePoint(128999)
+                            display_share_text_cookie += String.fromCodePoint(128999)
                         } 
 
                         //brown square
                         else if (output_grid[i][j] == 5){
                             share_text += String.fromCodePoint(129003)
                             display_share_text += String.fromCodePoint(129003)
+                            display_share_text_cookie += String.fromCodePoint(129003)
                         } 
                         // green square                       
                         else if (output_grid[i][j] == 6){
                             share_text += String.fromCodePoint(129001)
                             display_share_text += String.fromCodePoint(129001)
+                            display_share_text_cookie += String.fromCodePoint(129001)
                         }                        
                     }
                     share_text += '\n'
@@ -368,8 +376,7 @@
                     document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
                 }
                 
-                setCookie("display_share_text", display_share_text, 0, 2)
-                setCookie("share_text", share_text, 0, 2)
+                setCookie("display_share_text_cookie", display_share_text_cookie, 0, 2)
                 setCookie("played_today", "True", 0, 2)
                 setCookie("todays_score", "16", 0, 2)
 
@@ -853,10 +860,12 @@
                 if (score == 16){
                     document.getElementById('help_message').textContent = "You didn't get today's answer. Come back tomorrow for more!"
                     document.getElementById('end_score').textContent = "X/15"
+                    document.getElementById('end_response').textContent = 'GAME OVER'
                 }
                 else{
                     document.getElementById('help_message').textContent = "You won today in " + score.toString() + " guesses. Come back tomorrow for more!"
                     document.getElementById('end_score').textContent = getCookie("todays_score") + "/15"
+                    document.getElementById('end_response').textContent = 'YOU WIN!'
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
                 
@@ -962,6 +971,7 @@
 
             if (getCookie("played_today") == "True"){
                 document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
+                document.getElementById('end_date').textContent = date.textContent.substring(18,date_var.length);
             }
 
         
