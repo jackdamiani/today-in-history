@@ -178,48 +178,48 @@
                         if (output_grid[i][j] == undefined || output_grid[i][j] == 0){
                             share_text += String.fromCodePoint(11036)
                             display_share_text += String.fromCodePoint(11036)
-                            display_share_text_cookie += String.fromCodePoint(11036)
+                            display_share_text_cookie += "W"
                         } 
 
                         // black square
                         else if (output_grid[i][j] == 1){
                             share_text += String.fromCodePoint(11035)
                             display_share_text += String.fromCodePoint(11035)
-                            display_share_text_cookie += String.fromCodePoint(11035)
+                            display_share_text_cookie += "B"
                         } 
 
                         // blue square
                         else if (output_grid[i][j] == 2){
                             share_text += String.fromCodePoint(128998)
                             display_share_text += String.fromCodePoint(128998)
-                            display_share_text_cookie += String.fromCodePoint(128998)
+                            display_share_text_cookie += "L"
                         }
 
                         //red square
                         else if (output_grid[i][j] == 3){
                             share_text += String.fromCodePoint(128997)
                             display_share_text += String.fromCodePoint(128997)
-                            display_share_text_cookie += String.fromCodePoint(128997)
+                            display_share_text_cookie += "R"
                         } 
 
                         //orange square
                         else if (output_grid[i][j] == 4){
                             share_text += String.fromCodePoint(128999)
                             display_share_text += String.fromCodePoint(128999)
-                            display_share_text_cookie += String.fromCodePoint(128999)
+                            display_share_text_cookie += "O"
                         } 
 
                         //brown square
                         else if (output_grid[i][j] == 5){
                             share_text += String.fromCodePoint(129003)
                             display_share_text += String.fromCodePoint(129003)
-                            display_share_text_cookie += String.fromCodePoint(129003)
+                            display_share_text_cookie += "W"
                         } 
                         // green square                       
                         else if (output_grid[i][j] == 6){
                             share_text += String.fromCodePoint(129001)
                             display_share_text += String.fromCodePoint(129001)
-                            display_share_text_cookie += String.fromCodePoint(129001)
+                            display_share_text_cookie += "G"
                         }                        
                         // share_text += output_grid[i][j]
                     }
@@ -298,48 +298,48 @@
                         if (output_grid[i][j] == undefined || output_grid[i][j] == 0){
                             share_text += String.fromCodePoint(11036)
                             display_share_text += String.fromCodePoint(11036)
-                            display_share_text_cookie += String.fromCodePoint(11036)
+                            display_share_text_cookie += "W"
                         } 
 
                         // black square
                         else if (output_grid[i][j] == 1){
                             share_text += String.fromCodePoint(11035)
                             display_share_text += String.fromCodePoint(11035)
-                            display_share_text_cookie += String.fromCodePoint(11035)
+                            display_share_text_cookie += "B"
                         } 
 
                         // blue square
                         else if (output_grid[i][j] == 2){
                             share_text += String.fromCodePoint(128998)
                             display_share_text += String.fromCodePoint(128998)
-                            display_share_text_cookie += String.fromCodePoint(128998)
+                            display_share_text_cookie += "L"
                         }
 
                         //red square
                         else if (output_grid[i][j] == 3){
                             share_text += String.fromCodePoint(128997)
                             display_share_text += String.fromCodePoint(128997)
-                            display_share_text_cookie += String.fromCodePoint(128997)
+                            display_share_text_cookie += "R"
                         } 
 
                         //orange square
                         else if (output_grid[i][j] == 4){
                             share_text += String.fromCodePoint(128999)
                             display_share_text += String.fromCodePoint(128999)
-                            display_share_text_cookie += String.fromCodePoint(128999)
+                            display_share_text_cookie += "O"
                         } 
 
                         //brown square
                         else if (output_grid[i][j] == 5){
                             share_text += String.fromCodePoint(129003)
                             display_share_text += String.fromCodePoint(129003)
-                            display_share_text_cookie += String.fromCodePoint(129003)
+                            display_share_text_cookie += "W"
                         } 
                         // green square                       
                         else if (output_grid[i][j] == 6){
                             share_text += String.fromCodePoint(129001)
                             display_share_text += String.fromCodePoint(129001)
-                            display_share_text_cookie += String.fromCodePoint(129001)
+                            display_share_text_cookie += "G"
                         }                        
                     }
                     share_text += '\n'
@@ -860,14 +860,40 @@
         function post_play_display(display){
             let display_ = ''
             let count = 0
+            // Changed to letters then back to emojis
+            // Code W=white, B=black, L=blue, R=red, O=orange, W=brown, G=green
+            
+            
             for (let i = 0; i < display.length; i++) {
-                if(display.slice(i,i+1) == String.fromCodePoint(11035)){
-                    display_ += display.slice(i,i+1)
+                if (display[i] == 'W'){
+                    display_ += String.fromCodePoint(11036)
                 }
-                else{
-                    display_ += display.slice(i,i+2)
-                    i++
+                else if (display[i] == 'B'){
+                    display_ += String.fromCodePoint(11035)
                 }
+                else if (display[i] == 'L'){
+                    display_ += String.fromCodePoint(128998)
+                }
+                else if (display[i] == 'R'){
+                    display_ += String.fromCodePoint(128997)
+                }
+                else if (display[i] == 'O'){
+                    display_ += String.fromCodePoint(128999)
+                }
+                else if (display[i] == 'W'){
+                    display_ += String.fromCodePoint(129003)
+                }
+                else if (display[i] == 'G'){
+                    display_ += String.fromCodePoint(129001)
+                }
+
+                // if(display.slice(i,i+1) == String.fromCodePoint(11035)){
+                //     display_ += display.slice(i,i+1)
+                // }
+                // else{
+                //     display_ += display.slice(i,i+2)
+                //     i++
+                // }
                 
                 count += 1
                 if (count % 3 == 0){
