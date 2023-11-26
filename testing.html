@@ -272,7 +272,9 @@
                 var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
+                alert(display_share_text_cookie)
                 setCookie("display_share_text_cookie", display_share_text_cookie, 0, 2)
+                alert(getCookie("display_share_text_cookie"))
                 setCookie("played_today", "True", 0, 2)
                 setCookie("todays_score", guess_number.toString(), 0, 2)
                 console.log("Today's Score", getCookie("todays_score"))
