@@ -839,12 +839,12 @@
                 let score = Number(getCookie("todays_score"))
                 if (score == 16){
                     document.getElementById('help_message').textContent = "You didn't get today's answer. Come back tomorrow for more!"
-                    document.getElementById('end_score') = "X/15"
+                    document.getElementById('end_score').textContent = "X/15"
                 }
                 else{
                     document.getElementById('help_message').textContent = "You won today in " + score.toString() + " guesses. Come back tomorrow for more!"
                     alert("debug " + getCookie("todays_score") + "/15")
-                    document.getElementById('end_score') = getCookie("todays_score") + "/15"
+                    document.getElementById('end_score').textContent = getCookie("todays_score") + "/15"
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
                 
@@ -864,8 +864,8 @@
                 var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
-                // var display_share_text_post = getCookie("display_share_text_cookie")
-                // document.getElementById("share_text") = display_share_text_post
+                var display_share_text_post = getCookie("display_share_text_cookie")
+                document.getElementById("share_text").textContent = display_share_text_post
 
                 // document.getElementById("share_button").style.visibility = 'hidden';
                 document.getElementById('end_response').textContent = 'Game Complete!'
