@@ -400,7 +400,21 @@
         function share_function(){
             // How to share with people. 
             if (getCookie("played_today") == "True"){
-                share_text_ = getCookie("share_text")
+                
+                if(getCookie("todays_score")=="16"){
+                    share_text_post = date.textContent + '\nX/15\n\n'
+                }
+                else{
+                    share_text_post = date.textContent + '\n' + getCookie("todays_score") + '/15\n\n'
+                }
+                
+                var display_share_text_post = getCookie("display_share_text_cookie")
+                display_share_text_post_post = post_play_display(display_share_text_post)
+
+                share_text_post += display_share_text_post_post
+                share_text_post += '\n\nhttps://today-in-history-game.com'
+
+                alert(share_text_post)
             }
             var shareObject = {title:"Win", text:share_text_}
             // alert(shareObject[text])
@@ -857,7 +871,6 @@
                 }
                 
             }
-            alert(display_)
             return display_
         }
 
