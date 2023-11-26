@@ -171,47 +171,55 @@
 
                 var share_text = date.textContent + '\n' + guess_number.toString() + '/15\n\n'
                 var display_share_text = ''
+                var display_share_text_cookie = ''
                 for (let i=0; i<guess_number; i++){
                     for (let j=0; j<3; j++){
                         // white square
                         if (output_grid[i][j] == undefined || output_grid[i][j] == 0){
                             share_text += String.fromCodePoint(11036)
                             display_share_text += String.fromCodePoint(11036)
+                            display_share_text_cookie += String.fromCodePoint(11036)
                         } 
 
                         // black square
                         else if (output_grid[i][j] == 1){
                             share_text += String.fromCodePoint(11035)
                             display_share_text += String.fromCodePoint(11035)
+                            display_share_text_cookie += String.fromCodePoint(11035)
                         } 
 
                         // blue square
                         else if (output_grid[i][j] == 2){
                             share_text += String.fromCodePoint(128998)
                             display_share_text += String.fromCodePoint(128998)
+                            display_share_text_cookie += String.fromCodePoint(128998)
                         }
 
                         //red square
                         else if (output_grid[i][j] == 3){
                             share_text += String.fromCodePoint(128997)
                             display_share_text += String.fromCodePoint(128997)
+                            display_share_text_cookie += String.fromCodePoint(128997)
                         } 
 
                         //orange square
                         else if (output_grid[i][j] == 4){
                             share_text += String.fromCodePoint(128999)
                             display_share_text += String.fromCodePoint(128999)
+                            display_share_text_cookie += String.fromCodePoint(128999)
                         } 
 
                         //brown square
                         else if (output_grid[i][j] == 5){
                             share_text += String.fromCodePoint(129003)
                             display_share_text += String.fromCodePoint(129003)
+                            display_share_text_cookie += String.fromCodePoint(129003)
                         } 
                         // green square                       
                         else if (output_grid[i][j] == 6){
                             share_text += String.fromCodePoint(129001)
                             display_share_text += String.fromCodePoint(129001)
+                            display_share_text_cookie += String.fromCodePoint(129001)
                         }                        
                         // share_text += output_grid[i][j]
                     }
@@ -265,6 +273,7 @@
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
                 setCookie("display_share_text", display_share_text, 0, 2)
+                setCookie("display_share_text_cookie", display_share_text_cookie, 0, 2)
                 setCookie("share_text", share_text, 0, 2)
                 setCookie("played_today", "True", 0, 2)
                 setCookie("todays_score", guess_number.toString(), 0, 2)
@@ -856,7 +865,7 @@
                 var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
-                var display_share_text_post = getCookie(display_share_text)
+                var display_share_text_post = getCookie("display_share_text")
                 document.getElementById("share_text") = display_share_text_post
 
                 // document.getElementById("share_button").style.visibility = 'hidden';
@@ -1033,6 +1042,8 @@
             const d_midnight = new Date(year, month, day, 23, 59, 59, 59)
             let expires = "expires="+d_midnight.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+            alert(cvalue)
 
             if (cname == "display_share_text"){
             alert("getting display cookie" + getCookie("display_share_text") )
