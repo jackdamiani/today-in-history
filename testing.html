@@ -213,7 +213,7 @@
                         else if (output_grid[i][j] == 5){
                             share_text += String.fromCodePoint(129003)
                             display_share_text += String.fromCodePoint(129003)
-                            display_share_text_cookie += "W"
+                            display_share_text_cookie += "N"
                         } 
                         // green square                       
                         else if (output_grid[i][j] == 6){
@@ -273,6 +273,7 @@
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
                 setCookie("display_share_text_cookie", display_share_text_cookie, 0, 2)
+                alert(display_share_text_cookie + " working? " + getCookie("display_share_text_cookie"))
                 setCookie("played_today", "True", 0, 2)
                 setCookie("todays_score", guess_number.toString(), 0, 2)
                 console.log("Today's Score", getCookie("todays_score"))
@@ -333,7 +334,7 @@
                         else if (output_grid[i][j] == 5){
                             share_text += String.fromCodePoint(129003)
                             display_share_text += String.fromCodePoint(129003)
-                            display_share_text_cookie += "W"
+                            display_share_text_cookie += "N"
                         } 
                         // green square                       
                         else if (output_grid[i][j] == 6){
@@ -861,7 +862,7 @@
             let display_ = ''
             let count = 0
             // Changed to letters then back to emojis
-            // Code W=white, B=black, L=blue, R=red, O=orange, W=brown, G=green
+            // Code W=white, B=black, L=blue, R=red, O=orange, N=brown, G=green
             
             
             for (let i = 0; i < display.length; i++) {
@@ -880,7 +881,7 @@
                 else if (display[i] == 'O'){
                     display_ += String.fromCodePoint(128999)
                 }
-                else if (display[i] == 'W'){
+                else if (display[i] == 'N'){
                     display_ += String.fromCodePoint(129003)
                 }
                 else if (display[i] == 'G'){
