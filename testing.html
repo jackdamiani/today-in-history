@@ -860,12 +860,12 @@
                 if (score == 16){
                     document.getElementById('help_message').textContent = "You didn't get today's answer. Come back tomorrow for more!"
                     document.getElementById('end_score').textContent = "X/15"
-                    document.getElementById('end_response').textContent = 'GAME OVER'
+                    document.getElementById('end_response').textContent = 'GAME COMPLETED'
                 }
                 else{
                     document.getElementById('help_message').textContent = "You won today in " + score.toString() + " guesses. Come back tomorrow for more!"
                     document.getElementById('end_score').textContent = getCookie("todays_score") + "/15"
-                    document.getElementById('end_response').textContent = 'YOU WIN!'
+                    document.getElementById('end_response').textContent = 'YOU WON!'
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
                 
@@ -890,7 +890,7 @@
                 document.getElementById("share_text").textContent = display_share_text_post_post
 
                 // document.getElementById("share_button").style.visibility = 'hidden';
-                document.getElementById('end_response').textContent = 'Game Complete!'
+                // document.getElementById('end_response').textContent = 'Game Complete!'
             }
             // Code to work with future dates
             var find_today = new Date();
@@ -970,7 +970,6 @@
 
             if (getCookie("played_today") == "True"){
                 document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
-                
                 document.getElementById('end_date').textContent = date.textContent.substring(18,date.textContent.length);
             }
 
