@@ -242,21 +242,18 @@
                 var link_dates = links[todays_date]
                 if (link_dates[0] != "")
                 {
-                    alert(link_dates[0])
                     document.getElementById('correct_answer').innerHTML = "<a href=" + link_dates[0] + ">" + year1 + " </a>"
                 }
                 else
                     document.getElementById('correct_answer').innerHTML = year1 + " "
                 if (link_dates[1] != "")
                 {
-                    alert(link_dates[1])
                     document.getElementById('correct_answer2').innerHTML = "<a href=" + link_dates[1] + ">" + year2 + " </a>"
                 }
                 else
                     document.getElementById('correct_answer2').innerHTML = year2 + " "
                 if (link_dates[2] != "")
                 {
-                    alert(link_dates[2])
                     document.getElementById('correct_answer3').innerHTML = "<a href=" + link_dates[2] + ">" + year3 + " </a>"
                 }
                 else
@@ -701,8 +698,8 @@
             <h2 id="end_response"> </h2>
             <p id="end_date"></p>
             <p id="end_score"></p>
-            <div id="years" style="display: flex; justify-content: space-between; justify-content: center; gap:0px 10px; margin:0 0 0 0; padding:0 0 0 0">
-                <p id="answer_">Answer: </p><p id="correct_answer" style="white-space: normal;"></p><p id="correct_answer2" "display: inline-block;"></p><p id="correct_answer3" "display: inline-block;"></p>
+            <div id="years" style="display: flex; justify-content: space-between; justify-content: center; gap:0px 10px; align-items: top; margin: 0px;">
+                <p id="answer_" style="margin: 0 0 0 0; padding: 0 0 0 0;">Answer: </p><p id="correct_answer" style="white-space: normal; margin: 0 0 0 0; padding: 0 0 0 0;"></p><p id="correct_answer2" style="margin: 0 0 0 0; padding: 0 0 0 0; display: inline-block;"></p><p id="correct_answer3" style="margin: 0 0 0 0; padding: 0 0 0 0;"></p>
             </div>
             <p id="share_text" style="white-space: pre-line;"></p>
             <button id="share_button" class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
