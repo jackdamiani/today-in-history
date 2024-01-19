@@ -242,24 +242,23 @@
                 var link_dates = links[todays_date]
                 if (link_dates[0] != "")
                 {
-                    document.getElementById('correct_answer').innerHTML = "<a href=" + link_dates[0] + ">" + year1 + " </a>"
+                    document.getElementById('correct_answer').innerHTML = "<a target=_blank href=" + link_dates[0] + ">" + year1 + " </a>"
                 }
                 else
                     document.getElementById('correct_answer').innerHTML = year1 + " "
                 if (link_dates[1] != "")
                 {
-                    document.getElementById('correct_answer2').innerHTML = "<a href=" + link_dates[1] + ">" + year2 + " </a>"
+                    document.getElementById('correct_answer2').innerHTML = "<a target=_blank href=" + link_dates[1] + ">" + year2 + " </a>"
                 }
                 else
                     document.getElementById('correct_answer2').innerHTML = year2 + " "
                 if (link_dates[2] != "")
                 {
-                    document.getElementById('correct_answer3').innerHTML = "<a href=" + link_dates[2] + ">" + year3 + " </a>"
+                    document.getElementById('correct_answer3').innerHTML = "<a target=_blank href=" + link_dates[2] + ">" + year3 + " </a>"
                 }
                 else
                     document.getElementById('correct_answer3').innerHTML = year3 + " "
 
-                // document.getElementById('correct_answer2').innerHTML = '<a href="http://google.com">WIN</a>'
                 // document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
                 document.getElementById('year_input').disabled = true;
                 document.getElementById("year_input").value = '';
@@ -378,7 +377,25 @@
                 // let date_var = date.textContent
                 document.getElementById('end_date').textContent = date_var.substring(19,date_var.length);
                 document.getElementById('end_score').textContent = 'X/15\n';
-                document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
+                var link_dates = links[todays_date]
+                if (link_dates[0] != "")
+                {
+                    document.getElementById('correct_answer').innerHTML = "<a target=_blank href=" + link_dates[0] + ">" + year1 + " </a>"
+                }
+                else
+                    document.getElementById('correct_answer').innerHTML = year1 + " "
+                if (link_dates[1] != "")
+                {
+                    document.getElementById('correct_answer2').innerHTML = "<a target=_blank href=" + link_dates[1] + ">" + year2 + " </a>"
+                }
+                else
+                    document.getElementById('correct_answer2').innerHTML = year2 + " "
+                if (link_dates[2] != "")
+                {
+                    document.getElementById('correct_answer3').innerHTML = "<a target=_blank href=" + link_dates[2] + ">" + year3 + " </a>"
+                }
+                else
+                    document.getElementById('correct_answer3').innerHTML = year3 + " "
                 document.getElementById('year_input').disabled = true;
                 document.getElementById("year_input").value = '';
 
@@ -977,8 +994,8 @@
             }
             // Code to work with future dates
             var find_today = new Date();
-            var dd = String(find_today.getDate()).padStart(2, '0');
-            var mm = String(find_today.getMonth()+1).padStart(2, '0'); //January is 0!
+            var dd = String(find_today.getDate()-17).padStart(2, '0');
+            var mm = String(find_today.getMonth()+2).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
             // // Actual Codeff
@@ -1052,7 +1069,26 @@
             }
 
             if (getCookie("played_today") == "True"){
-                document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
+                var link_dates = links[todays_date]
+                if (link_dates[0] != "")
+                {
+                    document.getElementById('correct_answer').innerHTML = "<a target=_blank href=" + link_dates[0] + ">" + year1 + " </a>"
+                }
+                else
+                    document.getElementById('correct_answer').innerHTML = year1 + " "
+                if (link_dates[1] != "")
+                {
+                    document.getElementById('correct_answer2').innerHTML = "<a target=_blank href=" + link_dates[1] + ">" + year2 + " </a>"
+                }
+                else
+                    document.getElementById('correct_answer2').innerHTML = year2 + " "
+                if (link_dates[2] != "")
+                {
+                    document.getElementById('correct_answer3').innerHTML = "<a target=_blank href=" + link_dates[2] + ">" + year3 + " </a>"
+                }
+                else
+                    document.getElementById('correct_answer3').innerHTML = year3 + " "
+                // document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
                 document.getElementById('end_date').textContent = date.textContent.substring(18,date.textContent.length);
             }
 
