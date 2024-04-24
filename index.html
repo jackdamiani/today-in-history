@@ -133,7 +133,7 @@
             
             var year_input = document.getElementById('year_input').value
             year_input = year_input.replace(/\D/g,'');
-            if (year_input > 10000 || year_input == ''){
+            if (year_input > 2024 || year_input == ''){
                 alert("Please input a year in the past");
                 document.getElementById('year_input').value = '';
                 return false;
