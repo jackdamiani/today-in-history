@@ -121,7 +121,7 @@
             
             var year_input = document.getElementById('year_input').value
             year_input = year_input.replace(/\D/g,'');
-            if (year_input > 10000 || year_input == ''){
+            if (year_input > 2024 || year_input == ''){
                 alert("Please input a year in the past");
                 document.getElementById('year_input').value = '';
                 return false;
@@ -440,6 +440,37 @@
             document.getElementById('end_id').style.visibility = 'hidden'
         }
 
+        function copy_to_clipboard(){
+            var share_text_post = ""
+            if (getCookie("played_today") == "True"){
+                
+                if(getCookie("todays_score")=="16"){
+                    share_text_post = date.textContent + '\nX/15\n\n'
+                }
+                else{
+                    share_text_post = date.textContent + '\n' + getCookie("todays_score") + '/15\n\n'
+                }
+                
+                var display_share_text_post = getCookie("display_share_text_cookie")
+                display_share_text_post_post = post_play_display(display_share_text_post)
+
+                share_text_post += display_share_text_post_post
+                share_text_post += '\nhttps://today-in-history-game.com'
+
+                var shareObject = {title:"Win", text:share_text_post}
+
+            }
+            else{
+                var shareObject = {title:"Win", text:share_text_}
+            }
+
+            share_text_post.select();
+            share_text_post.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(share_text_post.value);
+        }
+
         function share_function(){
             // How to share with people. 
             if (getCookie("played_today") == "True"){
@@ -721,6 +752,7 @@
             </div>
             <p id="share_text" style="white-space: pre-line;"></p>
             <button id="share_button" class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
+            <button id="share_button" class="game_button" onclick="copy_to_clipboard()">Copy</button>
             <p id="games_played" style="font-weight: bold;"></p>
             <p id="win_percentage" style="font-weight: bold;"></p>
             <p id="avg_score" style="font-weight: bold;"></p>
@@ -996,7 +1028,7 @@
             // Code to work with future dates
             var find_today = new Date();
             var dd = String(find_today.getDate()).padStart(2, '0');
-            var mm = String(find_today.getMonth()+2).padStart(2, '0'); //January is 0!
+            var mm = String(find_today.getMonth()+1).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
             // // Actual Codeff
