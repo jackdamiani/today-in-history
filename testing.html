@@ -464,12 +464,14 @@
                 var shareObject = {title:"Win", text:share_text_}
             }
 
+            console.log(share_text_post)
             share_text_post.select();
             share_text_post.setSelectionRange(0, 99999); // For mobile devices
 
             // Copy the text inside the text field
-            navigator.clipboard.writeText(shareObject[text]);
-            alert(shareObject[text])
+            navigator.clipboard.writeText(shareObject);
+            console.log(shareObject[text])
+            console.log(share_text_post)
         }
 
         function share_function(){
