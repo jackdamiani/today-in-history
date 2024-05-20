@@ -468,7 +468,8 @@
             share_text_post.setSelectionRange(0, 99999); // For mobile devices
 
             // Copy the text inside the text field
-            navigator.clipboard.writeText(share_text_post.value);
+            navigator.clipboard.writeText(shareObject[text]);
+            alert(shareObject[text])
         }
 
         function share_function(){
