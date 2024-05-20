@@ -452,6 +452,34 @@
             document.getElementById('end_id').style.visibility = 'hidden'
         }
 
+        function copy_to_clipboard(){
+            var share_text_post = ""
+            if (getCookie("played_today") == "True"){
+                
+                if(getCookie("todays_score")=="16"){
+                    share_text_post = date.textContent + '\nX/15\n\n'
+                }
+                else{
+                    share_text_post = date.textContent + '\n' + getCookie("todays_score") + '/15\n\n'
+                }
+                
+                var display_share_text_post = getCookie("display_share_text_cookie")
+                display_share_text_post_post = post_play_display(display_share_text_post)
+
+                share_text_post += display_share_text_post_post
+                share_text_post += '\nhttps://today-in-history-game.com'
+
+                var shareObject = {title:"Win", text:share_text_post}
+
+            }
+            else{
+                var shareObject = {title:"Win", text:share_text_}
+            }
+
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(share_text_post);
+        }
+
         function share_function(){
             // How to share with people. 
             if (getCookie("played_today") == "True"){
@@ -733,6 +761,7 @@
             </div>
             <p id="share_text" style="white-space: pre-line;"></p>
             <button id="share_button" class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
+            <button id="share_button" class="game_button" onclick="copy_to_clipboard()">Copy</button>
             <p id="games_played" style="font-weight: bold;"></p>
             <p id="win_percentage" style="font-weight: bold;"></p>
             <p id="avg_score" style="font-weight: bold;"></p>
