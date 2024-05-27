@@ -12,8 +12,8 @@
         .then(data => {
             const ctx = document.getElementById('scoreHistogram').getContext('2d');
 
-            // Generate labels based on the range of num_guesses (e.g., 3 to 16)
-            const labels = Array.from({length: 14}, (_, i) => i + 3);
+            // Generate labels based on the range of num_guesses (e.g., 3 to 15)
+            const labels = Array.from({length: 13}, (_, i) => i + 3);
 
             // Count occurrences of each num_guesses value
             const counts = labels.map(label => data.filter(num => num == label).length);
@@ -25,15 +25,28 @@
                     datasets: [{
                         label: 'Number of Guesses',
                         data: counts,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: '#d2d2d2',
+                        borderColor: '#d2d2d2',
                         borderWidth: 1
                     }]
                 },
                 options: {
                     scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
                         y: {
+                            grid: {
+                                display: false
+                            },
                             beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
                         }
                     }
                 }
