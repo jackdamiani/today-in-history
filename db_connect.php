@@ -40,20 +40,48 @@
 
 <body>
     <?php
-    $servername = "localhost"; // or the host provided by Hostinger
-    $username = "u880862300_tih_user_stats";
-    $password = "m?6Y|/&VexQ";
-    $dbname = "u880862300_user_stats";
+        $servername = "localhost"; // or the host provided by Hostinger
+        $username = "u880862300_tih_user_stats";
+        $password = "m?6Y|/&VexQ";
+        $dbname = "u880862300_user_stats";
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    echo "Connected successfully";
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        echo "Connected successfully";
+
+        // Start ID
+        $start_id = 0; // Starting from 0000000000
+
+        // Insert sample data
+        for ($i = 0; $i < 100; $i++) { // Adjust the number 100 to generate the desired number of sample records
+            $id = str_pad($start_id++, 10, '0', STR_PAD_LEFT); // Increment and pad the ID
+            $num_guesses = rand(3, 16);
+            $passed = $num_guesses == 16 ? 0 : 1;
+            $date = date('Y-m-d'); // Today's date
+
+            $stmt = $conn->prepare("INSERT INTO test (id, num_guesses, passed, date) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("siis", $id, $num_guesses, $passed, $date);
+
+            if ($stmt->execute()) {
+                echo "New record created successfully with ID: $id<br>";
+            } else {
+                echo "Error: " . $stmt->error . "<br>";
+            }
+
+            $stmt->close();
+        }
+
+        // Close connection
+        $conn->close();
     ?>
+
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7QPSJ52"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
