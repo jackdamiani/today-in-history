@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Score Histogram</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="scoreHistogram" width="400" height="200"></canvas>
+    <script>
+    fetch('get_data.php')
+        .then(response => response.json())
+        .then(data => {
+            const ctx = document.getElementById('scoreHistogram').getContext('2d');
+
+            // Generate labels based on the range of num_guesses (e.g., 3 to 16)
+            const labels = Array.from({length: 14}, (_, i) => i + 3);
+
+            // Count occurrences of each num_guesses value
+            const counts = labels.map(label => data.filter(num => num == label).length);
+
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Number of Guesses',
+                        data: counts,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
