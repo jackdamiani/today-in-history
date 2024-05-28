@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insert Data</title>
+    <script>
+    function insertData() {
+        // Example condition
+        let num_guesses;
+        if (/* some condition */) {
+            num_guesses = 3; // Example value
+        } else {
+            num_guesses = Math.floor(Math.random() * 13) + 3; // Random value between 3 and 15
+        }
+
+        // AJAX request to PHP script
+        fetch('insert_data.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ num_guesses: num_guesses })
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+    </script>
+</head>
+<body>
+    <button onclick="insertData()">Insert Data</button>
+</body>
+</html>
