@@ -15,6 +15,7 @@
     // Get the input data
     $input = json_decode(file_get_contents('php://input'), true);
     $num_guesses = $input['num_guesses'];
+    echo $num_guesses
 
     // Determine passed value based on num_guesses
     $passed = $num_guesses == 16 ? 0 : 1;
