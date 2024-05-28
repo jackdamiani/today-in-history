@@ -21,8 +21,9 @@
     $date = date('Y-m-d'); // Today's date
 
     // Retrieve the latest id from the table
-    $sql = "SELECT id FROM test ORDER BY id DESC LIMIT 1";
+    $sql = "SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1";
     $result = $conn->query($sql);
+    echo $result;
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
