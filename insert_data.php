@@ -36,6 +36,7 @@
     $clientDate = $_COOKIE['clientDate'];
     // Convert to PHP DateTime object
     $date = new DateTime($clientDate);
+    $date = $date->format('Y-m-d');
     
     // // Perform any operations you need with the date
     // echo "The client's date and time is: " . $date->format('Y-m-d');
