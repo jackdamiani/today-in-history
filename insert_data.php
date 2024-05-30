@@ -81,7 +81,7 @@
     $passed = $num_guesses == 16 ? 0 : 1;
     $date = date('Y-m-d'); // Today's date
     echo "\n";
-    echp $date;
+    echo $date;
 
     try {
         $stmt = $conn->prepare("SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1");
