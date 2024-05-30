@@ -100,7 +100,7 @@
         }
 
         $result = $stmt->get_result();
-        echo $result;
+        
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
