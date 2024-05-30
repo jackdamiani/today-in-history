@@ -7,9 +7,19 @@
     <script>
         function sendClientDate() {
             var clientDate = new Date();
-            // Set the cookie with the client date
-            document.cookie = "clientDate=" + encodeURIComponent(clientDate.toISOString()) + "; path=/";
-            console.log(clientDate)
+            var utcDate = new Date(Date.UTC(
+                clientDate.getFullYear(),
+                clientDate.getMonth(),
+                clientDate.getDate(),
+                clientDate.getHours(),
+                clientDate.getMinutes(),
+                clientDate.getSeconds()
+            ));
+            document.cookie = "clientDate=" + encodeURIComponent(utcDate.toISOString()) + "; path=/";
+            // var clientDate = new Date();
+            // // Set the cookie with the client date
+            // document.cookie = "clientDate=" + encodeURIComponent(clientDate.toISOString()) + "; path=/";
+            // console.log(clientDate)
         }
     </script>
 </head>
