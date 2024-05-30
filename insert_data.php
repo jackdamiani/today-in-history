@@ -28,6 +28,8 @@
     <div id="result"></div>
 
     <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
     // Access the cookie in PHP
     date_default_timezone_set('Your_Client_Time_Zone');
 
@@ -94,7 +96,7 @@
             // Error occurred during execution
             die("Error executing statement: " . $stmt->error);
         }
-        
+
         $result = $stmt->get_result();
         echo $result;
 
