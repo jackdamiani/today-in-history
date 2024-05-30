@@ -19,19 +19,15 @@
 
     <?php
     // Access the cookie in PHP
-    echo $_COOKIE['clientDate'];
-    echo "hello?";
-    if(isset($_COOKIE['clientDate'])) {
-        $clientDate = $_COOKIE['clientDate'];
-        // Convert to PHP DateTime object
-        $date = new DateTime($clientDate);
-        
-        // Perform any operations you need with the date
-        echo "The client's date and time is: " . $date->format('Y-m-d H:i:s');
-    } else {
-        echo "No date received.";
-    }
-        echo $date;
+    
+    $clientDate = $_COOKIE['clientDate'];
+    // Convert to PHP DateTime object
+    $date = new DateTime($clientDate);
+    
+    // Perform any operations you need with the date
+    echo "The client's date and time is: " . $date->format('Y-m-d');
+
+    echo $date;
 
     $servername = "localhost"; // or the host provided by Hostinger
     $username = "u880862300_tih_user_stats";
