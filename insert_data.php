@@ -81,6 +81,8 @@
 
     try {
         $stmt = $conn->prepare("SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1");
+        echo "here?";
+        echo $stmt;
         $stmt->bind_param("s", $date);
         $stmt->execute();
         $result = $stmt->get_result();
