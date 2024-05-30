@@ -19,6 +19,8 @@
 
     <?php
     // Access the cookie in PHP
+
+    echo $_COOKIE['clientDate'];
     
     $clientDate = $_COOKIE['clientDate'];
     // Convert to PHP DateTime object
@@ -66,6 +68,7 @@
     $stmt->bind_param("s", $date);
     $stmt->execute();
     $result = $stmt->get_result();
+    echo $result;
     // Retrieve the latest id from the table
     // $sql = "SELECT id FROM test";
     // $sql = "SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1";
