@@ -28,19 +28,19 @@
     <div id="result"></div>
 
     <?php
-    // Access the cookie in PHP
-    date_default_timezone_set('Your_Client_Time_Zone');
+    // // Access the cookie in PHP
+    // date_default_timezone_set('Your_Client_Time_Zone');
 
-    echo $_COOKIE['clientDate'];
+    // echo $_COOKIE['clientDate'];
     
-    $clientDate = $_COOKIE['clientDate'];
-    // Convert to PHP DateTime object
-    $date = new DateTime($clientDate);
+    // $clientDate = $_COOKIE['clientDate'];
+    // // Convert to PHP DateTime object
+    // $date = new DateTime($clientDate);
     
-    // Perform any operations you need with the date
-    echo "The client's date and time is: " . $date->format('Y-m-d');
+    // // Perform any operations you need with the date
+    // echo "The client's date and time is: " . $date->format('Y-m-d');
 
-    echo $date;
+    // echo $date;
 
     $servername = "localhost"; // or the host provided by Hostinger
     $username = "u880862300_tih_user_stats";
