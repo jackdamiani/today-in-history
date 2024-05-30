@@ -34,6 +34,7 @@
     // Retrieve the latest id from the table
     $sql = "SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1";
     $result = $conn->query($sql);
+    echo $sql;
     echo $result;
 
     if ($result->num_rows > 0) {
