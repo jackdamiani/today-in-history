@@ -19,6 +19,8 @@
 
     <?php
     // Access the cookie in PHP
+    echo $_COOKIE['clientDate'];
+    echo "hello?"
     if(isset($_COOKIE['clientDate'])) {
         $clientDate = $_COOKIE['clientDate'];
         // Convert to PHP DateTime object
