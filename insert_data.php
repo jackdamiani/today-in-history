@@ -12,21 +12,22 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Get the raw input
-    $raw_input = file_get_contents('php://input');
-    echo "Raw input: $raw_input\n";
+    // // Get the raw input
+    // $raw_input = file_get_contents('php://input');
+    // echo "Raw input: $raw_input\n";
 
-    // Decode the JSON input
-    $input = json_decode($raw_input, true);
-    var_dump($input);
-    ?>
+    // // Decode the JSON input
+    // $input = json_decode($raw_input, true);
+    // var_dump($input);
+    
 
-    // Get the input data
-    $input = json_decode(file_get_contents('php://input'), true);
-    $num_guesses = $input['num_guesses'];
-    echo $num_guesses;
+    // // Get the input data
+    // $input = json_decode(file_get_contents('php://input'), true);
+    // $num_guesses = $input['num_guesses'];
+    // echo $num_guesses;
 
     // Determine passed value based on num_guesses
+    $num_guesses = 3;
     $passed = $num_guesses == 16 ? 0 : 1;
     $date = date('Y-m-d'); // Today's date
 
