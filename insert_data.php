@@ -81,13 +81,20 @@
 
     try {
         $stmt = $conn->prepare("SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1");
-        
+
+        // Check for errors during preparation
+        if (!$stmt) {
+            die("Error preparing statement: " . $conn->error);
+        }
+
         $stmt->bind_param("s", $date);
-        echo "here?";
-        echo $stmt;
-        $stmt->execute();
-        echo "here2?";
-        echo $stmt;
+
+        // Execute the statement
+        if (!$stmt->execute()) {
+            // Error occurred during execution
+            die("Error executing statement: " . $stmt->error);
+        }
+        
         $result = $stmt->get_result();
         echo $result;
 
