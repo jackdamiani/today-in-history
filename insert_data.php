@@ -76,13 +76,28 @@
     $passed = $num_guesses == 16 ? 0 : 1;
     // $date = date('Y-m-d'); // Today's date
 
+    try {
+        $stmt = $conn->prepare("SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1");
+        $stmt->bind_param("s", $date);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        echo $result;
 
-    $stmt = $conn->prepare("SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1");
-    $stmt->bind_param("s", $date);
-    $stmt->execute();
-    echo $stmt;
-    $result = $stmt->get_result();
-    echo $result;
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $last_id = intval($row['id']);
+        }
+        else {
+            // If no records exist, start with an initial ID
+            $last_id = 0;
+            }
+    } catch (Exception $e) {
+        $last_id = 0;
+        // Handle the exception
+        // This block will be executed if an exception is thrown within the try block
+        echo "An error occurred: " . $e->getMessage();
+    }
+    
     // Retrieve the latest id from the table
     // $sql = "SELECT id FROM test";
     // $sql = "SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1";
@@ -90,13 +105,13 @@
     // echo $sql;
     // echo $result;
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $last_id = intval($row['id']);
-    } else {
-        // If no records exist, start with an initial ID
-        $last_id = 0;
-    }
+    // if ($result->num_rows > 0) {
+    //     $row = $result->fetch_assoc();
+    //     $last_id = intval($row['id']);
+    // } else {
+    //     // If no records exist, start with an initial ID
+    //     $last_id = 0;
+    // }
 
     // Increment the id by one
     $new_id = str_pad($last_id + 1, 10, '0', STR_PAD_LEFT);
