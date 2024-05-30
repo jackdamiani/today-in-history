@@ -49,6 +49,7 @@
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
+    echo $conn
 
     // Check connection
     if ($conn->connect_error) {
