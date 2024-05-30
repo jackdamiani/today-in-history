@@ -31,7 +31,7 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     // Access the cookie in PHP
-    date_default_timezone_set('Your_Client_Time_Zone');
+    // date_default_timezone_set('Your_Client_Time_Zone');
 
     echo $_COOKIE['clientDate'];
     
@@ -80,6 +80,8 @@
     echo $num_guesses;
     $passed = $num_guesses == 16 ? 0 : 1;
     $date = date('Y-m-d'); // Today's date
+    echo "\n";
+    echp $date;
 
     try {
         $stmt = $conn->prepare("SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1");
