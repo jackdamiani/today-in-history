@@ -32,7 +32,8 @@
     $date = date('Y-m-d'); // Today's date
 
     // Retrieve the latest id from the table
-    $sql = "SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1";
+    $sql = "SELECT id FROM test";
+    // $sql = "SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1";
     $result = $conn->query($sql);
     echo $sql;
     echo $result;
