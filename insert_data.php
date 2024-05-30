@@ -7,13 +7,18 @@
     <script>
         function sendClientDate() {
             var clientDate = new Date();
+            console.log("Client Date: ", clientDate);
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "", true); // The same file will handle the request
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log("Response: ", xhr.responseText);
                     document.getElementById('result').innerHTML = xhr.responseText;
-                }
+                } 
+                else {
+                        console.error("Error: ", xhr.status, xhr.statusText); // Debug: Log errors
+                    }
             };
             xhr.send("clientDate=" + clientDate.toISOString());
         }
