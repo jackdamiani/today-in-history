@@ -79,7 +79,7 @@
     $date = date('Y-m-d'); // Today's date
 
     try {
-        $stmt = $conn->prepare("SELECT id FROM test WHERE date = '2024-05-30' ORDER BY id DESC LIMIT 1");
+        $stmt = $conn->prepare("SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1");
         $stmt->bind_param("s", $date);
         $stmt->execute();
         $result = $stmt->get_result();
