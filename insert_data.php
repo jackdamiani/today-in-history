@@ -98,7 +98,7 @@
     //     echo "An error occurred: " . $e->getMessage();
     // }
 
-    $last_id = 0
+    $last_id = 0;
     
     // Retrieve the latest id from the table
     // $sql = "SELECT id FROM test";
