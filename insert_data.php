@@ -56,7 +56,8 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    echo $conn;
+    echo "Connected successfully";
+
 
     // // Get the raw input
     // $raw_input = file_get_contents('php://input');
