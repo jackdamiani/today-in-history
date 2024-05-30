@@ -1,4 +1,43 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Client Date</title>
+    <script>
+        function sendClientDate() {
+            var clientDate = new Date();
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "", true); // The same file will handle the request
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('result').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send("clientDate=" + clientDate.toISOString());
+        }
+    </script>
+</head>
+<body onload="sendClientDate()">
+    <h1>Getting Client Date</h1>
+    <div id="result"></div>
+
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['clientDate'])) {
+            $clientDate = $_POST['clientDate'];
+            // Convert to PHP DateTime object
+            $date = new DateTime($clientDate);
+            
+            // Perform any operations you need with the date
+            echo "The client's date and time is: " . $date->format('Y-m-d H:i:s');
+        } else {
+            echo "No date received.";
+        }
+    }
+    echo $date;
+
     $servername = "localhost"; // or the host provided by Hostinger
     $username = "u880862300_tih_user_stats";
     $password = "m?6Y|/&VexQ";
@@ -29,7 +68,7 @@
     // Determine passed value based on num_guesses
     $num_guesses = 3;
     $passed = $num_guesses == 16 ? 0 : 1;
-    $date = date('Y-m-d'); // Today's date
+    // $date = date('Y-m-d'); // Today's date
 
 
     $stmt = $conn->prepare("SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1");
@@ -67,4 +106,10 @@
     // Close connection
     $stmt->close();
     $conn->close();
+    ?>
+</body>
+</html>
+
+<?php
+    
 ?>
