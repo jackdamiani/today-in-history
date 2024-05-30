@@ -7,20 +7,9 @@
     <script>
         function sendClientDate() {
             var clientDate = new Date();
-            console.log("Client Date: ", clientDate);
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "", true); // The same file will handle the request
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    console.log("Response: ", xhr.responseText);
-                    document.getElementById('result').innerHTML = xhr.responseText;
-                } 
-                else {
-                        console.error("Error: ", xhr.status, xhr.statusText); // Debug: Log errors
-                    }
-            };
-            xhr.send("clientDate=" + clientDate.toISOString());
+            // Set the cookie with the client date
+            document.cookie = "clientDate=" + encodeURIComponent(clientDate.toISOString()) + "; path=/";
+            console.log(clientDate)
         }
     </script>
 </head>
@@ -29,19 +18,18 @@
     <div id="result"></div>
 
     <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (isset($_POST['clientDate'])) {
-            $clientDate = $_POST['clientDate'];
-            // Convert to PHP DateTime object
-            $date = new DateTime($clientDate);
-            
-            // Perform any operations you need with the date
-            echo "The client's date and time is: " . $date->format('Y-m-d H:i:s');
-        } else {
-            echo "No date received.";
-        }
+    // Access the cookie in PHP
+    if(isset($_COOKIE['clientDate'])) {
+        $clientDate = $_COOKIE['clientDate'];
+        // Convert to PHP DateTime object
+        $date = new DateTime($clientDate);
+        
+        // Perform any operations you need with the date
+        echo "The client's date and time is: " . $date->format('Y-m-d H:i:s');
+    } else {
+        echo "No date received.";
     }
-    echo $date;
+        echo $date;
 
     $servername = "localhost"; // or the host provided by Hostinger
     $username = "u880862300_tih_user_stats";
