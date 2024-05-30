@@ -19,6 +19,7 @@
 
     <?php
     // Access the cookie in PHP
+    date_default_timezone_set('Your_Client_Time_Zone');
 
     echo $_COOKIE['clientDate'];
     
