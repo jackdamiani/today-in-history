@@ -52,7 +52,7 @@
         // echo "Connected successfully";
 
         // Determine passed value based on num_guesses
-        $num_guesses = rand(3, 16);
+        $num_guesses = $_COOKIE['todays_score'];
         $passed = $num_guesses == 16 ? 0 : 1;
 
         try {
