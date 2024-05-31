@@ -1,0 +1,35 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run PHP from JavaScript</title>
+    <script>
+        function checkConditionAndRunPHP() {
+            // Example condition
+            let condition = true;
+
+            if (condition) {
+                // Perform AJAX request
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "process.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Handle response
+                        console.log(xhr.responseText);
+                    }
+                };
+
+                // Send request
+                xhr.send("param=value");
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="checkConditionAndRunPHP()">Check Condition and Run PHP</button>
+</body>
+</html>
