@@ -16,10 +16,6 @@
                 clientDate.getSeconds()
             ));
             document.cookie = "clientDate=" + encodeURIComponent(utcDate.toISOString()) + "; path=/";
-            // var clientDate = new Date();
-            // // Set the cookie with the client date
-            // document.cookie = "clientDate=" + encodeURIComponent(clientDate.toISOString()) + "; path=/";
-            // console.log(clientDate)
         }
     </script>
 </head>
@@ -28,23 +24,18 @@
     <div id="result"></div>
 
     <?php
+    // allow errors
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-    // Access the cookie in PHP
-    // date_default_timezone_set('Your_Client_Time_Zone');
-
-    echo $_COOKIE['clientDate'];
     
+    // get date from cookie
     $clientDate = $_COOKIE['clientDate'];
+
     // Convert to PHP DateTime object
     $date = new DateTime($clientDate);
     $date = $date->format('Y-m-d');
     
-    // // Perform any operations you need with the date
-    // echo "The client's date and time is: " . $date->format('Y-m-d');
-
-    echo $date;
-
+    // connect to server
     $servername = "localhost"; // or the host provided by Hostinger
     $username = "u880862300_tih_user_stats";
     $password = "m?6Y|/&VexQ";
@@ -57,31 +48,11 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
-    echo "Connected successfully";
-
-
-    // // Get the raw input
-    // $raw_input = file_get_contents('php://input');
-    // echo "Raw input: $raw_input\n";
-
-    // // Decode the JSON input
-    // $input = json_decode($raw_input, true);
-    // var_dump($input);
-    
-
-    // // Get the input data
-    // $input = json_decode(file_get_contents('php://input'), true);
-    // $num_guesses = $input['num_guesses'];
-    // echo $num_guesses;
+    // echo "Connected successfully";
 
     // Determine passed value based on num_guesses
     $num_guesses = rand(3, 16);
-    echo $num_guesses;
     $passed = $num_guesses == 16 ? 0 : 1;
-    // $date = date('Y-m-d'); // Today's date
-    // echo "\n";
-    // echo $date;
 
     try {
         $stmt = $conn->prepare("SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1");
@@ -111,28 +82,9 @@
             $last_id = 0;
             }
     } catch (Exception $e) {
+        // echo "An error occurred: " . $e->getMessage();
         $last_id = 0;
-        // Handle the exception
-        // This block will be executed if an exception is thrown within the try block
-        echo "An error occurred: " . $e->getMessage();
     }
-
-    // $last_id = 0;
-    
-    // Retrieve the latest id from the table
-    // $sql = "SELECT id FROM test";
-    // $sql = "SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1";
-    // $result = $conn->query($sql);
-    // echo $sql;
-    // echo $result;
-
-    // if ($result->num_rows > 0) {
-    //     $row = $result->fetch_assoc();
-    //     $last_id = intval($row['id']);
-    // } else {
-    //     // If no records exist, start with an initial ID
-    //     $last_id = 0;
-    // }
 
     // Increment the id by one
     $new_id = str_pad($last_id + 1, 10, '0', STR_PAD_LEFT);
@@ -147,7 +99,6 @@
         echo "Error: " . $stmt->error;
     }
 
-    // Close connection
     $stmt->close();
     $conn->close();
     ?>
