@@ -13,7 +13,7 @@
     }
 
     // Get today's date
-    echo $_COOKIE['clientDate'];
+    // echo $_COOKIE['clientDate'];
     $clientDate = $_COOKIE['clientDate'];
     $date = new DateTime($clientDate);
     $date = $date->format('Y-m-d');
