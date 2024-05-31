@@ -192,85 +192,7 @@
 
                 fire_fucking_works(guess_number)
 
-                // allow errors
-                < ?php
-                error_reporting(E_ALL);
-                ini_set('display_errors', 1);
-                
-                // get date from cookie
-                $clientDate = $_COOKIE['clientDate'];
-
-                // Convert to PHP DateTime object
-                $date = new DateTime($clientDate);
-                $date = $date->format('Y-m-d');
-                
-                // connect to server
-                $servername = "localhost"; // or the host provided by Hostinger
-                $username = "u880862300_tih_user_stats";
-                $password = "m?6Y|/&VexQ";
-                $dbname = "u880862300_user_stats";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-                // echo "Connected successfully";
-
-                // Determine passed value based on num_guesses
-                $num_guesses = rand(3, 16);
-                $passed = $num_guesses == 16 ? 0 : 1;
-
-                try {
-                    $stmt = $conn->prepare("SELECT id FROM test WHERE date = ? ORDER BY id DESC LIMIT 1");
-
-                    // Check for errors during preparation
-                    if (!$stmt) {
-                        die("Error preparing statement: " . $conn->error);
-                    }
-
-                    $stmt->bind_param("s", $date);
-
-                    // Execute the statement
-                    if (!$stmt->execute()) {
-                        // Error occurred during execution
-                        die("Error executing statement: " . $stmt->error);
-                    }
-
-                    $result = $stmt->get_result();
-                    
-
-                    if ($result->num_rows > 0) {
-                        $row = $result->fetch_assoc();
-                        $last_id = intval($row['id']);
-                    }
-                    else {
-                        // If no records exist, start with an initial ID
-                        $last_id = 0;
-                        }
-                } catch (Exception $e) {
-                    // echo "An error occurred: " . $e->getMessage();
-                    $last_id = 0;
-                }
-
-                // Increment the id by one
-                $new_id = str_pad($last_id + 1, 10, '0', STR_PAD_LEFT);
-
-                // Insert data into the database
-                $stmt = $conn->prepare("INSERT INTO test (id, num_guesses, passed, date) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param("siis", $new_id, $num_guesses, $passed, $date);
-
-                if ($stmt->execute()) {
-                    echo "New record created successfully with ID: $new_id";
-                } else {
-                    echo "Error: " . $stmt->error;
-                }
-
-                $stmt->close();
-                $conn->close();
-                ?>
+                insert_row_php()
                 
                 var share_text = date.textContent + '\n' + guess_number.toString() + '/15\n\n'
                 var display_share_text = ''
@@ -1709,9 +1631,26 @@
             mousedown = false;
         });
 
-        // once the window loads, we are ready for some fireworks!
+        // keep em going!
         loop();
     }
+
+    function insert_row_php() {
+        var xhr = new XMLHttpRequest();
+                xhr.open("POST", "insert_data.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Handle response
+                        console.log(xhr.responseText);
+                    }
+                };
+
+                // Send request
+                xhr.send("param=value");
+    }
+
 
     </script>
 </body>
