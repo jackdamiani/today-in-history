@@ -14,7 +14,6 @@
 
     // Get today's date
     $today = date('Y-m-d');
-    echo $today;
 
     // Prepare and execute the SQL query
     $sql = "SELECT num_guesses FROM test WHERE passed = 1 AND date = ?";
