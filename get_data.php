@@ -13,12 +13,16 @@
     }
 
     // Get today's date
-    $today = date('Y-m-d');
+    echo $_COOKIE['clientDate'];
+    $clientDate = $_COOKIE['clientDate'];
+    $date = new DateTime($clientDate);
+    $date = $date->format('Y-m-d');
+    // $today = date('Y-m-d');
 
     // Prepare and execute the SQL query
     $sql = "SELECT num_guesses FROM test WHERE passed = 1 AND date = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $today);
+    $stmt->bind_param("s", $date);
     $stmt->execute();
     $result = $stmt->get_result();
 
