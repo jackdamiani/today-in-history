@@ -30,10 +30,12 @@
         ini_set('display_errors', 1);
         
         // get date from cookie
-        $clientDate = $_COOKIE['clientDate'];
+        // $clientDate = $_COOKIE['clientDate'];
+
+        $date = $_POST['date'];
 
         // Convert to PHP DateTime object
-        $date = new DateTime($clientDate);
+        // $date = new DateTime($clientDate);
         $date = $date->format('Y-m-d');
         
         // connect to server
@@ -52,7 +54,8 @@
         // echo "Connected successfully";
 
         // Determine passed value based on num_guesses
-        $num_guesses = $_COOKIE['todays_score'];
+        $num_guess = $_POST['num_guess'];
+        
         $passed = $num_guesses == 16 ? 0 : 1;
 
         try {

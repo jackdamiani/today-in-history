@@ -45,7 +45,6 @@
     <!-- End Google Tag Manager (noscript) -->
     <script>
         share_text_ = ''
-        var clientDate = new Date();
         var utcDate = new Date(Date.UTC(
             clientDate.getFullYear(),
             clientDate.getMonth(),
@@ -192,7 +191,15 @@
 
                 fire_fucking_works(guess_number)
 
-                insert_row_php()
+                var utcDate = new Date(Date.UTC(
+                    clientDate.getFullYear(),
+                    clientDate.getMonth(),
+                    clientDate.getDate(),
+                    clientDate.getHours(),
+                    clientDate.getMinutes(),
+                    clientDate.getSeconds()
+                ));
+                insert_row_php(guess_number, utcDate)
                 
                 var share_text = date.textContent + '\n' + guess_number.toString() + '/15\n\n'
                 var display_share_text = ''
@@ -1635,7 +1642,7 @@
         loop();
     }
 
-    function insert_row_php() {
+    function insert_row_php(num_guess, utcDate) {
         var xhr = new XMLHttpRequest();
                 xhr.open("POST", "insert_data.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -1648,7 +1655,7 @@
                 };
 
                 // Send request
-                xhr.send("param=value");
+                xhr.send("num_guess=" + encodeURIComponent(num_guess)+ "&date=" + encodeURIComponent(utcDate));
     }
 
 
