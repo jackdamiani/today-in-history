@@ -54,6 +54,7 @@
             clientDate.getMinutes(),
             clientDate.getSeconds()
         ));
+        utcDate = utcDate.toISOString();
         document.cookie = "clientDate=" + encodeURIComponent(utcDate.toISOString()) + "; path=/";
 
 
