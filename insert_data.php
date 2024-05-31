@@ -36,7 +36,7 @@
 
         // Convert to PHP DateTime object
         // $date = new DateTime($clientDate);
-        $date = new DateTime($clientDate);
+        $date = new DateTime($date);
         $date = $date->format('Y-m-d');
         
         // connect to server
@@ -55,7 +55,7 @@
         // echo "Connected successfully";
 
         // Determine passed value based on num_guesses
-        $num_guess = $_POST['num_guess'];
+        $num_guesses = $_POST['num_guess'];
         
         $passed = $num_guesses == 16 ? 0 : 1;
 
