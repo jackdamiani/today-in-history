@@ -201,6 +201,7 @@
                     clientDate.getMinutes(),
                     clientDate.getSeconds()
                 ));
+                utcDate = utcDate.toISOString();
                 insert_row_php(guess_number, utcDate)
                 
                 var share_text = date.textContent + '\n' + guess_number.toString() + '/15\n\n'
