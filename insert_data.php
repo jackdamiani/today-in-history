@@ -36,6 +36,7 @@
 
         // Convert to PHP DateTime object
         // $date = new DateTime($clientDate);
+        $date = new DateTime($clientDate);
         $date = $date->format('Y-m-d');
         
         // connect to server
