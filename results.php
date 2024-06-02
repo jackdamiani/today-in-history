@@ -1653,7 +1653,8 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 // Handle response
-                console.log(xhr.responseText);
+                // console.log(xhr.responseText);
+                console.log("Successfully inserted entry")
             }
         };
 
