@@ -55,7 +55,7 @@
             clientDate.getSeconds()
         ));
         utcDate = utcDate.toISOString();
-        document.cookie = "clientDate=" + encodeURIComponent(utcDate.toISOString()) + "; path=/";
+        document.cookie = "clientDate=" + encodeURIComponent(utcDate) + "; path=/";
 
 
         window.onload = function() {
