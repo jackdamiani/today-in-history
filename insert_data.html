@@ -7,24 +7,41 @@
         // Example condition
         let num_guesses;
 
-        num_guesses = Math.floor(Math.random() * 13) + 3; // Random value between 3 and 15
         
 
-        // AJAX request to PHP script
-        fetch('insert_data.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ num_guesses: num_guesses })
-        })
-        .then(response => response.text())
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+        var clientDate = new Date();
+        var utcDate = new Date(Date.UTC(
+            clientDate.getFullYear(),
+            clientDate.getMonth(),
+            clientDate.getDate(),
+            clientDate.getHours(),
+            clientDate.getMinutes(),
+            clientDate.getSeconds()
+        ));
+        utcDate = utcDate.toISOString();
+
+        for (let i = 0; i < 2; i++) {
+    
+            num_guesses = Math.floor(Math.random() * 13) + 3; // Random value between 3 and 15
+
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "insert_data.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle response
+                    // console.log(xhr.responseText);
+                    console.log("Successfully inserted entry")
+                }
+            };
+
+            // Send request
+            xhr.send("num_guess=" + encodeURIComponent(num_guess)+ "&date=" + encodeURIComponent(utcDate));
+        }
+
+        
     }
     </script>
 </head>

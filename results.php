@@ -45,6 +45,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <script>
         share_text_ = ''
+        
         var clientDate = new Date();
         var utcDate = new Date(Date.UTC(
             clientDate.getFullYear(),
