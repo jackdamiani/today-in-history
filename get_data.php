@@ -14,7 +14,9 @@
 
     // Get today's date
     // echo $_COOKIE['clientDate'];
-    $clientDate = $_COOKIE['clientDate'];
+    // $clientDate = $_COOKIE['clientDate'];
+
+    $clientDate = $_POST['date'];
     $date = new DateTime($clientDate);
     $date = $date->format('Y-m-d');
     // $today = date('Y-m-d');

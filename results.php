@@ -1647,18 +1647,18 @@
 
     function insert_row_php(num_guess, utcDate) {
         var xhr = new XMLHttpRequest();
-                xhr.open("POST", "insert_data.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.open("POST", "insert_data.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Handle response
-                        console.log(xhr.responseText);
-                    }
-                };
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Handle response
+                console.log(xhr.responseText);
+            }
+        };
 
-                // Send request
-                xhr.send("num_guess=" + encodeURIComponent(num_guess)+ "&date=" + encodeURIComponent(utcDate));
+        // Send request
+        xhr.send("num_guess=" + encodeURIComponent(num_guess)+ "&date=" + encodeURIComponent(utcDate));
     }
 
 

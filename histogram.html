@@ -7,6 +7,35 @@
 <body>
     <canvas id="scoreHistogram" width="400" height="200"></canvas>
     <script>
+
+    function get_data(utcDate) {
+    var xhr = new XMLHttpRequest();
+            xhr.open("POST", "get_data.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle response
+                    console.log("Connect to get_data");
+                }
+            };
+
+            // Send request
+            xhr.send("date=" + encodeURIComponent(utcDate));
+    }
+
+    var utcDate = new Date(Date.UTC(
+        clientDate.getFullYear(),
+        clientDate.getMonth(),
+        clientDate.getDate(),
+        clientDate.getHours(),
+        clientDate.getMinutes(),
+        clientDate.getSeconds()
+    ));
+    utcDate = utcDate.toISOString();
+
+    get_data(utcDate)
+
     fetch('get_data.php')
         .then(response => response.json())
         .then(data => {
