@@ -45,7 +45,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <script>
         share_text_ = ''
-        
+
         var clientDate = new Date();
         var utcDate = new Date(Date.UTC(
             clientDate.getFullYear(),
@@ -193,6 +193,7 @@
                 document.getElementById('end_id').style.display = 'block'
 
                 fire_fucking_works(guess_number)
+                add_histogram()
 
                 var utcDate = new Date(Date.UTC(
                     clientDate.getFullYear(),
@@ -803,6 +804,7 @@
                 <p id="answer_" style="margin: 0 0 0 0; padding: 0 0 0 0;">Answer: </p><p id="correct_answer" style="white-space: normal; margin: 0 0 0 0; padding: 0 0 0 0;"></p><p id="correct_answer2" style="margin: 0 0 0 0; padding: 0 0 0 0; display: inline-block;"></p><p id="correct_answer3" style="margin: 0 0 0 0; padding: 0 0 0 0;"></p>
             </div>
             <p id="share_text" style="white-space: pre-line;"></p>
+            <canvas id="scoreHistogram" width="100" height="50"></canvas>
             <button id="share_button" class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
             <button id="share_button" class="game_button" onclick="copy_to_clipboard()">Copy</button>
             <p id="games_played" style="font-weight: bold;"></p>
@@ -1662,6 +1664,97 @@
         // Send request
         xhr.send("num_guess=" + encodeURIComponent(num_guess)+ "&date=" + encodeURIComponent(utcDate));
     }
+
+    function add_histogram() {
+        function get_data(utcDate) {
+        var xhr = new XMLHttpRequest();
+                xhr.open("POST", "get_data.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Handle response
+                        console.log("Connect to get_data");
+                    }
+                };
+
+                // Send request
+                xhr.send("date=" + encodeURIComponent(utcDate));
+        }
+
+        var clientDate = new Date();
+        var utcDate = new Date(Date.UTC(
+            clientDate.getFullYear(),
+            clientDate.getMonth(),
+            clientDate.getDate(),
+            clientDate.getHours(),
+            clientDate.getMinutes(),
+            clientDate.getSeconds()
+        ));
+        utcDate = utcDate.toISOString();
+
+        get_data(utcDate)
+
+        fetch('get_data.php')
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('scoreHistogram').getContext('2d');
+
+                // Generate labels based on the range of num_guesses (e.g., 3 to 15)
+                const labels = Array.from({length: 13}, (_, i) => i + 3);
+
+                // Count occurrences of each num_guesses value
+                const counts = labels.map(label => data.filter(num => num == label).length);
+
+                const chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Number of Guesses',
+                            data: counts,
+                            borderColor: '#000000',
+                            borderWidth: 1,
+                            backgroundColor: [
+                            'rgba(0, 156, 52, 1)',    // Green solid
+                            'rgba(0, 156, 52, 0.2)',  // Green 20% opacity
+                            'rgba(150, 75, 0, 1)',    // Brown solid
+                            'rgba(150, 75, 0, 0.3)',  // Brown 30% opacity
+                            'rgba(255, 165, 1, 1)',   // Orange solid
+                            'rgba(255, 165, 0, 0.3)', // Orange 30% opacity
+                            'rgba(255, 0, 0, 1)',     // Red solid
+                            'rgba(255, 0, 0, 0.2)',   // Red 20% opacity
+                            'rgba(0, 0, 255, 1)',     // Blue solid
+                            'rgba(0, 0, 255, 0.2)',   // Blue 20% opacity
+                            'rgba(0, 0, 0, 1)',       // Black solid
+                            'rgba(0, 0, 0, 0.5)',     // Black 50% opacity
+                            'rgba(0, 0, 0, 0.2)'      // 
+                            ]
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: true
+                                },
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            });
+        }
 
 
     </script>
