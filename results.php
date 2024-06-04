@@ -22,6 +22,8 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-M7QPSJ52');</script>
     <!-- End Google Tag Manager -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <!-- Google tag (gtag.js) -->
