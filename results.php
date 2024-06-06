@@ -793,7 +793,8 @@
         }
     </style>
 
-    <canvas id="canvas"></canvas>
+    <!-- <canvas id="canvas"></canvas> -->
+    <canvas id="scoreHistogram" width="100" height="50"></canvas>
     <div class="end_menu" id="end_id">
         <span class="helper"></span>
         <div>
