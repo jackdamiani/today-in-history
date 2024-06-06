@@ -1680,6 +1680,8 @@
     }
 
     function add_histogram() {
+        try {
+    
         var clientDate = new Date();
         var utcDate = new Date(Date.UTC(
             clientDate.getFullYear(),
@@ -1766,6 +1768,12 @@
         .catch(error => {
             console.error("Error fetching data:", error);
         });
+
+        // Critical code here
+        } catch (error) {
+            console.error('An error occurred:', error);
+            // Log the error or perform other error-handling actions
+        }
     }
 
 
