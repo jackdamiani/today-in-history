@@ -20,6 +20,7 @@
     $clientDate = $_POST['date'];
     $date = new DateTime($clientDate);
     $date = $date->format('Y-m-d');
+    echo($date);
 
     // Prepare and execute the SQL query
     $sql = "SELECT num_guesses FROM test WHERE passed = 1 AND date = ?";
