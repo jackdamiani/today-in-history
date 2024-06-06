@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popup Menu with Histogram</title>
+  <style>
+    /* Style for the popup menu */
+    .popup {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      z-index: 1;
+    }
+
+    /* Style for the button */
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Popup Menu with Histogram</h2>
+
+<!-- Button to trigger the popup -->
+<button class="button" onclick="togglePopup()">Open Popup</button>
+
+<!-- Popup Menu -->
+<div id="popupMenu" class="popup">
+  <div>
+    <p>Some content before histogram</p>
+    <!-- Canvas for histogram -->
+    <canvas id="histogramCanvas" width="400" height="300"></canvas>
+    <p>Some content after histogram</p>
+  </div>
+</div>
+
+<script>
+  // Function to toggle the visibility of the popup menu
+  function togglePopup() {
+    var popup = document.getElementById("popupMenu");
+    if (popup.style.display === "block") {
+      popup.style.display = "none";
+    } else {
+      popup.style.display = "block";
+      drawHistogram(); // Draw histogram when popup is displayed
+    }
+  }
+
+  // Function to draw histogram on canvas
+  function drawHistogram() {
+    var canvas = document.getElementById("histogramCanvas");
+    var ctx = canvas.getContext("2d");
+    
+    // Example data for histogram
+    var data = [5, 10, 15, 20, 25];
+    var barWidth = 40;
+    var barSpacing = 10;
+    var startX = 10;
+    var startY = canvas.height - 30;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw bars
+    ctx.fillStyle = "blue";
+    for (var i = 0; i < data.length; i++) {
+      var barHeight = data[i];
+      ctx.fillRect(startX, startY - barHeight, barWidth, barHeight);
+      startX += barWidth + barSpacing;
+    }
+  }
+</script>
+
+</body>
+</html>
