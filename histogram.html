@@ -38,6 +38,7 @@
         utcDate = utcDate.toISOString();
 
         get_data(utcDate)
+        console.log("date found")
 
         fetch('get_data.php')
             .then(response => response.json())
@@ -99,6 +100,7 @@
                 });
             });
         }
+        console.log("complete histogram")
     </script>
 </body>
 </html>
