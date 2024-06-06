@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Score Histogram</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="scoreHistogram" width="400" height="200"></canvas>
+    <script>
+    console.log('Starting histogram script');
+
+    function add_histogram() {
+        var clientDate = new Date();
+        var utcDate = new Date(Date.UTC(
+            clientDate.getFullYear(),
+            clientDate.getMonth(),
+            clientDate.getDate(),
+            clientDate.getHours(),
+            clientDate.getMinutes(),
+            clientDate.getSeconds()
+        ));
+        utcDate = utcDate.toISOString();
+
+        console.log("UTC date calculated:", utcDate);
+
+        fetch('get_data.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'date=' + encodeURIComponent(utcDate)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Data received:", data);
+            const ctx = document.getElementById('scoreHistogram').getContext('2d');
+
+            // Generate labels based on the range of num_guesses (e.g., 3 to 15)
+            const labels = Array.from({ length: 13 }, (_, i) => i + 3);
+
+            // Count occurrences of each num_guesses value
+            const counts = labels.map(label => data.filter(num => num == label).length);
+
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Number of Guesses',
+                        data: counts,
+                        borderColor: '#000000',
+                        borderWidth: 1,
+                        backgroundColor: [
+                            'rgba(0, 156, 52, 1)',    // Green solid
+                            'rgba(0, 156, 52, 0.2)',  // Green 20% opacity
+                            'rgba(150, 75, 0, 1)',    // Brown solid
+                            'rgba(150, 75, 0, 0.3)',  // Brown 30% opacity
+                            'rgba(255, 165, 1, 1)',   // Orange solid
+                            'rgba(255, 165, 0, 0.3)', // Orange 30% opacity
+                            'rgba(255, 0, 0, 1)',     // Red solid
+                            'rgba(255, 0, 0, 0.2)',   // Red 20% opacity
+                            'rgba(0, 0, 255, 1)',     // Blue solid
+                            'rgba(0, 0, 255, 0.2)',   // Blue 20% opacity
+                            'rgba(0, 0, 0, 1)',       // Black solid
+                            'rgba(0, 0, 0, 0.5)',     // Black 50% opacity
+                            'rgba(0, 0, 0, 0.2)'      // Black 20% opacity
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: true
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            console.log("Histogram chart created successfully");
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+    }
+
+    console.log("Calling add_histogram function");
+    add_histogram();
+    </script>
+</body>
+</html>
