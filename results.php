@@ -1684,6 +1684,8 @@
                 xhr.send("date=" + encodeURIComponent(utcDate));
         }
 
+        console.log(xhr)
+
         var clientDate = new Date();
         var utcDate = new Date(Date.UTC(
             clientDate.getFullYear(),
@@ -1757,6 +1759,7 @@
                 });
             });
         }
+        console.log("complete")
 
 
     </script>
