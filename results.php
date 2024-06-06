@@ -1668,26 +1668,6 @@
     }
 
     function add_histogram() {
-        function get_data(utcDate) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "get_data.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Handle response
-                console.log("Connect to get_data");
-            }
-        };
-
-        // Send request
-        xhr.send("date=" + encodeURIComponent(utcDate));
-
-        console.log(xhr)
-        }
-
-        
-
         var clientDate = new Date();
         var utcDate = new Date(Date.UTC(
             clientDate.getFullYear(),
@@ -1699,29 +1679,39 @@
         ));
         utcDate = utcDate.toISOString();
 
-        get_data(utcDate)
+        fetch('get_data.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'date=' + encodeURIComponent(utcDate)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Data received:", data);
+            const ctx = document.getElementById('scoreHistogram').getContext('2d');
 
-        fetch('get_data.php')
-            .then(response => response.json())
-            .then(data => {
-                const ctx = document.getElementById('scoreHistogram').getContext('2d');
+            // Generate labels based on the range of num_guesses (e.g., 3 to 15)
+            const labels = Array.from({ length: 13 }, (_, i) => i + 3);
 
-                // Generate labels based on the range of num_guesses (e.g., 3 to 15)
-                const labels = Array.from({length: 13}, (_, i) => i + 3);
+            // Count occurrences of each num_guesses value
+            const counts = labels.map(label => data.filter(num => num == label).length);
 
-                // Count occurrences of each num_guesses value
-                const counts = labels.map(label => data.filter(num => num == label).length);
-
-                const chart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Number of Guesses',
-                            data: counts,
-                            borderColor: '#000000',
-                            borderWidth: 1,
-                            backgroundColor: [
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Number of Guesses',
+                        data: counts,
+                        borderColor: '#000000',
+                        borderWidth: 1,
+                        backgroundColor: [
                             'rgba(0, 156, 52, 1)',    // Green solid
                             'rgba(0, 156, 52, 0.2)',  // Green 20% opacity
                             'rgba(150, 75, 0, 1)',    // Brown solid
@@ -1734,34 +1724,39 @@
                             'rgba(0, 0, 255, 0.2)',   // Blue 20% opacity
                             'rgba(0, 0, 0, 1)',       // Black solid
                             'rgba(0, 0, 0, 0.5)',     // Black 50% opacity
-                            'rgba(0, 0, 0, 0.2)'      // 
-                            ]
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            x: {
-                                grid: {
-                                    display: false
-                                }
-                            },
-                            y: {
-                                grid: {
-                                    display: true
-                                },
-                                beginAtZero: true
-                            }
-                        },
-                        plugins: {
-                            legend: {
+                            'rgba(0, 0, 0, 0.2)'      // Black 20% opacity
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            grid: {
                                 display: false
                             }
+                        },
+                        y: {
+                            grid: {
+                                display: true
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
                         }
                     }
-                });
+                }
             });
-        }
-        console.log("complete data retrieval")
+            console.log("Histogram chart created successfully");
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+    }
+
+    add_histogram();
 
 
     </script>

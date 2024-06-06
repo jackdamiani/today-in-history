@@ -7,8 +7,6 @@
 <body>
     <canvas id="scoreHistogram" width="400" height="200"></canvas>
     <script>
-    console.log('Starting histogram script');
-
     function add_histogram() {
         var clientDate = new Date();
         var utcDate = new Date(Date.UTC(
@@ -20,8 +18,6 @@
             clientDate.getSeconds()
         ));
         utcDate = utcDate.toISOString();
-
-        console.log("UTC date calculated:", utcDate);
 
         fetch('get_data.php', {
             method: 'POST',
@@ -100,7 +96,6 @@
         });
     }
 
-    console.log("Calling add_histogram function");
     add_histogram();
     </script>
 </body>
