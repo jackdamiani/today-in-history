@@ -1397,6 +1397,7 @@
         })();
 
         // now we will setup our basic variables for the demo
+        try{
         var canvas = document.getElementById( 'canvas' ),
             ctx = canvas.getContext( '2d' ),
             // full screen dimensions
@@ -1419,6 +1420,13 @@
             mx,
             // mouse y coordinate
             my;
+        }
+        } catch (error) {
+            console.error('An error occurred:', error);
+            // Log the error or perform other error-handling actions
+        }
+
+    
                 
         // set canvas dimensions
         canvas.width = cw;
