@@ -11,7 +11,6 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    echo "Succesfully connected to DB";
 
     // Get today's date
     // echo $_COOKIE['clientDate'];
@@ -20,7 +19,6 @@
     $clientDate = $_POST['date'];
     $date = new DateTime($clientDate);
     $date = $date->format('Y-m-d');
-    echo($date);
 
     // Prepare and execute the SQL query
     $sql = "SELECT num_guesses FROM test WHERE passed = 1 AND date = ?";
@@ -28,7 +26,6 @@
     $stmt->bind_param("s", $date);
     $stmt->execute();
     $result = $stmt->get_result();
-    echo $result;
 
     // Fetch the data and store in an array
     $num_guesses = [];
