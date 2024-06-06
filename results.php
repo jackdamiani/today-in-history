@@ -1398,29 +1398,28 @@
 
         // now we will setup our basic variables for the demo
         try{
-        var canvas = document.getElementById( 'canvas' ),
-            ctx = canvas.getContext( '2d' ),
-            // full screen dimensions
-            cw = window.innerWidth,
-            ch = window.innerHeight,
-            // firework collection
-            fireworks = [],
-            // particle collection
-            particles = [],
-            // starting hue
-            hue = 120,
-            // when launching fireworks with a click, too many get launched at once without a limiter, one launch per 5 loop ticks
-            limiterTotal = click_limit,
-            limiterTick = 0,
-            // this will time the auto launches of fireworks, one launch per 80 loop ticks
-            timerTotal = firework_limit,
-            timerTick = 0,
-            mousedown = false,
-            // mouse x coordinate,
-            mx,
-            // mouse y coordinate
-            my;
-        }
+            var canvas = document.getElementById( 'canvas' ),
+                ctx = canvas.getContext( '2d' ),
+                // full screen dimensions
+                cw = window.innerWidth,
+                ch = window.innerHeight,
+                // firework collection
+                fireworks = [],
+                // particle collection
+                particles = [],
+                // starting hue
+                hue = 120,
+                // when launching fireworks with a click, too many get launched at once without a limiter, one launch per 5 loop ticks
+                limiterTotal = click_limit,
+                limiterTick = 0,
+                // this will time the auto launches of fireworks, one launch per 80 loop ticks
+                timerTotal = firework_limit,
+                timerTick = 0,
+                mousedown = false,
+                // mouse x coordinate,
+                mx,
+                // mouse y coordinate
+                my;
         } catch (error) {
             console.error('An error occurred:', error);
             // Log the error or perform other error-handling actions
