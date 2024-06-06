@@ -1670,21 +1670,23 @@
     function add_histogram() {
         function get_data(utcDate) {
         var xhr = new XMLHttpRequest();
-                xhr.open("POST", "get_data.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.open("POST", "get_data.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Handle response
-                        console.log("Connect to get_data");
-                    }
-                };
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Handle response
+                console.log("Connect to get_data");
+            }
+        };
 
-                // Send request
-                xhr.send("date=" + encodeURIComponent(utcDate));
-        }
+        // Send request
+        xhr.send("date=" + encodeURIComponent(utcDate));
 
         console.log(xhr)
+        }
+
+        
 
         var clientDate = new Date();
         var utcDate = new Date(Date.UTC(
@@ -1759,7 +1761,7 @@
                 });
             });
         }
-        console.log("complete")
+        console.log("complete data retrieval")
 
 
     </script>
