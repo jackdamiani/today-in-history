@@ -86,7 +86,7 @@
             }
         });
 
-        const maxVal = Math.max(...frequency[value]);
+        const maxVal = Math.max(...Object.values(frequency));
         const scaleFactor = 100 / maxVal; // Scale the bars to fit within 100px height
         const numLabels = 5;
         const step = Math.ceil(maxVal / numLabels);
