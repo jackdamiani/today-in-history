@@ -2,13 +2,31 @@
 <html>
 <head>
     <style>
-        .histogram-bar {
-            display: inline-block;
-            width: 20px;
-            background-color: steelblue;
-            margin-right: 2px;
-            vertical-align: bottom;
+        #histogram {
+            display: flex;
+            align-items: flex-end;
+            height: 150px;
+            border: 1px solid #ccc;
+            padding: 10px;
         }
+
+        .histogram-bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 5px;
+        }
+
+        .histogram-bar {
+            width: 20px;
+            background-color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .histogram-label {
+            font-size: 12px;
+        }
+
     </style>
 </head>
 <body>
