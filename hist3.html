@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .histogram-bar {
+            display: inline-block;
+            width: 20px;
+            background-color: steelblue;
+            margin-right: 2px;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+<body>
+
+<div id="histogram"></div>
+
+<script>
+    // Fetch data from the PHP script
+    fetch('get_data.php')
+        .then(response => response.json())
+        .then(data => {
+            createHistogram(data);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+
+    function createHistogram(data) {
+        const histogramContainer = document.getElementById('histogram');
+        const maxVal = Math.max(...data);
+        const scaleFactor = 100 / maxVal; // Scale the bars to fit within 100px height
+
+        // Count frequencies of each value
+        const frequency = {};
+        data.forEach(value => {
+            if (frequency[value]) {
+                frequency[value]++;
+            } else {
+                frequency[value] = 1;
+            }
+        });
+
+        // Create bars for each unique value
+        for (const [value, count] of Object.entries(frequency)) {
+            const bar = document.createElement('div');
+            bar.className = 'histogram-bar';
+            bar.style.height = `${count * scaleFactor}px`;
+            bar.title = `Value: ${value}, Count: ${count}`;
+            histogramContainer.appendChild(bar);
+        }
+    }
+</script>
+
+</body>
+</html>

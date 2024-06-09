@@ -163,7 +163,7 @@ var links={
     "0610": ["https://www.americanhistorycentral.com/entries/salem-witch-trials-victims/", "https://en.wikipedia.org/wiki/Kite_experiment", "https://www.presidency.ucsb.edu/documents/executive-order-6166-organization-executive-agencies"],
     "0611": ["https://en.wikipedia.org/wiki/June_1962_Alcatraz_escape_attempt", "https://en.wikipedia.org/wiki/Black_people_and_temple_and_priesthood_policies_in_the_Church_of_Jesus_Christ_of_Latter-day_Saints", "https://en.wikipedia.org/wiki/American_Idol_season_1#:~:text=The%20first%20season%20of%20American%20Idol%20%28originally%20entitled,the%20series%5D%2C%20and%20continued%20until%20September%204%2C%202002."],
     "0612": ["https://en.wikipedia.org/wiki/Independence_Day_(Philippines)", "https://www.nelsonmandela.org/news/entry/nelson-mandela-sentenced-to-life-imprisonment-44-years-ago", "https://en.wikipedia.org/wiki/Russian_anti-LGBT_law"],
-    "0613": ["", "", ""],
+    "0613": ["https://en.wikipedia.org/wiki/Pentagon_Papers", "https://en.wikipedia.org/wiki/List_of_artificial_objects_leaving_the_Solar_System", "https://en.wikipedia.org/wiki/Inter-Korean_summits"],
     "0614": ["", "", ""],
     "0615": ["", "", ""],
     "0616": ["", "", ""],

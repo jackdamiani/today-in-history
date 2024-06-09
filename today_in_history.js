@@ -163,7 +163,7 @@ var today_in_history = {
     "0610": {"1692":"Bridget Bishop, first victim of the Salem Witch Trials, hanged for witchcraft in Massachusetts", "1752":"Benjamin Franklin's famous kite experiment. Demonstrated lightning and electricity were the same phenomenon", "1933":"President Franklin D. Roosevelt signs executive order 6166 which designates Mount Rushmore under the National Park Service"},
     "0611": {"1962":"Three inmates become the only prisoners to escape from Alcatraz Prison in the San Francisco Bay", "1978":"Joseph Freeman of Utah becomes the first black ordained member of the Mormon Church", "2002":"American Idol, with judges Paula Abdul, Simon Cowell, and Randy Jackson premieres on Fox"},
     "0612": {"1898":"Phillipines officially declares independence from Spain. United States becomes colonial power there in about 2 months","1964":"Nelson Mandela sentenced to life in prison in South AFrica for leaving the country without permission. Served 27 years in prison", " ":"", "2013":"Russia has unanimously minus one vote approves an Anti-Gay Law, banning all gay propaganda. Not very pride month of them :("},
-    "0613": {"":"", " ":"", "  ":""},
+    "0613": {"1971":"New York Times begins publishing the Pentagon Papers, classified documents about the US War in Vietnam", "1983":"NASA's Pioneer 10 becomes the first man-made object to leave the solar system. Takes 11 years after launch", "2000":"First Inter-Korea Summit, meeting of North and South Korean leaders since the split. Leaders are Kim Dae-jung and Kim Jong Il"},
     "0614": {"":"", " ":"", "  ":""},
     "0615": {"":"", " ":"", "  ":""},
     "0616": {"":"", " ":"", "  ":""},
