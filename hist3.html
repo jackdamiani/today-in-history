@@ -75,8 +75,9 @@
     function createHistogram(data) {
         const histogramContainer = document.getElementById('histogram');
         const maxVal = Math.max(...data);
-        const scaleFactor = 100 / maxVal; // Scale the bars to fit within 100px height
-        console.log(scaleFactor)
+        const scaleFactor = 500 / maxVal; // Scale the bars to fit within 100px height
+        const numLabels = 5;
+        const step = Math.ceil(maxVal / numLabels);
 
         // Count frequencies of each value
         const frequency = {};
@@ -113,6 +114,18 @@
             'rgba(0, 0, 0, 0.5)',     // Black 50% opacity
             'rgba(0, 0, 0, 0.2)'      // Black 20% opacity
         ];
+
+        const yAxisContainer = document.createElement('div');
+        yAxisContainer.className = 'Number of Players';
+        histogramContainer.appendChild(yAxisContainer);
+
+        // y-axis lables
+        for (let value = maxVal; value >= 0; value -= step) {
+            const yAxisLabel = document.createElement('div');
+            yAxisLabel.className = 'y-axis-label';
+            yAxisLabel.innerText = value;
+            yAxisContainer.appendChild(yAxisLabel);
+        }
 
         // Create bars for each value from 3 to 15
         for (let value = 3; value <= 15; value++) {
