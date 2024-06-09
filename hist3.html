@@ -58,26 +58,25 @@
         console.log(data)
         const histogramContainer = document.getElementById('histogram');
         const maxVal = Math.max(...data);
-        const scaleFactor = 100 / maxVal; // Scale the bars to fit within 100px height
+        const scaleFactor = 100 / (maxVal || 1); // Avoid division by zero
 
-        // Count frequencies of each value
-        const frequency = {};
-        data.forEach(value => {
-            if (frequency[value]) {
-                frequency[value]++;
-            } else {
-                frequency[value] = 1;
-            }
-        });
-
-        // Create bars for each unique value
-        for (const [value, count] of Object.entries(frequency)) {
+        // Create bars and labels for each value
+        data.forEach((count, index) => {
+            // Create the bar
             const bar = document.createElement('div');
             bar.className = 'histogram-bar';
             bar.style.height = `${count * scaleFactor}px`;
-            bar.title = `Value: ${value}, Count: ${count}`;
+            bar.title = `Column: ${index + 3}, Count: ${count}`;
+            
+            // Create the label
+            const label = document.createElement('div');
+            label.className = 'histogram-label';
+            label.textContent = `Col ${index + 3}`;
+            
+            // Add the label and bar to the histogram container
+            histogramContainer.appendChild(label);
             histogramContainer.appendChild(bar);
-        }
+        });
     }
 </script>
 
