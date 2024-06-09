@@ -44,6 +44,8 @@
 
         get_data(utcDate)
         console.log("date found")
+
+
     // Fetch data from the PHP script
     fetch('get_data.php')
         .then(response => response.json())
@@ -53,6 +55,7 @@
         .catch(error => console.error('Error fetching data:', error));
 
     function createHistogram(data) {
+        console.log(data)
         const histogramContainer = document.getElementById('histogram');
         const maxVal = Math.max(...data);
         const scaleFactor = 100 / maxVal; // Scale the bars to fit within 100px height
