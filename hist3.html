@@ -179,6 +179,14 @@
             barContainer.appendChild(label);
             histogramContainer.appendChild(barContainer);
         }
+
+        const xAxisLabel = document.createElement('div');
+        xAxisLabel.className = 'x-axis-label';
+        xAxisLabel.innerText = 'Score';
+        xAxisLabel.style.marginTop = '10px'; // Adjust margin as needed
+        histogramContainer.appendChild(xAxisLabel);
+
+        
     }
 </script>
 
