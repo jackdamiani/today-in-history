@@ -95,9 +95,8 @@
         }
 
         // Clear any existing bars before adding new ones
-        histogramContainer.innerHTML = '';
+        // histogramContainer.innerHTML = '';
 
-        // Define colors for each value range
         const colors = [
             'rgba(0, 156, 52, 1)',    // Green solid
             'rgba(0, 156, 52, 0.2)',  // Green 20% opacity
@@ -121,19 +120,19 @@
 
             const bar = document.createElement('div');
             bar.className = 'histogram-bar';
-            bar.style.width = `${frequency[value] * scaleFactor}px`;
-            bar.style.backgroundColor = colors[(value - 3) * 2]; // Assign color based on value
+            bar.style.height = `${frequency[value] * scaleFactor}px`;
             bar.title = `Value: ${value}, Count: ${frequency[value]}`;
+            bar.style.backgroundColor = colors[(value - 3)];
 
             const label = document.createElement('div');
             label.className = 'histogram-label';
             label.innerText = value;
 
-            barContainer.appendChild(label);
             barContainer.appendChild(bar);
+            barContainer.appendChild(label);
             histogramContainer.appendChild(barContainer);
+        }
     }
-}
 </script>
 
 </body>
