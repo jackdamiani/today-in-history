@@ -74,10 +74,7 @@
 
     function createHistogram(data) {
         const histogramContainer = document.getElementById('histogram');
-        const maxVal = Math.max(...data);
-        const scaleFactor = 500 / maxVal; // Scale the bars to fit within 100px height
-        const numLabels = 5;
-        const step = Math.ceil(maxVal / numLabels);
+        
 
         // Count frequencies of each value
         const frequency = {};
@@ -88,6 +85,11 @@
                 frequency[value] = 1;
             }
         });
+
+        const maxVal = Math.max(...frequency[value]);
+        const scaleFactor = 100 / maxVal; // Scale the bars to fit within 100px height
+        const numLabels = 5;
+        const step = Math.ceil(maxVal / numLabels);
 
         // Ensure all values from 3 to 15 are represented
         for (let value = 3; value <= 15; value++) {
