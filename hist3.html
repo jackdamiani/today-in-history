@@ -54,40 +54,50 @@
         })
         .catch(error => console.error('Error fetching data:', error));
 
-    function createHistogram(data) {
-        console.log(data)
-        const histogramContainer = document.getElementById('histogram');
-        const maxVal = Math.max(...data);
-        const scaleFactor = 100 / maxVal; // Scale the bars to fit within 100px height
+        function createHistogram(data) {
+            const histogramContainer = document.getElementById('histogram');
+            const maxVal = Math.max(...data);
+            const scaleFactor = 100 / maxVal; // Scale the bars to fit within 100px height
 
-        // Count frequencies of each value
-        const frequency = {};
-        data.forEach(value => {
-            if (frequency[value]) {
-                frequency[value]++;
-            } else {
-                frequency[value] = 1;
-            }
-        });
+            // Count frequencies of each value
+            const frequency = {};
+            data.forEach(value => {
+                if (frequency[value]) {
+                    frequency[value]++;
+                } else {
+                    frequency[value] = 1;
+                }
+            });
 
-        for (value in [3,4,5,6,7,8,9,10,11,12,13,14,15]) {
-            if (frequency[value]){
-                //pass
+            // Ensure all values from 3 to 15 are represented
+            for (let value = 3; value <= 15; value++) {
+                if (!frequency[value]) {
+                    frequency[value] = 0;
+                }
             }
-            else {
-                frequency[value] = 0
+
+            // Clear any existing bars before adding new ones
+            histogramContainer.innerHTML = '';
+
+            // Create bars for each value from 3 to 15
+            for (let value = 3; value <= 15; value++) {
+                const barContainer = document.createElement('div');
+                barContainer.className = 'histogram-bar-container';
+
+                const bar = document.createElement('div');
+                bar.className = 'histogram-bar';
+                bar.style.height = `${frequency[value] * scaleFactor}px`;
+                bar.title = `Value: ${value}, Count: ${frequency[value]}`;
+
+                const label = document.createElement('div');
+                label.className = 'histogram-label';
+                label.innerText = value;
+
+                barContainer.appendChild(bar);
+                barContainer.appendChild(label);
+                histogramContainer.appendChild(barContainer);
             }
         }
-
-        // Create bars for each unique value
-        for (const [value, count] of Object.entries(frequency)) {
-            const bar = document.createElement('div');
-            bar.className = 'histogram-bar';
-            bar.style.height = `${count * scaleFactor}px`;
-            bar.title = `Value: ${value}, Count: ${count}`;
-            histogramContainer.appendChild(bar);
-        }
-    }
 </script>
 
 </body>
