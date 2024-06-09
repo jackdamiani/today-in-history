@@ -27,6 +27,23 @@
             font-size: 12px;
         }
 
+        .y-axis {
+            position: relative;
+            width: 60px; /* Adjust as needed */
+            height: 100px; /* Adjust as needed */
+            border-left: 1px solid #000; /* Add border to y-axis */
+            margin-right: 10px; /* Adjust as needed */
+        }
+
+        .y-axis-label {
+            position: relative;
+            width: 60px; /* Adjust as needed */
+            height: 100px; /* Adjust as needed */
+            border-left: 1px solid #000; /* Add border to y-axis */
+            margin-right: 20px; /* Adjust as needed */
+        }
+
+
     </style>
 </head>
 <body>
@@ -136,9 +153,6 @@
         yAxisLabel.className = 'y-axis-label';
         yAxisLabel.innerText = 'Number of Players';
         yAxisLabel.style.transform = 'rotate(-90deg)'; // Rotate label vertically
-        yAxisLabel.style.position = 'absolute'; // Set position to absolute
-        yAxisLabel.style.bottom = '50%'; // Position label at bottom of plot
-        yAxisLabel.style.left = '-60px'; // Adjust position to be outside of the plot area
         yAxisContainer.appendChild(yAxisLabel);
 
         // Create bars for each value from 3 to 15
