@@ -87,9 +87,11 @@
         });
 
         const maxVal = Math.max(...Object.values(frequency));
-        const scaleFactor = 100 / maxVal; // Scale the bars to fit within 100px height
+        const plotHeight = 100; // Height of the plot in pixels
+        const scaleFactor = plotHeight / maxVal; // Scale the bars to fit within 100px height
         const numLabels = 5;
         const step = Math.ceil(maxVal / numLabels);
+        const stepHeight = plotHeight / numLabels; // Height of each step
 
         // Ensure all values from 3 to 15 are represented
         for (let value = 3; value <= 15; value++) {
@@ -126,6 +128,7 @@
             const yAxisLabel = document.createElement('div');
             yAxisLabel.className = 'y-axis-label';
             yAxisLabel.innerText = value;
+            yAxisLabel.style.marginBottom = `${stepHeight}px`; // Set margin based on step height
             yAxisContainer.appendChild(yAxisLabel);
         }
 
