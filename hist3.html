@@ -76,6 +76,7 @@
         const histogramContainer = document.getElementById('histogram');
         const maxVal = Math.max(...data);
         const scaleFactor = 100 / maxVal; // Scale the bars to fit within 100px height
+        console.log(scaleFactor)
 
         // Count frequencies of each value
         const frequency = {};
