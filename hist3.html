@@ -155,7 +155,8 @@
             const yAxisLabel = document.createElement('div');
             yAxisLabel.className = 'y-axis-label';
             yAxisLabel.innerText = value;
-            yAxisLabel.style.marginBottom = `${stepHeight}px`; // Set margin based on step height
+
+            yAxisLabel.style.marginBottom = `${stepHeight-12}px`; // Set margin based on step height
             console.log(stepHeight)
             yAxisContainer.appendChild(yAxisLabel);
         }
