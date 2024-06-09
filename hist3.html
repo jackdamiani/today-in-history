@@ -35,13 +35,13 @@
             margin-right: 10px; /* Adjust as needed */
         } */
 
-        .y-axis-label2 {
+        /* .y-axis-label2 {
             position: relative;
             width: 60px; /* Adjust as needed */
             height: 100px; /* Adjust as needed */
             border-left: 1px solid #000; /* Add border to y-axis */
             margin-right: 20px; /* Adjust as needed */
-        }
+        } */
 
 
     </style>
@@ -148,7 +148,7 @@
         yAxisLabel2.style.transform = 'rotate(-90deg)'; // Rotate label vertically
         yAxisContainer.appendChild(yAxisLabel2);
 
-        
+
         for (let value = maxVal; value >= 0; value -= step) {
             const yAxisLabel = document.createElement('div');
             yAxisLabel.className = 'y-axis-label';
