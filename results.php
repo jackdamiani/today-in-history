@@ -781,7 +781,7 @@
             font-weight: bold;
         }
 
-        canvas {
+        .canvas {
             cursor: crosshair;
             display: block;
             z-index: -1;
