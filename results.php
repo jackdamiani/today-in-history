@@ -1717,6 +1717,10 @@
             console.log("Data received:", data);
             const ctx = document.getElementById('scoreHistogram').getContext('2d');
 
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 5;
+            ctx.strokeRect(0, 0, ctx.width, ctx.height);
+
             // Generate labels based on the range of num_guesses (e.g., 3 to 15)
             const labels = Array.from({ length: 13 }, (_, i) => i + 3);
 
@@ -1770,16 +1774,10 @@
                     }
                 }
             });
-                
-            ctx.strokeStyle = 'black';
-            ctx.lineWidth = 5;
-            ctx.strokeRect(0, 0, popupCanvas.width, popupCanvas.height);
-            console.log("Histogram chart created successfully");
-        })
-        .catch(error => {
-            console.error("Error fetching data:", error);
-        });
-    }
+
+            
+
+
             console.log("Histogram chart created successfully");
         })
         .catch(error => {
