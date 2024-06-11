@@ -792,7 +792,7 @@
             height: 100%;
         }
 
-        .scoreHistogram {
+        #scoreHistogram {
             display: block;
             z-index: 10001;
             position: relative;
@@ -1397,7 +1397,7 @@
 
         // now we will setup our basic variables for the demo
         try{
-            var canvas = document.getElementById( 'canvas' ),
+            var canvas = document.getElementById( 'fireworkCanvas' ),
                 ctx = canvas.getContext( '2d' ),
                 // full screen dimensions
                 cw = window.innerWidth,
