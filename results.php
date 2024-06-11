@@ -1770,11 +1770,7 @@
                     }
                 }
             });
-                             display: false
-                        }
-                    }
-                }
-            });
+                
             ctx.strokeStyle = 'black';
             ctx.lineWidth = 5;
             ctx.strokeRect(0, 0, popupCanvas.width, popupCanvas.height);
