@@ -792,7 +792,7 @@
             height: 100%;
         }
 
-        #scoreHistogram {
+        .scoreHistogram {
             display: block;
             z-index: 10001;
             position: relative;
