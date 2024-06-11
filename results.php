@@ -781,7 +781,7 @@
             font-weight: bold;
         }
 
-        .fireworkCanvas {
+        #fireworkCanvas {
             cursor: crosshair;
             display: block;
             z-index: -1;
@@ -792,7 +792,7 @@
             height: 100%;
         }
 
-        .scoreHistogram {
+        #scoreHistogram {
             display: block;
             z-index: 10001;
             position: relative;
