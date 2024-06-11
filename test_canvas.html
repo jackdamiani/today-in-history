@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas with Popup Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* styles.css */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    #backgroundCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    #foregroundDiv {
+        position: relative;
+        z-index: 1;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        width: 200px;
+        margin: 20px;
+    }
+
+    #popupMenu {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 2;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    #popupCanvas {
+        width: 200px;
+        height: 200px;
+    }
+
+</style>
+
+
+
+
+
+<body>
+    <canvas id="backgroundCanvas"></canvas>
+    <div id="foregroundDiv">
+        <button id="openPopupBtn">Open Popup</button>
+    </div>
+    <div id="popupMenu" class="hidden">
+        <canvas id="popupCanvas"></canvas>
+    </div>
+
+    <script>
+        // scripts.js
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            const backgroundCanvas = document.getElementById('backgroundCanvas');
+            const popupCanvas = document.getElementById('popupCanvas');
+            const openPopupBtn = document.getElementById('openPopupBtn');
+            const popupMenu = document.getElementById('popupMenu');
+    
+            // Set canvas sizes
+            backgroundCanvas.width = window.innerWidth;
+            backgroundCanvas.height = window.innerHeight;
+            popupCanvas.width = 200;
+            popupCanvas.height = 200;
+    
+            // Draw on background canvas
+            const bgCtx = backgroundCanvas.getContext('2d');
+            bgCtx.fillStyle = 'red';
+            bgCtx.fillRect(50, 50, 100, 100); // Draw red square
+    
+            // Draw on popup canvas
+            const popupCtx = popupCanvas.getContext('2d');
+            popupCtx.fillStyle = 'blue';
+            popupCtx.beginPath();
+            popupCtx.arc(100, 100, 50, 0, Math.PI * 2); // Draw blue circle
+            popupCtx.fill();
+    
+            // Open popup menu
+            openPopupBtn.addEventListener('click', () => {
+                popupMenu.classList.toggle('hidden');
+            });
+        });
+    
+    </script>
+
+</body>
+</html>

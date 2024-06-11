@@ -794,7 +794,7 @@
 
         .scoreHistogram {
             display: block;
-            z-index: 10000;
+            z-index: 10001;
             position: relative;
             top: 0;
             left: 0;
@@ -804,7 +804,7 @@
         }
     </style>
 
-    <!-- <canvas id="canvas"></canvas> -->
+    <canvas id="canvas"></canvas>
     <!-- <canvas id="scoreHistogram" width="100" height="50"></canvas> -->
     <div class="end_menu" id="end_id">
         <span class="helper"></span>
