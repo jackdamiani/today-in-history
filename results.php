@@ -1069,6 +1069,8 @@
                     document.getElementById('end_response').textContent = 'YOU WON!'
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
+
+                add_histogram()
                 
             //     <p id="end_date"></p>
             // <p id="end_score"></p>
