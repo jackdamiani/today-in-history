@@ -1770,6 +1770,20 @@
                     }
                 }
             });
+                             display: false
+                        }
+                    }
+                }
+            });
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 5;
+            ctx.strokeRect(0, 0, popupCanvas.width, popupCanvas.height);
+            console.log("Histogram chart created successfully");
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+    }
             console.log("Histogram chart created successfully");
         })
         .catch(error => {
