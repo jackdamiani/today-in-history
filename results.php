@@ -1762,7 +1762,7 @@
                             },
                             ticks: {
                                 size: 10,
-                                maxRotation: 0,
+                                minRotation: 90,
                                 autoSkip: false
                             }
 
