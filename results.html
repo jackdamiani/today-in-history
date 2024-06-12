@@ -196,7 +196,6 @@
 
                 fire_fucking_works(guess_number)
                 
-
                 var utcDate = new Date(Date.UTC(
                     clientDate.getFullYear(),
                     clientDate.getMonth(),
@@ -1074,6 +1073,16 @@
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
 
+                var utcDate = new Date(Date.UTC(
+                    clientDate.getFullYear(),
+                    clientDate.getMonth(),
+                    clientDate.getDate(),
+                    clientDate.getHours(),
+                    clientDate.getMinutes(),
+                    clientDate.getSeconds()
+                ));
+                utcDate = utcDate.toISOString();
+                insert_row_php(16, utcDate)
                 add_histogram()
                 
             //     <p id="end_date"></p>
@@ -1675,8 +1684,6 @@
     }
 
     function insert_row_php(num_guess, utcDate) {
-        console.log('doing it this way')
-        console.log(guess_number)
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "insert_data.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
