@@ -735,7 +735,7 @@
             box-shadow: 10px 10px 60px #555;
             display: inline-block;
             height: auto;
-            max-width: 300;
+            max-width: 300px;
             min-height: 100px;
             vertical-align: middle;
             width: 100%;
@@ -817,7 +817,7 @@
                 <p id="answer_" style="margin: 0 0 0 0; padding: 0 0 0 0;">Answer: </p><p id="correct_answer" style="white-space: normal; margin: 0 0 0 0; padding: 0 0 0 0;"></p><p id="correct_answer2" style="margin: 0 0 0 0; padding: 0 0 0 0; display: inline-block;"></p><p id="correct_answer3" style="margin: 0 0 0 0; padding: 0 0 0 0;"></p>
             </div>
             <p id="share_text" style="white-space: pre-line;"></p>
-            <canvas id="scoreHistogram" width="275" height="200">Canvas?</canvas>
+            <canvas id="scoreHistogram" width="275px" height="200px">Canvas?</canvas>
             <button id="share_button" class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
             <button id="share_button" class="game_button" onclick="copy_to_clipboard()">Copy</button>
             <p id="games_played" style="font-weight: bold;"></p>
