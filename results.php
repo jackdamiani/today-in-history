@@ -817,7 +817,7 @@
                 <p id="answer_" style="margin: 0 0 0 0; padding: 0 0 0 0;">Answer: </p><p id="correct_answer" style="white-space: normal; margin: 0 0 0 0; padding: 0 0 0 0;"></p><p id="correct_answer2" style="margin: 0 0 0 0; padding: 0 0 0 0; display: inline-block;"></p><p id="correct_answer3" style="margin: 0 0 0 0; padding: 0 0 0 0;"></p>
             </div>
             <p id="share_text" style="white-space: pre-line;"></p>
-            <canvas id="scoreHistogram" witdth="70vw" height="150">Canvas?</canvas>
+            <canvas id="scoreHistogram" witdth="70%" height="auto">Canvas?</canvas>
             <button id="share_button" class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
             <button id="share_button" class="game_button" onclick="copy_to_clipboard()">Copy</button>
             <p id="games_played" style="font-weight: bold;"></p>
