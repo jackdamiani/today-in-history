@@ -724,6 +724,8 @@
             width:100%;
             z-index:10000;
             overflow-y:scroll;
+            padding-block-start: 30px;
+            box-sizing: border-box;
         }
         .end_menu .helper{
             display:inline-block;
@@ -735,13 +737,14 @@
             box-shadow: 10px 10px 60px #555;
             display: inline-block;
             height: auto;
-            max-width: 250px;
+            max-width: 275px;
             min-height: 100px;
             vertical-align: middle;
             width: 100%;
             position: relative;
             border-radius: 8px;
             padding: 15px 5%;
+
         }
 
         /* Closes How To Menu */
