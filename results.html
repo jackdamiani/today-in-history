@@ -195,7 +195,7 @@
                 document.getElementById('end_id').style.display = 'block'
 
                 fire_fucking_works(guess_number)
-                add_histogram()
+                
 
                 var utcDate = new Date(Date.UTC(
                     clientDate.getFullYear(),
@@ -207,6 +207,7 @@
                 ));
                 utcDate = utcDate.toISOString();
                 insert_row_php(guess_number, utcDate)
+                add_histogram()
                 
                 var share_text = date.textContent + '\n' + guess_number.toString() + '/15\n\n'
                 var display_share_text = ''
@@ -1734,8 +1735,6 @@
                 const num = label === 'X' ? 16 : label;
                 return data.filter(n => n == num).length;
             });
-
-            console.log(counts)
 
             const chart = new Chart(ctx, {
                 type: 'bar',
