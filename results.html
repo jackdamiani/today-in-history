@@ -1726,12 +1726,13 @@
             ctx.strokeRect(0, 0, ctx.width, ctx.height);
 
             // Generate labels based on the range of num_guesses (e.g., 3 to 15)
-            const labels = Array.from({ length: 14 }, (_, i) => (i + 3 === 16 ? 'X' : i + 3));
+            const labels = Array.from({ length: 14 }, (_, i) => i + 3);
+            labels.push('X'); // Add 'X' at the end to represent 16
 
             // Count occurrences of each num_guesses value
             const counts = labels.map(label => {
                 const num = label === 'X' ? 16 : label;
-                return data.filter(num => num == label).length;
+                return data.filter(n => n == num).length;
             });
 
             console.log(counts)
