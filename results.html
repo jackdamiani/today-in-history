@@ -353,6 +353,18 @@
                 document.getElementById('end_id').style.display = 'block'
                 document.getElementsByClassName("stats")[0].style.visibility = 'visible';
 
+                var utcDate = new Date(Date.UTC(
+                    clientDate.getFullYear(),
+                    clientDate.getMonth(),
+                    clientDate.getDate(),
+                    clientDate.getHours(),
+                    clientDate.getMinutes(),
+                    clientDate.getSeconds()
+                ));
+                utcDate = utcDate.toISOString();
+                insert_row_php(16, utcDate)
+                add_histogram()
+
 
                 for (let i=0; i<guess_number; i++){
                     for (let j=0; j<3; j++){
@@ -1073,16 +1085,7 @@
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
 
-                var utcDate = new Date(Date.UTC(
-                    clientDate.getFullYear(),
-                    clientDate.getMonth(),
-                    clientDate.getDate(),
-                    clientDate.getHours(),
-                    clientDate.getMinutes(),
-                    clientDate.getSeconds()
-                ));
-                utcDate = utcDate.toISOString();
-                insert_row_php(16, utcDate)
+                
                 add_histogram()
                 
             //     <p id="end_date"></p>
