@@ -1675,6 +1675,8 @@
     }
 
     function insert_row_php(num_guess, utcDate) {
+        console.log('doing it this way')
+        console.log(guess_number)
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "insert_data.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
