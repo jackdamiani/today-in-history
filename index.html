@@ -22,6 +22,8 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-M7QPSJ52');</script>
     <!-- End Google Tag Manager -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -46,6 +48,17 @@
     <script>
         share_text_ = ''
 
+        var clientDate = new Date();
+        var utcDate = new Date(Date.UTC(
+            clientDate.getFullYear(),
+            clientDate.getMonth(),
+            clientDate.getDate(),
+            clientDate.getHours(),
+            clientDate.getMinutes(),
+            clientDate.getSeconds()
+        ));
+        utcDate = utcDate.toISOString();
+        document.cookie = "clientDate=" + encodeURIComponent(utcDate) + "; path=/";
 
 
         window.onload = function() {
@@ -55,7 +68,6 @@
                 document.getElementsByClassName("stats")[0].style.visibility = 'hidden';
             }
 
-            // TODO: fix end menu 
         }
 
 
@@ -183,6 +195,18 @@
                 document.getElementById('end_id').style.display = 'block'
 
                 fire_fucking_works(guess_number)
+                
+                var utcDate = new Date(Date.UTC(
+                    clientDate.getFullYear(),
+                    clientDate.getMonth(),
+                    clientDate.getDate(),
+                    clientDate.getHours(),
+                    clientDate.getMinutes(),
+                    clientDate.getSeconds()
+                ));
+                utcDate = utcDate.toISOString();
+                insert_row_php(guess_number, utcDate)
+                add_histogram()
                 
                 var share_text = date.textContent + '\n' + guess_number.toString() + '/15\n\n'
                 var display_share_text = ''
@@ -328,6 +352,18 @@
                 document.getElementById('end_response').textContent = 'GAME OVER'
                 document.getElementById('end_id').style.display = 'block'
                 document.getElementsByClassName("stats")[0].style.visibility = 'visible';
+
+                var utcDate = new Date(Date.UTC(
+                    clientDate.getFullYear(),
+                    clientDate.getMonth(),
+                    clientDate.getDate(),
+                    clientDate.getHours(),
+                    clientDate.getMinutes(),
+                    clientDate.getSeconds()
+                ));
+                utcDate = utcDate.toISOString();
+                insert_row_php(16, utcDate)
+                add_histogram()
 
 
                 for (let i=0; i<guess_number; i++){
@@ -700,6 +736,9 @@
             width:100%;
             z-index:10000;
             overflow-y:scroll;
+            padding-block-start: 30px;
+            box-sizing: border-box;
+            padding-right: 10px;
         }
         .end_menu .helper{
             display:inline-block;
@@ -711,13 +750,14 @@
             box-shadow: 10px 10px 60px #555;
             display: inline-block;
             height: auto;
-            max-width: 250px;
+            max-width: 275px;
             min-height: 100px;
             vertical-align: middle;
             width: 100%;
             position: relative;
             border-radius: 8px;
             padding: 15px 5%;
+
         }
 
         /* Closes How To Menu */
@@ -757,7 +797,7 @@
             font-weight: bold;
         }
 
-        canvas {
+        #fireworkCanvas {
             cursor: crosshair;
             display: block;
             z-index: -1;
@@ -767,9 +807,20 @@
             width: 100%;
             height: 100%;
         }
+
+        #scoreHistogram {
+            display: block;
+            z-index: 10001;
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 30px;
+        }
     </style>
 
-    <canvas id="canvas"></canvas>
+    <canvas id="fireworkCanvas"></canvas>
     <div class="end_menu" id="end_id">
         <span class="helper"></span>
         <div>
@@ -784,6 +835,7 @@
             <p id="share_text" style="white-space: pre-line;"></p>
             <button id="share_button" class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
             <button id="share_button" class="game_button" onclick="copy_to_clipboard()">Copy</button>
+            <canvas id="scoreHistogram" width="250px" height="200px">Canvas?</canvas>
             <p id="games_played" style="font-weight: bold;"></p>
             <p id="win_percentage" style="font-weight: bold;"></p>
             <p id="avg_score" style="font-weight: bold;"></p>
@@ -1033,6 +1085,9 @@
                     document.getElementById('end_response').textContent = 'YOU WON!'
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
+
+                
+                add_histogram()
                 
             //     <p id="end_date"></p>
             // <p id="end_score"></p>
@@ -1360,28 +1415,35 @@
         })();
 
         // now we will setup our basic variables for the demo
-        var canvas = document.getElementById( 'canvas' ),
-            ctx = canvas.getContext( '2d' ),
-            // full screen dimensions
-            cw = window.innerWidth,
-            ch = window.innerHeight,
-            // firework collection
-            fireworks = [],
-            // particle collection
-            particles = [],
-            // starting hue
-            hue = 120,
-            // when launching fireworks with a click, too many get launched at once without a limiter, one launch per 5 loop ticks
-            limiterTotal = click_limit,
-            limiterTick = 0,
-            // this will time the auto launches of fireworks, one launch per 80 loop ticks
-            timerTotal = firework_limit,
-            timerTick = 0,
-            mousedown = false,
-            // mouse x coordinate,
-            mx,
-            // mouse y coordinate
-            my;
+        try{
+            var canvas = document.getElementById( 'fireworkCanvas' ),
+                ctx = canvas.getContext( '2d' ),
+                // full screen dimensions
+                cw = window.innerWidth,
+                ch = window.innerHeight,
+                // firework collection
+                fireworks = [],
+                // particle collection
+                particles = [],
+                // starting hue
+                hue = 120,
+                // when launching fireworks with a click, too many get launched at once without a limiter, one launch per 5 loop ticks
+                limiterTotal = click_limit,
+                limiterTick = 0,
+                // this will time the auto launches of fireworks, one launch per 80 loop ticks
+                timerTotal = firework_limit,
+                timerTick = 0,
+                mousedown = false,
+                // mouse x coordinate,
+                mx,
+                // mouse y coordinate
+                my;
+        } catch (error) {
+            console.error('An error occurred:', error);
+            // Log the error or perform other error-handling actions
+        }
+
+    
                 
         // set canvas dimensions
         canvas.width = cw;
@@ -1621,9 +1683,144 @@
             mousedown = false;
         });
 
-        // once the window loads, we are ready for some fireworks!
+        // keep em going!
         loop();
     }
+
+    function insert_row_php(num_guess, utcDate) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "insert_data.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Handle response
+                // console.log(xhr.responseText);
+                console.log("Successfully inserted entry")
+            }
+        };
+
+        // Send request
+        xhr.send("num_guess=" + encodeURIComponent(num_guess)+ "&date=" + encodeURIComponent(utcDate));
+    }
+
+    function add_histogram() {
+        try {
+    
+        var clientDate = new Date();
+        var utcDate = new Date(Date.UTC(
+            clientDate.getFullYear(),
+            clientDate.getMonth(),
+            clientDate.getDate(),
+            clientDate.getHours(),
+            clientDate.getMinutes(),
+            clientDate.getSeconds()
+        ));
+        utcDate = utcDate.toISOString();
+
+        fetch('get_data.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'date=' + encodeURIComponent(utcDate)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Data received:", data);
+            const ctx = document.getElementById('scoreHistogram').getContext('2d');
+
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 5;
+            ctx.strokeRect(0, 0, ctx.width, ctx.height);
+
+            // Generate labels based on the range of num_guesses (e.g., 3 to 15)
+            const labels = Array.from({ length: 13 }, (_, i) => i + 3);
+            labels.push('X'); // Add 'X' at the end to represent 16
+
+            // Count occurrences of each num_guesses value
+            const counts = labels.map(label => {
+                const num = label === 'X' ? 16 : label;
+                return data.filter(n => n == num).length;
+            });
+
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Number of Guesses',
+                        data: counts,
+                        borderColor: '#000000',
+                        borderWidth: 1,
+                        backgroundColor: [
+                            'rgba(0, 156, 52, 1)',    // Green solid
+                            'rgba(0, 156, 52, 0.2)',  // Green 20% opacity
+                            'rgba(150, 75, 0, 1)',    // Brown solid
+                            'rgba(150, 75, 0, 0.3)',  // Brown 30% opacity
+                            'rgba(255, 165, 1, 1)',   // Orange solid
+                            'rgba(255, 165, 0, 0.3)', // Orange 30% opacity
+                            'rgba(255, 0, 0, 1)',     // Red solid
+                            'rgba(255, 0, 0, 0.2)',   // Red 20% opacity
+                            'rgba(0, 0, 255, 1)',     // Blue solid
+                            'rgba(0, 0, 255, 0.2)',   // Blue 20% opacity
+                            'rgba(0, 0, 0, 1)',       // Black solid
+                            'rgba(0, 0, 0, 0.5)',     // Black 50% opacity
+                            'rgba(0, 0, 0, 0.2)',     // Black 20% opacity
+                            'rgba(255, 255, 255, 1)'  // White
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                size: 10,
+                                minRotation: 90,
+                                autoSkip: false
+                            }
+
+                        },
+                        y: {
+                            grid: {
+                                display: true
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            
+
+
+            console.log("Histogram chart created successfully");
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+
+        // Critical code here
+        } catch (error) {
+            console.error('An error occurred:', error);
+            // Log the error or perform other error-handling actions
+        }
+    }
+
+
 
     </script>
 </body>
