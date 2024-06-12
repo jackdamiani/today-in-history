@@ -1726,10 +1726,13 @@
             ctx.strokeRect(0, 0, ctx.width, ctx.height);
 
             // Generate labels based on the range of num_guesses (e.g., 3 to 15)
-            const labels = Array.from({ length: 13 }, (_, i) => i + 3);
+            const labels = Array.from({ length: 14 }, (_, i) => (i + 3 === 16 ? 'X' : i + 3));
 
             // Count occurrences of each num_guesses value
-            const counts = labels.map(label => data.filter(num => num == label).length);
+            const counts = labels.map(label => {
+                const num = label === 'X' ? 16 : label;
+                return data.filter(num => num == label).length;
+            });
 
             const chart = new Chart(ctx, {
                 type: 'bar',
@@ -1753,7 +1756,8 @@
                             'rgba(0, 0, 255, 0.2)',   // Blue 20% opacity
                             'rgba(0, 0, 0, 1)',       // Black solid
                             'rgba(0, 0, 0, 0.5)',     // Black 50% opacity
-                            'rgba(0, 0, 0, 0.2)'      // Black 20% opacity
+                            'rgba(0, 0, 0, 0.2)',     // Black 20% opacity
+                            'rgba(255, 255, 255, 1)'  // White
                         ]
                     }]
                 },
