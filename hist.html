@@ -8,6 +8,9 @@
     <canvas id="scoreHistogram" width="400" height="200"></canvas>
     <script>
     function add_histogram() {
+        try {
+    
+    
         var clientDate = new Date();
         var utcDate = new Date(Date.UTC(
             clientDate.getFullYear(),
@@ -36,11 +39,19 @@
             console.log("Data received:", data);
             const ctx = document.getElementById('scoreHistogram').getContext('2d');
 
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 5;
+            ctx.strokeRect(0, 0, ctx.width, ctx.height);
+
             // Generate labels based on the range of num_guesses (e.g., 3 to 15)
             const labels = Array.from({ length: 13 }, (_, i) => i + 3);
+            labels.push('X'); // Add 'X' at the end to represent 16
 
             // Count occurrences of each num_guesses value
-            const counts = labels.map(label => data.filter(num => num == label).length);
+            const counts = labels.map(label => {
+                const num = label === 'X' ? 16 : label;
+                return data.filter(n => n == num).length;
+            });
 
             const chart = new Chart(ctx, {
                 type: 'bar',
@@ -64,7 +75,8 @@
                             'rgba(0, 0, 255, 0.2)',   // Blue 20% opacity
                             'rgba(0, 0, 0, 1)',       // Black solid
                             'rgba(0, 0, 0, 0.5)',     // Black 50% opacity
-                            'rgba(0, 0, 0, 0.2)'      // Black 20% opacity
+                            'rgba(0, 0, 0, 0.2)',     // Black 20% opacity
+                            'rgba(255, 255, 255, 1)'  // White
                         ]
                     }]
                 },
@@ -73,7 +85,13 @@
                         x: {
                             grid: {
                                 display: false
+                            },
+                            ticks: {
+                                size: 10,
+                                minRotation: 90,
+                                autoSkip: false
                             }
+
                         },
                         y: {
                             grid: {
@@ -89,11 +107,21 @@
                     }
                 }
             });
+
+            
+
+
             console.log("Histogram chart created successfully");
         })
         .catch(error => {
             console.error("Error fetching data:", error);
         });
+
+        // Critical code here
+        } catch (error) {
+            console.error('An error occurred:', error);
+            // Log the error or perform other error-handling actions
+        }
     }
 
     add_histogram();
