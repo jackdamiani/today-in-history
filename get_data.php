@@ -21,7 +21,7 @@
     $date = $date->format('Y-m-d');
 
     // Prepare and execute the SQL query
-    $sql = "SELECT num_guesses FROM test WHERE passed = 1 AND date = ?";
+    $sql = "SELECT num_guesses FROM test WHERE date = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $date);
     $stmt->execute();
