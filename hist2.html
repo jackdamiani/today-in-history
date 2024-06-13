@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Score Histogram</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="date-selector">
+        <select id="day-select"></select>
+        <select id="month-select"></select>
+        <select id="year-select"></select>
+        <button id="submit-button">Submit</button>
+    </div>
+
+    <canvas id="scoreHistogram" width="300" height="200"></canvas>
+    <script>
+    
+
+    function populateDays() {
+        const daySelect = document.getElementById('day-select');
+        for (let day = 1; day <= 31; day++) {
+            const option = document.createElement('option');
+            option.value = day;
+            option.textContent = day;
+            daySelect.appendChild(option);
+        }
+    }
+
+    // Function to populate months
+    function populateMonths() {
+        const monthSelect = document.getElementById('month-select');
+        const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        months.forEach((month, index) => {
+            const option = document.createElement('option');
+            option.value = index + 1;
+            option.textContent = month;
+            monthSelect.appendChild(option);
+        });
+    }
+
+    // Function to populate years
+    function populateYears(startYear, endYear) {
+        const yearSelect = document.getElementById('year-select');
+        for (let year = startYear; year <= endYear; year++) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearSelect.appendChild(option);
+        }
+    }
+
+    // Function to set default values to today's date
+    function setDefaultDate() {
+        const today = new Date();
+        document.getElementById('day-select').value = today.getDate();
+        document.getElementById('month-select').value = today.getMonth() + 1; // Months are zero-based
+        document.getElementById('year-select').value = today.getFullYear();
+    }
+
+    // Populate the selects on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        populateDays();
+        populateMonths();
+        const currentYear = new Date().getFullYear();
+        populateYears(currentYear, currentYear); // Example: last 100 years
+        setDefaultDate();
+    });
+
+    // Add event listener to the submit button
+    document.getElementById('submit-button').addEventListener('click', () => {
+        const day = document.getElementById('day-select').value;
+        const month = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
+        const year = document.getElementById('year-select').value;
+        const selectedDate = new Date(year, month, day);
+        console.log(`Selected date: ${selectedDate.toDateString()}`);
+
+    
+
+        add_histogram(selectedDate)
+    });
+
+    function add_histogram(date_) {
+        try {
+    
+    
+        var clientDate = new Date(date_);
+        var utcDate = new Date(Date.UTC(
+            clientDate.getFullYear(),
+            clientDate.getMonth(),
+            clientDate.getDate(),
+            clientDate.getHours(),
+            clientDate.getMinutes(),
+            clientDate.getSeconds()
+        ));
+        utcDate = utcDate.toISOString();
+
+
+        fetch('get_data.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'date=' + encodeURIComponent(utcDate)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Data received:", data);
+            const ctx = document.getElementById('scoreHistogram').getContext('2d');
+
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 5;
+            ctx.strokeRect(0, 0, ctx.width, ctx.height);
+
+            // Generate labels based on the range of num_guesses (e.g., 3 to 15)
+            const labels = Array.from({ length: 13 }, (_, i) => i + 3);
+            labels.push('X'); // Add 'X' at the end to represent 16
+
+            // Count occurrences of each num_guesses value
+            const counts = labels.map(label => {
+                const num = label === 'X' ? 16 : label;
+                return data.filter(n => n == num).length;
+            });
+
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Number of Guesses',
+                        data: counts,
+                        borderColor: '#000000',
+                        borderWidth: 1,
+                        backgroundColor: [
+                            'rgba(0, 156, 52, 1)',    // Green solid
+                            'rgba(0, 156, 52, 0.2)',  // Green 20% opacity
+                            'rgba(150, 75, 0, 1)',    // Brown solid
+                            'rgba(150, 75, 0, 0.3)',  // Brown 30% opacity
+                            'rgba(255, 165, 1, 1)',   // Orange solid
+                            'rgba(255, 165, 0, 0.3)', // Orange 30% opacity
+                            'rgba(255, 0, 0, 1)',     // Red solid
+                            'rgba(255, 0, 0, 0.2)',   // Red 20% opacity
+                            'rgba(0, 0, 255, 1)',     // Blue solid
+                            'rgba(0, 0, 255, 0.2)',   // Blue 20% opacity
+                            'rgba(0, 0, 0, 1)',       // Black solid
+                            'rgba(0, 0, 0, 0.5)',     // Black 50% opacity
+                            'rgba(0, 0, 0, 0.2)',     // Black 20% opacity
+                            'rgba(255, 255, 255, 1)'  // White
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                size: 10,
+                                minRotation: 90,
+                                autoSkip: false
+                            }
+
+                        },
+                        y: {
+                            grid: {
+                                display: true
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            
+
+
+            console.log("Histogram chart created successfully");
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+
+        // Critical code here
+        } catch (error) {
+            console.error('An error occurred:', error);
+            // Log the error or perform other error-handling actions
+        }
+    }
+
+
+
+
+    </script>
+</body>
+</html>
