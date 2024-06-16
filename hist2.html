@@ -23,8 +23,11 @@
     </div>
 
     <canvas id="scoreHistogram" width="500px" height="200px"></canvas>
-    <script>
+    <h1 id="numPlayers"></h1>
+    <h1 id="avgScore"></h1>
     
+
+    <script>
 
     function populateDays() {
         const daySelect = document.getElementById('day-select');
@@ -123,6 +126,17 @@
         })
         .then(data => {
             console.log("Data received:", data);
+            const numPlayers = data.length;
+            const sum = data.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+            const avgScore = (numPlayers / sum).toFixed(2);
+
+
+            const h1NP = document.getElementById('numPlayers');
+            h1NP.textContent = numPlayers;
+
+            const h1AS = document.getElementById('avgScore');
+            h1AS.textContent = avgScore;
+
             const ctx = document.getElementById('scoreHistogram').getContext('2d');
 
             ctx.strokeStyle = 'black';
