@@ -128,7 +128,7 @@
             console.log("Data received:", data);
             const numPlayers = data.length;
             const sum = data.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-            const avgScore = (numPlayers / sum).toFixed(2);
+            const avgScore = (sum/ numPlayers).toFixed(2);
 
 
             const h1NP = document.getElementById('numPlayers');
