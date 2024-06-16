@@ -153,6 +153,10 @@
                 return data.filter(n => n == num).length;
             });
 
+            if (chart) {
+                chart.destroy(); // Destroy the existing chart instance
+            }
+
             const chart = new Chart(ctx, {
                 type: 'bar',
                 data: {
