@@ -63,22 +63,12 @@
 
         function insert_avg(){
 
-            // next date start
-            let utcDate = '2024-07-08T00:00:00Z';
-            let date = new Date(utcDate);
-            date.setDate(date.getDate() + 1);
-            let newDate = date.toISOString().split('T')[0];
-            let encodedDate = encodeURIComponent(newDate);
-            let body = 'date=' + encodedDate;
-            // next date end
-            console.log(newDate)
-
             fetch('get_data.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: 'date=' + encodeURIComponent(newDate)
+                body: 'date=' + encodeURIComponent(utcDate)
             })
             .then(response => {
                 if (!response.ok) {
@@ -91,7 +81,8 @@
                 const numPlayers = data.length;
                 if(numPlayers == 0){
                     const h1AS = document.getElementById('s2_4');
-                    h1AS.textContent = "You're the First Player";
+                    h1AS.textContent = "You're the First Player!";
+                    console.log("First Player")
                 }
                 else{
                     const sum = data.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -99,6 +90,7 @@
 
                     const h1AS = document.getElementById('s2_4');
                     h1AS.textContent = avgScore;
+                    console.log("Today's Average", avgScore)
                 }
             })
         }
@@ -114,7 +106,7 @@
             // writes in avg score
             const gridItem = document.getElementById('s2_4');
             insert_avg()
-            gridItem.innerText = '99'; 
+            gridItem.innerText = ''; 
 
         }
 
