@@ -64,9 +64,9 @@
         function insert_avg(){
 
             // next date start
-            let utcDate = '2024-07-07T00:00:00Z';
+            let utcDate = '2024-07-08T00:00:00Z';
             let date = new Date(utcDate);
-            date.setDate(date.getDate() + 2);
+            date.setDate(date.getDate() + 1);
             let newDate = date.toISOString().split('T')[0];
             let encodedDate = encodeURIComponent(newDate);
             let body = 'date=' + encodedDate;
