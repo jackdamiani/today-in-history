@@ -62,12 +62,23 @@
         document.cookie = "clientDate=" + encodeURIComponent(utcDate) + "; path=/";
 
         function insert_avg(){
+
+            // next date start
+            let utcDate = '2024-07-07T00:00:00Z';
+            let date = new Date(utcDate);
+            date.setDate(date.getDate() + 1);
+            let newDate = date.toISOString().split('T')[0];
+            let encodedDate = encodeURIComponent(newDate);
+            let body = 'date=' + encodedDate;
+            // next date end
+            console.log(newDate)
+
             fetch('get_data.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: 'date=' + encodeURIComponent(utcDate)
+                body: 'date=' + encodeURIComponent(newDate)
             })
             .then(response => {
                 if (!response.ok) {
