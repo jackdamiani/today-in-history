@@ -61,6 +61,40 @@
         utcDate = utcDate.toISOString();
         document.cookie = "clientDate=" + encodeURIComponent(utcDate) + "; path=/";
 
+        function insert_avg(){
+
+            fetch('get_data.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'date=' + encodeURIComponent(utcDate)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Data received:", data);
+                const numPlayers = data.length;
+                if(numPlayers == 0){
+                    const h1AS = document.getElementById('s2_4');
+                    h1AS.textContent = "You're the First Player!";
+                    console.log("First Player")
+                }
+                else{
+                    const sum = data.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+                    const avgScore = (sum / numPlayers).toFixed(1);
+
+                    const h1AS = document.getElementById('s2_4');
+                    h1AS.textContent = avgScore;
+                    console.log("Today's Average", avgScore)
+                }
+            })
+        }
+
 
         window.onload = function() {
             document.getElementById("end_id").style.visiblity = 'hidden';
@@ -68,6 +102,11 @@
                 document.getElementById("help_menu_id").style.visiblity = 'visible';
                 document.getElementsByClassName("stats")[0].style.visibility = 'hidden';
             }
+
+            // writes in avg score
+            const gridItem = document.getElementById('s2_4');
+            insert_avg()
+            gridItem.innerText = ''; 
 
         }
 
@@ -556,12 +595,13 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: auto auto auto auto;
+            grid-template-columns: auto auto auto auto auto;
             /* overflow: scroll; */
             /* background-color: #888; */
-            padding-right: 15vw;
-            padding-left: 0vw; 
+            /* padding-right: 15vw;
+            padding-left: 0vw;  */
             row-gap: 10px;
+            place-items: center;
         }
 
         .grid-facts {
@@ -968,76 +1008,91 @@
         <div class="square" id="s1_1"></div>
         <div class="square" id="s1_2"></div>
         <div class="square" id="s1_3"></div>
+        <div class="square_empty" id="s1_4" style="font-size: 10px; white-space: nowrap; justify-self: start;">Today's Average</div>
         
         <div class="square_empty" id="s2_0"></div>
         <div class="square" id="s2_1"></div>
         <div class="square" id="s2_2"></div>
         <div class="square" id="s2_3"></div>
+        <div class="square_empty" id="s2_4" style="font-size: 10px; white-space: nowrap; justify-self: start;"></div>
     
         <div class="square_empty" id="s3_0"></div>
         <div class="square" id="s3_1"></div>
         <div class="square" id="s3_2"></div>
         <div class="square" id="s3_3"></div>
+        <div class="square_empty" id="s3_4"></div>
 
         <div class="square_empty" id="s4_0"></div>
         <div class="square" id="s4_1"></div>
         <div class="square" id="s4_2"></div>
         <div class="square" id="s4_3"></div>
+        <div class="square_empty" id="s4_4"></div>
 
         <div class="square_empty" id="s5_0"></div>
         <div class="square" id="s5_1"></div>
         <div class="square" id="s5_2"></div>
         <div class="square" id="s5_3"></div>
+        <div class="square_empty" id="s5_4"></div>
 
         <div class="square_empty" id="s6_0"></div>
         <div class="square" id="s6_1"></div>
         <div class="square" id="s6_2"></div>
         <div class="square" id="s6_3"></div>
+        <div class="square_empty" id="s6_4"></div>
 
         <div class="square_empty" id="s7_0"></div>
         <div class="square" id="s7_1"></div>
         <div class="square" id="s7_2"></div>
         <div class="square" id="s7_3"></div>
+        <div class="square_empty" id="s7_4"></div>
 
         <div class="square_empty" id="s8_0"></div>
         <div class="square" id="s8_1"></div>
         <div class="square" id="s8_2"></div>
         <div class="square" id="s8_3"></div>
+        <div class="square_empty" id="s8_4"></div>
 
         <div class="square_empty" id="s9_0"></div>
         <div class="square" id="s9_1"></div>
         <div class="square" id="s9_2"></div>
         <div class="square" id="s9_3"></div>
+        <div class="square_empty" id="s9_4"></div>
 
         <div class="square_empty" id="s10_0"></div>
         <div class="square" id="s10_1"></div>
         <div class="square" id="s10_2"></div>
         <div class="square" id="s10_3"></div>
+        <div class="square_empty" id="s10_4"></div>
 
         <div class="square_empty" id="s11_0"></div>
         <div class="square" id="s11_1"></div>
         <div class="square" id="s11_2"></div>
         <div class="square" id="s11_3"></div>
+        <div class="square_empty" id="s11_4"></div>
 
         <div class="square_empty" id="s12_0"></div>
         <div class="square" id="s12_1"></div>
         <div class="square" id="s12_2"></div>
         <div class="square" id="s12_3"></div>
+        <div class="square_empty" id="s12_4"></div>
 
         <div class="square_empty" id="s13_0"></div>
         <div class="square" id="s13_1"></div>
         <div class="square" id="s13_2"></div>
         <div class="square" id="s13_3"></div>
+        <div class="square_empty" id="s13_4"></div>
 
         <div class="square_empty" id="s14_0"></div>
         <div class="square" id="s14_1"></div>
         <div class="square" id="s14_2"></div>
         <div class="square" id="s14_3"></div>
+        <div class="square_empty" id="s14_4"></div>
 
         <div class="square_empty" id="s15_0"></div>
         <div class="square" id="s15_1"></div>
         <div class="square" id="s15_2"></div>
         <div class="square" id="s15_3"></div>
+        <div class="square_empty" id="s15_4"></div>
     </div>
 
 
