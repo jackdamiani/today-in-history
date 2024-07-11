@@ -584,6 +584,27 @@
             navigator.share(shareObject)
         }
 
+        // function hardrefresh(){
+        //     console.log('hard refreshing')
+        //     function urlWithRndQueryParam(url, paramName) {
+        //         const ulrArr = url.split('#');
+        //         const urlQry = ulrArr[0].split('?');
+        //         const usp = new URLSearchParams(urlQry[1] || '');
+        //         usp.set(paramName || '_z', `${Date.now()}`);
+        //         urlQry[1] = usp.toString();
+        //         ulrArr[0] = urlQry.join('?');
+        //         return ulrArr.join('#');
+        //     }
+
+        //     function handleHardReload(url) {
+        //         window.location.href = urlWithRndQueryParam(url);
+        //         // This is to ensure reload with url's having '#'
+        //         window.location.reload();
+        //     }
+
+        //     handleHardReload(window.location.href);
+        // }
+
 
     </script>
 
@@ -878,6 +899,31 @@
             height: 100%;
             margin: 30px;
         }
+
+        footer {
+            /* position: fixed; */
+            bottom: 0;
+            width: 100%;
+            background-color: lightblue; /* Dark background color */
+            color: #000; /* White text color */
+            text-align: center;
+            padding: 10px 0;
+            font-family: Courier New;
+            font-size: 14px;
+            z-index: 1000; /* Ensures the footer stays on top */
+        }
+
+        .copyright {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copyright::before {
+            content: "\00A9"; /* Unicode for the copyright symbol */
+            margin-right: 5px;
+        }
+
     </style>
 
     <canvas id="fireworkCanvas"></canvas>
@@ -954,6 +1000,9 @@
                     <div class="square" style="background-color: rgba(0,0,0,.2)"></div> 
                     Black = 1000+ Years off
                 </div>
+
+                <!-- <br>
+                If events not loading, <button class="game_button", id="game_button" onclick="hardrefresh()">Click Here</button> -->
 
             </p>
         </div>
@@ -1905,4 +1954,11 @@
 
 
     </script>
+
+    <br>
+    <footer>
+        <div class="copyright">
+            2024 Damiani Kids Company
+        </div>
+    </footer>
 </body>
