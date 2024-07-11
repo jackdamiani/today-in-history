@@ -205,7 +205,7 @@ var today_in_history = {
     "0722": {"1933":"Wiley Post completes the first solo flight around the world. Lands back in New York after 7 days 18 hours", "1982":"Australian Dick Smith completes first solo helicopter flight around the world. Lands back in Dallas, Texas after almost a year since departure", "1997":"Greg Maddux of the Atlanta Braves pitches a 76 pitch complete game (averages 2.8 pitches per out)"},
     "0723": {"1904":"At the St. Louis World Fair, ice cream vender ran out of paper cups. Syrian Ernest A. Hamwi curled a waffle cookie, introducing ice cream cones into the mainstream", "2000":"Tiger Woods wins the British Open by 8 strokes. Becomes youngest to win all 4 golf majors at 24 years old", "2015":"Kepler-452b discovered by NASA. Known to be the most Earth-like planet found to date. 1,400 light years away"},
     "0724": {"1847":"Brigham Young and the first Mormon Pioneers arrive in Salt Lake City, Utah. Celebrated every year as Pioneer Day", "1911":"The Lost City of the Incas, Macchu Picchu, rediscovered by American archologist Hiram Bingham", "2001":"Simeon Saxe-Coburg-Gotha, who as a child was the last Tsar of Bulgaria, is elected Prime Minister of Bulgaria. First former dictator to regain leadership through democracy"},
-    "0725": {"1952":"Puerto Rico Constitution Day. First Constituition signed giving official self-governing US commonwealth status", " ":"ah ah ah", "  ":""},
+    "0725": {"1952":"Puerto Rico Constitution Day. First Constituition signed giving official self-governing US commonwealth status", " ":"cmon bb", "  ":""},
     "0726": {"":"", " ":"", "  ":""},
     "0727": {"":"", " ":"", "  ":""},
     "0728": {"":"", " ":"", "  ":""},

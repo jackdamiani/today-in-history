@@ -585,15 +585,18 @@
         }
 
         function hardrefresh(){
-            async function handleHardReload(url) {
-            await fetch(url, {
-                    headers: {
-                        Pragma: 'no-cache',
-                        Expires: '-1',
-                        'Cache-Control': 'no-cache',
-                    },
-                });
-                window.location.href = url;
+            function urlWithRndQueryParam(url, paramName) {
+                const ulrArr = url.split('#');
+                const urlQry = ulrArr[0].split('?');
+                const usp = new URLSearchParams(urlQry[1] || '');
+                usp.set(paramName || '_z', `${Date.now()}`);
+                urlQry[1] = usp.toString();
+                ulrArr[0] = urlQry.join('?');
+                return ulrArr.join('#');
+            }
+
+            function handleHardReload(url) {
+                window.location.href = urlWithRndQueryParam(url);
                 // This is to ensure reload with url's having '#'
                 window.location.reload();
             }
