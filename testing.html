@@ -585,15 +585,20 @@
         }
 
         function hardrefresh(){
-            if ('caches' in window) {
-                caches.keys().then(function(cacheNames) {
-                    cacheNames.forEach(function(cacheName) {
-                        caches.delete(cacheName);
-                    });
-                }).then(function() {
-                    window.location.reload(true);
+            async function handleHardReload(url) {
+            await fetch(url, {
+                    headers: {
+                        Pragma: 'no-cache',
+                        Expires: '-1',
+                        'Cache-Control': 'no-cache',
+                    },
                 });
-}
+                window.location.href = url;
+                // This is to ensure reload with url's having '#'
+                window.location.reload();
+            }
+
+            handleHardReload(window.location.href);
         }
 
 
