@@ -585,8 +585,15 @@
         }
 
         function hardrefresh(){
-            location.reload(true);
-            window.location.href = window.location.href.split('?')[0] + '?cachebuster=' + new Date().getTime();
+            if ('caches' in window) {
+                caches.keys().then(function(cacheNames) {
+                    cacheNames.forEach(function(cacheName) {
+                        caches.delete(cacheName);
+                    });
+                }).then(function() {
+                    window.location.reload(true);
+                });
+}
         }
 
 
