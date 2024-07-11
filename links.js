@@ -205,7 +205,7 @@ var links={
     "0722": ["https://www.history.com/this-day-in-history/wiley-post-flies-solo-around-the-world", "https://en.wikipedia.org/wiki/Spirit_of_Texas#:~:text=Ross%20Perot%2C%20Jr.%20and%20Jay%20Coburn%20used%20the,Texas%20and%20successfully%20completed%20on%20July%2022%201983.", "https://www.australiangeographic.com.au/blogs/on-this-day/2013/11/on-this-day-dick-smiths-around-the-world-solo-flight/"],
     "0723": ["https://en.wikipedia.org/wiki/Ice_cream_cone", "https://en.wikipedia.org/wiki/List_of_career_achievements_by_Tiger_Woods", "https://en.wikipedia.org/wiki/Kepler-452b"],
     "0724": ["https://en.wikipedia.org/wiki/Pioneer_Day", "https://www.history.com/this-day-in-history/machu-picchu-discovered", "https://en.wikipedia.org/wiki/Simeon_Saxe-Coburg-Gotha"],
-    "0725": ["https://en.wikipedia.org/wiki/Political_status_of_Puerto_Rico", "", ""],
+    "0725": ["https://en.wikipedia.org/wiki/Political_status_of_Puerto_Rico", "https://en.wikipedia.org/wiki/History_of_in_vitro_fertilisation#:~:text=In%201977%2C%20Steptoe%20and%20Edwards%20successfully%20carried%20out,1978%20in%20Oldham%20General%20Hospital%2C%20Greater%20Manchester%2C%20UK.", "https://en.wikipedia.org/wiki/K._R._Narayanan"],
     "0726": ["", "", ""],
     "0727": ["", "", ""],
     "0728": ["", "", ""],
