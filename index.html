@@ -61,7 +61,7 @@
         utcDate = utcDate.toISOString();
         document.cookie = "clientDate=" + encodeURIComponent(utcDate) + "; path=/";
 
-        function insert_avg(){
+        function insert_square_stats(){
 
             fetch('get_data.php', {
                 method: 'POST',
@@ -83,6 +83,9 @@
                     const h1AS = document.getElementById('s2_4');
                     h1AS.textContent = "You're the First Player!";
                     console.log("First Player")
+
+                    const h1BS = document.getElementById('s4_4');
+                    h1BS.textContent = ":)";
                 }
                 else{
                     const sum = data.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -91,6 +94,13 @@
                     const h1AS = document.getElementById('s2_4');
                     h1AS.textContent = avgScore;
                     console.log("Today's Average", avgScore)
+
+                    const bestScore = data.reduce((min, currentValue) => Math.min(min, currentValue), Infinity);
+
+                    const h1BS = document.getElementById('s4_4');
+                    h1BS.textContent = bestScore;
+                    console.log("Today's Best Score", bestScore)
+
                 }
             })
         }
@@ -105,7 +115,7 @@
 
             // writes in avg score
             const gridItem = document.getElementById('s2_4');
-            insert_avg()
+            insert_square_stats()
             gridItem.innerText = ''; 
 
         }
@@ -678,6 +688,13 @@
             line-height: 5vh;
         }
 
+        .square_stats {
+            font-size: 10px; 
+            white-space: nowrap; 
+            justify-self: start;
+            text-align: left;
+        }
+
         div.form
         {
             display: block;
@@ -1057,25 +1074,25 @@
         <div class="square" id="s1_1"></div>
         <div class="square" id="s1_2"></div>
         <div class="square" id="s1_3"></div>
-        <div class="square_empty" id="s1_4" style="font-size: 10px; white-space: nowrap; justify-self: start;">Today's Average</div>
+        <div class="square_empty square_stats" id="s1_4">Today's Average</div>
         
         <div class="square_empty" id="s2_0"></div>
         <div class="square" id="s2_1"></div>
         <div class="square" id="s2_2"></div>
         <div class="square" id="s2_3"></div>
-        <div class="square_empty" id="s2_4" style="font-size: 10px; white-space: nowrap; justify-self: start;"></div>
+        <div class="square_empty square_stats" id="s2_4"></div>
     
         <div class="square_empty" id="s3_0"></div>
         <div class="square" id="s3_1"></div>
         <div class="square" id="s3_2"></div>
         <div class="square" id="s3_3"></div>
-        <div class="square_empty" id="s3_4"></div>
+        <div class="square_empty square_stats" id="s3_4">Best Score</div>
 
         <div class="square_empty" id="s4_0"></div>
         <div class="square" id="s4_1"></div>
         <div class="square" id="s4_2"></div>
         <div class="square" id="s4_3"></div>
-        <div class="square_empty" id="s4_4"></div>
+        <div class="square_empty square_stats" id="s4_4"></div>
 
         <div class="square_empty" id="s5_0"></div>
         <div class="square" id="s5_1"></div>
