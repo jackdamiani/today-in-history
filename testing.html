@@ -1398,7 +1398,7 @@
         console.log("game started")
         guess_arr_temp = getCookie("guess_arr")
         console.log(guess_arr_temp)
-        guess_arr_temp = guess_arr_temp.replace(/[\[\]]/g, '');
+        guess_arr_temp = guess_arr_temp.replace(/[\[\]]/g, '').replace(/['"]+/g, '');
         console.log(guess_arr_temp)
 
         // Split the string by commas
