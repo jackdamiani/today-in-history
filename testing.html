@@ -1395,18 +1395,8 @@
     fact3_obj.textContent = fact3;
 
     if(getCookie("game_started") == "True"){
-        console.log("game started")
-        guess_arr_temp = getCookie("guess_arr")
-        console.log(guess_arr_temp)
-        guess_arr_temp = guess_arr_temp.replace(/[\[\]]/g, '').replace(/['"]+/g, '');
-        console.log(guess_arr_temp)
-
-        // Split the string by commas
-        let guessArraystr = guess_arr_temp.split(',');
-        console.log(guessArraystr)
-        // Convert the split string values to integers
-        let guessArray = guessArraystr.map(Number);
-
+        console.log("Game started")
+        guessArray = parseGuessArr()
         console.log(guessArray);
     }
     var guess_number = 1;    
@@ -1543,8 +1533,13 @@
         return avg_score.toFixed(2)
     }
 
-    function parseGuessArr(arr_){
-        return 0
+    function parseGuessArr(){
+        guess_arr_temp = getCookie("guess_arr");
+        guess_arr_temp = guess_arr_temp.replace(/[\[\]]/g, '').replace(/['"]+/g, '');
+        let guessArraystr = guess_arr_temp.split(',');
+        let guessArray = guessArraystr.map(Number);
+
+        return guessArray;
     }
 
 
