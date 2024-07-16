@@ -118,6 +118,8 @@
             insert_square_stats()
             gridItem.innerText = ''; 
 
+            
+
         }
 
 
@@ -206,6 +208,7 @@
                 let bracket = "["
                 let val = bracket.concat(year_input.toString(), "]")
                 setCookie("guess_arr", val, 0, 2);
+                setCookie("game_started", True, 0, 2);
                 // avg_score = guess_number
             }
             else{
@@ -1391,6 +1394,9 @@
     fact3_obj = document.getElementById('fact3');
     fact3_obj.textContent = fact3;
 
+    if(getCookie("game_started") == True){
+        console.log("GAME STARTED")
+    }
     var guess_number = 1;    
 
     var output_grid = [
