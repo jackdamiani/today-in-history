@@ -1395,7 +1395,17 @@
     fact3_obj.textContent = fact3;
 
     if(getCookie("game_started") == "True"){
-        console.log("GAME STARTED")
+        console.log("game started")
+        guess_arr_temp = getCookie("guess_arr")
+        guess_arr_temp = guess_arr_temp.replace(/[\[\]]/g, '');
+
+        // Split the string by commas
+        let guessArraystr = guess_arr_temp.split(',');
+
+        // Convert the split string values to integers
+        let guessArray = guessArraystr.map(Number);
+
+        console.log(guessArray);
     }
     var guess_number = 1;    
 
