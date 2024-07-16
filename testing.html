@@ -192,6 +192,24 @@
 
         function guess_button_onclick(){
 
+            if(guess_number == 1){
+                let bracket = "["
+                let val = bracket.concat(year_input, "]")
+                setCookie("guess_arr", val, 0, 2);
+                avg_score = guess_number
+            }
+            else{
+                let arr_str = getCookie("guess_arr")
+                let arr = arr_str.substring(1, arr_str.length-1)
+                arr = arr.replace(/['"]+/g, '')
+                score_vals = arr.split(',');
+                score_vals.push(year_input.toString())
+                setCookie("guess_arr", JSON.stringify(score_vals), 0, 2)
+
+
+                // avg_score = parseGuessArr("score_arr")
+                
+            }
             
             var year_input = document.getElementById('year_input').value
             year_input = year_input.replace(/\D/g,'');
@@ -1504,6 +1522,10 @@
         }
         avg_score = running_sum / score_vals.length
         return avg_score.toFixed(2)
+    }
+
+    function parseGuessArr(arr_){
+        return 0
     }
 
 
