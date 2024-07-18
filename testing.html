@@ -240,7 +240,6 @@
                 output_grid[guess_number-1][0] = set_colors(box1_str, 0, year1)
             }
             else{
-                console.log(output_grid)
                 output_grid[guess_number-1][0] = set_colors(box1_str, year_diff1, year1)
             }
 
@@ -1244,6 +1243,26 @@
             return display_
         }
 
+        var guess_number = 1;    
+
+        var output_grid = [
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ]
+
         setup()
         function setup(){
             if (getCookie("played_today") == "True"){
@@ -1415,25 +1434,7 @@
         guessArray = parseGuessArr()
         console.log(guessArray);
     }
-    var guess_number = 1;    
-
-    var output_grid = [
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0]
-    ]
+    
 
     $(window).load(function () {
         $(".trigger_help_menu").click(function(){
