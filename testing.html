@@ -193,6 +193,7 @@
 
 
         function guess_button_onclick(year_input=1){
+            console.log("in function ", year_input)
 
             var year_input = document.getElementById('year_input').value
             year_input = year_input.replace(/\D/g,'');
@@ -1384,6 +1385,8 @@
                 var guess_arr = parseGuessArr()
                 for (let i = 0; i < guess_arr.length; i++){
                     console.log("Guess arr ", guess_arr[i])
+                    console.log("Guess arr ", typeof(guess_arr[i]))
+
                     guess_button_onclick(guess_arr[i])
                 }
             }
