@@ -208,24 +208,26 @@
                 var guess_number = 1;
             }
 
-            if(guess_number == 1){
-                let bracket = "["
-                let val = bracket.concat(year_input.toString(), "]")
-                setCookie("guess_arr", val, 0, 2);
-                setCookie("game_started", "True", 0, 2);
-                // avg_score = guess_number
-            }
-            else{
-                let arr_str = getCookie("guess_arr")
-                let arr = arr_str.substring(1, arr_str.length-1)
-                arr = arr.replace(/['"]+/g, '')
-                score_vals = arr.split(',');
-                score_vals.push(year_input.toString())
-                setCookie("guess_arr", JSON.stringify(score_vals), 0, 2)
+            if (parseAvgScore().length < guess_number){
+                if(guess_number == 1 || getCookie("game_started") == "True"){
+                    let bracket = "["
+                    let val = bracket.concat(year_input.toString(), "]")
+                    setCookie("guess_arr", val, 0, 2);
+                    setCookie("game_started", "True", 0, 2);
+                    // avg_score = guess_number
+                }
+                else{
+                    let arr_str = getCookie("guess_arr")
+                    let arr = arr_str.substring(1, arr_str.length-1)
+                    arr = arr.replace(/['"]+/g, '')
+                    score_vals = arr.split(',');
+                    score_vals.push(year_input.toString())
+                    setCookie("guess_arr", JSON.stringify(score_vals), 0, 2)
 
 
-                // avg_score = parseGuessArr("score_arr")
-                
+                    // avg_score = parseGuessArr("score_arr")
+                    
+                }
             }
             
 
