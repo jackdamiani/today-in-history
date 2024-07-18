@@ -194,7 +194,7 @@
         function guess_button_onclick(year_input=-1){
 
             console.log("in function ", year_input)
-            if (year_input == -1 && getCookie("game_started") != "True"){
+            if (year_input == -1){
                 var year_input = document.getElementById('year_input').value
                 year_input = year_input.replace(/\D/g,'');
                 if (year_input > 2024 || year_input == ''){
@@ -205,13 +205,13 @@
 
                 if (typeof(guess_number) == 'undefined'){
                     console.log('starting...')
-                    var guess_number = 1
+                    let guess_number = 1
                 }
 
 
             }
             else{
-                var guess_number = 1;
+                let guess_number = 1;
             }
 
             if (parseAvgScore().length < guess_number){
