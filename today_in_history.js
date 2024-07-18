@@ -210,7 +210,7 @@ var today_in_history = {
     "0727": {"1866":"Completion of the first transatlantic telegraph cable. Connected Valentia Island, Ireland to Newfoundland, Canada", "1921":"Discovery of insulin. Frederick Bantin and Charles Best isolate the insulin protein at the University of Toronto", "1953":"Armistace 'ends' the Korean War. Divides Korea between North and South at the 38th parallel"},
     "0728": {"1893":"Kate Sheppard delivers her third petition demanding women's suffrage in New Zealand. Signed by 1/5 of the adult population. Women got the right to vote in the general election of this year", "1959":"Hawaii's first US election sends first Asian-American to Congress. Hiram Fong in the Senate", "1996":"First Gold Medals granted for beach volleyball. Americans Karch Kiraly and Kent Steffs win (only countries allowed to compete were the US and Brazil this time)"},
     "0729": {"1958":"US President Eisenhower signs the National Aeronautics and Space Act, creating NASA", "1993":"Javier Sotomayor of Cuba sets the never-surpassed high jump record of 8 feet 1/4 in (2.45m)", "2013":"Armed Robbers at the Carlton Hotel in Cannes, France steal $136 million in gemstones and watches"},
-    "0730": {"":"", " ":"", "  ":""},
+    "0730": {"1930":"First FIFA World Cup. Host Uruguay beats Argentina 4-2 in Montevideo", "1965":"US President Lyndon B. Johnson signs Medicare and Medicaid Act, creating these two programs. Effective the next year", "1976":"Caitlin Jenner (then Bruce) sets world record for Olympic Decathalon and wins gold in Montreal with 8,616 points"},
     "0731": {"":"", " ":"", "  ":""},
     "0801": {"":"", " ":"", "  ":""},
     "0802": {"":"", " ":"", "  ":""},
