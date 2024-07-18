@@ -206,8 +206,9 @@
 
             console.log(parseGuessArr())
             console.log(parseGuessArr().length)
+            console.log(guess_number)
             if (parseGuessArr().length < guess_number){
-                if(guess_number == 1 || getCookie("game_started") == "True"){
+                if(guess_number == 1 || getCookie("game_started") != "True"){
                     let bracket = "["
                     let val = bracket.concat(year_input.toString(), "]")
                     setCookie("guess_arr", val, 0, 2);
