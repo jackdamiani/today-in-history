@@ -214,6 +214,9 @@
                 let guess_number = 1;
             }
 
+            console.log(parseAvgScore())
+            console.log(parseAvgScore().length)
+            
             if (parseAvgScore().length < guess_number){
                 if(guess_number == 1 || getCookie("game_started") == "True"){
                     let bracket = "["
