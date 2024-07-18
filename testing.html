@@ -203,6 +203,11 @@
                     return false;
                 }
 
+                if (typeof(guess_number) == 'undefined'){
+                    console.log('starting...')
+                    var guess_number = 1
+                }
+
 
             }
             else{
@@ -1418,9 +1423,6 @@
                     guess_button_onclick(guess_arr[i])
                 }
             }
-
-        var guess_number = 1
-
         
     }
 
