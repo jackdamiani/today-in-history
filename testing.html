@@ -211,6 +211,7 @@
             console.log(parseGuessArr() == [0])
             console.log(typeof(parseGuessArr()))
             if (getCookie("played_today") != "True"){
+                console.log("shouldn't be here")
                 if (parseGuessArr().length < guess_number || getCookie("game_started") != "True"){
                     if(guess_number == 1 || getCookie("game_started") != "True"){
                         let bracket = "["
@@ -225,8 +226,10 @@
                         arr = arr.replace(/['"]+/g, '')
                         score_vals = arr.split(',');
                         score_vals.push(year_input.toString())
-                        setCookie("guess_arr", JSON.stringify(score_vals), 0, 2)
-
+                        if (getCookie("played_today") != "True"){
+                            console.log("shouldn't be here either")
+                            setCookie("guess_arr", JSON.stringify(score_vals), 0, 2)
+                        }
 
                         // avg_score = parseGuessArr("score_arr")
                         
