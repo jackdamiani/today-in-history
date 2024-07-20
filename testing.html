@@ -1270,6 +1270,14 @@
         setup()
         function setup(){
             if (getCookie("played_today") == "True"){
+                var guess_arr = parseGuessArr()
+                for (let i = 0; i < guess_arr.length; i++){
+                    console.log("Guess arr ", guess_arr[i])
+                    console.log("Guess arr ", typeof(guess_arr[i]))
+
+                    guess_button_onclick(guess_arr[i])
+                }
+
                 document.getElementById('year_input').disabled = true;
                 let score = Number(getCookie("todays_score"))
                 if (score == 16){
