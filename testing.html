@@ -383,23 +383,25 @@
                 
                 
                 // document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                if(getCookie("score_arr") == ""){
-                    let bracket = "["
-                    let val = bracket.concat(guess_number, "]")
-                    setCookie("score_arr", val, 0, 0);
-                    avg_score = guess_number
-                }
-                else{
-                    let arr_str = getCookie("score_arr")
-                    let arr = arr_str.substring(1, arr_str.length-1)
-                    arr = arr.replace(/['"]+/g, '')
-                    score_vals = arr.split(',');
-                    score_vals.push(guess_number.toString())
-                    setCookie("score_arr", JSON.stringify(score_vals), 0, 0)
+                if (getCookie("played_today") != "True"){
+                    if(getCookie("score_arr") == ""){
+                        let bracket = "["
+                        let val = bracket.concat(guess_number, "]")
+                        setCookie("score_arr", val, 0, 0);
+                        avg_score = guess_number
+                    }
+                    else{
+                        let arr_str = getCookie("score_arr")
+                        let arr = arr_str.substring(1, arr_str.length-1)
+                        arr = arr.replace(/['"]+/g, '')
+                        score_vals = arr.split(',');
+                        score_vals.push(guess_number.toString())
+                        setCookie("score_arr", JSON.stringify(score_vals), 0, 0)
 
 
-                    avg_score = parseAvgScore("score_arr")
-                    
+                        avg_score = parseAvgScore("score_arr")
+                        
+                    }
                 }
 
                 console.log("avg_score:", avg_score)
