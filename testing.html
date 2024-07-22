@@ -109,10 +109,12 @@
         window.onload = function() {
             document.getElementById("end_id").style.visiblity = 'hidden';
             if(getCookie("played_today") != "True"){
+                console.log('havent played today')
                 document.getElementById("help_menu_id").style.visiblity = 'visible';
                 document.getElementsByClassName("stats")[0].style.visibility = 'hidden';
             }
             else{
+                console.log('played today')
                 document.getElementById("help_menu_id").style.visiblity = 'hidden';
                 document.getElementsByClassName("stats")[0].style.visibility = 'visible';
             }
