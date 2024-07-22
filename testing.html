@@ -112,6 +112,10 @@
                 document.getElementById("help_menu_id").style.visiblity = 'visible';
                 document.getElementsByClassName("stats")[0].style.visibility = 'hidden';
             }
+            else{
+                document.getElementById("help_menu_id").style.visiblity = 'hidden';
+                document.getElementsByClassName("stats")[0].style.visibility = 'visible';
+            }
 
             // writes in avg score
             const gridItem = document.getElementById('s2_4');
@@ -1399,13 +1403,6 @@
             }
 
             if (getCookie("played_today") == "True"){
-                // var guess_arr = parseGuessArr()
-                // for (let i = 0; i < guess_arr.length; i++){
-                //     console.log("Guess arr played today", guess_arr[i])
-                //     console.log("Guess arr played today", typeof(guess_arr[i]))
-
-                //     guess_button_onclick(guess_arr[i])
-                // }
 
 
                 var link_dates = links[todays_date]
@@ -1434,9 +1431,6 @@
             if (getCookie("game_started") == "True"){
                 var guess_arr = parseGuessArr()
                 for (let i = 0; i < guess_arr.length; i++){
-                    console.log("Guess arr ", guess_arr[i])
-                    console.log("Guess arr ", typeof(guess_arr[i]))
-
                     guess_button_onclick(guess_arr[i])
                 }
             }
@@ -1456,9 +1450,7 @@
     fact3_obj.textContent = fact3;
 
     if(getCookie("game_started") == "True"){
-        console.log("Game started")
         guessArray = parseGuessArr()
-        console.log(guessArray);
     }
     
 
@@ -1521,10 +1513,6 @@
             let expires = "expires="+d_midnight.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 
-
-            
-
-            // console.log("Resetable cookies expire at at", d_midnight)
         }
         else {
             const d = new Date("2999-12-31");
@@ -1922,7 +1910,6 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 // Handle response
-                // console.log(xhr.responseText);
                 console.log("Successfully inserted entry")
             }
         };
