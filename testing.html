@@ -1401,8 +1401,8 @@
             if (getCookie("played_today") == "True"){
                 var guess_arr = parseGuessArr()
                 for (let i = 0; i < guess_arr.length; i++){
-                    console.log("Guess arr ", guess_arr[i])
-                    console.log("Guess arr ", typeof(guess_arr[i]))
+                    console.log("Guess arr played today", guess_arr[i])
+                    console.log("Guess arr played today", typeof(guess_arr[i]))
 
                     guess_button_onclick(guess_arr[i])
                 }
