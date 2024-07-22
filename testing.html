@@ -115,7 +115,7 @@
             }
             else{
                 console.log('played today')
-                document.getElementById("help_menu_id").style.visiblity = 'hidden';
+                document.getElementsByClassName("help_menu").style.visiblity = 'hidden';
                 document.getElementsByClassName("stats")[0].style.visibility = 'visible';
             }
 
@@ -199,7 +199,6 @@
 
         function guess_button_onclick(year_input=-1){
 
-            console.log("in function ", year_input)
             if (year_input == -1){
                 var year_input = document.getElementById('year_input').value
                 year_input = year_input.replace(/\D/g,'');
@@ -210,14 +209,7 @@
                 }
             }
 
-            console.log(parseGuessArr())
-            console.log(parseGuessArr().length)
-            console.log(guess_number)
-            console.log(parseGuessArr() === Array(0))
-            console.log(parseGuessArr() == [0])
-            console.log(typeof(parseGuessArr()))
             if (getCookie("played_today") != "True"){
-                console.log("shouldn't be here")
                 if (parseGuessArr().length < guess_number || getCookie("game_started") != "True"){
                     if(guess_number == 1 || getCookie("game_started") != "True"){
                         let bracket = "["
@@ -233,7 +225,6 @@
                         score_vals = arr.split(',');
                         score_vals.push(year_input.toString())
                         if (getCookie("played_today") != "True"){
-                            console.log("shouldn't be here either")
                             setCookie("guess_arr", JSON.stringify(score_vals), 0, 2)
                         }
 
