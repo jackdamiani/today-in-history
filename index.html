@@ -109,15 +109,21 @@
         window.onload = function() {
             document.getElementById("end_id").style.visiblity = 'hidden';
             if(getCookie("played_today") != "True"){
+                console.log('havent played today')
                 document.getElementById("help_menu_id").style.visiblity = 'visible';
                 document.getElementsByClassName("stats")[0].style.visibility = 'hidden';
+            }
+            else{
+                console.log('played today')
+                document.getElementsByClassName("help_menu")[0].style.visiblity = 'hidden';
+                document.getElementsByClassName("stats")[0].style.visibility = 'visible';
+                document.getElementById("help_menu_id").style.display = "none";
             }
 
             // writes in avg score
             const gridItem = document.getElementById('s2_4');
             insert_square_stats()
             gridItem.innerText = ''; 
-
         }
 
 
@@ -189,18 +195,40 @@
 
 
 
+        function guess_button_onclick(year_input=-1){
 
-        function guess_button_onclick(){
-
-            
-            var year_input = document.getElementById('year_input').value
-            year_input = year_input.replace(/\D/g,'');
-            if (year_input > 2024 || year_input == ''){
-                alert("Please input a year in the past");
-                document.getElementById('year_input').value = '';
-                return false;
+            if (year_input == -1){
+                var year_input = document.getElementById('year_input').value
+                year_input = year_input.replace(/\D/g,'');
+                if (year_input > 2024 || year_input == ''){
+                    alert("Please input a year in the past");
+                    document.getElementById('year_input').value = '';
+                    return false;
+                }
             }
 
+            if (getCookie("played_today") != "True"){
+                if (parseGuessArr().length < guess_number || getCookie("game_started") != "True"){
+                    if(guess_number == 1 || getCookie("game_started") != "True"){
+                        let bracket = "["
+                        let val = bracket.concat(year_input.toString(), "]")
+                        setCookie("guess_arr", val, 0, 2);
+                        setCookie("game_started", "True", 0, 2);
+                        // avg_score = guess_number
+                    }
+                    else{
+                        let arr_str = getCookie("guess_arr")
+                        let arr = arr_str.substring(1, arr_str.length-1)
+                        arr = arr.replace(/['"]+/g, '')
+                        score_vals = arr.split(',');
+                        score_vals.push(year_input.toString())
+                        if (getCookie("played_today") != "True"){
+                            setCookie("guess_arr", JSON.stringify(score_vals), 0, 2)
+                        }
+                        
+                    }
+                }
+            }
             
 
             var year_diff1 = get_difference_time_guess(year_input, year1)
@@ -255,7 +283,9 @@
                     clientDate.getSeconds()
                 ));
                 utcDate = utcDate.toISOString();
-                insert_row_php(guess_number, utcDate)
+                if (getCookie("played_today") != "True"){
+                    insert_row_php(guess_number, utcDate)
+                }
                 add_histogram()
                 
                 var share_text = date.textContent + '\n' + guess_number.toString() + '/15\n\n'
@@ -353,23 +383,25 @@
                 
                 
                 // document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                if(getCookie("score_arr") == ""){
-                    let bracket = "["
-                    let val = bracket.concat(guess_number, "]")
-                    setCookie("score_arr", val, 0, 0);
-                    avg_score = guess_number
-                }
-                else{
-                    let arr_str = getCookie("score_arr")
-                    let arr = arr_str.substring(1, arr_str.length-1)
-                    arr = arr.replace(/['"]+/g, '')
-                    score_vals = arr.split(',');
-                    score_vals.push(guess_number.toString())
-                    setCookie("score_arr", JSON.stringify(score_vals), 0, 0)
+                if (getCookie("played_today") != "True"){
+                    if(getCookie("score_arr") == ""){
+                        let bracket = "["
+                        let val = bracket.concat(guess_number, "]")
+                        setCookie("score_arr", val, 0, 0);
+                        avg_score = guess_number
+                    }
+                    else{
+                        let arr_str = getCookie("score_arr")
+                        let arr = arr_str.substring(1, arr_str.length-1)
+                        arr = arr.replace(/['"]+/g, '')
+                        score_vals = arr.split(',');
+                        score_vals.push(guess_number.toString())
+                        setCookie("score_arr", JSON.stringify(score_vals), 0, 0)
 
 
-                    avg_score = parseAvgScore("score_arr")
-                    
+                        avg_score = parseAvgScore("score_arr")
+                        
+                    }
                 }
 
                 console.log("avg_score:", avg_score)
@@ -412,7 +444,9 @@
                     clientDate.getSeconds()
                 ));
                 utcDate = utcDate.toISOString();
-                insert_row_php(16, utcDate)
+                if (getCookie("played_today") != "True"){
+                    insert_row_php(16, utcDate)
+                }
                 add_histogram()
 
 
@@ -1217,9 +1251,30 @@
             return display_
         }
 
+        var guess_number = 1;    
+
+        var output_grid = [
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ]
+
         setup()
         function setup(){
             if (getCookie("played_today") == "True"){
+
                 document.getElementById('year_input').disabled = true;
                 let score = Number(getCookie("todays_score"))
                 if (score == 16){
@@ -1337,6 +1392,8 @@
             }
 
             if (getCookie("played_today") == "True"){
+
+
                 var link_dates = links[todays_date]
                 if (link_dates[0] != "")
                 {
@@ -1360,9 +1417,18 @@
                 document.getElementById('end_date').textContent = date.textContent.substring(18,date.textContent.length);
             }
 
-        
-    }
+            if (getCookie("game_started") == "True"){
+                var guess_arr = parseGuessArr()
+                for (let i = 0; i < guess_arr.length; i++){
+                    guess_button_onclick(guess_arr[i])
+                }
+            }
 
+            
+        }
+
+    
+    
     fact1_obj = document.getElementById('fact1');
     fact1_obj.innerHTML = fact1;
 
@@ -1372,25 +1438,10 @@
     fact3_obj = document.getElementById('fact3');
     fact3_obj.textContent = fact3;
 
-    var guess_number = 1;    
-
-    var output_grid = [
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0]
-    ]
+    if(getCookie("game_started") == "True"){
+        guessArray = parseGuessArr()
+    }
+    
 
     $(window).load(function () {
         $(".trigger_help_menu").click(function(){
@@ -1451,10 +1502,6 @@
             let expires = "expires="+d_midnight.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 
-
-            
-
-            // console.log("Resetable cookies expire at at", d_midnight)
         }
         else {
             const d = new Date("2999-12-31");
@@ -1504,6 +1551,15 @@
         }
         avg_score = running_sum / score_vals.length
         return avg_score.toFixed(2)
+    }
+
+    function parseGuessArr(){
+        guess_arr_temp = getCookie("guess_arr");
+        guess_arr_temp = guess_arr_temp.replace(/[\[\]]/g, '').replace(/['"]+/g, '');
+        let guessArraystr = guess_arr_temp.split(',');
+        let guessArray = guessArraystr.map(Number);
+
+        return guessArray;
     }
 
 
@@ -1843,7 +1899,6 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 // Handle response
-                // console.log(xhr.responseText);
                 console.log("Successfully inserted entry")
             }
         };
