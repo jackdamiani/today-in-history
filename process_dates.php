@@ -29,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
 
-        $clientDate = $_POST['date'];
-        $date = new DateTime($clientDate);
-        $date = $date->format('Y-m-d');
+        // $clientDate = $_POST['date'];
+        // $date = new DateTime($clientDate);
+        // $date = $date->format('Y-m-d');
 
         // Prepare and execute the SQL query
         $sql = "SELECT num_guesses FROM test WHERE date BETWEEN ? and ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $date, $anotherDate);
+        $stmt->bind_param("ss", $clientDate, $anotherDate);
         $stmt->execute();
         $result = $stmt->get_result();
 
