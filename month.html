@@ -126,9 +126,9 @@
             const year = document.getElementById('year-select').value;
             const selectedDate = new Date(year, month, day);
             console.log(`Selected date: ${selectedDate.toDateString()}`);
-            const day2 = document.getElementById('day-select').value;
-            const month2 = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
-            const year2 = document.getElementById('year-select').value;
+            const day2 = document.getElementById('day-select2').value;
+            const month2 = document.getElementById('month-select2').value - 1; // Months are zero-based in JavaScript
+            const year2 = document.getElementById('year-select2').value;
             const selectedDate2 = new Date(year, month, day);
             console.log(`Selected date: ${selectedDate2.toDateString()}`);
             var clientDate = selectedDate;
