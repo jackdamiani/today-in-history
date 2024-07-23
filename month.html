@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <title>Date Query Example</title>
+</head>
+<body>
+    <button id="fetchData">Fetch Data</button>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("fetchData").addEventListener("click", function() {
+            var clientDate = new Date();
+            var anotherDate = new Date("2024-07-01"); // Example of another date
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "process_dates.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("result").innerHTML = xhr.responseText;
+                }
+            };
+
+            var data = "client_date=" + encodeURIComponent(clientDate.toISOString()) +
+                       "&another_date=" + encodeURIComponent(anotherDate.toISOString());
+            xhr.send(data);
+        });
+    </script>
+</body>
+</html>
