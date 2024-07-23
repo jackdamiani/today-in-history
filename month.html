@@ -6,28 +6,155 @@
     <title>Date Query Example</title>
 </head>
 <body>
-    <button id="fetchData">Fetch Data</button>
-    <div id="result"></div>
+    
 
-    <script>
-        document.getElementById("fetchData").addEventListener("click", function() {
-            var clientDate = new Date();
-            var anotherDate = new Date("2024-07-01"); // Example of another date
+    <body>
+        <div class="date-selector">
+            <select id="day-select"></select>
+            <select id="month-select"></select>
+            <select id="year-select"></select>
 
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "process_dates.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            <br>
 
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById("result").innerHTML = xhr.responseText;
-                }
-            };
+            <select id="day-select2"></select>
+            <select id="month-select2"></select>
+            <select id="year-select2"></select>
 
-            var data = "client_date=" + encodeURIComponent(clientDate.toISOString()) +
-                       "&another_date=" + encodeURIComponent(anotherDate.toISOString());
-            xhr.send(data);
+            <button id="submit-button">Submit</button>
+        </div>
+        </form>
+
+        <button id="fetchData">Fetch Data</button>
+        <div id="result"></div>
+    
+        <script>
+
+        function populateDays() {
+            const daySelect = document.getElementById('day-select');
+            for (let day = 1; day <= 31; day++) {
+                const option = document.createElement('option');
+                option.value = day;
+                option.textContent = day;
+                daySelect.appendChild(option);
+            }
+
+            const daySelect2 = document.getElementById('day-select2');
+            for (let day = 1; day <= 31; day++) {
+                const option = document.createElement('option');
+                option.value = day;
+                option.textContent = day;
+                daySelect2.appendChild(option);
+            }
+        }
+
+        // Function to populate months
+        function populateMonths() {
+            const monthSelect = document.getElementById('month-select');
+            const months = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            months.forEach((month, index) => {
+                const option = document.createElement('option');
+                option.value = index + 1;
+                option.textContent = month;
+                monthSelect.appendChild(option);
+            });
+
+            const monthSelect2 = document.getElementById('month-select2');
+            const months2 = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            months2.forEach((month, index) => {
+                const option = document.createElement('option');
+                option.value = index + 1;
+                option.textContent = month;
+                monthSelect2.appendChild(option);
+            });
+        }
+
+        // Function to populate years
+        function populateYears(startYear, endYear) {
+            const yearSelect = document.getElementById('year-select');
+            for (let year = startYear; year <= endYear; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearSelect.appendChild(option);
+            }
+
+            const yearSelect2 = document.getElementById('year-select2');
+            for (let year = startYear; year <= endYear; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearSelect2.appendChild(option);
+            }
+        }
+
+        // Function to set default values to today's date
+        function setDefaultDate() {
+            const today = new Date();
+            document.getElementById('day-select').value = today.getDate();
+            document.getElementById('month-select').value = today.getMonth() + 1; // Months are zero-based
+            document.getElementById('year-select').value = today.getFullYear();
+
+            document.getElementById('day-select2').value = today.getDate();
+            document.getElementById('month-select2').value = today.getMonth() + 1; // Months are zero-based
+            document.getElementById('year-select2').value = today.getFullYear();
+        }
+
+        // Populate the selects on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            populateDays();
+            populateMonths();
+            const currentYear = new Date().getFullYear();
+            populateYears(currentYear, currentYear); // Example: last 100 years
+            setDefaultDate();
         });
+
+        // Add event listener to the submit button
+        document.getElementById('submit-button').addEventListener('click', () => {
+            const day = document.getElementById('day-select').value;
+            const month = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
+            const year = document.getElementById('year-select').value;
+            const selectedDate = new Date(year, month, day);
+            console.log(`Selected date: ${selectedDate.toDateString()}`);
+
+            const day2 = document.getElementById('day-select').value;
+            const month2 = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
+            const year2 = document.getElementById('year-select').value;
+            const selectedDate2 = new Date(year, month, day);
+            console.log(`Selected date: ${selectedDate2.toDateString()}`);
+
+            fetch_data(date1, date2);
+        });
+
+        function fetch_data(date1, date2) {
+
+
+            
+
+            document.getElementById("fetchData").addEventListener("click", function() {
+                var clientDate = date1;
+                var anotherDate = date2; // Example of another date
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "process_dates.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        document.getElementById("result").innerHTML = xhr.responseText;
+                    }
+                };
+
+                var data = "client_date=" + encodeURIComponent(clientDate.toISOString()) +
+                        "&another_date=" + encodeURIComponent(anotherDate.toISOString());
+                xhr.send(data);
+            });
+        }
     </script>
 </body>
 </html>
