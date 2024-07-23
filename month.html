@@ -26,6 +26,10 @@
 
         <button id="fetchData">Fetch Data</button>
         <div id="result"></div>
+
+        <canvas id="scoreHistogram" width="500px" height="200px"></canvas>
+        <h1 id="numPlayers"></h1>
+        <h1 id="avgScore"></h1>
     
         <script>
 
@@ -147,8 +151,96 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     document.getElementById("result").innerHTML = xhr.responseText;
-                }
-            };
+
+                    console.log("Data received:", data);
+                    const numPlayers = data.length;
+                    const sum = data.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+                    const avgScore = (sum / numPlayers).toFixed(2);
+
+
+                    const h1NP = document.getElementById('numPlayers');
+                    h1NP.textContent = numPlayers;
+
+                    const h1AS = document.getElementById('avgScore');
+                    h1AS.textContent = avgScore;
+
+                    const ctx = document.getElementById('scoreHistogram').getContext('2d');
+
+                    ctx.strokeStyle = 'black';
+                    ctx.lineWidth = 5;
+                    ctx.strokeRect(0, 0, ctx.width, ctx.height);
+
+                    // Generate labels based on the range of num_guesses (e.g., 3 to 15)
+                    const labels = Array.from({ length: 13 }, (_, i) => i + 3);
+                    labels.push('X'); // Add 'X' at the end to represent 16
+
+                    // Count occurrences of each num_guesses value
+                    const counts = labels.map(label => {
+                        const num = label === 'X' ? 16 : label;
+                        return data.filter(n => n == num).length;
+                    });
+
+
+                    const chart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Number of Players',
+                                data: counts,
+                                borderColor: '#000000',
+                                borderWidth: 1,
+                                backgroundColor: [
+                                    'rgba(0, 156, 52, 1)',    // Green solid
+                                    'rgba(0, 156, 52, 0.2)',  // Green 20% opacity
+                                    'rgba(150, 75, 0, 1)',    // Brown solid
+                                    'rgba(150, 75, 0, 0.3)',  // Brown 30% opacity
+                                    'rgba(255, 165, 1, 1)',   // Orange solid
+                                    'rgba(255, 165, 0, 0.3)', // Orange 30% opacity
+                                    'rgba(255, 0, 0, 1)',     // Red solid
+                                    'rgba(255, 0, 0, 0.2)',   // Red 20% opacity
+                                    'rgba(0, 0, 255, 1)',     // Blue solid
+                                    'rgba(0, 0, 255, 0.2)',   // Blue 20% opacity
+                                    'rgba(0, 0, 0, 1)',       // Black solid
+                                    'rgba(0, 0, 0, 0.5)',     // Black 50% opacity
+                                    'rgba(0, 0, 0, 0.2)',     // Black 20% opacity
+                                    'rgba(255, 255, 255, 1)'  // White
+                                ]
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: {
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        size: 10,
+                                        minRotation: 90,
+                                        autoSkip: false
+                                    }
+
+                                },
+                                y: {
+                                    grid: {
+                                        display: true
+                                    },
+                                    beginAtZero: true
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        }
+                    });
+
+                    
+
+
+                    console.log("Histogram chart created successfully");
+                        
 
             var data = "client_date=" + encodeURIComponent(clientDate.toISOString()) +
                     "&another_date=" + encodeURIComponent(anotherDate.toISOString());
