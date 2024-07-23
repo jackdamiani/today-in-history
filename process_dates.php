@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Prepare and execute the SQL query
         $sql = "SELECT num_guesses FROM test WHERE date BETWEEN ? and ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $anotherDate, $clientDate);
+        $stmt->bind_param("ss", $clientDate, $anotherDate);
         $stmt->execute();
         $result = $stmt->get_result();
 
