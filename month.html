@@ -119,42 +119,42 @@
             
         });
 
-        function fetch_data(date1, date2) {
+
 
 
             
 
-            document.getElementById("submit-button").addEventListener("click", function() {
-                const day = document.getElementById('day-select').value;
-                const month = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
-                const year = document.getElementById('year-select').value;
-                const selectedDate = new Date(year, month, day);
-                console.log(`Selected date: ${selectedDate.toDateString()}`);
+        document.getElementById("submit-button").addEventListener("click", function() {
+            const day = document.getElementById('day-select').value;
+            const month = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
+            const year = document.getElementById('year-select').value;
+            const selectedDate = new Date(year, month, day);
+            console.log(`Selected date: ${selectedDate.toDateString()}`);
 
-                const day2 = document.getElementById('day-select').value;
-                const month2 = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
-                const year2 = document.getElementById('year-select').value;
-                const selectedDate2 = new Date(year, month, day);
-                console.log(`Selected date: ${selectedDate2.toDateString()}`);
+            const day2 = document.getElementById('day-select').value;
+            const month2 = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
+            const year2 = document.getElementById('year-select').value;
+            const selectedDate2 = new Date(year, month, day);
+            console.log(`Selected date: ${selectedDate2.toDateString()}`);
 
-                var clientDate = selectedDate;
-                var anotherDate = selectedDate2; // Example of another date
+            var clientDate = selectedDate;
+            var anotherDate = selectedDate2; // Example of another date
 
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "process_dates.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "process_dates.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        document.getElementById("result").innerHTML = xhr.responseText;
-                    }
-                };
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("result").innerHTML = xhr.responseText;
+                }
+            };
 
-                var data = "client_date=" + encodeURIComponent(clientDate.toISOString()) +
-                        "&another_date=" + encodeURIComponent(anotherDate.toISOString());
-                xhr.send(data);
-            });
-        }
+            var data = "client_date=" + encodeURIComponent(clientDate.toISOString()) +
+                    "&another_date=" + encodeURIComponent(anotherDate.toISOString());
+            xhr.send(data);
+        });
+        
     </script>
 </body>
 </html>
