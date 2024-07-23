@@ -128,6 +128,9 @@
             const selectedDate2 = new Date(year, month, day);
             console.log(`Selected date: ${selectedDate2.toDateString()}`);
 
+            var date1 = selectedDate;
+            var date2 = selectedDate2;
+
             fetch_data(date1, date2);
         });
 
