@@ -1,4 +1,9 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
+<?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $clientDate = isset($_POST['client_date']) ? $_POST['client_date'] : null;
     $anotherDate = isset($_POST['another_date']) ? $_POST['another_date'] : null;
