@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         echo 'Select statement';
-        echo $result;
+        // echo $result;
         echo $num_guesses;
 
         // Output data as JSON
