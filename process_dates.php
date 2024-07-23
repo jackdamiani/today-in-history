@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $clientDate = date('Y-m-d', strtotime($clientDate));
         $anotherDate = date('Y-m-d', strtotime($anotherDate));
 
-        // echo $clientDate;
-        // echo $anotherDate;
+        echo $clientDate;
+        echo $anotherDate;
 
         $servername = "localhost"; // or the host provided by Hostinger
         $username = "u880862300_tih_user_stats";
