@@ -24,7 +24,6 @@
         </div>
         </form>
 
-        <button id="fetchData">Fetch Data</button>
         <div id="result"></div>
 
         <canvas id="scoreHistogram" width="500px" height="200px"></canvas>
@@ -129,8 +128,19 @@
             
 
         document.addEventListener("DOMContentLoaded", function() {
-            var clientDate = new Date();
-            var anotherDate = new Date("2024-07-01"); // Example of another date
+
+            const day = document.getElementById('day-select').value;
+            const month = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
+            const year = document.getElementById('year-select').value;
+            const selectedDate = new Date(year, month, day);
+            console.log(`Selected date: ${selectedDate.toDateString()}`);
+            const day2 = document.getElementById('day-select').value;
+            const month2 = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
+            const year2 = document.getElementById('year-select').value;
+            const selectedDate2 = new Date(year, month, day);
+            console.log(`Selected date: ${selectedDate2.toDateString()}`);
+            var clientDate = selectedDate;
+            var anotherDate = selectedDate2; // Example of another date
 
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "process_dates.php", true);
