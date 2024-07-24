@@ -24,7 +24,7 @@
         </div>
         </form>
 
-        <div id="result"></div>
+        <!-- <div id="result"></div> -->
 
         <canvas id="scoreHistogram" width="500px" height="200px"></canvas>
         <h1 id="numPlayers"></h1>
@@ -140,7 +140,7 @@
 
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById("result").innerHTML = xhr.responseText;
+                    // document.getElementById("result").innerHTML = xhr.responseText;
 
                     try {
                         var data = JSON.parse(xhr.responseText);
