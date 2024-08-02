@@ -6,6 +6,7 @@ This is all the changes I made between the main program and the new celebrities 
 ### cgame.html
 - 66: fetch('cget_data.php', {
 - 1206: <script type="text/javascript" src="cevents.js"></script>
+- 1207: <script type="text/javascript" src="clinks.js"></script>
 - 1901: xhr.open("POST", "cinsert_data.php", true);
 - 1929: fetch('cget_data.php', {
 
