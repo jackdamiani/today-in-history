@@ -13,7 +13,7 @@
 
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -63,7 +63,7 @@
 
         function insert_square_stats(){
 
-            fetch('get_data.php', {
+            fetch('sget_data.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -108,7 +108,7 @@
 
         window.onload = function() {
             document.getElementById("end_id").style.visiblity = 'hidden';
-            if(getCookie("played_today") != "True"){
+            if(getCookie("splayed_today") != "True"){
                 console.log('havent played today')
                 document.getElementById("help_menu_id").style.visiblity = 'visible';
                 document.getElementsByClassName("stats")[0].style.visibility = 'hidden';
@@ -210,23 +210,23 @@
                 }
             }
 
-            if (getCookie("played_today") != "True"){
-                if (parseGuessArr().length < guess_number || getCookie("game_started") != "True"){
-                    if(guess_number == 1 || getCookie("game_started") != "True"){
+            if (getCookie("splayed_today") != "True"){
+                if (parseGuessArr().length < guess_number || getCookie("sgame_started") != "True"){
+                    if(guess_number == 1 || getCookie("sgame_started") != "True"){
                         let bracket = "["
                         let val = bracket.concat(year_input.toString(), "]")
-                        setCookie("guess_arr", val, 0, 2);
-                        setCookie("game_started", "True", 0, 2);
+                        setCookie("sguess_arr", val, 0, 2);
+                        setCookie("sgame_started", "True", 0, 2);
                         // avg_score = guess_number
                     }
                     else{
-                        let arr_str = getCookie("guess_arr")
+                        let arr_str = getCookie("sguess_arr")
                         let arr = arr_str.substring(1, arr_str.length-1)
                         arr = arr.replace(/['"]+/g, '')
                         score_vals = arr.split(',');
                         score_vals.push(year_input.toString())
-                        if (getCookie("played_today") != "True"){
-                            setCookie("guess_arr", JSON.stringify(score_vals), 0, 2)
+                        if (getCookie("splayed_today") != "True"){
+                            setCookie("sguess_arr", JSON.stringify(score_vals), 0, 2)
                         }
 
                         // avg_score = parseGuessArr("score_arr")
@@ -288,7 +288,7 @@
                     clientDate.getSeconds()
                 ));
                 utcDate = utcDate.toISOString();
-                if (getCookie("played_today") != "True"){
+                if (getCookie("splayed_today") != "True"){
                     insert_row_php(guess_number, utcDate)
                 }
                 add_histogram()
@@ -356,7 +356,7 @@
                 document.getElementById('share_text').textContent = display_share_text;
                 
                 let date_var = date.textContent
-                document.getElementById('end_date').textContent = date_var.substring(18,date_var.length);
+                document.getElementById('end_date').textContent = date_var.substring(13,date_var.length);
                 document.getElementById('end_score').textContent = guess_number.toString() + '/15 \n'
                 // var year2_ = document.createElement('year2_a')
                 // year2_.textContent = year2
@@ -388,20 +388,20 @@
                 
                 
                 // document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                if (getCookie("played_today") != "True"){
-                    if(getCookie("score_arr") == ""){
+                if (getCookie("splayed_today") != "True"){
+                    if(getCookie("sscore_arr") == ""){
                         let bracket = "["
                         let val = bracket.concat(guess_number, "]")
-                        setCookie("score_arr", val, 0, 0);
+                        setCookie("sscore_arr", val, 0, 0);
                         avg_score = guess_number
                     }
                     else{
-                        let arr_str = getCookie("score_arr")
+                        let arr_str = getCookie("sscore_arr")
                         let arr = arr_str.substring(1, arr_str.length-1)
                         arr = arr.replace(/['"]+/g, '')
                         score_vals = arr.split(',');
                         score_vals.push(guess_number.toString())
-                        setCookie("score_arr", JSON.stringify(score_vals), 0, 0)
+                        setCookie("sscore_arr", JSON.stringify(score_vals), 0, 0)
 
 
                         avg_score = parseAvgScore("score_arr")
@@ -415,16 +415,16 @@
                 addNumGames()
                 addWinGames()
 
-                let total_games_played = Number(getCookie("total_games"))
+                let total_games_played = Number(getCookie("stotal_games"))
                 document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
                 
-                var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
+                var win_percentage = (Number(getCookie("swin_games")) / Number(getCookie("stotal_games")) * 100).toFixed(1) 
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
-                setCookie("display_share_text_cookie", display_share_text_cookie, 0, 2)
-                setCookie("played_today", "True", 0, 2)
-                setCookie("todays_score", guess_number.toString(), 0, 2)
-                console.log("Today's Score", getCookie("todays_score"))
+                setCookie("sdisplay_share_text_cookie", display_share_text_cookie, 0, 2)
+                setCookie("splayed_today", "True", 0, 2)
+                setCookie("stodays_score", guess_number.toString(), 0, 2)
+                console.log("Today's Score", getCookie("stodays_score"))
 
                 return false
             }
@@ -449,7 +449,7 @@
                     clientDate.getSeconds()
                 ));
                 utcDate = utcDate.toISOString();
-                if (getCookie("played_today") != "True"){
+                if (getCookie("splayed_today") != "True"){
                     insert_row_php(16, utcDate)
                 }
                 add_histogram()
@@ -540,7 +540,7 @@
                 
 
 
-                if(getCookie("score_arr") != ""){
+                if(getCookie("sscore_arr") != ""){
                     let avg_score = parseAvgScore("score_arr")
                     console.log("avg_score:", avg_score)
                     document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
@@ -549,17 +549,17 @@
 
                 addNumGames()
 
-                let total_games_played = Number(getCookie("total_games"))
+                let total_games_played = Number(getCookie("stotal_games"))
                 document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
 
-                if (getCookie("win_games") != ""){
-                    var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
+                if (getCookie("swin_games") != ""){
+                    var win_percentage = (Number(getCookie("swin_games")) / Number(getCookie("stotal_games")) * 100).toFixed(1) 
                     document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
                 }
                 
-                setCookie("display_share_text_cookie", display_share_text_cookie, 0, 2)
-                setCookie("played_today", "True", 0, 2)
-                setCookie("todays_score", "16", 0, 2)
+                setCookie("sdisplay_share_text_cookie", display_share_text_cookie, 0, 2)
+                setCookie("splayed_today", "True", 0, 2)
+                setCookie("stodays_score", "16", 0, 2)
 
                 return false;
             }
@@ -580,16 +580,16 @@
 
         function copy_to_clipboard(){
             var share_text_post = ""
-            if (getCookie("played_today") == "True"){
+            if (getCookie("splayed_today") == "True"){
                 
-                if(getCookie("todays_score")=="16"){
+                if(getCookie("stodays_score")=="16"){
                     share_text_post = date.textContent + '\nX/15\n\n'
                 }
                 else{
-                    share_text_post = date.textContent + '\n' + getCookie("todays_score") + '/15\n\n'
+                    share_text_post = date.textContent + '\n' + getCookie("stodays_score") + '/15\n\n'
                 }
                 
-                var display_share_text_post = getCookie("display_share_text_cookie")
+                var display_share_text_post = getCookie("sdisplay_share_text_cookie")
                 display_share_text_post_post = post_play_display(display_share_text_post)
 
                 share_text_post += display_share_text_post_post
@@ -608,16 +608,16 @@
 
         function share_function(){
             // How to share with people. 
-            if (getCookie("played_today") == "True"){
+            if (getCookie("splayed_today") == "True"){
                 
-                if(getCookie("todays_score")=="16"){
+                if(getCookie("stodays_score")=="16"){
                     share_text_post = date.textContent + '\nX/15\n\n'
                 }
                 else{
-                    share_text_post = date.textContent + '\n' + getCookie("todays_score") + '/15\n\n'
+                    share_text_post = date.textContent + '\n' + getCookie("stodays_score") + '/15\n\n'
                 }
                 
-                var display_share_text_post = getCookie("display_share_text_cookie")
+                var display_share_text_post = getCookie("sdisplay_share_text_cookie")
                 display_share_text_post_post = post_play_display(display_share_text_post)
 
                 share_text_post += display_share_text_post_post
@@ -1203,8 +1203,8 @@
 
     <!-- <script type="text/javascript" src="today_in_history.json"></script> -->
     <!-- <script type="text/javascript" src="template.json"></script> -->
-    <script type="text/javascript" src="today_in_history.js"></script>
-    <script type="text/javascript" src="links.js"></script>
+    <script type="text/javascript" src="sevents.js"></script>
+    <script type="text/javascript" src="slinks.js"></script>
     <!-- <script type="text/javascript" src="require.js"></script> -->
 
     <script>
@@ -1278,10 +1278,10 @@
 
         setup()
         function setup(){
-            if (getCookie("played_today") == "True"){
+            if (getCookie("splayed_today") == "True"){
 
                 document.getElementById('year_input').disabled = true;
-                let score = Number(getCookie("todays_score"))
+                let score = Number(getCookie("stodays_score"))
                 if (score == 16){
                     document.getElementById('help_message').textContent = "You didn't get today's answer. Come back tomorrow for more!"
                     document.getElementById('end_score').textContent = "X/15"
@@ -1289,7 +1289,7 @@
                 }
                 else{
                     document.getElementById('help_message').textContent = "You won today in " + score.toString() + " guesses. Come back tomorrow for more!"
-                    document.getElementById('end_score').textContent = getCookie("todays_score") + "/15"
+                    document.getElementById('end_score').textContent = getCookie("stodays_score") + "/15"
                     document.getElementById('end_response').textContent = 'YOU WON!'
                 }
                 document.getElementById('help_message').style.fontSize = "20px";
@@ -1307,13 +1307,13 @@
                 let avg_score = parseAvgScore("score_arr")
                 document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
 
-                let total_games_played = Number(getCookie("total_games"))
+                let total_games_played = Number(getCookie("stotal_games"))
                 document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
                 
-                var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
+                var win_percentage = (Number(getCookie("swin_games")) / Number(getCookie("stotal_games")) * 100).toFixed(1) 
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
-                var display_share_text_post = getCookie("display_share_text_cookie")
+                var display_share_text_post = getCookie("sdisplay_share_text_cookie")
                 display_share_text_post_post = post_play_display(display_share_text_post)
                 document.getElementById("share_text").textContent = display_share_text_post_post
 
@@ -1348,7 +1348,7 @@
                     date_ending = 'rd'
                 }
 
-                date.textContent = "TODAY IN HISTORY - " + month_dict[mm] + " " + dd[1] + date_ending;
+                date.textContent = "TIH SPORTS - " + month_dict[mm] + " " + dd[1] + date_ending;
             }
             else if(dd>20){
                 if (dd % 10 == 1){
@@ -1360,10 +1360,10 @@
                 else if (dd % 10 == 3){
                     date_ending = 'rd'
                 }
-                date.textContent = "TODAY IN HISTORY - " + month_dict[mm] + " " + dd + date_ending;
+                date.textContent = "TIH SPORTS - " + month_dict[mm] + " " + dd + date_ending;
             }
             else{
-                date.textContent = "TODAY IN HISTORY - " + month_dict[mm] + " " + dd + date_ending;
+                date.textContent = "TIH SPORTS - " + month_dict[mm] + " " + dd + date_ending;
             }
             
 
@@ -1396,7 +1396,7 @@
                 }
             }
 
-            if (getCookie("played_today") == "True"){
+            if (getCookie("splayed_today") == "True"){
 
 
                 var link_dates = links[todays_date]
@@ -1419,10 +1419,10 @@
                 else
                     document.getElementById('correct_answer3').innerHTML = year3 + " "
                 // document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
-                document.getElementById('end_date').textContent = date.textContent.substring(18,date.textContent.length);
+                document.getElementById('end_date').textContent = date.textContent.substring(13,date.textContent.length);
             }
 
-            if (getCookie("game_started") == "True"){
+            if (getCookie("sgame_started") == "True"){
                 var guess_arr = parseGuessArr()
                 for (let i = 0; i < guess_arr.length; i++){
                     guess_button_onclick(guess_arr[i])
@@ -1443,7 +1443,7 @@
     fact3_obj = document.getElementById('fact3');
     fact3_obj.textContent = fact3;
 
-    if(getCookie("game_started") == "True"){
+    if(getCookie("sgame_started") == "True"){
         guessArray = parseGuessArr()
     }
     
@@ -1516,30 +1516,30 @@
     }
 
     function addNumGames(){
-        if (getCookie("total_games") == ''){
-            setCookie("total_games", "1", 0, 0)
+        if (getCookie("stotal_games") == ''){
+            setCookie("stotal_games", "1", 0, 0)
         }
         else{
-            setCookie("total_games", (Number(getCookie("total_games"))+1).toString(), 0, 0) 
+            setCookie("stotal_games", (Number(getCookie("stotal_games"))+1).toString(), 0, 0) 
         }
     }
 
     function addWinGames(){
-        if (getCookie("win_games") == ''){
-            setCookie("win_games", "1", 0, 0)
+        if (getCookie("swin_games") == ''){
+            setCookie("swin_games", "1", 0, 0)
         }
         else{
-            setCookie("win_games", (Number(getCookie("win_games"))+1).toString(), 0, 0) 
+            setCookie("swin_games", (Number(getCookie("swin_games"))+1).toString(), 0, 0) 
         }
     }
     // document.cookie = "total_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     // document.cookie = "win_games=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
-    console.log("Total Number Games", getCookie("total_games"));
-    console.log("Win Games", getCookie("win_games"))
+    console.log("Total Number Games", getCookie("stotal_games"));
+    console.log("Win Games", getCookie("swin_games"))
 
-    console.log("Played Today", getCookie("played_today"))
-    console.log("Today's Score", getCookie("todays_score"))
+    console.log("Played Today", getCookie("splayed_today"))
+    console.log("Today's Score", getCookie("stodays_score"))
 
 
     
@@ -1559,7 +1559,7 @@
     }
 
     function parseGuessArr(){
-        guess_arr_temp = getCookie("guess_arr");
+        guess_arr_temp = getCookie("sguess_arr");
         guess_arr_temp = guess_arr_temp.replace(/[\[\]]/g, '').replace(/['"]+/g, '');
         let guessArraystr = guess_arr_temp.split(',');
         let guessArray = guessArraystr.map(Number);
@@ -1898,7 +1898,7 @@
 
     function insert_row_php(num_guess, utcDate) {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "insert_data.php", true);
+        xhr.open("POST", "sinsert_data.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         xhr.onreadystatechange = function () {
@@ -1926,7 +1926,7 @@
         ));
         utcDate = utcDate.toISOString();
 
-        fetch('get_data.php', {
+        fetch('sget_data.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'

@@ -4,6 +4,7 @@ This is all the changes I made between the main program and the new celebrities 
 
 
 ### cgame.html
+- 16: <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
 - 66: fetch('cget_data.php', {
 - 1206: <script type="text/javascript" src="cevents.js"></script>
 - 1207: <script type="text/javascript" src="clinks.js"></script>

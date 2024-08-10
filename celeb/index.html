@@ -13,7 +13,7 @@
 
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -706,7 +706,7 @@
         }
 
         .rectangle {
-            width: 15%;
+            width: 33vw;
             height: 12vh;
             display: table-cell;
             background-color: rgba(255, 255, 255, 0.8);
@@ -1348,7 +1348,7 @@
                     date_ending = 'rd'
                 }
 
-                date.textContent = "TODAY IN HISTORY - " + month_dict[mm] + " " + dd[1] + date_ending;
+                date.textContent = "CELEB BIRTHDAYS - " + month_dict[mm] + " " + dd[1] + date_ending;
             }
             else if(dd>20){
                 if (dd % 10 == 1){
@@ -1360,10 +1360,10 @@
                 else if (dd % 10 == 3){
                     date_ending = 'rd'
                 }
-                date.textContent = "TODAY IN HISTORY - " + month_dict[mm] + " " + dd + date_ending;
+                date.textContent = "CELEB BIRTHDAYS - " + month_dict[mm] + " " + dd + date_ending;
             }
             else{
-                date.textContent = "TODAY IN HISTORY - " + month_dict[mm] + " " + dd + date_ending;
+                date.textContent = "CELEB BIRTHDAYS - " + month_dict[mm] + " " + dd + date_ending;
             }
             
 
