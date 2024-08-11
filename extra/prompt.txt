@@ -1,0 +1,12 @@
+### Celeb Birthdays
+
+I need celebrity birthdays. I need them from october 7th through october 31. I need them in the format:
+
+"1007": {
+"Year": "Name, Occupation (one or two famous works)",
+"Year": "Name, Occupation (one or two famous works)"... }
+"1008": { ...
+
+I need 8 events per date, and I need them in order with the earliest year being 1950
+
+### Other prompt
