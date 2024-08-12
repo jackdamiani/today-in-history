@@ -30,6 +30,13 @@
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     // Handle response
                     console.log("Successfully inserted entry")
+
+                    try {
+                        var jsonResponse = JSON.parse(xhr.responseText);
+                        console.log(jsonResponse);
+                    } catch (e) {
+                        console.error("Could not parse JSON: ", e);
+                    }
                 }
             };
 
@@ -48,6 +55,7 @@
             ));
         utcDate = utcDate.toISOString();
         insert_row_php(utcDate)
+
     </script>
 </body>
 </html>
