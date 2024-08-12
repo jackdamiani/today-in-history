@@ -70,7 +70,7 @@
         $new_id = str_pad($last_id + 1, 10, '0', STR_PAD_LEFT);
 
         // Insert data into the database
-        $stmt = $conn->prepare("INSERT INTO share (date) VALUES (?, ?)");
+        $stmt = $conn->prepare("INSERT INTO share (id, date) VALUES (?, ?)");
         $stmt->bind_param("ss", $new_id, $date);
 
         if ($stmt->execute()) {
