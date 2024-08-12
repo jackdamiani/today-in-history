@@ -83,5 +83,3 @@
         $conn->close();
     }
 ?>
-<!-- </body>
-</html> -->
