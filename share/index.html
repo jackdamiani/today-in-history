@@ -19,5 +19,23 @@
 <body>
     <p>If you are not redirected, <a href="https://today-in-history-game.com">click here</a>.</p>
 
+
+    <script>
+        function insert_row_php(utcDate) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "insert_data_share.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle response
+                    console.log("Successfully inserted entry")
+                }
+            };
+
+            // Send request
+            xhr.send("date=" + encodeURIComponent(utcDate));
+        }
+    </script>
 </body>
 </html>
