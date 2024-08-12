@@ -1,28 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Client Date</title>
-    <script>
-        function sendClientDate() {
-            var clientDate = new Date();
-            var utcDate = new Date(Date.UTC(
-                clientDate.getFullYear(),
-                clientDate.getMonth(),
-                clientDate.getDate(),
-                clientDate.getHours(),
-                clientDate.getMinutes(),
-                clientDate.getSeconds()
-            ));
-            document.cookie = "clientDate=" + encodeURIComponent(utcDate.toISOString()) + "; path=/";
-        }
-    </script>
-</head> -->
-<!-- <body onload="sendClientDate()">
-    <h1>Getting Client Date</h1>
-    <div id="result"></div> -->
-
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // allow errors
