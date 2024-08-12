@@ -74,7 +74,7 @@
         $stmt->bind_param("ss", $new_id, $date);
 
         if ($stmt->execute()) {
-            echo "New record created successfully with ID: $new_id !!! $last_id @@@ $result";
+            echo "New record created successfully with ID: $new_id";
         } else {
             echo "Error: " . $stmt->error;
         }

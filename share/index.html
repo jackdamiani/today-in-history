@@ -30,14 +30,6 @@
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     // Handle response
                     console.log("Successfully inserted entry")
-
-                    try {
-                        console.log(xhr.responseText)
-                        // var jsonResponse = JSON.parse(xhr.responseText);
-                        // console.log(jsonResponse);
-                    } catch (e) {
-                        console.error("Could not parse JSON: ", e);
-                    }
                 }
             };
 
