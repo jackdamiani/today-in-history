@@ -37,6 +37,7 @@
             xhr.send("date=" + encodeURIComponent(utcDate));
         }
 
+        var clientDate = new Date();
         var utcDate = new Date(Date.UTC(
                 clientDate.getFullYear(),
                 clientDate.getMonth(),
