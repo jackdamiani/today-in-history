@@ -32,8 +32,9 @@
                     console.log("Successfully inserted entry")
 
                     try {
-                        var jsonResponse = JSON.parse(xhr.responseText);
-                        console.log(jsonResponse);
+                        console.log(xhr.responseText)
+                        // var jsonResponse = JSON.parse(xhr.responseText);
+                        // console.log(jsonResponse);
                     } catch (e) {
                         console.error("Could not parse JSON: ", e);
                     }
