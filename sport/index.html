@@ -1064,7 +1064,7 @@
         </div>
     </div>
 
-    <ul>
+    <ul id="top-header">
         <li>
             <p id="date-header" style="display: inline; font-size: 16px; font-family: 'Courier New', monospace;"></p>
         </li>
@@ -1200,6 +1200,13 @@
         <div class="square_empty" id="s15_4"></div>
     </div>
 
+    <br>
+    <footer id="bottom-footer">
+        <div class="copyright">
+            2024 Damiani Kids Company
+        </div>
+    </footer>
+
 
     <!-- <script type="text/javascript" src="today_in_history.json"></script> -->
     <!-- <script type="text/javascript" src="template.json"></script> -->
@@ -1326,7 +1333,37 @@
             var mm = String(find_today.getMonth()+1).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
-            // // Actual Codeff
+            dd_int = parseInt(dd) % 6
+
+            header_color = document.getElementById("top-header");
+            footer_color = document.getElementById("bottom-footer");
+
+            if(dd_int == 0){
+                header_color.style.backgroundColor= 'rgba(0,156,52,.2)';
+                footer_color.style.backgroundColor= 'rgba(0,156,52,.2)';
+            }
+            if(dd_int == 1){
+                header_color.style.backgroundColor= 'rgba(150, 75, 0, .3)';
+                footer_color.style.backgroundColor= 'rgba(150, 75, 0, .3)';
+            }
+            if(dd_int == 2){
+                header_color.style.backgroundColor= 'rgba(255,165,0)';
+                footer_color.style.backgroundColor= 'rgba(255,165,0)';
+            }
+            if(dd_int == 3){
+                header_color.style.backgroundColor= 'rgba(255,0,0)';
+                footer_color.style.backgroundColor= 'rgba(255,0,0)';
+            }
+            if(dd_int == 4){
+                header_color.style.backgroundColor= 'lightblue';
+                footer_color.style.backgroundColor= 'lightblue';
+            }
+            if(dd_int == 5){
+                header_color.style.backgroundColor= 'rgba(0,0,0,.2)';
+                footer_color.style.backgroundColor= 'rgba(0,0,0,.2)';
+            }
+
+            // // Actual Code
             // var find_today = new Date();
             // var dd = String(find_today.getDate()).padStart(2, '0');
             // var mm = String(find_today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -2032,10 +2069,4 @@
 
     </script>
 
-    <br>
-    <footer>
-        <div class="copyright">
-            2024 Damiani Kids Company
-        </div>
-    </footer>
 </body>
