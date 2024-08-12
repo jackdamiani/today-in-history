@@ -36,6 +36,17 @@
             // Send request
             xhr.send("date=" + encodeURIComponent(utcDate));
         }
+
+        var utcDate = new Date(Date.UTC(
+                clientDate.getFullYear(),
+                clientDate.getMonth(),
+                clientDate.getDate(),
+                clientDate.getHours(),
+                clientDate.getMinutes(),
+                clientDate.getSeconds()
+            ));
+        utcDate = utcDate.toISOString();
+        insert_row_php(utcDate)
     </script>
 </body>
 </html>
