@@ -1430,7 +1430,7 @@
                         streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 2]);
                         continue;
                     }
-                    let j = i % (len_streak - 2);
+                    let j = i % (historyEmojis.length - 2);
                     console.log(j)
                     console.log(historyEmojis[j])
                     console.log(String.fromCodePoint(historyEmojis[j]))
