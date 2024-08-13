@@ -403,6 +403,18 @@
                         
                     }
 
+                    let historyEmojis = [
+                        "🕰️", // Mantelpiece Clock
+                        "📜", // Scroll
+                        "🏛️", // Classical Building
+                        "🗿", // Moai
+                        "🏺", // Amphora
+                        "📖", // Open Book
+                        "⛪", // Church
+                        "⚔️", // Crossed Swords
+                        "🌍", // Globe Showing Europe-Africa
+                        "🔍"  // Magnifying Glass Tilted Right
+                    ];
                     if(getCookie("streak_arr") == ""){
                         let bracket = "["
                         let today = new Date();
@@ -415,6 +427,8 @@
                         let val = bracket.concat(formattedDate, "]")
                         setCookie("streak_arr", val, 0, 0);
                         console.log('Streak Started ', val)
+
+                        console.log()
                     }
                     else{
                         let cont_streak = parseStreakArr("streak_arr")
@@ -1049,6 +1063,7 @@
             <p id="games_played" style="font-weight: bold;"></p>
             <p id="win_percentage" style="font-weight: bold;"></p>
             <p id="avg_score" style="font-weight: bold;"></p>
+            <p id="streak" style="font-weight: bold;"></p>
             <button class="discord_button" onclick="window.location.href='https://discord.com/invite/aNEzKQ6md9'">Join Discord!</button>
             <button class="social_button" onclick="window.location.href='https://www.instagram.com/today_in_history_game/'"><i class="fa-brands fa-instagram" aria-hidden="true" style="color: white;"></i></button>
             <button class="social_button" onclick="window.location.href='https://www.tiktok.com/@today_in_history_game'"><i class="fa-brands fa-tiktok" aria-hidden="true" style="color: white;"></i></button>
@@ -1371,12 +1386,33 @@
                 display_share_text_post_post = post_play_display(display_share_text_post)
                 document.getElementById("share_text").textContent = display_share_text_post_post
 
+                len_streak = parseStreakLen('streak_arr')
+                let historyEmojis = [
+                    "🕰️", // Mantelpiece Clock
+                    "📜", // Scroll
+                    "🏛️", // Classical Building
+                    "🗿", // Moai
+                    "🏺", // Amphora
+                    "📖", // Open Book
+                    "⛪", // Church
+                    "⚔️", // Crossed Swords
+                    "🌍", // Globe Showing Europe-Africa
+                    "🔍"  // Magnifying Glass Tilted Right
+                ];
+
+                let streak_text = `Streak: ${len_streak} `
+                for (let i = 0; i < len_streak.length; i++){
+                    let j = i % 10;
+                    streak_text += history[j]
+                }
+                document.getElementById("streak").textContent = streak_text
+
                 // document.getElementById("share_button").style.visibility = 'hidden';
                 // document.getElementById('end_response').textContent = 'Game Complete!'
             }
             // Code to work with future dates
             var find_today = new Date();
-            var dd = String(find_today.getDate()-1).padStart(2, '0');
+            var dd = String(find_today.getDate()).padStart(2, '0');
             var mm = String(find_today.getMonth()+1).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
@@ -1668,6 +1704,16 @@
         console.log(yesterday); // Output: (e.g., "2024-08-11")
 
         return yesterday == last_day
+    }
+
+    function parseStreakLen(cname){
+        let arr_str = getCookie(cname)
+        let arr = arr_str.substring(1, arr_str.length-1)
+        arr = arr.replace(/['"]+/g, '')
+        streak_vals = arr.split(',');
+
+        return streak_vals.length
+        
     }
 
     function parseGuessArr(){
