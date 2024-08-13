@@ -1388,7 +1388,7 @@
 
                 len_streak = parseStreakLen('streak_arr')
                 let historyEmojis = [
-                    "🕰️", // Mantelpiece Clock
+                    128368, // "🕰️" Mantelpiece Clock
                     "📜", // Scroll
                     "🏛️", // Classical Building
                     "🗿", // Moai
@@ -1403,8 +1403,6 @@
                 let streak_text = `Streak: ${len_streak} `
                 for (let i = 0; i < len_streak; i++){
                     let j = i % 10;
-                    console.log(String.fromCodePoint(128368))
-                    console.log("emoji: ", historyEmojis[j])
                     streak_text += String.fromCodePoint(historyEmojis[j])
                 }
                 document.getElementById("streak").textContent = streak_text
