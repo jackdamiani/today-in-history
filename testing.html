@@ -1418,7 +1418,7 @@
 
                 let streak_text = `Streak: ${len_streak} `
                 for (let i = 0; i < 30; i++){
-                    let j = i % 25;
+                    let j = i % 26;
                     streak_text += String.fromCodePoint(historyEmojis[j])
                 }
                 document.getElementById("streak").textContent = streak_text
