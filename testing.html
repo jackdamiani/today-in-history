@@ -405,11 +405,11 @@
 
                     if(getCookie("streak_arr") == ""){
                         let bracket = "["
-                        let today = new Date();
-                        today = today.toISOString().split('T')[0]
-                        let val = bracket.concat(today, "]")
+                        let today_ = new Date();
+                        today_ = today_.toISOString().split('T')[0]
+                        let val = bracket.concat(today_, "]")
                         setCookie("streak_arr", val, 0, 0);
-                        console.log('Streak Started')
+                        console.log('Streak Started ', val)
                     }
                     else{
                         let cont_streak = parseStreakArr("streak_arr")
