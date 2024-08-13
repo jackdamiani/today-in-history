@@ -1388,37 +1388,49 @@
 
                 len_streak = parseStreakLen('streak_arr')
                 let historyEmojis = [
-                    "128220", // "📜", Scroll
-                    "127963", //"🏛️", Classical Building
                     "0x1F5FF", // "🗿", Moai
+                    "128220", // "📜", Scroll
                     "0x1F3FA", // "🏺", Amphora
-                    "0x1F4D6", // "📖", Open Book
-                    "0x26EA", // "⛪", Church
                     "0x2694", // "⚔️", Crossed Swords
+                    "127963", //"🏛️", Classical Building
+                    "0x26EA", // "⛪", Church
+                    "0x1F4D6", // "📖", Open Book
                     "0x1F50D", // "🔍"  Magnifying Glass Tilted Right
                     "0x1F30D", // "🌍", Globe Showing Europe-Africa
                     "0x1F30E", // 🌎 Globe Showing Americas
                     "0x1F30F", // 🌏 Globe Showing Asia-Australia
                     "0x1F310",  // 🌐 Globe with Meridians
                     "0x1F311", // 🌑 New Moon
+                    "0x1F31A", // 🌚 New Moon Face
                     "0x1F312", // 🌒 Waxing Crescent Moon
                     "0x1F313", // 🌓 First Quarter Moon
+                    "0x1F31B", // 🌛 First Quarter Moon Face
                     "0x1F314", // 🌔 Waxing Gibbous Moon
                     "0x1F315", // 🌕 Full Moon
+                    "0x1F31D", // 🌝 Full Moon with Face
                     "0x1F316", // 🌖 Waning Gibbous Moon
                     "0x1F317", // 🌗 Last Quarter Moon
+                    "0x1F31C", // 🌜 Last Quarter Moon Face
                     "0x1F318", // 🌘 Waning Crescent Moon
                     "0x1F319", // 🌙 Crescent Moon
-                    "0x1F31A", // 🌚 New Moon Face
-                    "0x1F31B", // 🌛 First Quarter Moon Face
-                    "0x1F31C", // 🌜 Full Moon Face
-                    "0x1F31D", // 🌝 Full Moon with Face
-                    "0x1F3F0" // 🏰 Castle
+                    "0x1F3F0",  // 🏰 Castle
+                    "11088", // ⭐ Star
+                    "127942", // 🏆 Trophy
+
+
                 ];
 
                 let streak_text = `Streak: ${len_streak}`
-                for (let i = 0; i < 30; i++){
-                    let j = i % 26;
+                for (let i = 0; i < 200; i++){
+                    if (i == 49 or i == 149){
+                        streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 3]);
+                        continue;
+                    }
+                    if (i == 99 or i == 199){
+                        streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 2]);
+                        continue;
+                    }
+                    let j = i % len_streak - 2;
                     streak_text += String.fromCodePoint(historyEmojis[j])
                 }
                 document.getElementById("streak").textContent = streak_text
