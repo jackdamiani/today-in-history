@@ -124,9 +124,6 @@
             const gridItem = document.getElementById('s2_4');
             insert_square_stats()
             gridItem.innerText = ''; 
-
-            
-
         }
 
 
@@ -228,8 +225,6 @@
                         if (getCookie("played_today") != "True"){
                             setCookie("guess_arr", JSON.stringify(score_vals), 0, 2)
                         }
-
-                        // avg_score = parseGuessArr("score_arr")
                         
                     }
                 }
@@ -407,6 +402,43 @@
                         avg_score = parseAvgScore("score_arr")
                         
                     }
+
+                    if(getCookie("streak_arr") == ""){
+                        let bracket = "["
+                        let today = new Date();
+                        today = today.toISOString().split('T')[0]
+                        let val = bracket.concat(today, "]")
+                        setCookie("streak_arr", val, 0, 0);
+                        console.log('Streak Started')
+                    }
+                    else{
+                        let cont_streak = parseStreakArr("streak_arr")
+
+                        if (cont_streak){
+                            let arr_str = getCookie("streak_arr")
+                            let arr = arr_str.substring(1, arr_str.length-1)
+                            arr = arr.replace(/['"]+/g, '')
+                            streak_vals = arr.split(',');
+                            let today = new Date();
+                            today = today.toISOString().split('T')[0]
+                            streak_vals.push(today.toString())
+                            
+                            setCookie("streak_arr", JSON.stringify(streak_vals), 0, 0)
+                            console.log("Streak Continued")
+                        }
+                        else{
+                            let bracket = "["
+                            let today = new Date();
+                            today = today.toISOString().split('T')[0]
+                            let val = bracket.concat(today, "]")
+                            setCookie("streak_arr", val, 0, 0);
+                            console.log('Streak Restarted')
+                        }
+
+                        avg_score = parseAvgScore("score_arr")
+                        
+                    }
+
                 }
 
                 console.log("avg_score:", avg_score)
@@ -1363,8 +1395,7 @@
                 footer_color.style.backgroundColor= 'rgba(0,0,0,.2)';
             }
 
-
-            // // Actual Codeff
+            // // Actual Code
             // var find_today = new Date();
             // var dd = String(find_today.getDate()).padStart(2, '0');
             // var mm = String(find_today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -1594,6 +1625,27 @@
         }
         avg_score = running_sum / score_vals.length
         return avg_score.toFixed(2)
+    }
+
+    function parseStreakArr(cname){
+        let arr_str = getCookie(cname)
+        let arr = arr_str.substring(1, arr_str.length-1)
+        arr = arr.replace(/['"]+/g, '')
+        streak_vals = arr.split(',');
+
+        console.log(streak_vals)
+        console.log(streak_vals[streak_vals.length - 1])
+        
+        let today = new Date();
+
+        // Subtract one day (in milliseconds)
+        today.setDate(today.getDate() - 1);
+
+        // Format the date as needed
+        let yesterday = today.toISOString().split('T')[0];
+        console.log(yesterday); // Output: (e.g., "2024-08-11")
+
+        return 0
     }
 
     function parseGuessArr(){
@@ -2000,7 +2052,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Number of Guesses',
+                        label: 'Number of Players',
                         data: counts,
                         borderColor: '#000000',
                         borderWidth: 1,
@@ -2066,9 +2118,5 @@
         }
     }
 
-
-
     </script>
-
-    
 </body>
