@@ -1430,7 +1430,7 @@
                         streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 2]);
                         continue;
                     }
-                    let j = i % len_streak - 2;
+                    let j = i % (len_streak - 2);
                     streak_text += String.fromCodePoint(historyEmojis[j])
                 }
                 document.getElementById("streak").textContent = streak_text
