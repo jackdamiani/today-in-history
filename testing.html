@@ -1423,14 +1423,14 @@
                 let streak_text = `Streak: ${len_streak}`
                 for (let i = 0; i < 200; i++){
                     if (i == 49 || i == 149){
-                        streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 3]);
-                        continue;
-                    }
-                    if (i == 99 || i == 199){
                         streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 2]);
                         continue;
                     }
-                    let j = i % (historyEmojis.length - 2);
+                    if (i == 99 || i == 199){
+                        streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 1]);
+                        continue;
+                    }
+                    let j = i % (historyEmojis.length - 1);
                     console.log(j)
                     console.log(historyEmojis[j])
                     console.log(String.fromCodePoint(historyEmojis[j]))
