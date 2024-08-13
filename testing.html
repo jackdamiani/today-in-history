@@ -405,9 +405,14 @@
 
                     if(getCookie("streak_arr") == ""){
                         let bracket = "["
-                        let today_ = new Date();
-                        today_ = today_.toISOString().split('T')[0]
-                        let val = bracket.concat(today_, "]")
+                        let today = new Date();
+                        let year = today.getFullYear();
+                        let month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                        let day = String(today.getDate()).padStart(2, '0');
+
+                        let formattedDate = `${year}-${month}-${day}`;
+                        console.log(formattedDate);
+                        let val = bracket.concat(formattedDate, "]")
                         setCookie("streak_arr", val, 0, 0);
                         console.log('Streak Started ', val)
                     }
@@ -420,16 +425,26 @@
                             arr = arr.replace(/['"]+/g, '')
                             streak_vals = arr.split(',');
                             let today = new Date();
-                            today = today.toISOString().split('T')[0]
-                            streak_vals.push(today.toString())
+                            let year = today.getFullYear();
+                            let month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                            let day = String(today.getDate()).padStart(2, '0');
+
+                            let today_ = `${year}-${month}-${day}`;
+
+                            streak_vals.push(today_)
                             
                             setCookie("streak_arr", JSON.stringify(streak_vals), 0, 0)
-                            console.log("Streak Continued")
+                            console.log("Streak Continued ", streak_vals)
                         }
                         else{
                             let bracket = "["
                             let today = new Date();
-                            today = today.toISOString().split('T')[0]
+                            let year = today.getFullYear();
+                            let month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                            let day = String(today.getDate()).padStart(2, '0');
+
+                            let today_ = `${year}-${month}-${day}`;
+
                             let val = bracket.concat(today, "]")
                             setCookie("streak_arr", val, 0, 0);
                             console.log('Streak Restarted')
@@ -1644,7 +1659,12 @@
         today.setDate(today.getDate() - 1);
 
         // Format the date as needed
-        let yesterday = today.toISOString().split('T')[0];
+        let year = today.getFullYear();
+        let month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+        let day = String(today.getDate()).padStart(2, '0');
+
+        let yesterday = `${year}-${month}-${day}`;
+
         console.log(yesterday); // Output: (e.g., "2024-08-11")
 
         return yesterday == last_day
