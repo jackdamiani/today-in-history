@@ -1361,7 +1361,7 @@
             }
             // Code to work with future dates
             var find_today = new Date();
-            var dd = String(find_today.getDate()+1).padStart(2, '0');
+            var dd = String(find_today.getDate()+2).padStart(2, '0');
             var mm = String(find_today.getMonth()+1).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
@@ -1633,7 +1633,7 @@
         arr = arr.replace(/['"]+/g, '')
         streak_vals = arr.split(',');
 
-        console.log(streak_vals)
+        console.log("streak value beginning", streak_vals)
         console.log(streak_vals[streak_vals.length - 1])
 
         let last_day = streak_vals[streak_vals.length - 1]
