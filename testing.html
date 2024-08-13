@@ -403,18 +403,6 @@
                         
                     }
 
-                    let historyEmojis = [
-                        "🕰️", // Mantelpiece Clock
-                        "📜", // Scroll
-                        "🏛️", // Classical Building
-                        "🗿", // Moai
-                        "🏺", // Amphora
-                        "📖", // Open Book
-                        "⛪", // Church
-                        "⚔️", // Crossed Swords
-                        "🌍", // Globe Showing Europe-Africa
-                        "🔍"  // Magnifying Glass Tilted Right
-                    ];
                     if(getCookie("streak_arr") == ""){
                         let bracket = "["
                         let today = new Date();
@@ -427,6 +415,8 @@
                         let val = bracket.concat(formattedDate, "]")
                         setCookie("streak_arr", val, 0, 0);
                         console.log('Streak Started ', val)
+
+                        setCookie("longest_streak", 1, 0, 0);
 
                         console.log()
                     }
@@ -449,6 +439,9 @@
                             
                             setCookie("streak_arr", JSON.stringify(streak_vals), 0, 0)
                             console.log("Streak Continued ", streak_vals)
+
+                            len_ = parseStreakLen("streak_arr")
+                            setCookie("longest_streak", len_, 0, 0)
                         }
                         else{
                             let bracket = "["
@@ -530,6 +523,8 @@
                     streak_text += String.fromCodePoint(historyEmojis[j])
                 }
                 document.getElementById("streak").textContent = streak_text
+
+                document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("longest_streak")}`
 
                 setCookie("display_share_text_cookie", display_share_text_cookie, 0, 2)
                 setCookie("played_today", "True", 0, 2)
@@ -661,6 +656,8 @@
 
                 let total_games_played = Number(getCookie("total_games"))
                 document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
+
+                document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("longest_streak")}`
 
                 if (getCookie("win_games") != ""){
                     var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
@@ -1113,6 +1110,7 @@
             <p id="win_percentage" style="font-weight: bold;"></p>
             <p id="avg_score" style="font-weight: bold;"></p>
             <p id="streak" style="font-weight: bold;"></p>
+            <p id="longest_streak" style="font-weight: bold;"></p>
             <button class="discord_button" onclick="window.location.href='https://discord.com/invite/aNEzKQ6md9'">Join Discord!</button>
             <button class="social_button" onclick="window.location.href='https://www.instagram.com/today_in_history_game/'"><i class="fa-brands fa-instagram" aria-hidden="true" style="color: white;"></i></button>
             <button class="social_button" onclick="window.location.href='https://www.tiktok.com/@today_in_history_game'"><i class="fa-brands fa-tiktok" aria-hidden="true" style="color: white;"></i></button>
@@ -1484,6 +1482,8 @@
                     streak_text += String.fromCodePoint(historyEmojis[j])
                 }
                 document.getElementById("streak").textContent = streak_text
+
+                document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("longest_streak")}`
 
                 // document.getElementById("share_button").style.visibility = 'hidden';
                 // document.getElementById('end_response').textContent = 'Game Complete!'
