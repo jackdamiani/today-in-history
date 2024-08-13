@@ -482,6 +482,55 @@
                 var win_percentage = (Number(getCookie("win_games")) / Number(getCookie("total_games")) * 100).toFixed(1) 
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
+                len_streak = parseStreakLen('streak_arr')
+                let historyEmojis = [
+                    "0x1F5FF", // "🗿", Moai
+                    "128220", // "📜", Scroll
+                    "0x1F3FA", // "🏺", Amphora
+                    "0x2694", // "⚔️", Crossed Swords
+                    "127963", //"🏛️", Classical Building
+                    "0x26EA", // "⛪", Church
+                    "0x1F4D6", // "📖", Open Book
+                    "0x1F50D", // "🔍"  Magnifying Glass Tilted Right
+                    "0x1F30D", // "🌍", Globe Showing Europe-Africa
+                    "0x1F30E", // 🌎 Globe Showing Americas
+                    "0x1F30F", // 🌏 Globe Showing Asia-Australia
+                    "0x1F310",  // 🌐 Globe with Meridians
+                    "0x1F311", // 🌑 New Moon
+                    "0x1F31A", // 🌚 New Moon Face
+                    "0x1F312", // 🌒 Waxing Crescent Moon
+                    "0x1F313", // 🌓 First Quarter Moon
+                    "0x1F31B", // 🌛 First Quarter Moon Face
+                    "0x1F314", // 🌔 Waxing Gibbous Moon
+                    "0x1F315", // 🌕 Full Moon
+                    "0x1F31D", // 🌝 Full Moon with Face
+                    "0x1F316", // 🌖 Waning Gibbous Moon
+                    "0x1F317", // 🌗 Last Quarter Moon
+                    "0x1F31C", // 🌜 Last Quarter Moon Face
+                    "0x1F318", // 🌘 Waning Crescent Moon
+                    "0x1F319", // 🌙 Crescent Moon
+                    "0x1F3F0",  // 🏰 Castle
+                    "11088", // ⭐ Star
+                    "127942", // 🏆 Trophy
+
+
+                ];
+
+                let streak_text = `Streak: ${len_streak}`
+                for (let i = 0; i < len_streak; i++){
+                    if (i == 49 || i == 149){
+                        streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 2]);
+                        continue;
+                    }
+                    if (i == 99 || i == 199){
+                        streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 1]);
+                        continue;
+                    }
+                    let j = i % (historyEmojis.length - 2);
+                    streak_text += String.fromCodePoint(historyEmojis[j])
+                }
+                document.getElementById("streak").textContent = streak_text
+
                 setCookie("display_share_text_cookie", display_share_text_cookie, 0, 2)
                 setCookie("played_today", "True", 0, 2)
                 setCookie("todays_score", guess_number.toString(), 0, 2)
@@ -1155,6 +1204,7 @@
         <div class="rectangle" id="fact3"></div>
     </div>
     <div id="help_message" style="color:black; font-size: 10px; padding:2px"> Events are in order left to right. To see the colors again hit the ?</div>
+    <div id="streak_home" style="color:black; font-size: 10px; padding:2px">Streak: 0</div>
     <div style="color:white; font-size: 10px;">.</div>
 
     <!-- <p class="facts", id="fact1">Need to add the facts</p>
@@ -1366,10 +1416,10 @@
                 
                 add_histogram()
                 
-            //     <p id="end_date"></p>
-            // <p id="end_score"></p>
-            // <p id="correct_answer"></p>
-            // <p id="share_text" style="white-space: pre-line;"></p>
+                //     <p id="end_date"></p>
+                // <p id="end_score"></p>
+                // <p id="correct_answer"></p>
+                // <p id="share_text" style="white-space: pre-line;"></p>
 
                 
                 
@@ -1421,7 +1471,7 @@
                 ];
 
                 let streak_text = `Streak: ${len_streak}`
-                for (let i = 0; i < 200; i++){
+                for (let i = 0; i < len_streak; i++){
                     if (i == 49 || i == 149){
                         streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 2]);
                         continue;
@@ -1431,9 +1481,6 @@
                         continue;
                     }
                     let j = i % (historyEmojis.length - 2);
-                    console.log(j)
-                    console.log(historyEmojis[j])
-                    console.log(String.fromCodePoint(historyEmojis[j]))
                     streak_text += String.fromCodePoint(historyEmojis[j])
                 }
                 document.getElementById("streak").textContent = streak_text
@@ -1580,10 +1627,59 @@
                 }
             }
 
-            
+            if (getCookie('streak_arr') != ""){
+                len_streak = parseStreakLen('streak_arr')
+                let historyEmojis = [
+                    "0x1F5FF", // "🗿", Moai
+                    "128220", // "📜", Scroll
+                    "0x1F3FA", // "🏺", Amphora
+                    "0x2694", // "⚔️", Crossed Swords
+                    "127963", //"🏛️", Classical Building
+                    "0x26EA", // "⛪", Church
+                    "0x1F4D6", // "📖", Open Book
+                    "0x1F50D", // "🔍"  Magnifying Glass Tilted Right
+                    "0x1F30D", // "🌍", Globe Showing Europe-Africa
+                    "0x1F30E", // 🌎 Globe Showing Americas
+                    "0x1F30F", // 🌏 Globe Showing Asia-Australia
+                    "0x1F310",  // 🌐 Globe with Meridians
+                    "0x1F311", // 🌑 New Moon
+                    "0x1F31A", // 🌚 New Moon Face
+                    "0x1F312", // 🌒 Waxing Crescent Moon
+                    "0x1F313", // 🌓 First Quarter Moon
+                    "0x1F31B", // 🌛 First Quarter Moon Face
+                    "0x1F314", // 🌔 Waxing Gibbous Moon
+                    "0x1F315", // 🌕 Full Moon
+                    "0x1F31D", // 🌝 Full Moon with Face
+                    "0x1F316", // 🌖 Waning Gibbous Moon
+                    "0x1F317", // 🌗 Last Quarter Moon
+                    "0x1F31C", // 🌜 Last Quarter Moon Face
+                    "0x1F318", // 🌘 Waning Crescent Moon
+                    "0x1F319", // 🌙 Crescent Moon
+                    "0x1F3F0",  // 🏰 Castle
+                    "11088", // ⭐ Star
+                    "127942", // 🏆 Trophy
+
+
+                ];
+
+                let streak_text = `Streak: ${len_streak}`
+                for (let i = 0; i < len_streak; i++){
+                    if (i == 49 || i == 149){
+                        streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 2]);
+                        continue;
+                    }
+                    if (i == 99 || i == 199){
+                        streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 1]);
+                        continue;
+                    }
+                    let j = i % (historyEmojis.length - 2);
+                    streak_text += String.fromCodePoint(historyEmojis[j])
+                }
+
+                document.getElementById("streak_home").textContent = streak_text
+            }
         }
 
-    
     
     fact1_obj = document.getElementById('fact1');
     fact1_obj.innerHTML = fact1;
