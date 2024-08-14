@@ -461,283 +461,143 @@ var today_in_history = {
     },
     "1201": {
         "1940": "Richard Pryor, Comedian (Live on the Sunset Strip)",
-        "1945": "Bette Midler, Singer/Actress (Beaches, The Rose)",
-        "1970": "Sarah Silverman, Comedian (The Sarah Silverman Program)",
-        "1971": "Emily Mortimer, Actress (The Newsroom, Mary Poppins Returns)",
-        "1977": "Brad Delson, Musician (Linkin Park)",
-        "1981": "Riz Ahmed, Actor (Nightcrawler, Sound of Metal)",
-        "1988": "Zoë Kravitz, Actress (Big Little Lies, Divergent)",
-        "1989": "Tyler Joseph, Musician (Twenty One Pilots)"
+        "1970": "Sarah Silverman, Comedian (SNL, The Sarah Silverman Program)",
+        "1988": "Zoë Kravitz, Actress (Big Little Lies, Divergent)"
     },
     "1202": {
-        "1946": "Gianni Versace, Fashion Designer (Versace)",
-        "1968": "Lucy Liu, Actress (Charlie's Angels, Kill Bill)",
-        "1973": "Monica Seles, Tennis Player",
         "1981": "Britney Spears, Singer (Toxic, Oops!... I Did It Again)",
-        "1983": "Jana Kramer, Actress/Singer (One Tree Hill)",
-        "1991": "Charlie Puth, Singer (Attention, See You Again)",
-        "1993": "Aaron Rodgers, Football Player (NFL)",
-        "1998": "Juice WRLD, Rapper (Lucid Dreams)"
+        "1983": "Aaron Rodgers, NFL Football Player (Packers, Jets)",
+        "1991": "Charlie Puth, Singer (Attention, See You Again)"
     },
     "1203": {
         "1948": "Ozzy Osbourne, Musician (Black Sabbath)",
-        "1960": "Julianne Moore, Actress (Still Alice, The Hours)",
-        "1968": "Brendan Fraser, Actor (The Mummy, George of the Jungle)",
-        "1981": "Brian Bonsall, Actor (Family Ties)",
         "1985": "Amanda Seyfried, Actress (Mamma Mia!, Les Misérables)",
-        "1986": "Jake T. Austin, Actor (Wizards of Waverly Place)",
-        "1988": "Michael Angarano, Actor (Sky High, This Is Us)",
-        "1994": "Lil Baby, Rapper (Drip Too Hard)"
+        "1994": "Jake T. Austin, Actor (Wizards of Waverly Place)"
     },
     "1204": {
-        "1964": "Marisa Tomei, Actress (My Cousin Vinny, The Wrestler)",
+        "1969": "Jay-Z, Rapper (Empire State of Mind, 99 Problems)",
         "1973": "Tyra Banks, Model/TV Host (America's Next Top Model)",
-        "1974": "Anke Engelke, Comedian/Actress",
-        "1982": "Nick Vujicic, Motivational Speaker",
-        "1984": "Orlando Brown, Actor (That's So Raven)",
-        "1989": "Lila McCann, Singer (I Wanna Fall in Love)",
-        "1992": "Jin, Singer (BTS)",
-        "1996": "Jenna Davis, Actress (Chicken Girls)"
+        "1992": "Jin, Singer (BTS)"
     },
     "1205": {
-        "1932": "Little Richard, Musician (Tutti Frutti)",
-        "1933": "Joan Didion, Author (The Year of Magical Thinking)",
-        "1966": "Patty Duke, Actress (The Miracle Worker)",
-        "1969": "Jay-Z, Rapper (Empire State of Mind, 99 Problems)",
-        "1975": "Paula Patton, Actress (Precious, Mission: Impossible – Ghost Protocol)",
+        "1901": "Walt Disney, Animator (Mickey Mouse, Disneyland)",
         "1985": "Frankie Muniz, Actor (Malcolm in the Middle)",
-        "1990": "Lauren London, Actress (ATL, The Game)",
-        "1994": "Ross Bagley, Actor (The Fresh Prince of Bel-Air)"
+        "1991": "Christian Yelich, MLB Baseball Player (Brewers)"
     },
     "1206": {
         "1955": "Steven Wright, Comedian (Reservoir Dogs)",
-        "1970": "Ulf Ekberg, Musician (Ace of Base)",
-        "1971": "Ryan White, AIDS Activist",
-        "1979": "Tim Cahill, Soccer Player",
-        "1982": "Alfred Enoch, Actor (How to Get Away with Murder)",
-        "1987": "Colleen Ballinger, Comedian (Miranda Sings)",
-        "1989": "Rudy Gay, Basketball Player (NBA)",
-        "1993": "Stef Dawson, Actress (The Hunger Games)"
+        "1994": "Giannis Antetokounmpo, NBA Basketball Player (Bucks)",
+        "1997": "Sabrina Ionescu, WNBA Basketball Player (Liberty)"
     },
     "1207": {
-        "1949": "Tom Waits, Musician (Rain Dogs, Mule Variations)",
-        "1966": "C. Thomas Howell, Actor (The Outsiders)",
+        "1966": "C. Thomas Howell, Actor (The Outsiders, E.T.)",
         "1979": "Sara Bareilles, Singer (Love Song, Brave)",
-        "1987": "Aaron Carter, Singer (I Want Candy)",
-        "1988": "Emily Browning, Actress (Sucker Punch)",
-        "1989": "Nicholas Hoult, Actor (Warm Bodies, Mad Max: Fury Road)",
-        "1993": "Yuzuru Hanyu, Figure Skater (Olympic Gold Medalist)",
-        "1995": "Tiffany Alvord, Singer/Songwriter"
+        "1989": "Nicholas Hoult, Actor (About a Boy, Mad Max: Fury Road)"
     },
     "1208": {
         "1943": "Jim Morrison, Singer (The Doors)",
-        "1953": "Kim Basinger, Actress (L.A. Confidential, Batman)",
-        "1976": "Dominic Monaghan, Actor (The Lord of the Rings, Lost)",
-        "1978": "Ian Somerhalder, Actor (The Vampire Diaries)",
         "1982": "Nicki Minaj, Rapper (Super Bass, Anaconda)",
-        "1984": "Sam Hunt, Singer (Body Like a Back Road)",
-        "1994": "Raheem Sterling, Footballer (Manchester City, England)",
-        "1996": "Teala Dunn, Actress (Are We There Yet?)"
+        "1984": "Sam Hunt, Singer (Body Like a Back Road)"
     },
     "1209": {
-        "1916": "Kirk Douglas, Actor (Spartacus, Paths of Glory)",
-        "1969": "Jakob Dylan, Musician (The Wallflowers)",
-        "1972": "Treach, Rapper (Naughty by Nature)",
-        "1978": "Jesse Metcalfe, Actor (Desperate Housewives)",
+        "1916": "Kirk Douglas, Actor (Spartacus, One Flew Over the Cuckoo's Nest)",
         "1980": "Simon Helberg, Actor (The Big Bang Theory)",
-        "1981": "Minka Kelly, Actress (Friday Night Lights)",
-        "1984": "Imogen Heap, Singer (Hide and Seek)",
-        "1990": "Kendrick Sampson, Actor (Insecure)"
+        "1981": "Minka Kelly, Actress (Friday Night Lights)"
     },
     "1210": {
-        "1957": "Michael Clarke Duncan, Actor (The Green Mile)",
-        "1960": "Kenneth Branagh, Actor (Henry V, Dunkirk)",
         "1964": "Bobby Flay, Chef (Iron Chef America)",
-        "1981": "Sarah Chang, Violinist",
-        "1985": "Raven-Symoné, Actress (That's So Raven, The View)",
-        "1987": "Gonzalo Higuaín, Footballer (Real Madrid, Argentina)",
-        "1992": "Emmanuelle Chriqui, Actress (Entourage)",
-        "1994": "Megan Thee Stallion, Rapper (Savage, WAP)"
+        "1975": "Emmanuelle Chriqui, Actress (Entourage)",
+        "1985": "Raven-Symoné, Actress (That's So Raven, The View)"
     },
     "1211": {
-        "1931": "Rita Moreno, Actress (West Side Story, The King and I)",
         "1954": "Jermaine Jackson, Singer (The Jackson 5)",
-        "1969": "Max Martini, Actor (Pacific Rim)",
-        "1973": "Mos Def, Rapper/Actor (The Italian Job)",
-        "1979": "Viswanathan Anand, Chess Player",
-        "1980": "Rider Strong, Actor (Boy Meets World)",
-        "1981": "Roy Hibbert, Basketball Player (NBA)",
-        "1996": "Hailee Steinfeld, Actress/Singer (True Grit, Pitch Perfect 2)"
+        "1969": "Max Martini, Actor (Pacific Rim, Saving Private Ryan)",
+        "1996": "Hailee Steinfeld, Actress/Singer (Bumblebee, Pitch Perfect 2)"
     },
     "1212": {
         "1915": "Frank Sinatra, Singer (My Way, New York, New York)",
-        "1940": "Dionne Warwick, Singer (Walk On By, I Say a Little Prayer)",
-        "1970": "Jennifer Connelly, Actress (A Beautiful Mind)",
-        "1975": "Mayim Bialik, Actress (The Big Bang Theory)",
-        "1978": "Winter Ave Zoli, Actress (Sons of Anarchy)",
-        "1980": "Daniel Agger, Footballer (Liverpool, Denmark)",
-        "1981": "Stephen Boss, Dancer (Step Up 3D)",
-        "1993": "Luke Benward, Actor (Dumplin')"
+        "1923": "Bob Barker, Game Show Host (The Price is Right)",
+        "1975": "Mayim Bialik, Actress (The Big Bang Theory, Jeopardy!)"
     },
     "1213": {
         "1925": "Dick Van Dyke, Actor (Mary Poppins, The Dick Van Dyke Show)",
-        "1957": "Steve Buscemi, Actor (Fargo, Boardwalk Empire)",
         "1967": "Jamie Foxx, Actor (Ray, Django Unchained)",
-        "1969": "Sergei Fedorov, Hockey Player (NHL)",
-        "1981": "Amy Lee, Singer (Evanescence)",
-        "1989": "Taylor Swift, Singer (Love Story, Blank Space)",
-        "1990": "Katherine Schwarzenegger, Author",
-        "1997": "Mavado, Singer (So Special)"
+        "1989": "Taylor Swift, Singer (Love Story, Blank Space)"
     },
     "1214": {
-        "1946": "Patty Duke, Actress (The Miracle Worker)",
-        "1949": "Bill Buckner, Baseball Player",
-        "1968": "Natascha McElhone, Actress (Californication)",
-        "1970": "Monique Coleman, Actress (High School Musical)",
-        "1979": "Sophie Monk, Singer (Bardot)",
         "1988": "Vanessa Hudgens, Actress (High School Musical)",
         "1991": "Offset, Rapper (Migos)",
-        "1996": "Tori Kelly, Singer (Nobody Love)"
+        "1996": "Tori Kelly, Singer/Actress (Nobody Love, Sing)"
     },
     "1215": {
-        "1933": "Tim Conway, Comedian (The Carol Burnett Show)",
-        "1963": "Helen Slater, Actress (Supergirl)",
-        "1969": "Adam Brody, Actor (The O.C.)",
-        "1974": "Garrett Wang, Actor (Star Trek: Voyager)",
         "1977": "Michelle Dockery, Actress (Downton Abbey)",
-        "1981": "Charlie Cox, Actor (Daredevil)",
-        "1989": "George Ezra, Singer (Budapest)",
+        "1982": "Charlie Cox, Actor (Daredevil)",
         "1997": "Maude Apatow, Actress (Euphoria)"
     },
     "1216": {
         "1949": "Billy Gibbons, Musician (ZZ Top)",
         "1967": "Miranda Otto, Actress (The Lord of the Rings)",
-        "1969": "Adam Riess, Astrophysicist",
-        "1979": "Krysten Ritter, Actress (Jessica Jones)",
-        "1981": "Kristine Hermosa, Actress (Pangako Sa 'Yo)",
-        "1982": "Michael McMillian, Actor (True Blood)",
-        "1994": "Anna Popplewell, Actress (The Chronicles of Narnia)",
-        "1996": "Zara Larsson, Singer (Lush Life)"
+        "1988": "Anna Popplewell, Actress (The Chronicles of Narnia)"
     },
     "1217": {
         "1936": "Pope Francis, Religious Leader",
-        "1949": "Paul Rodgers, Musician (Bad Company)",
-        "1974": "Sarah Paulson, Actress (American Horror Story)",
-        "1975": "Milla Jovovich, Actress (Resident Evil)",
         "1978": "Manny Pacquiao, Boxer",
-        "1984": "Shannon Woodward, Actress (Raising Hope)",
-        "1989": "Taylor York, Musician (Paramore)",
-        "1991": "Nat Wolff, Actor (Paper Towns)"
+        "1994": "Nat Wolff, Actor (The Naked Brothers Band, Paper Towns)"
     },
     "1218": {
-        "1943": "Keith Richards, Musician (The Rolling Stones)",
         "1963": "Brad Pitt, Actor (Fight Club, Once Upon a Time in Hollywood)",
-        "1978": "Katie Holmes, Actress (Dawson's Creek)",
-        "1980": "Christina Aguilera, Singer (Genie in a Bottle)",
-        "1981": "Sia, Singer (Chandelier)",
-        "1984": "Stone Cold Steve Austin, Wrestler",
-        "1989": "Ashley Benson, Actress (Pretty Little Liars)",
-        "1996": "Kali Uchis, Singer (Telepatía)"
+        "1964": "Stone Cold Steve Austin, WWE Wrestler",
+        "1981": "Sia, Singer (Chandelier)"
     },
     "1219": {
-        "1941": "Lee Myung-bak, Politician (President of South Korea)",
-        "1967": "Criss Angel, Magician (Mindfreak)",
-        "1972": "Alyssa Milano, Actress (Charmed)",
-        "1974": "Jake Gyllenhaal, Actor (Brokeback Mountain, Nightcrawler)",
-        "1975": "Katherine Heigl, Actress (Grey's Anatomy)",
-        "1980": "Jake Gyllenhaal, Actor (Brokeback Mountain, Nightcrawler)",
-        "1991": "Iben Akerlie, Actress (Victoria)",
-        "1996": "Kylian Mbappé, Footballer (Paris Saint-Germain, France)"
+        "1963": "Jennifer Beals, Actress (My Bodyguard, Flashdance)",
+        "1967": "Criss Angel, Magician (Mindfreak, Las Vegas)",
+        "1980": "Jake Gyllenhaal, Actor (Brokeback Mountain, Nightcrawler)"
     },
     "1220": {
-        "1957": "Billy Bragg, Musician (Greetings to the New Brunette)",
         "1966": "Chris Robinson, Musician (The Black Crowes)",
-        "1969": "Julie Delpy, Actress (Before Sunrise)",
-        "1979": "David Cook, Singer (American Idol)",
         "1983": "Jonah Hill, Actor (Superbad, Moneyball)",
-        "1990": "JoJo, Singer (Too Little, Too Late)",
-        "1992": "David Wright, Baseball Player (MLB)",
         "1998": "Kylian Mbappé, Footballer (Paris Saint-Germain, France)"
     },
     "1221": {
         "1948": "Samuel L. Jackson, Actor (Pulp Fiction, Avengers)",
-        "1957": "Jane Kaczmarek, Actress (Malcolm in the Middle)",
-        "1966": "Kiefer Sutherland, Actor (24)",
-        "1969": "Julie Delpy, Actress (Before Sunrise)",
-        "1989": "Tom Payne, Actor (The Walking Dead)",
-        "1991": "Steven Yeun, Actor (The Walking Dead)",
-        "1996": "Madelaine Petsch, Actress (Riverdale)",
-        "1998": "Emma Bunton, Singer (Spice Girls)"
+        "1982": "Tom Payne, Actor (The Walking Dead)",
+        "1983": "Steven Yeun, Actor (The Walking Dead)"
     },
     "1222": {
         "1945": "Diane Sawyer, Journalist (ABC News)",
         "1962": "Ralph Fiennes, Actor (Schindler's List, Harry Potter)",
-        "1965": "David S. Goyer, Screenwriter (The Dark Knight Trilogy)",
-        "1972": "Vanessa Paradis, Singer/Actress (Joe le Taxi)",
-        "1979": "Chris Carmack, Actor (The O.C.)",
-        "1984": "Basshunter, Singer (Now You're Gone)",
-        "1990": "Jordin Sparks, Singer (American Idol)",
         "1992": "Meghan Trainor, Singer (All About That Bass)"
     },
     "1223": {
-        "1959": "Dave Murray, Musician (Iron Maiden)",
         "1964": "Eddie Vedder, Musician (Pearl Jam)",
-        "1966": "Scott Weiland, Musician (Stone Temple Pilots)",
-        "1971": "Corey Haim, Actor (The Lost Boys)",
         "1978": "Estella Warren, Actress (Planet of the Apes)",
-        "1980": "Stephenie Meyer, Author (Twilight)",
-        "1994": "Finn Wolfhard, Actor (Stranger Things)",
-        "1999": "Gabrielle Douglas, Gymnast (Olympic Gold Medalist)"
+        "2002": "Finn Wolfhard, Actor (Stranger Things)",
     },
     "1224": {
-        "1958": "Anil Kapoor, Actor (Slumdog Millionaire)",
-        "1960": "Carol Vorderman, TV Presenter",
         "1971": "Ricky Martin, Singer (Livin' la Vida Loca)",
         "1973": "Stephenie Meyer, Author (Twilight)",
-        "1981": "Dima Bilan, Singer (Eurovision)",
-        "1984": "Ryan Seacrest, TV Host (American Idol)",
-        "1991": "Louis Tomlinson, Singer (One Direction)",
-        "1993": "Mena Massoud, Actor (Aladdin)"
+        "1991": "Louis Tomlinson, Singer (One Direction)"
     },
     "1225": {
-        "1949": "Sissy Spacek, Actress (Carrie, Coal Miner's Daughter)",
-        "1954": "Annie Lennox, Singer (Eurythmics)",
-        "1971": "Dido, Singer (Thank You, White Flag)",
-        "1975": "Armin van Buuren, DJ",
-        "1980": "Emilie de Ravin, Actress (Lost)",
-        "1986": "Demaryius Thomas, Football Player (NFL)",
-        "1989": "Joey Badass, Rapper (All-Amerikkkan Badass)",
-        "1996": "Ashley Tisdale, Actress (High School Musical)"
+        "1946": "Jimmy Buffett, Musician (Margaritaville)",
+        "1971": "Justin Trudeau, Prime Minister of Canada",
+        "1975": "Boston Rob Mariano, Reality TV (Survivor)"
     },
     "1226": {
-        "1959": "Chris Daughtry, Musician (Daughtry)",
         "1963": "Lars Ulrich, Musician (Metallica)",
         "1971": "Jared Leto, Actor/Musician (Dallas Buyers Club, 30 Seconds to Mars)",
-        "1975": "Marc Nelson, Singer (Boyz II Men)",
-        "1979": "Chris Daughtry, Musician (Daughtry)",
-        "1980": "Audrey Moore, Actress (Godless)",
         "1986": "Kit Harington, Actor (Game of Thrones)",
-        "1990": "Andy Biersack, Singer (Black Veil Brides)"
     },
     "1227": {
-        "1901": "Marlene Dietrich, Actress (Destry Rides Again)",
-        "1948": "Gerard Depardieu, Actor (Cyrano de Bergerac)",
-        "1966": "Bill Goldberg, Wrestler (WCW, WWE)",
-        "1971": "Savannah Guthrie, Journalist (Today Show)",
-        "1979": "Masi Oka, Actor (Heroes)",
         "1981": "Emilie de Ravin, Actress (Lost)",
-        "1984": "Hayley Williams, Singer (Paramore)",
-        "1988": "Alexis Sanchez, Footballer (Inter Milan, Chile)"
+        "1988": "Hayley Williams, Singer (Paramore)",
+        "1995": "Timothee Chalamet, Actor (Dune, Wonka)"
     },
     "1228": {
         "1922": "Stan Lee, Comic Book Writer (Marvel Comics)",
-        "1934": "Maggie Smith, Actress (Harry Potter, Downton Abbey)",
         "1954": "Denzel Washington, Actor (Training Day, Fences)",
-        "1958": "Joe Diffie, Singer (Pickup Man)",
-        "1971": "Seth Meyers, Comedian (Late Night with Seth Meyers)",
-        "1981": "Sienna Miller, Actress (American Sniper)",
-        "1989": "Mackenzie Rosman, Actress (7th Heaven)",
-        "1990": "David Archuleta, Singer (American Idol)"
+        "1973": "Seth Meyers, Comedian (Late Night with Seth Meyers)",
     },
     "1229": {
         "1938": "Jon Voight, Actor (Midnight Cowboy, Ray Donovan)",
@@ -746,20 +606,16 @@ var today_in_history = {
         "1978": "Katherine Moennig, Actress (The L Word)",
         "1981": "Alison Brie, Actress (Community, GLOW)",
         "1988": "David Archuleta, Singer (American Idol)",
-        "1989": "Jane Levy, Actress (Suburgatory)"
+        "1989": "Jane Levy, Actress (Shameless, Suburgatory)"
     },
     "1230": {
-        "1942": "Michael Nesmith, Musician (The Monkees)",
-        "1945": "Davy Jones, Singer (The Monkees)",
         "1975": "Tiger Woods, Golfer",
-        "1980": "Eliza Dushku, Actress (Buffy the Vampire Slayer)",
         "1984": "LeBron James, Basketball Player (NBA)",
-        "1995": "Kim Taehyung, Singer (BTS)",
-        "1996": "Ellie Goulding, Singer (Love Me Like You Do)"
+        "1986": "Ellie Goulding, Singer (Love Me Like You Do)"
     },
     "1231": {
         "1937": "Anthony Hopkins, Actor (The Silence of the Lambs)",
-        "1943": "Ben Kingsley, Actor (Gandhi)",
+        "1943": "Ben Kingsley, Actor (Gandhi, Theater)",
         "1948": "Donna Summer, Singer (Hot Stuff)",
         "1977": "Psy, Singer (Gangnam Style)",
         "1979": "Josh Hawley, Politician",

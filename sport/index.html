@@ -409,7 +409,7 @@
                     }
                 }
 
-                if(getCookie("streak_arr") == ""){
+                if(getCookie("sstreak_arr") == ""){
                     let bracket = "["
                     let today = new Date();
                     let year = today.getFullYear();
@@ -419,18 +419,18 @@
                     let formattedDate = `${year}-${month}-${day}`;
                     console.log(formattedDate);
                     let val = bracket.concat(formattedDate, "]")
-                    setCookie("streak_arr", val, 0, 0);
+                    setCookie("sstreak_arr", val, 0, 0);
                     console.log('Streak Started ', val)
 
-                    setCookie("longest_streak", 1, 0, 0);
+                    setCookie("slongest_streak", 1, 0, 0);
 
                     console.log()
                 }
                 else{
-                    let cont_streak = parseStreakArr("streak_arr")
+                    let cont_streak = parseStreakArr("sstreak_arr")
 
                     if (cont_streak){
-                        let arr_str = getCookie("streak_arr")
+                        let arr_str = getCookie("sstreak_arr")
                         let arr = arr_str.substring(1, arr_str.length-1)
                         arr = arr.replace(/['"]+/g, '')
                         streak_vals = arr.split(',');
@@ -443,11 +443,11 @@
 
                         streak_vals.push(today_)
                         
-                        setCookie("streak_arr", JSON.stringify(streak_vals), 0, 0)
+                        setCookie("sstreak_arr", JSON.stringify(streak_vals), 0, 0)
                         console.log("Streak Continued ", streak_vals)
 
-                        len_ = parseStreakLen("streak_arr")
-                        setCookie("longest_streak", len_, 0, 0)
+                        len_ = parseStreakLen("sstreak_arr")
+                        setCookie("slongest_streak", len_, 0, 0)
                     }
                     else{
                         let bracket = "["
@@ -459,7 +459,7 @@
                         let today_ = `${year}-${month}-${day}`;
 
                         let val = bracket.concat(today, "]")
-                        setCookie("streak_arr", val, 0, 0);
+                        setCookie("sstreak_arr", val, 0, 0);
                         console.log('Streak Restarted')
                     }
 
@@ -479,7 +479,7 @@
                 var win_percentage = (Number(getCookie("swin_games")) / Number(getCookie("stotal_games")) * 100).toFixed(1) 
                 document.getElementById('win_percentage').textContent = 'Win Percentage = ' + win_percentage + '%'
 
-                len_streak = parseStreakLen('streak_arr')
+                len_streak = parseStreakLen('sstreak_arr')
                 let historyEmojis = [
                     "0x1F5FF", // "🗿", Moai
                     "128220", // "📜", Scroll
@@ -528,7 +528,7 @@
                 }
                 document.getElementById("streak").textContent = streak_text
 
-                document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("longest_streak")}`
+                document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("slongest_streak")}`
 
 
                 setCookie("sdisplay_share_text_cookie", display_share_text_cookie, 0, 2)
@@ -662,7 +662,7 @@
                 let total_games_played = Number(getCookie("stotal_games"))
                 document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
 
-                document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("longest_streak")}`
+                document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("slongest_streak")}`
 
                 if (getCookie("swin_games") != ""){
                     var win_percentage = (Number(getCookie("swin_games")) / Number(getCookie("stotal_games")) * 100).toFixed(1) 
@@ -1439,7 +1439,7 @@
                 display_share_text_post_post = post_play_display(display_share_text_post)
                 document.getElementById("share_text").textContent = display_share_text_post_post
 
-                len_streak = parseStreakLen('streak_arr')
+                len_streak = parseStreakLen('sstreak_arr')
                 let historyEmojis = [
                     "0x1F5FF", // "🗿", Moai
                     "128220", // "📜", Scroll
@@ -1488,7 +1488,7 @@
                 }
                 document.getElementById("streak").textContent = streak_text
 
-                document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("longest_streak")}`
+                document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("slongest_streak")}`
 
 
                 // document.getElementById("share_button").style.visibility = 'hidden';
@@ -1633,8 +1633,8 @@
                 }
             }
 
-            if (getCookie('streak_arr') != ""){
-                len_streak = parseStreakLen('streak_arr')
+            if (getCookie("sstreak_arr") != ""){
+                len_streak = parseStreakLen('sstreak_arr')
                 let historyEmojis = [
                     "0x1F5FF", // "🗿", Moai
                     "128220", // "📜", Scroll
