@@ -1087,6 +1087,26 @@
             margin-right: 5px;
         }
 
+        .games_btn-container {
+            margin: 20px 0;
+        }
+
+        .games_btn {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .games_btn:hover {
+            background-color: gray;
+        }
+
     </style>
 
     <canvas id="fireworkCanvas"></canvas>
@@ -1095,6 +1115,9 @@
         <div>
             <div class="popupCloseButton" onclick="close_end()">&times;</div>
             <h2 id="end_response"> </h2>
+            <p>Play our new games starting September 1!</p>
+            <button class="games_btn" id="celeb_link">Celebrity Birthdays <i class="fa fa-regular fa-star" aria-hidden="true"></i></button>
+            <button class="games_btn" id="sport_link">Sports Events <i class="fa fa-volleyball" aria-hidden="true"></i> </button>
             <p id="end_date"></p>
             <p id="end_score"></p>
             <p id="tip">Click on year to read more!</p>

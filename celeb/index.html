@@ -132,6 +132,10 @@
 
 
         function get_difference_time_guess(guess, year){
+            if (guess < 120){
+                const yearNow = new Date().getFullYear();
+                return Math.abs(yearNow - year - guess)
+            }
             return Math.abs(guess-year)
         }
 
@@ -381,11 +385,12 @@
                 else
                     document.getElementById('correct_answer3').innerHTML = year3 + " "
 
-                // document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
-                document.getElementById('year_input').disabled = true;
-                document.getElementById("year_input").value = '';
+                const yearNow = new Date().getFullYear();
+                document.getElementById('correct_answer_').innerHTML = " " + yearNow - year1 + " ..."
+                document.getElementById('correct_answer2_').innerHTML = " " + yearNow - year2 + " ..."
+                document.getElementById('correct_answer3_').innerHTML = " " + yearNow - year3 + " "
 
-                
+
                 
                 // document.cookie = "score_arr=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 if (getCookie("cplayed_today") != "True"){
@@ -1104,7 +1109,10 @@
             <p id="end_score"></p>
             <p id="tip">Click on year to read more!</p>
             <div id="years" style="display: flex; justify-content: space-between; justify-content: center; gap:0px 10px; align-items: top; margin: 0px;">
-                <p id="answer_" style="margin: 0 0 0 0; padding: 0 0 0 0;">Answer: </p><p id="correct_answer" style="white-space: normal; margin: 0 0 0 0; padding: 0 0 0 0;"></p><p id="correct_answer2" style="margin: 0 0 0 0; padding: 0 0 0 0; display: inline-block;"></p><p id="correct_answer3" style="margin: 0 0 0 0; padding: 0 0 0 0;"></p>
+                <p id="answer_" style="margin: 0 0 0 0; padding: 0 0 0 0;">Answer: </p><p id="correct_answer" style="margin: 0 0 0 0; padding: 0 0 0 0;"></p><p id="correct_answer2" style="margin: 0 0 0 0; padding: 0 0 0 0"></p><p id="correct_answer3" style="margin: 0 0 0 0; padding: 0 0 0 0;"></p>
+            </div>
+            <div id="years" style="display: flex; justify-content: space-between; justify-content: center; gap:0px 10px; align-items: top; margin: 0px;">
+                <p id="answer_" style="margin: 0 0 0 0; padding: 0 0 0 0;">Ages: </p><p id="correct_answer_" style="margin: 0 0 0 0; padding: 0 0 0 0;"></p><p id="correct_answer2_" style="margin: 0 0 0 0; padding: 0 0 0 0"></p><p id="correct_answer3_" style="margin: 0 0 0 0; padding: 0 0 0 0;"></p>
             </div>
             <p id="share_text" style="white-space: pre-line;"></p>
             <button id="share_button" class="game_button" onclick="share_function()">Share <i class="fa fa-share-square-o" aria-hidden="true" ></i></button>
@@ -1133,9 +1141,9 @@
                 <br>
                 happened today. You have 15 
                 <br>
-                chances to guess which year!
+                chances to guess which year
                 <br>
-                New game every day!
+                or age! New game every day!
                 <br>
                 <br>
                 <b>Color Code:</b> 
@@ -1206,7 +1214,7 @@
         <div class="rectangle" id="fact2"></div> 
         <div class="rectangle" id="fact3"></div>
     </div>
-    <div id="help_message" style="color:black; font-size: 10px; padding:2px"> Events are in order left to right. To see the colors again hit the ?</div>
+    <div id="help_message" style="color:black; font-size: 10px; padding:2px"> Events are in order left to right. Guess the age or year in this mode only! To see the colors again hit the ?</div>
     <div id="streak_home" style="color:black; font-size: 10px; padding:2px">Streak: 0 :(</div>
     <div style="color:white; font-size: 10px;">.</div>
 
@@ -1622,7 +1630,11 @@
                 }
                 else
                     document.getElementById('correct_answer3').innerHTML = year3 + " "
-                // document.getElementById('correct_answer').textContent = 'Answer: ' + year1 + ' ' + year2 + ' ' + year3;
+
+                const yearNow = new Date().getFullYear();
+                document.getElementById('correct_answer_').innerHTML = " " + yearNow - year1 + " "
+                document.getElementById('correct_answer2_').innerHTML = " " + yearNow - year2 + " "
+                document.getElementById('correct_answer3_').innerHTML = " " + yearNow - year3 + " "
                 document.getElementById('end_date').textContent = date.textContent.substring(18,date.textContent.length);
             }
 
