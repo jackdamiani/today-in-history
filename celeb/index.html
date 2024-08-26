@@ -1097,6 +1097,26 @@
             margin-right: 5px;
         }
 
+        .games_btn-container {
+            margin: 20px 0;
+        }
+
+        .games_btn {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .games_btn:hover {
+            background-color: gray;
+        }
+
     </style>
 
     <canvas id="fireworkCanvas"></canvas>
@@ -1105,6 +1125,9 @@
         <div>
             <div class="popupCloseButton" onclick="close_end()">&times;</div>
             <h2 id="end_response"> </h2>
+            <p><b>Play our new games starting September 1!</b></p>
+            <button class="games_btn" id="main_link" onclick="window.location.href='../index.html';">Main Game <i class="fa fa-regular fa-calendar-days" aria-hidden="true" onclick=""></i></button>
+            <button class="games_btn" id="sport_link" onclick="window.location.href='../sport/index.html';">Sports Events <i class="fa fa-volleyball" aria-hidden="true"></i> </button>
             <p id="end_date"></p>
             <p id="end_score"></p>
             <p id="tip">Click on year to read more!</p>
@@ -1137,6 +1160,8 @@
             <div class="popupCloseButton">&times;</div>
             <p class="how_to_play">
                 <h2>How to Play:</h2>
+                <b>Play starting September 1!</b>
+                <br>
                 These major world events 
                 <br>
                 happened today. You have 15 
@@ -1214,7 +1239,7 @@
         <div class="rectangle" id="fact2"></div> 
         <div class="rectangle" id="fact3"></div>
     </div>
-    <div id="help_message" style="color:black; font-size: 10px; padding:2px"> Events are in order left to right. Guess the age or year in this mode only! To see the colors again hit the ?</div>
+    <div id="help_message" style="color:black; font-size: 10px; padding:2px"> Events are in order left to right. <b>Guess the age or year in this mode only!</b> To see the colors again hit the ?</div>
     <div id="streak_home" style="color:black; font-size: 10px; padding:2px">Streak: 0 :(</div>
     <div style="color:white; font-size: 10px;">.</div>
 

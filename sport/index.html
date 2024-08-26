@@ -1092,6 +1092,26 @@
             margin-right: 5px;
         }
 
+        .games_btn-container {
+            margin: 20px 0;
+        }
+
+        .games_btn {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .games_btn:hover {
+            background-color: gray;
+        }
+
     </style>
 
     <canvas id="fireworkCanvas"></canvas>
@@ -1100,6 +1120,8 @@
         <div>
             <div class="popupCloseButton" onclick="close_end()">&times;</div>
             <h2 id="end_response"> </h2>
+            <button class="games_btn" id="main_link" onclick="window.location.href='../index.html';">Main Game <i class="fa fa-regular fa-calendar-days" aria-hidden="true" onclick=""></i></button>
+            <button class="games_btn" id="celeb_link" onclick="window.location.href='../celeb/index.html';">Celebrity Birthdays <i class="fa fa-regular fa-star" aria-hidden="true" onclick=""></i></button>
             <p id="end_date"></p>
             <p id="end_score"></p>
             <p id="tip">Click on year to read more!</p>
@@ -1129,6 +1151,8 @@
             <div class="popupCloseButton">&times;</div>
             <p class="how_to_play">
                 <h2>How to Play:</h2>
+                <b>Play starting September 1!</b>
+                <br>
                 These major world events 
                 <br>
                 happened today. You have 15 
