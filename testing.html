@@ -283,6 +283,8 @@
                     clientDate.getSeconds()
                 ));
                 utcDate = utcDate.toISOString();
+                console.log('ptt')
+                console.log(typeof getCookie("played_today"))
                 if (getCookie("played_today") != "True" && guess_number >= 3){
                     insert_row_php(guess_number, utcDate)
                 }
