@@ -283,7 +283,7 @@
                     clientDate.getSeconds()
                 ));
                 utcDate = utcDate.toISOString();
-                if (getCookie("played_today") != "True"){
+                if (getCookie("played_today") != "True" && guess_number >= 3){
                     insert_row_php(guess_number, utcDate)
                 }
                 add_histogram()
@@ -565,7 +565,7 @@
                     clientDate.getSeconds()
                 ));
                 utcDate = utcDate.toISOString();
-                if (getCookie("played_today") != "True"){
+                if (getCookie("played_today") != "True" && guess_number >= 3){
                     insert_row_php(16, utcDate)
                 }
                 add_histogram()
