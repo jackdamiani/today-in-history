@@ -459,15 +459,21 @@
 
                         avg_score = parseAvgScore("score_arr")
                         
+                        
                     }
 
                 }
-
-                console.log("avg_score:", avg_score)
-                document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
                 
-                addNumGames()
-                addWinGames()
+                document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toFixed(2).toString()
+                
+                if (getCookie("played_today") == "True"){
+                    // nothing
+                }
+                else{
+                    addNumGames()
+                    addWinGames()
+                }
+                
 
                 let total_games_played = Number(getCookie("total_games"))
                 document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
@@ -648,11 +654,16 @@
                 if(getCookie("score_arr") != ""){
                     let avg_score = parseAvgScore("score_arr")
                     console.log("avg_score:", avg_score)
-                    document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
+                    document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toFixed(2).toString()
                 }
 
 
-                addNumGames()
+                if (getCookie("played_today") == "True"){
+                    pass
+                }
+                else{
+                    addNumGames()
+                }
 
                 let total_games_played = Number(getCookie("total_games"))
                 document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played

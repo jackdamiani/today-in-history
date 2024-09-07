@@ -26,11 +26,16 @@
 
         <!-- <div id="result"></div> -->
 
+        <h1>Main Game</h1>
         <canvas id="scoreHistogram" width="500px" height="200px"></canvas>
         <h1 id="numPlayers"></h1>
         <h1 id="avgScore"></h1>
+        <h1>Sports</h1>
         <canvas id="scoreHistogram_s" width="500px" height="200px"></canvas>
+        <h1 id="numPlayers_s"></h1>
+        <h1>Celebs</h1>
         <canvas id="scoreHistogram_c" width="500px" height="200px"></canvas>
+        <h1 id="numPlayers_c"></h1>
     
         <script>
 
@@ -270,7 +275,7 @@
                         const sum = data.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
                         const avgScore = (sum / numPlayers).toFixed(2);
 
-                        const h1NP = document.getElementById('numPlayers');
+                        const h1NP = document.getElementById('numPlayers_s');
                         h1NP.textContent = numPlayers;
 
                         const h1AS = document.getElementById('avgScore');
@@ -389,7 +394,7 @@
                         const sum = data.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
                         const avgScore = (sum / numPlayers).toFixed(2);
 
-                        const h1NP = document.getElementById('numPlayers');
+                        const h1NP = document.getElementById('numPlayers_c');
                         h1NP.textContent = numPlayers;
 
                         const h1AS = document.getElementById('avgScore');
