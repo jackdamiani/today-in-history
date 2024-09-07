@@ -459,11 +459,13 @@
 
                         avg_score = parseAvgScore("score_arr")
                         
+                        
                     }
 
                 }
 
                 console.log("avg_score:", avg_score)
+                console.log(typeof avg_score)
                 document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
                 
                 if (getCookie("played_today") == "True"){
