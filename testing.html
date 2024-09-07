@@ -466,8 +466,14 @@
                 console.log("avg_score:", avg_score)
                 document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
                 
-                addNumGames()
-                addWinGames()
+                if (getCookie("played_today") == "True"){
+                    pass
+                }
+                else{
+                    addNumGames()
+                    addWinGames()
+                }
+                
 
                 let total_games_played = Number(getCookie("total_games"))
                 document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
@@ -652,7 +658,13 @@
                 }
 
 
-                addNumGames()
+                if (getCookie("played_today") == "True"){
+                    pass
+                }
+                else{
+                    addNumGames()
+                    addWinGames()
+                }
 
                 let total_games_played = Number(getCookie("total_games"))
                 document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
