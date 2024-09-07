@@ -467,9 +467,11 @@
                 document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
                 
                 if (getCookie("played_today") == "True"){
+                    alert('true')
                     pass
                 }
                 else{
+                    alert('False')
                     addNumGames()
                     addWinGames()
                 }
