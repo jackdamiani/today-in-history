@@ -233,6 +233,10 @@
                     }
                 }
             };
+            var data = "client_date=" + encodeURIComponent(clientDate.toISOString()) +
+                        "&another_date=" + encodeURIComponent(anotherDate.toISOString());
+            xhr.send(data);
+        });
 
 
         document.getElementById('submit-button').addEventListener('click', () => {
@@ -348,6 +352,10 @@
                     }
                 }
             };
+            var data = "client_date=" + encodeURIComponent(clientDate.toISOString()) +
+                        "&another_date=" + encodeURIComponent(anotherDate.toISOString());
+            xhr.send(data);
+        });
 
 
         document.getElementById('submit-button').addEventListener('click', () => {
@@ -463,6 +471,7 @@
                     }
                 }
             };
+        
 
             var data = "client_date=" + encodeURIComponent(clientDate.toISOString()) +
                         "&another_date=" + encodeURIComponent(anotherDate.toISOString());
