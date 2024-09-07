@@ -473,7 +473,12 @@
                 }
 
                 console.log("avg_score:", avg_score)
-                document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
+                if (typeof avg_score == Number){
+                    document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toFixed(2).toString()
+                }
+                else{
+                    document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
+                }
                 
                 if (getCookie("cplayed_today") == "True"){
                     pass
@@ -663,10 +668,15 @@
                 if(getCookie("cscore_arr") != ""){
                     let avg_score = parseAvgScore("score_arr")
                     console.log("avg_score:", avg_score)
-                    document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toFixed(2).toString()
+                    if (typeof avg_score == Number){
+                        document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toFixed(2).toString()
+                    }
+                    else{
+                        document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
+                    }
                 }
 
-                
+
                 if (getCookie("cplayed_today") == "True"){
                     pass
                 }
@@ -1471,7 +1481,12 @@
                 
                 
                 let avg_score = parseAvgScore("score_arr")
-                document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toFixed(2).toString()
+                if (typeof avg_score == Number){
+                    document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toFixed(2).toString()
+                }
+                else{
+                    document.getElementById('avg_score').textContent = 'Average Score = ' + avg_score.toString()
+                }
 
                 let total_games_played = Number(getCookie("ctotal_games"))
                 document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
