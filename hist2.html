@@ -29,6 +29,8 @@
         <canvas id="scoreHistogram" width="500px" height="200px"></canvas>
         <h1 id="numPlayers"></h1>
         <h1 id="avgScore"></h1>
+        <canvas id="scoreHistogram_s" width="500px" height="200px"></canvas>
+        <canvas id="scoreHistogram_c" width="500px" height="200px"></canvas>
     
         <script>
 
@@ -156,6 +158,236 @@
                         h1AS.textContent = avgScore;
 
                         const ctx = document.getElementById('scoreHistogram').getContext('2d');
+
+                        ctx.strokeStyle = 'black';
+                        ctx.lineWidth = 5;
+                        ctx.strokeRect(0, 0, ctx.width, ctx.height);
+
+                        // Generate labels based on the range of num_guesses (e.g., 3 to 15)
+                        const labels = Array.from({ length: 13 }, (_, i) => i + 3);
+                        labels.push('X'); // Add 'X' at the end to represent 16
+
+                        // Count occurrences of each num_guesses value
+                        const counts = labels.map(label => {
+                            const num = label === 'X' ? 16 : label;
+                            return data.filter(n => n == num).length;
+                        });
+
+                        const chart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'Number of Players',
+                                    data: counts,
+                                    borderColor: '#000000',
+                                    borderWidth: 1,
+                                    backgroundColor: [
+                                        'rgba(0, 156, 52, 1)',    // Green solid
+                                        'rgba(0, 156, 52, 0.2)',  // Green 20% opacity
+                                        'rgba(150, 75, 0, 1)',    // Brown solid
+                                        'rgba(150, 75, 0, 0.3)',  // Brown 30% opacity
+                                        'rgba(255, 165, 1, 1)',   // Orange solid
+                                        'rgba(255, 165, 0, 0.3)', // Orange 30% opacity
+                                        'rgba(255, 0, 0, 1)',     // Red solid
+                                        'rgba(255, 0, 0, 0.2)',   // Red 20% opacity
+                                        'rgba(0, 0, 255, 1)',     // Blue solid
+                                        'rgba(0, 0, 255, 0.2)',   // Blue 20% opacity
+                                        'rgba(0, 0, 0, 1)',       // Black solid
+                                        'rgba(0, 0, 0, 0.5)',     // Black 50% opacity
+                                        'rgba(0, 0, 0, 0.2)',     // Black 20% opacity
+                                        'rgba(255, 255, 255, 1)'  // White
+                                    ]
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    x: {
+                                        grid: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            size: 10,
+                                            minRotation: 90,
+                                            autoSkip: false
+                                        }
+                                    },
+                                    y: {
+                                        grid: {
+                                            display: true
+                                        },
+                                        beginAtZero: true
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            }
+                        });
+
+                        console.log("Histogram chart created successfully");
+                    } catch (e) {
+                        console.error("Error parsing response as JSON:", e);
+                    }
+                }
+            };
+
+
+        document.getElementById('submit-button').addEventListener('click', () => {
+            
+
+            const day = document.getElementById('day-select').value;
+            const month = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
+            const year = document.getElementById('year-select').value;
+            const selectedDate = new Date(year, month, day);
+            console.log(`Selected date: ${selectedDate.toDateString()}`);
+            const day2 = document.getElementById('day-select2').value;
+            const month2 = document.getElementById('month-select2').value - 1; // Months are zero-based in JavaScript
+            const year2 = document.getElementById('year-select2').value;
+            const selectedDate2 = new Date(year2, month2, day2);
+            console.log(`Selected date: ${selectedDate2.toDateString()}`);
+            var clientDate = selectedDate;
+            var anotherDate = selectedDate2; // Example of another date
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "process_dates_s.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // document.getElementById("result").innerHTML = xhr.responseText;
+
+                    try {
+                        var data = JSON.parse(xhr.responseText);
+                        console.log("Data received:", data);
+                        const numPlayers = data.length;
+                        const sum = data.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+                        const avgScore = (sum / numPlayers).toFixed(2);
+
+                        const h1NP = document.getElementById('numPlayers');
+                        h1NP.textContent = numPlayers;
+
+                        const h1AS = document.getElementById('avgScore');
+                        h1AS.textContent = avgScore;
+
+                        const ctx = document.getElementById('scoreHistogram_s').getContext('2d');
+
+                        ctx.strokeStyle = 'black';
+                        ctx.lineWidth = 5;
+                        ctx.strokeRect(0, 0, ctx.width, ctx.height);
+
+                        // Generate labels based on the range of num_guesses (e.g., 3 to 15)
+                        const labels = Array.from({ length: 13 }, (_, i) => i + 3);
+                        labels.push('X'); // Add 'X' at the end to represent 16
+
+                        // Count occurrences of each num_guesses value
+                        const counts = labels.map(label => {
+                            const num = label === 'X' ? 16 : label;
+                            return data.filter(n => n == num).length;
+                        });
+
+                        const chart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'Number of Players',
+                                    data: counts,
+                                    borderColor: '#000000',
+                                    borderWidth: 1,
+                                    backgroundColor: [
+                                        'rgba(0, 156, 52, 1)',    // Green solid
+                                        'rgba(0, 156, 52, 0.2)',  // Green 20% opacity
+                                        'rgba(150, 75, 0, 1)',    // Brown solid
+                                        'rgba(150, 75, 0, 0.3)',  // Brown 30% opacity
+                                        'rgba(255, 165, 1, 1)',   // Orange solid
+                                        'rgba(255, 165, 0, 0.3)', // Orange 30% opacity
+                                        'rgba(255, 0, 0, 1)',     // Red solid
+                                        'rgba(255, 0, 0, 0.2)',   // Red 20% opacity
+                                        'rgba(0, 0, 255, 1)',     // Blue solid
+                                        'rgba(0, 0, 255, 0.2)',   // Blue 20% opacity
+                                        'rgba(0, 0, 0, 1)',       // Black solid
+                                        'rgba(0, 0, 0, 0.5)',     // Black 50% opacity
+                                        'rgba(0, 0, 0, 0.2)',     // Black 20% opacity
+                                        'rgba(255, 255, 255, 1)'  // White
+                                    ]
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    x: {
+                                        grid: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            size: 10,
+                                            minRotation: 90,
+                                            autoSkip: false
+                                        }
+                                    },
+                                    y: {
+                                        grid: {
+                                            display: true
+                                        },
+                                        beginAtZero: true
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            }
+                        });
+
+                        console.log("Histogram chart created successfully");
+                    } catch (e) {
+                        console.error("Error parsing response as JSON:", e);
+                    }
+                }
+            };
+
+
+        document.getElementById('submit-button').addEventListener('click', () => {
+            
+
+            const day = document.getElementById('day-select').value;
+            const month = document.getElementById('month-select').value - 1; // Months are zero-based in JavaScript
+            const year = document.getElementById('year-select').value;
+            const selectedDate = new Date(year, month, day);
+            console.log(`Selected date: ${selectedDate.toDateString()}`);
+            const day2 = document.getElementById('day-select2').value;
+            const month2 = document.getElementById('month-select2').value - 1; // Months are zero-based in JavaScript
+            const year2 = document.getElementById('year-select2').value;
+            const selectedDate2 = new Date(year2, month2, day2);
+            console.log(`Selected date: ${selectedDate2.toDateString()}`);
+            var clientDate = selectedDate;
+            var anotherDate = selectedDate2; // Example of another date
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "process_dates_c.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // document.getElementById("result").innerHTML = xhr.responseText;
+
+                    try {
+                        var data = JSON.parse(xhr.responseText);
+                        console.log("Data received:", data);
+                        const numPlayers = data.length;
+                        const sum = data.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+                        const avgScore = (sum / numPlayers).toFixed(2);
+
+                        const h1NP = document.getElementById('numPlayers');
+                        h1NP.textContent = numPlayers;
+
+                        const h1AS = document.getElementById('avgScore');
+                        h1AS.textContent = avgScore;
+
+                        const ctx = document.getElementById('scoreHistogram_c').getContext('2d');
 
                         ctx.strokeStyle = 'black';
                         ctx.lineWidth = 5;
