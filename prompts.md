@@ -4,12 +4,12 @@ I'm going to give you a bunch of records. I only need them if they have the mont
 
 {"DATE": {"YEAR": "Name breaks NFL XXX record with XXX", ... }, ...}
 
-The dates should be 4 digits and sorted in order, and if there are multiple from the same day, they should be in order too.
+The dates should be 4 digits and sorted in order from 0101 to 1231, and if there are multiple from the same day, they should be in order too.
 
 Example:
 Most touchdowns, game: 6, Alvin Kamara, December 25, 2020
 
 Should be:
-{"1225": {"2020": "Alvin Kamara breaks the record most touchdowns in a game with 6"}}
+{"1225": {"2020": "Alvin Kamara breaks the NFL record most touchdowns in a game with 6"}}
 
 Records are:
