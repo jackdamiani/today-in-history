@@ -435,41 +435,106 @@ var today_in_history = {
         "2001": "Michael Jordan announced his second return to the NBA, this time with the Washington Wizards",
         "2005": "Buccaneers RB Carnell 'Cadillac' Williams set two rookie records with a 158-yard rushing game, the first player to start a career with three consecutive 100-yard rushing games",
     },
-    "0926": {"1965": "Colts RB Lenny Moore’s record streak of 18 consecutive games with a TD ended", "2011": "Tony Romo ties NFL record most fumbles recovered in a game with 4", "2021": "Justin Tucker ties the record for longest field goal with 66 yards"},
+    "0926": {"1965": "Colts RB Lenny Moore's record streak of 18 consecutive games with a TD ended", "2011": "Tony Romo ties NFL record most fumbles recovered in a game with 4", "2021": "Justin Tucker ties the record for longest field goal with 66 yards"},
     "0927": {"1973": "Nolan Ryan set a new MLB record with his 383rd strikeout of the season", 
         "2005": "Braves clinched the NL East title for a U.S. sports record 14th consecutive season",
         "2018": "Jared Goff breaks the NFL record for most passing yards in a perfect passer rating (158.3) game with 465 yards"},
-    "0928": {"1941": "Frank Filchock breaks NFL record longest return of a blocked punt with 67 yards", " ": "", " ":""},
+    "0928": {"1941": "Ted Williams became the last player in MLB history to hit over .400",
+        "1988": "Orel Hershiser's 59 consecutive scoreless IP set a new MLB record",
+        "2019": "Pete Alonsos 53rd HR set a new single-season rookie home run record"},
     "0929": {
         "1977": "Pele plays his final game for the New York Cosmos in an exhibition against Santos",
-        "1988": "Florence Griffith Joyner sets the women's 200m record with a time of 21.34s", " ":""},
-    "0930": {"":"", " ": "", " ":""},
-    "1001": {"":"", " ": "", "2023": "Diribe Welteji sets the women's road mile record with a time of 4:20.98"},
-    "1002": {
-        "1968": "Bob Gibson sets a World Series record with 17 strikeouts in a single game",
-        " ": "", " ":""},
-    "1003": {
-        "1992": "Maurizio Damilano sets 2 hours walk (track) world record with a distance of 29,572 m and 30,000 m walk (track) world record with a time of 2:01:44.1 in Cuneo, Italy",
-        " ":"",
-        "  ":""
+        "1986": "Greg and Mike Maddux became the 1st pair of brothers to pitch against each other",
+        "1988": "Florence Griffith Joyner sets the women's 200m record with a time of 21.34s"},
+    "0930": {
+        "1927": "Babe Ruth became the 1st in MLB history to hit 60 home runs in a season",
+        "1973": "Johnny Unitas became the 1st NFL player to accumulate 40,000 career passing yards",
+        "1995": "Albert Belle became the 1st player in history with 50 HR and 50 doubles in a season"
     },
-    "1004": {"":"", " ": "", " ":""},
-    "1005": {"":"", " ": "", " ":""},
+    "1001": {
+        "1903": "The Pittsburgh Pirates and Boston Americans played the 1st 'World Series' game ever. Boston Americans won 5-3",
+        "1932": "Babe Ruth made his legendary 'called shot' during the World Series",
+        "2023": "Diribe Welteji sets the women's road mile record with a time of 4:20.98"
+    },
+    "1002": {
+        "1920": "The last triple-header in MLB history took place between the Reds and Pirates",
+        "1950": "TE Bob Shaw set a single-game NFL record with 5 TD receptions",
+        "1968": "Bob Gibson sets a World Series record with 17 strikeouts in a single game",
+        },
+    "1003": {
+        "1974": "Frank Robinson became the first black manager in MLB history (Cleveland Indians)",
+        "1989": "Art Shell became the first black head coach in modern NFL history (Los Angeles Raiders)",
+        "1992": "Maurizio Damilano sets 2 hours walk (track) world record with a distance of 29,572 m and 30,000 m walk (track) world record with a time of 2:01:44.1 in Cuneo, Italy",
+    },
+    "1004": {
+        "1955": "Brooklyn Dodgers won their first World Series in franchise history",
+        "1959": "The World Series was played out west for the first time ever as the LA Dodgers won their first WS",
+        "2019": "Twins' playoff losing streak expanded to 18, becoming the longest streak in all major U.S. sports leagues"
+    },
+    "1005": {
+        "2001": "Barry Bonds hit his 71st and 72nd HRs, breaking Mark McGwire's single-season home run record",
+        "2003": "Dante Hall set an NFL record with a return TD in his 4th consecutive game, which was also the game-winner",
+        "2004": "Scottie Pippen announced his retirement after a farewell season with the Chicago Bulls"
+    },
     "1006": {"1985": "Marita Koch sets the women's 400m record with a time of 47.60s", 
         "1996":"Tiger Woods wins first PGA Tour event, the Las Vegas Invitational", 
-        " ":""},
-    "1007": {"1945": "Don Hutson breaks the NFL record for most touchdowns in one quarter with 4", " ": "", " ":""},
-    "1008": {"":"", " ": "", " ":""},
-    "1009": {"1977": "Eddie Brown breaks the NFL record for most punt returns in a game with 11", " ": "", " ":""},
-    "1010": {"":"", " ": "", " ":""},
-    "1011": {"1998": "Leo Araguz breaks the NFL record for most punting yards by punter in a game with 709", " ": "", " ":""},
-    "1012": {"":"", " ": "", " ":""},
-    "1013": {"":"", " ": "", " ":""},
-    "1014": {"":"", " ": "", " ":""},
-    "1015": {"":"", " ": "", " ":""},
-    "1016": {"":"", " ": "", " ":""},
-    "1017": {"":"", " ": "", " ":""},
-    "1018": {"":"", " ": "", " ":""},
+        "2001": "Seattle Mariners won their 116th game, tying the all-time MLB single-season wins record"
+    },
+    "1007": {"1945": "Don Hutson breaks the NFL record for most touchdowns in one quarter with 4", "1984": "Walter Payton broke Jim Brown's all-time record of 12,312 career rushing yards", "1995": "Edgar Martinez hit a go-ahead grand slam and drove in a postseason-record 7 runs in ALDS Game 4"},
+    "1008": {
+        "1956": "Don Larsen threw the 1st and only perfect game in MLB World Series history",
+        "1995": "Dan Marino passed Fran Tarkenton to become the NFL's career leader in pass completions with 3,686",
+        "2018": "Drew Brees broke Peyton Manning's all-time record of 71,940 career passing yards"
+    },
+    "1009": {
+        "1966": "The Orioles threw a World Series record 33 consecutive scoreless innings for a sweep of the Dodgers",
+        "1977": "Eddie Brown breaks the NFL record for most punt returns in a game with 11",
+        "2019": "Cardinals scored the most runs ever in the 1st inning of a postseason game with 10"
+    },
+    "1010": {
+        "1920": "Elmer Smith hit the 1st grand slam in World Series history",
+        "2011": "Nelson Cruz hit the 1st walk-off grand slam in MLB postseason history",
+        "2019": "Tom Brady passed Peyton Manning for 2nd place on the all-time passing yards list"
+    },
+    "1011": { 
+        "1992": "Deion Sanders played in an NFL game for the Atlanta Falcons then made it to Pittsburgh for the NLCS with the Braves",
+        "1980": "Dallas Mavericks won their NBA debut against the San Antonio Spurs",
+        "1998": "Leo Araguz breaks the NFL record for most punting yards by punter in a game with 709"
+    },
+    "1012": {
+        "1979": "Larry Bird and Earvin 'Magic' Johnson both made their NBA debuts for the Celtics and Lakers",
+        "1982": "Paul Molitor (Milwaukee Brewers) set a World Series record with 5 hits in a game",
+        "1992": "Art Monk made his 820th career reception, breaking the all-time NFL record"
+    },
+    "1013": {
+        "1967": "The American Basketball Association (ABA) officially began play",
+        "1985": "Phil Simms and the NY Giants set single-game NFL records in Pass Attempts (62) and 1st downs (34)",
+        "2001": "Derek Jeter's iconic 'flip' helped the Yankees defeat the A's in Game 3 of the ALDS"
+    },
+    "1014": {
+        "1906": "The Chicago White Sox defeated the Chicago Cubs in the 1st all-Chicago World Series (4-2)",
+        "1990": "Joe Montana threw for 476 yards and 6 TDs, with Jerry Rice becoming the 1st WR with 5 REC TD",
+        "2015": "Jose Bautista's iconic bat flip followed a go-ahead HR in the 7th inning of ALDS Game 5"
+    },
+    "1015": {
+        "1966": "Bill Russell (Boston Celtics) became the 1st African-American Head Coach in North American professional sports history",
+        "1995": "The Carolina Panthers won their very first game after an 0-5 start",
+        "2019": "The Washington Nationals clinched their 1st World Series and became the 1st team to have SPs K 11+ in 3 straight playoff games"
+    },
+    "1016": {
+        "1964": "Yankees fire manager Yogi Berra one day after losing the World Series",
+        "1985": "Kansas City Royals won their 1st World Series by defeating the St. Louis Cardinals in Game 7",
+        "2004": "Boston Red Sox completed a historic comeback to win the ALCS against the New York Yankees, down 0-3 and winning 4-3"},
+    "1017": {
+        "1943": "Detroit Lions recorded a record -53 rushing yards in a loss to the Chicago Cardinals",
+        "1989": "A major earthquake hit the Bay Area minutes before Game 3 of the World Series, postponing the game for 10 days",
+        "2019": "Patrick Mahomes became the quickest in NFL history to reach 7,500 career passing yards"
+    },
+    "1018": {
+        "1974": "Nate Thurmond recorded the first quadruple-double in NBA history with 22 points, 14 rebounds, 13 assists, and 12 blocks",
+        "1977": "Reggie Jackson hit 3 home runs in Game 6 of the World Series, leading the New York Yankees to their 21st title and earning the nickname 'Mr. October'",
+        "2009": "Tom Brady threw a record five touchdown passes in a single quarter during a 59-0 win over the Tennessee Titans"
+    },
     "1019": {"":"", " ": "", " ":""},
     "1020": {"2002": "Shannon Sharpe breaks the NFL record for most receiving yards in a game by a tight end with 214",
         " ": "", "2015": "Adam Vinatieri ties the record most consecutive field goals made with 44"},
