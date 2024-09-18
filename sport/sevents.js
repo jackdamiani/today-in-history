@@ -29,7 +29,7 @@ var today_in_history = {
     "0128": {"":"", " ": "", " ":""},
     "0129": {"":"", " ": "", " ":""},
     "0130": {"":"", " ": "", " ":""},
-    "0131": {"1920": "Joe Malone breaks the NHL record most goals in a regular season game with 7",, " ": "", " ":""},
+    "0131": {"1920": "Joe Malone breaks the NHL record most goals in a regular season game with 7", " ": "", " ":""},
     "0201": {"":"", " ": "", " ":""},
     "0202": {"":"", " ": "", " ":""},
     "0203": {"":"", " ": "", " ":""},
