@@ -284,7 +284,9 @@
                 ));
                 utcDate = utcDate.toISOString();
                 if (getCookie("played_today") != "True" && guess_number >= 3){
-                    insert_row_php(guess_number, utcDate)
+                    if (guess_number != 1) {
+                        insert_row_php(guess_number, utcDate)
+                    }
                 }
                 add_histogram()
                 
