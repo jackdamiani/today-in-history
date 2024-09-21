@@ -957,7 +957,7 @@
         .help_menu{
             background:rgba(0,0,0,.4);
             cursor:pointer;
-            display: block;
+            display: none;
             height:100%;
             position:fixed;
             text-align:center;
@@ -965,6 +965,9 @@
             width:100%;
             z-index:10000;
             overflow-y:scroll;
+            padding-block-start: 30px;
+            box-sizing: border-box;
+            padding-right: 10px;
         }
         .help_menu .helper{
             display:inline-block;
@@ -1140,6 +1143,7 @@
         <div>
             <div class="popupCloseButton" onclick="close_end()">&times;</div>
             <h2 id="end_response"> </h2>
+            <p><b>Play our OTHER GAME MODES!</b></p>
             <button class="games_btn" id="main_link" onclick="window.location.href='../index.html';">Main Game <i class="fa fa-regular fa-calendar-days" aria-hidden="true" onclick=""></i></button>
             <button class="games_btn" id="celeb_link" onclick="window.location.href='../celeb/index.html';">Celebrity Birthdays <i class="fa fa-regular fa-star" aria-hidden="true" onclick=""></i></button>
             <p id="end_date"></p>
@@ -1171,9 +1175,8 @@
             <div class="popupCloseButton">&times;</div>
             <p class="how_to_play">
                 <h2>How to Play:</h2>
-                <b>Play starting September 1!</b>
                 <br>
-                These major world events 
+                These major SPORT events 
                 <br>
                 happened today. You have 15 
                 <br>
@@ -1213,6 +1216,13 @@
                     <div class="square" style="background-color: rgba(0,0,0,1)"></div>
                     <div class="square" style="background-color: rgba(0,0,0,.2)"></div> 
                     Black = 1000+ Years off
+                </div>
+
+                <br>
+                OTHER GAME MODES: <br>
+                <div style="display: flex; gap: 10px;">
+                    <button class="games_btn" id="celeb_link" onclick="window.location.href='celeb/index.html';">Celebs<i class="fa fa-regular fa-star" aria-hidden="true"></i></button>
+                    <button class="games_btn" id="main_link" onclick="window.location.href='../index.html';">TIH <i class="fa fa-regular fa-calendar-days" aria-hidden="true" onclick=""></i></button>
                 </div>
 
                 <!-- <br>
@@ -1549,36 +1559,12 @@
             var mm = String(find_today.getMonth()+1).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
-            dd_int = parseInt(dd) % 6
-
             header_color = document.getElementById("top-header");
             footer_color = document.getElementById("bottom-footer");
 
-            if(dd_int == 0){
-                header_color.style.backgroundColor= 'rgba(0,156,52,.2)';
-                footer_color.style.backgroundColor= 'rgba(0,156,52,.2)';
-            }
-            if(dd_int == 1){
-                header_color.style.backgroundColor= 'rgba(150, 75, 0, .3)';
-                footer_color.style.backgroundColor= 'rgba(150, 75, 0, .3)';
-            }
-            if(dd_int == 2){
-                header_color.style.backgroundColor= 'rgba(255,165,0)';
-                footer_color.style.backgroundColor= 'rgba(255,165,0)';
-            }
-            if(dd_int == 3){
-                header_color.style.backgroundColor= 'rgba(255,0,0)';
-                footer_color.style.backgroundColor= 'rgba(255,0,0)';
-            }
-            if(dd_int == 4){
-                header_color.style.backgroundColor= 'lightblue';
-                footer_color.style.backgroundColor= 'lightblue';
-            }
-            if(dd_int == 5){
-                header_color.style.backgroundColor= 'rgba(0,0,0,.2)';
-                footer_color.style.backgroundColor= 'rgba(0,0,0,.2)';
-            }
-
+            header_color.style.backgroundColor= 'rgba(255,165,0)';
+            footer_color.style.backgroundColor= 'rgba(255,165,0)';
+            
             // // Actual Code
             // var find_today = new Date();
             // var dd = String(find_today.getDate()).padStart(2, '0');
