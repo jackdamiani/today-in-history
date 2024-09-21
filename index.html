@@ -961,6 +961,9 @@
             width:100%;
             z-index:10000;
             overflow-y:scroll;
+            padding-block-start: 30px;
+            box-sizing: border-box;
+            padding-right: 10px;
         }
         .help_menu .helper{
             display:inline-block;
@@ -1136,9 +1139,9 @@
         <div>
             <div class="popupCloseButton" onclick="close_end()">&times;</div>
             <h2 id="end_response"> </h2>
-            <p><b>Play our new games starting September 1!</b></p>
-            <button class="games_btn" id="celeb_link" onclick="window.location.href='celeb/index.html';">Celebrity Birthdays <i class="fa fa-regular fa-star" aria-hidden="true" onclick=""></i></button>
+            <p><b>Play our NEW GAME MODES!</b></p>
             <button class="games_btn" id="sport_link" onclick="window.location.href='sport/index.html';">Sports Events <i class="fa fa-volleyball" aria-hidden="true"></i> </button>
+            <button class="games_btn" id="celeb_link" onclick="window.location.href='celeb/index.html';">Celebrity Birthdays <i class="fa fa-regular fa-star" aria-hidden="true" onclick=""></i></button>
             <p id="end_date"></p>
             <p id="end_score"></p>
             <p id="tip">Click on year to read more!</p>
@@ -1209,7 +1212,12 @@
                     <div class="square" style="background-color: rgba(0,0,0,.2)"></div> 
                     Black = 1000+ Years off
                 </div>
-
+                <br>
+                NEW GAME MODES: <br>
+                <div style="display: flex; gap: 10px;">
+                    <button class="games_btn" id="sport_link" onclick="window.location.href='sport/index.html';">Sports <i class="fa fa-volleyball" aria-hidden="true"></i> </button>
+                    <button class="games_btn" id="celeb_link" onclick="window.location.href='celeb/index.html';">Celebs<i class="fa fa-regular fa-star" aria-hidden="true"></i></button>
+                </div>
                 <!-- <br>
                 If events not loading, <button class="game_button", id="game_button" onclick="hardrefresh()">Click Here</button> -->
 
@@ -1543,35 +1551,12 @@
             var mm = String(find_today.getMonth()+1).padStart(2, '0'); //January is 0!
             var yyyy = find_today.getFullYear();
 
-            dd_int = parseInt(dd) % 6
-
             header_color = document.getElementById("top-header");
             footer_color = document.getElementById("bottom-footer");
 
-            if(dd_int == 0){
-                header_color.style.backgroundColor= 'rgba(0,156,52,.2)';
-                footer_color.style.backgroundColor= 'rgba(0,156,52,.2)';
-            }
-            if(dd_int == 1){
-                header_color.style.backgroundColor= 'rgba(150, 75, 0, .3)';
-                footer_color.style.backgroundColor= 'rgba(150, 75, 0, .3)';
-            }
-            if(dd_int == 2){
-                header_color.style.backgroundColor= 'rgba(255,165,0)';
-                footer_color.style.backgroundColor= 'rgba(255,165,0)';
-            }
-            if(dd_int == 3){
-                header_color.style.backgroundColor= 'rgba(255,0,0)';
-                footer_color.style.backgroundColor= 'rgba(255,0,0)';
-            }
-            if(dd_int == 4){
-                header_color.style.backgroundColor= 'lightblue';
-                footer_color.style.backgroundColor= 'lightblue';
-            }
-            if(dd_int == 5){
-                header_color.style.backgroundColor= 'rgba(0,0,0,.2)';
-                footer_color.style.backgroundColor= 'rgba(0,0,0,.2)';
-            }
+            header_color.style.backgroundColor= 'lightblue';
+            footer_color.style.backgroundColor= 'lightblue';
+            
 
             // // Actual Code
             // var find_today = new Date();
