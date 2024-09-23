@@ -276,49 +276,169 @@ var links={
     "1001": ["https://en.wikipedia.org/wiki/Yachting", "https://en.wikipedia.org/wiki/Third_Treaty_of_San_Ildefonso", "https://en.wikipedia.org/wiki/Thrilla_in_Manila"],
     "1002": ["https://en.wikipedia.org/wiki/Chongzhen_Emperor", "https://en.wikipedia.org/wiki/Brigham_Young", "https://en.wikipedia.org/wiki/Thurgood_Marshall"],
     "1003": ["https://en.wikipedia.org/wiki/New_Zealand_national_rugby_union_team", "https://en.wikipedia.org/wiki/Billie_Jean_King", "https://en.wikipedia.org/wiki/O._J._Simpson_murder_case"],
-    "1004": ["", "https://en.wikipedia.org/wiki/U.S._Open_(golf)", "https://en.wikipedia.org/wiki/Sputnik_1"],
+    "1004": ["https://en.wikipedia.org/wiki/Mount_Rushmore", "https://en.wikipedia.org/wiki/U.S._Open_(golf)", "https://en.wikipedia.org/wiki/Sputnik_1"],
     "1005": ["https://en.wikipedia.org/wiki/Women%27s_March_on_Versailles", "https://en.wikipedia.org/wiki/Harry_S._Truman", "https://en.wikipedia.org/wiki/Bulldozer_Revolution"],
-    "1006": ["", "", ""],
-    "1007": ["", "", ""],
-    "1008": ["", "", ""],
-    "1009": ["", "", ""],
-    "1010": ["", "", ""],
-    "1011": ["", "", ""],
-    "1012": ["", "", ""],
-    "1013": ["", "", ""],
-    "1014": ["", "", ""],
-    "1015": ["", "", ""],
-    "1016": ["", "", ""],
-    "1017": ["", "", ""],
-    "1018": ["", "", ""],
-    "1019": ["", "", ""],
-    "1020": ["", "", ""],
-    "1021": ["", "", ""],
-    "1022": ["", "", ""],
-    "1023": ["", "", ""],
-    "1024": ["", "", ""],
-    "1025": ["", "", ""],
-    "1026": ["", "", ""],
-    "1027": ["", "", ""],
-    "1028": ["", "", ""],
-    "1029": ["", "", ""],
-    "1030": ["", "", ""],
-    "1031": ["", "", ""],
-    "1101": ["", "", ""],
-    "1102": ["", "", ""],
-    "1103": ["", "", ""],
-    "1104": ["", "", ""],
-    "1105": ["", "", ""],
-    "1106": ["", "", ""],
-    "1107": ["", "", ""],
-    "1108": ["", "", ""],
-    "1109": ["", "", ""],
-    "1110": ["", "", ""],
-    "1111": ["", "", ""],
-    "1112": ["", "", ""],
-    "1113": ["", "", ""],
-    "1114": ["", "", ""],
-    "1115": ["", "", ""],
+    "1006": ["https://en.wikipedia.org/wiki/Moulin_Rouge", "https://en.wikipedia.org/wiki/Soviet_atomic_bomb_project", "https://en.wikipedia.org/wiki/Malaria_vaccine"],
+    "1007": ["https://en.wikipedia.org/wiki/Royal_Proclamation_of_1763", "https://en.wikipedia.org/wiki/Luna_3", "https://en.wikipedia.org/wiki/Toni_Morrison"],
+    "1008": ["https://en.wikipedia.org/wiki/1840_Constitution_of_the_Hawaiian_Kingdom", "https://en.wikipedia.org/wiki/Great_Chicago_Fire", "https://en.wikipedia.org/wiki/Wangari_Maathai"],
+    "1009": ["https://en.wikipedia.org/wiki/Charlemagne", "https://en.wikipedia.org/wiki/Yesterday_(Beatles_song)", "https://en.wikipedia.org/wiki/Malala_Yousafzai"],
+    "1010": ["https://en.wikipedia.org/wiki/Fridtjof_Nansen", "https://en.wikipedia.org/wiki/Yuan_Shikai", "https://en.wikipedia.org/wiki/Angela_Merkel"],
+    "1011": ["https://en.wikipedia.org/wiki/Chinese_Civil_War", "https://en.wikipedia.org/wiki/Military_of_Costa_Rica", "https://en.wikipedia.org/wiki/United_States_presidential_election_debates"],
+    "1012": ["https://en.wikipedia.org/wiki/Christopher_Columbus", "https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)", "https://en.wikipedia.org/wiki/Eliud_Kipchoge"],
+    "1013": ["https://en.wikipedia.org/wiki/1903_World_Series", "https://en.wikipedia.org/wiki/Conquest_of_Mecca", "https://en.wikipedia.org/wiki/Military_dolphins"],
+    "1014": ["https://en.wikipedia.org/wiki/Henry_Blair_(inventor)", "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.", "https://en.wikipedia.org/wiki/Keeping_Up_with_the_Kardashians"],
+    "1015": ["https://exhibits.lib.ku.edu/exhibits/show/cortes/colonization", "https://en.wikipedia.org/wiki/The_Motherland_Calls", "https://en.wikipedia.org/wiki/Nelson_Mandela"],
+    "1016": ["https://en.wikipedia.org/wiki/Battle_of_Leipzig", "https://en.wikipedia.org/wiki/Nuremberg_trials", "https://en.wikipedia.org/wiki/Lionel_Messi"],
+    "1017": [
+        "https://en.wikipedia.org/wiki/Bank_of_America",
+        "https://en.wikipedia.org/wiki/Al_Capone",
+        "https://en.wikipedia.org/wiki/Mother_Teresa"
+    ],
+    "1018": [
+        "https://en.wikipedia.org/wiki/Alaska_Purchase",
+        "https://en.wikipedia.org/wiki/Pop-up_toaster",
+        "https://en.wikipedia.org/wiki/Nate_Thurmond"
+    ],
+    "1019": [
+        "https://www.theinventors.org/library/inventors/bl1700s.htm",
+        "https://en.wikipedia.org/wiki/Siege_of_Yorktown",
+        "https://en.wikipedia.org/wiki/Allan_Border"
+    ],
+    "1020": [
+        "https://en.wikipedia.org/wiki/Negro_Leagues",
+        "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+        "https://en.wikipedia.org/wiki/Liz_Truss"
+    ],
+    "1021": [
+        "https://en.wikipedia.org/wiki/Ferdinand_Magellan",
+        "https://en.wikipedia.org/wiki/Planetarium",
+        "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_France"
+    ],
+    "1022": [
+        "https://en.wikipedia.org/wiki/Sam_Houston",
+        "https://en.wikipedia.org/wiki/Laos",
+        "https://www.politico.com/story/2017/10/22/us-national-debt-tops-1-trillion-oct-22-1981-243966#:~:text=On%20this%20day%20in%201981%2C%20the%20U.S.%20gross,reached%20its%20lowest%20point%20since%201931%3A%2032.5%20percent."
+    ],
+    "1023": [
+        "https://en.wikipedia.org/wiki/John_Heisman",
+        "https://en.wikipedia.org/wiki/The_Smurfs",
+        "https://en.wikipedia.org/wiki/Hong_Kong%E2%80%93Zhuhai%E2%80%93Macau_Bridge"
+    ],
+    "1024": [
+        "https://www.thecollector.com/what-happened-vesuvius-erupted/",
+        "https://en.wikipedia.org/wiki/Get%C3%BAlio_Vargas",
+        "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis"
+    ],
+    "1025": [
+        "https://en.wikipedia.org/wiki/John_Hancock",
+        "https://en.wikipedia.org/wiki/Invasion_of_Grenada",
+        "https://en.wikipedia.org/wiki/Cliff_Richard"
+    ],
+    "1026": [
+        "https://en.wikipedia.org/wiki/Fair_Labor_Standards_Act",
+        "https://en.wikipedia.org/wiki/Polaroid_SX-70",
+        "https://en.wikipedia.org/wiki/Jacinda_Ardern"
+    ],
+    "1027": [
+        "https://en.wikipedia.org/wiki/Federalist_Papers",
+        "https://en.wikipedia.org/wiki/Theodore_Roosevelt",
+        "https://en.wikipedia.org/wiki/Catalonia"
+    ],
+    "1028": [
+        "https://en.wikipedia.org/wiki/Macy%27s",
+        "https://en.wikipedia.org/wiki/Statue_of_Liberty",
+        "https://en.wikipedia.org/wiki/Volstead_Act"
+    ],
+    "1029": [
+        "https://en.wikipedia.org/wiki/Wall_Street_Crash_of_1929",
+        "https://en.wikipedia.org/wiki/Thomas_Hearns",
+        "https://www.bbc.com/news/world-asia-34665539"
+    ],
+    "1030": [
+        "https://en.wikipedia.org/wiki/P._T._Barnum",
+        "https://en.wikipedia.org/wiki/John_Willis_Menard",
+        "https://en.wikipedia.org/wiki/Bosphorus_Bridge"
+    ],
+    "1031": [
+        "https://en.wikipedia.org/wiki/Martin_Luther",
+        "https://en.wikipedia.org/wiki/Indira_Gandhi",
+        "https://en.wikipedia.org/wiki/Statue_of_Unity"
+    ],
+    "1101": [
+        "https://en.wikipedia.org/wiki/Sistine_Chapel_ceiling",
+        "https://en.wikipedia.org/wiki/Republic_of_Turkey",
+        "https://en.wikipedia.org/wiki/Maastricht_Treaty"
+    ],
+    "1102": [
+        "https://en.wikipedia.org/wiki/Cheerleading",
+        "https://en.wikipedia.org/wiki/Ngo_Dinh_Diem",
+        "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr._Day"
+    ],
+    "1103": [
+        "https://en.wikipedia.org/wiki/Continental_Army",
+        "https://en.wikipedia.org/wiki/Laika",
+        "https://en.wikipedia.org/wiki/One_World_Trade_Center"
+    ],
+    "1104": [
+        "https://en.wikipedia.org/wiki/California_trail",
+        "https://en.wikipedia.org/wiki/Thomas_Elkins",
+        "https://en.wikipedia.org/wiki/Iran_hostage_crisis"
+    ],
+    "1105": [
+        "https://en.wikipedia.org/wiki/Northwest_Passage",
+        "https://en.wikipedia.org/wiki/Kingdom_of_Poland_(1916%E2%80%931918)",
+        "https://en.wikipedia.org/wiki/Chang%27e_1"
+    ],
+    "1106": [
+        "https://en.wikipedia.org/wiki/Abraham_Lincoln",
+        "https://en.wikipedia.org/wiki/October_Revolution",
+        "https://en.wikipedia.org/wiki/Communist_Party_of_the_Soviet_Union"
+    ],
+    "1107": [
+        "https://en.wikipedia.org/wiki/Trousers_as_women%27s_clothing",
+        "https://en.wikipedia.org/wiki/Lewis_and_Clark_Expedition",
+        "https://en.wikipedia.org/wiki/Thomas_Nast"
+    ],
+    "1108": [
+        "https://en.wikipedia.org/wiki/Library_Company_of_Philadelphia",
+        "https://en.wikipedia.org/wiki/Wilhelm_R%C3%B6ntgen",
+        "https://en.wikipedia.org/wiki/Ellen_Johnson_Sirleaf"
+    ],
+    "1109": [
+        "https://en.wikipedia.org/wiki/Mayflower",
+        "https://en.wikipedia.org/wiki/Theodore_Roosevelt",
+        "https://en.wikipedia.org/wiki/Berlin_Wall"
+    ],
+    "1110": [
+        "https://en.wikipedia.org/wiki/Gottlieb_Daimler",
+        "https://en.wikipedia.org/wiki/Marine_Corps_War_Memorial",
+        "https://www.bbc.com/news/entertainment-arts-63582013"
+    ],
+    "1111": [
+        "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+        "https://en.wikipedia.org/wiki/Armistice_of_11_November_1918",
+        "https://en.wikipedia.org/wiki/Dust_Bowl"
+    ],
+    "1112": [
+        "https://en.wikipedia.org/wiki/Leon_Trotsky",
+        "https://en.wikipedia.org/wiki/Buzz_Aldrin",
+        "https://en.wikipedia.org/wiki/World_Wide_Web"
+    ],
+    "1113": [
+        "https://en.wikipedia.org/wiki/Big_Ben",
+        "https://en.wikipedia.org/wiki/Holland_Tunnel",
+        "https://en.wikipedia.org/wiki/Browder_v._Gayle"
+    ],
+    "1114": [
+        "https://en.wikipedia.org/wiki/USC_Trojans_football",
+        "https://en.wikipedia.org/wiki/Channel_Tunnel",
+        "https://en.wikipedia.org/wiki/Brexit"
+    ],
+    "1115": [
+        "https://en.wikipedia.org/wiki/Jos%C3%A9_Miguel_Carrera",
+        "https://en.wikipedia.org/wiki/Jefferson_Memorial",
+        "https://en.wikipedia.org/wiki/Infrastructure_Investment_and_Jobs_Act"
+    ],
     "1116": ["", "", ""],
     "1117": ["", "", ""],
     "1118": ["", "", ""],
