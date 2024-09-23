@@ -601,12 +601,8 @@ var today_in_history = {
         "1973": "Seth Meyers, Comedian (Late Night with Seth Meyers)",
     },
     "1229": {
-        "1938": "Jon Voight, Actor (Midnight Cowboy, Ray Donovan)",
         "1947": "Ted Danson, Actor (Cheers, The Good Place)",
-        "1972": "Jude Law, Actor (The Talented Mr. Ripley)",
-        "1978": "Katherine Moennig, Actress (The L Word)",
         "1981": "Alison Brie, Actress (Community, GLOW)",
-        "1988": "David Archuleta, Singer (American Idol)",
         "1989": "Jane Levy, Actress (Shameless, Suburgatory)"
     },
     "1230": {
@@ -617,11 +613,6 @@ var today_in_history = {
     "1231": {
         "1937": "Anthony Hopkins, Actor (The Silence of the Lambs)",
         "1943": "Ben Kingsley, Actor (Gandhi, Theater)",
-        "1948": "Donna Summer, Singer (Hot Stuff)",
-        "1977": "Psy, Singer (Gangnam Style)",
-        "1979": "Josh Hawley, Politician",
-        "1980": "Richie McCaw, Rugby Player",
-        "1982": "Craig Wayne Boyd, Singer (The Voice)",
-        "1995": "Gabby Douglas, Gymnast (Olympic Gold Medalist)"
+        "1977": "Psy, Singer (Gangnam Style)"
     }
 }
