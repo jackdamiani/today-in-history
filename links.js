@@ -1,35 +1,159 @@
 var links={
-    "0101": ['','',''],
-    "0102": ['','',''],
-    "0103": ['','',''],
-    "0104": ['','',''],
-    "0105": ['','',''],
-    "0106": ['','',''],
-    "0107": ['','',''],
-    "0108": ['','',''],
-    "0109": ['','',''],
-    "0110": ['','',''],
-    "0111": ['','',''],
-    "0112": ['','',''],
-    "0113": ['','',''],
-    "0114": ['','',''],
-    "0115": ['','',''],
-    "0116": ['','',''],
-    "0117": ['','',''],
-    "0118": ['','',''],
-    "0119": ['','',''],
-    "0120": ['','',''],
-    "0121": ['','',''],
-    "0122": ['','',''],
-    "0123": ['','',''],
-    "0124": ['','',''],
-    "0125": ['','',''],
-    "0126": ['','',''],
-    "0127": ['','',''],
-    "0128": ['','',''],
-    "0129": ['','',''],
-    "0130": ['','',''],
-    "0131": ['','',''],
+    "0101": [
+        "https://en.wikipedia.org/wiki/Gladiator",
+        "https://en.wikipedia.org/wiki/Fahrenheit",
+        "https://en.wikipedia.org/wiki/Chinese_language_romanization_in_Taiwan"
+    ],
+    "0102": [
+        "https://en.wikipedia.org/wiki/Reconquista",
+        "https://en.wikipedia.org/wiki/Willis_Carrier",
+        "https://en.wikipedia.org/wiki/Luna_1"
+    ],
+    "0103": [
+        "https://en.wikipedia.org/wiki/Stephen_F._Austin",
+        "https://en.wikipedia.org/wiki/Benito_Mussolini",
+        "https://en.wikipedia.org/wiki/South_African_general_election,_1994"
+    ],
+    "0104": [
+        "https://en.wikipedia.org/wiki/Thomas_Stevens_(cyclist)",
+        "https://en.wikipedia.org/wiki/Technetium",
+        "https://en.wikipedia.org/wiki/Nancy_Pelosi"
+    ],
+    "0105": [
+        "https://en.wikipedia.org/wiki/First_Mexican_Empire",
+        "https://en.wikipedia.org/wiki/Aurora",
+        "https://en.wikipedia.org/wiki/Venera_5"
+    ],
+    "0106": [
+        "https://en.wikipedia.org/wiki/Telegraphy",
+        "https://en.wikipedia.org/wiki/GPS",
+        "https://www.nytimes.com/1987/01/07/us/astronomers-report-seeing-galaxy-s-birth-for-first-time.html"
+    ],
+    "0107": [
+        "https://en.wikipedia.org/wiki/Francium",
+        "https://en.wikipedia.org/wiki/Impeachment_of_Bill_Clinton",
+        "https://today-in-history-game.com"
+    ],
+    "0108": [
+        "https://en.wikipedia.org/wiki/State_of_the_Union",
+        "https://en.wikipedia.org/wiki/Ibn_Saud",
+        "https://en.wikipedia.org/wiki/War_on_Poverty"
+    ],
+    "0109": [
+        "https://www.nrb.co.uk/the-incredibly-interesting-history-of-income-tax-in-the-uk/",
+        "https://en.wikipedia.org/wiki/History_of_the_New_Orleans_Saints#:~:text=The%20team%20was%20named%20%22Saints%22%20due%20to%20its,The%20name%20was%20announced%20on%20January%209%2C%201967.",
+        "https://en.wikipedia.org/wiki/ITunes"
+    ],
+    "0110": [
+        "https://en.wikipedia.org/wiki/Standard_Oil",
+        "https://en.wikipedia.org/wiki/United_Nations_Headquarters",
+        "https://en.wikipedia.org/wiki/Maya_Angelou"
+    ],
+    "0111": [
+        "https://en.wikipedia.org/wiki/English_lottery",
+        "https://en.wikipedia.org/wiki/Insulin",
+        "https://en.wikipedia.org/wiki/Harry_Potter"
+    ],
+    "0112": [
+        "https://en.wikipedia.org/wiki/Joseph_Stalin",
+        "https://moneyweek.com/372450/12-january-1948-britains-first-supermarket-opens",
+        "https://en.wikipedia.org/wiki/2010_Haiti_earthquake"
+    ],
+    "0113": [
+        "https://en.wikipedia.org/wiki/Mickey_Mouse",
+        "https://www.wlwt.com/article/cincinnati-midwestern-hayride/38125961#:~:text=For%20years%2C%20%22Midwestern%20Hayride%22%20dominated%20the%20Saturday%20night,two%20months%20after%20the%20station%20began%20commercial%20broadcasting.",
+        "https://www.forbes.com/2000/01/13/mu7.html"
+    ],
+    "0114": [
+        "https://clarinet.org/the-history-of-the-clarinet/",
+        "https://en.wikipedia.org/wiki/Josip_Broz_Tito",
+        "https://en.wikipedia.org/wiki/George_Wallace"
+    ],
+    "0115": [
+        "https://en.wikipedia.org/wiki/John_Hetherington",
+        "https://www.atomicarchive.com/resources/documents/los-alamos/los_alamos_part_7.html",
+        "https://en.wikipedia.org/wiki/US_Airways_Flight_1549"
+    ],
+    "0116": [
+        "https://en.wikipedia.org/wiki/Ivan_the_Terrible",
+        "https://en.wikipedia.org/wiki/Prohibition_in_the_United_States",
+        "https://en.wikipedia.org/wiki/Muammar_Gaddafi"
+    ],
+    "0117": [
+        "https://en.wikipedia.org/wiki/Popeye",
+        "https://en.wikipedia.org/wiki/Eisenhower%27s_farewell_address",
+        "https://en.wikipedia.org/wiki/History_of_the_Los_Angeles_Rams"
+    ],
+    "0118": [
+        "https://en.wikipedia.org/wiki/German_Empire",
+        "https://en.wikipedia.org/wiki/Chinese_Exclusion_Act",
+        "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr._Day"
+    ],
+    "0119": [
+        "https://en.wikipedia.org/wiki/Dwight_D._Eisenhower",
+        "https://en.wikipedia.org/wiki/UCLA_Bruins_men%27s_basketball",
+        "https://en.wikipedia.org/wiki/Lance_Armstrong"
+    ],
+    "0120": [
+        "https://en.wikipedia.org/wiki/Elizabeth_Cady_Stanton",
+        "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt",
+        "https://en.wikipedia.org/wiki/Ayatollah_Khomeini"
+    ],
+    "0121": [
+        "https://en.wikipedia.org/wiki/Execution_of_Louis_XVI",
+        "https://en.wikipedia.org/wiki/Pluto",
+        "https://en.wikipedia.org/wiki/2017_Women%27s_March"
+    ],
+    "0122": [
+        "https://en.wikipedia.org/wiki/Bloody_Sunday_(1905)",
+        "https://www.wpr.org/agriculture/vintage-wisconsin-big-cheese-heads-worlds-fair#:~:text=So%20it%20is%20perhaps%20no%20surprise%20that%20Wisconsin,Jan.%2022%2C%201964%2C%20weighed%20in%20at%2034%2C591%20pounds.",
+        "https://en.wikipedia.org/wiki/Evo_Morales"
+    ],
+    "0123": [
+        "https://en.wikipedia.org/wiki/Ming_dynasty",
+        "https://en.wikipedia.org/wiki/Elizabeth_Blackwell",
+        "https://www.statmuse.com/nba/ask/most-points-scored-in-one-nba-quarter-in-history"
+    ],
+    "0124": [
+        "https://en.wikipedia.org/wiki/California_Gold_Rush",
+        "https://www.history.com/this-day-in-history/first-canned-beer-goes-on-sale",
+        "https://en.wikipedia.org/wiki/Macintosh"
+    ],
+    "0125": [
+        "https://simple.wikipedia.org/wiki/Italian_Republic_(Napoleonic)#:~:text=The%20Italian%20Republic%20was%20a%20short-lived%20%281802%E2%80%931805%29%20republic,d%27Eril%20as%20vice%20president%20its%20capital%20was%20Milan.",
+        "https://en.wikipedia.org/wiki/1924_Winter_Olympics",
+        "https://en.wikipedia.org/wiki/Opportunity_(rover)"
+    ],
+    "0126": [
+        "https://www.snopes.com/fact-check/benjamin-franklin-turkey/#:~:text=A%20common%20myth%20associated%20with%20the%20creation%20of,his%20daughter%2C%20Sarah%20Bache%2C%20on%20Jan.%2026%2C%201784.",
+        "https://en.wikipedia.org/wiki/Cullinan_Diamond",
+        "https://en.wikipedia.org/wiki/1969_Australian_Open_%E2%80%93_Women%27s_singles"
+    ],
+    "0127": [
+        "https://en.wikipedia.org/wiki/University_of_Georgia",
+        "https://en.wikipedia.org/wiki/Trail_of_Tears",
+        "https://en.wikipedia.org/wiki/Auschwitz_concentration_camp"
+    ],
+    "0128": [
+        "https://en.wikipedia.org/wiki/Panama_Railroad",
+        "https://en.wikipedia.org/wiki/Space_Shuttle_Challenger_disaster",
+        "https://www.cnn.com/style/article/bernie-mittens-auction-trnd/index.html"
+    ],
+    "0129": [
+        "https://www.ibtimes.com/day-shakespeares-romeo-juliet-was-first-performed-3133311",
+        "https://en.wikipedia.org/wiki/Compromise_of_1850",
+        "https://en.wikipedia.org/wiki/Jacques_Chirac"
+    ],
+    "0130": [
+        "https://en.wikipedia.org/wiki/Library_of_Congress",
+        "https://en.wikipedia.org/wiki/Andrew_Jackson",
+        "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
+    ],
+    "0131": [
+        "https://autos.yahoo.com/blogs/motoramic/january-31-first-100-mph-car-ran-date-140455594.html?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuYmluZy5jb20v&guce_referrer_sig=AQAAABhe76Eg01QEIXaRJd1wzWY61-kNC9mgVgMQJC-lWfgdyHOIUi4UoNi96lNu8NIb78XGXSUbMbHD-C_rkVRqGo3TOhbGAv9c46cTO0Uualw1_VSX1-jPDBo5nnOtfBJDCO81NoAGixTOfxqgFhXJGymPj3Rj4R5mFtc2cAoIV6kT",
+        "https://en.wikipedia.org/wiki/1964_Ghanaian_constitutional_referendum",
+        "https://en.wikipedia.org/wiki/Brexit"
+    ],
     "0201": ["https://education.nationalgeographic.org/resource/first-publication-oxford-english-dictionary/" , "https://www.wired.com/2010/02/0201ktla-atomic-test/" , "https://www.nfl.com/news/peyton-manning-is-mvp-of-nfl-for-record-fifth-time-0ap2000000321598"],
     "0202": ["https://www.kcra.com/article/this-day-in-history-groundhog-day-punxsutawney/42733721#:~:text=If%20it%20doesn't%20see,the%20U.S.%20by%20German%20immigrants.", "https://grandcentralterminal.com/history/#:~:text=Although%20construction%20was%20not%20yet,would%20never%20be%20the%20same.","https://en.wikipedia.org/wiki/RuPaul%27s_Drag_Race"],
     "0203": ["https://www.history.com/topics/exploration/bartolomeu-dias", "https://www.reaganlibrary.gov/constitutional-amendments-amendment-16-income-taxes#:~:text=Amendment%20Sixteen%20to%20the%20Constitution,determine%20it%20based%20on%20population.", "https://www.zippia.com/pixar-careers-35019/history/"],
@@ -115,7 +239,7 @@ var links={
     "0423": ["https://en.wikipedia.org/wiki/Judy_Garland#:~:text=%20Garland%20won%20the%20Grammy%20Award%20for%20Album,was%20the%20first%20woman%20to%20win%20that%20award.", "https://www.nytimes.com/1988/04/12/us/faa-details-rules-of-smoking-ban-in-air.html", "https://en.wikipedia.org/wiki/GRB_090423"],
     "0424": ["https://en.wikipedia.org/wiki/Joshua_Slocum", "https://www.nobelprize.org/prizes/literature/1953/churchill/biographical/", "https://nationaltoday.com/coronation-day-of-pope-benedict-xvi/#:~:text=Coronation%20Day%20of%20Pope%20Benedict%20XVI%2C%20which%20takes,became%20the%20most%20influential%20Catholic%20figure%20in%20Catholicism."],
     "0425": ["https://www.history.com/topics/early-20th-century-us/spanish-american-war", "https://www.popsci.com/article/science/invention-solar-cell/", "https://www.history.com/this-day-in-history/samantha-smith-leaves-for-visit-to-the-ussr"],
-    "0426": ["https://scrippsnews.com/stories/why-the-organ-at-baseball-games/#:~:text=The%20organ%20pairs%20baseball%20with%20the%20tones%20of,with%20a%20pipe%20organ%20behind%20the%20ballpark%27s%20grandstands.", "https://en.wikipedia.org/wiki/Chernobyl_disaster", ""],
+    "0426": ["https://scrippsnews.com/stories/why-the-organ-at-baseball-games/#:~:text=The%20organ%20pairs%20baseball%20with%20the%20tones%20of,with%20a%20pipe%20organ%20behind%20the%20ballpark%27s%20grandstands.", "https://en.wikipedia.org/wiki/Chernobyl_disaster", "https://www.nytimes.com/2015/04/28/world/asia/nursultan-a-nazarbayev-kazakhstan-re-elected.html"],
     "0427": ["https://en.wikipedia.org/wiki/F%C3%BCr_Elise", "https://en.wikipedia.org/wiki/Mao_Zedong", "https://www.cnn.com/2018/04/27/asia/korean-summit-intl/index.html"],
     "0428": ["https://en.wikipedia.org/wiki/Rush%E2%80%93Bagot_Treaty", "https://en.wikipedia.org/wiki/Dominican_Civil_War", "https://www.spotrac.com/news/nba-expansion-series-how-nba-expansion-works-2076/"],
     "0429": ["https://en.wikipedia.org/wiki/Nippon_Professional_Baseball", "https://en.wikipedia.org/wiki/1992_Los_Angeles_riots", "https://en.wikipedia.org/wiki/Rubella"],
@@ -165,9 +289,9 @@ var links={
     "0612": ["https://en.wikipedia.org/wiki/Independence_Day_(Philippines)", "https://www.nelsonmandela.org/news/entry/nelson-mandela-sentenced-to-life-imprisonment-44-years-ago", "https://en.wikipedia.org/wiki/Russian_anti-LGBT_law"],
     "0613": ["https://en.wikipedia.org/wiki/Pentagon_Papers", "https://en.wikipedia.org/wiki/List_of_artificial_objects_leaving_the_Solar_System", "https://en.wikipedia.org/wiki/Inter-Korean_summits"],
     "0614": ["https://nyassembly.gov/member_files/063/20050930c/#:~:text=We%20know%20that%20on%20June,they%20 flew%20on%20colonial%20vessels", "https://www.history.com/this-day-in-history/harding-becomes-first-president-to-be-heard-on-the-radio", "https://www.britishlegion.org.uk/stories/the-falklands-war#:~:text=Trevor's%20story-,Surrender,the%20end%20of%20the%20conflict."],
-    "0615": ["https://en.wikipedia.org/wiki/The_Horse_in_Motion", "https://en.wikipedia.org/wiki/History_of_Boeing", ""],
+    "0615": ["https://en.wikipedia.org/wiki/The_Horse_in_Motion", "https://en.wikipedia.org/wiki/History_of_Boeing", "https://www.papahanaumokuakea.gov/about/#:~:text=The%20Northwestern%20Hawaiian%20Islands%20Marine%20National%20Monument%20was,later%2C%20it%20was%20given%20its%20Hawaiian%20name%2C%20Papah%C4%81naumoku%C4%81kea."],
     "0616": ["https://en.wikipedia.org/wiki/Valentina_Tereshkova", "https://en.wikipedia.org/wiki/Diamond_v._Chakrabarty", "https://www.nytimes.com/2017/06/16/business/dealbook/amazon-whole-foods.html"],
-    "0617": ["https://en.wikipedia.org/wiki/Mumtaz_Mahal", "https://www.history.com/this-day-in-history/statue-of-liberty-arrives-in-new-york-harbor", ""],
+    "0617": ["https://en.wikipedia.org/wiki/Mumtaz_Mahal", "https://www.history.com/this-day-in-history/statue-of-liberty-arrives-in-new-york-harbor", "https://www.nytimes.com/2017/06/16/business/dealbook/amazon-whole-foods.html"],
     "0618": ["https://en.wikipedia.org/wiki/Battle_of_Waterloo", "https://en.wikipedia.org/wiki/Space_Shuttle_Enterprise", "https://en.wikipedia.org/wiki/Google_AdSense"],
     "0619": ["https://en.wikipedia.org/wiki/Juneteenth", "https://en.wikipedia.org/wiki/Amelia_Earhart", "https://www.nytimes.com/2018/06/19/business/dealbook/general-electric-dow-jones.html#:~:text=General%20Electric%2C%20the%20last%20original%20member%20of%20the,Electric%2C%20which%20has%20stumbled%20badly%20in%20recent%20years."],
     "0620": ["https://en.wikipedia.org/wiki/Gussie_Moran", "https://en.wikipedia.org/wiki/Rugby_World_Cup", "https://en.wikipedia.org/wiki/Decision_on_the_Capital_of_Germany"],
@@ -185,7 +309,7 @@ var links={
     "0702": ["https://en.wikipedia.org/wiki/The_Salvation_Army","https://en.wikipedia.org/wiki/Amelia_Earhart","https://en.wikipedia.org/wiki/Civil_Rights_Act_of_1964"],
     "0703": ["https://en.wikipedia.org/wiki/Benz_Patent-Motorwagen", "https://en.wikipedia.org/wiki/Color_television", "https://en.wikipedia.org/wiki/2013_Egyptian_coup_d%27%C3%A9tat"],
     "0704": ["https://en.wikipedia.org/wiki/Independence_Day_(United_States)", "https://www.history.com/news/july-4-two-presidents-died-same-day-coincidence", "https://en.wikipedia.org/wiki/Independence_Day_(Philippines)"],
-    "0705": ["https://en.wikipedia.org/wiki/Independence_Day_(Venezuela)", "https://en.wikipedia.org/wiki/William_Shockley", ""],
+    "0705": ["https://en.wikipedia.org/wiki/Independence_Day_(Venezuela)", "https://en.wikipedia.org/wiki/William_Shockley", "https://en.wikipedia.org/wiki/History_of_Amazon#:~:text=On%20July%205%2C%201994%2C%20Bezos%20initially%20incorporated%20the,lawyer%20misheard%20its%20original%20name%20as%20%22cadaver%22.%20"],
     "0706": ["https://en.wikipedia.org/wiki/Rabies_vaccine", "https://en.wikipedia.org/wiki/Biafra", "https://en.wikipedia.org/wiki/Jadranka_Kosor"],
     "0707": ["https://en.wikipedia.org/wiki/Athletics_at_the_1912_Summer_Olympics_%E2%80%93_Men%27s_pentathlon", "https://en.wikipedia.org/wiki/Sliced_bread", "https://www.nytimes.com/1983/07/07/us/high-court-bans-unequal-pensions-for-the-two-sexes.html"],
     "0708": ["https://en.wikipedia.org/wiki/Vasco_da_Gama", "https://en.wikipedia.org/wiki/Matthew_C._Perry", "https://www.nasa.gov/mission/sts-135/#:~:text=Despite%20a%20gloomy%20prelaunch%20weather%20forecast%20on%20July,pierce%20the%20sky%20after%2030%20years%20of%20flights."],
@@ -265,7 +389,7 @@ var links={
     "0920": ["https://www.edn.com/1st-fortran-program-runs-september-20-1954/#:~:text=Although%20the%20first%20compiler%20for%20general-purpose,%20imperative%20programming", "https://www.history.com/news/billie-jean-king-wins-the-battle-of-the-sexes-40-years-ago", "https://en.wikipedia.org/wiki/Alex_Rodriguez"],
     "0921": ["https://www.history.com/news/the-man-who-bought-stonehenge", "https://en.wikipedia.org/wiki/Francisco_Franco#:~:text=Francisco%20Franco%20Bahamonde%5Bf%5D%5Bg%5D%20%284%20December%201892%20%E2%80%93%2020,1975%20as%20a%20dictator%2C%20assuming%20the%20title%20Caudillo.", "https://en.wikipedia.org/wiki/Edward_Lee_Howard"],
     "0922": ["https://en.wikipedia.org/wiki/10_Downing_Street", "https://www.businessinsider.com/the-first-ever-uk-tv-ad-2016-2", "https://www.history.com/this-day-in-history/friends-debuts"],
-    "0923": ["https://www.history.com/this-day-in-history/truman-announces-soviets-have-exploded-a-nuclear-device", "https://www.archives.gov/milestone-documents/executive-order-10730#:~:text=This%20executive%20order%20of%20September%2023,%201957,%20signed", ""],
+    "0923": ["https://www.history.com/this-day-in-history/truman-announces-soviets-have-exploded-a-nuclear-device", "https://www.archives.gov/milestone-documents/executive-order-10730#:~:text=This%20executive%20order%20of%20September%2023,%201957,%20signed", "https://blog.mozilla.org/community/2013/05/13/milestone-phoenix-0-1-released-first-version-of-firefox/#:~:text=September%2023%2C%202002%3A%20Phoenix%200.1%20is%20released%2C%20the,will%20be%20renamed%20to%20Firebird%20and%20then%20Firefox"],
     "0924": ["https://www.history.com/this-day-in-history/muhammad-completes-hegira", "https://www.faa.gov/sites/faa.gov/files/about/history/pioneers/First_Instrument_Flight_Doolittle.pdf", "https://en.wikipedia.org/wiki/History_of_KFC#:~:text=KFC%20(also%20commonly%20referred%20to%20by%20its%20historical#:~:text=KFC%20(also%20commonly%20referred%20to%20by%20its%20historical"],
     "0925": ["https://www.history.com/news/five-day-work-week-labor-movement", "https://www.britannica.com/science/Freon", "https://www.sportscasting.com/news/vince-carter-didnt-realize-jumped-clear-over-7-foot-2-infamous-knicks-bust-frederic-weis-during-iconic-dunk-of-death-until-encountered-fan-after-game/#:~:text=One%20of%20the%20most%20memorable%20moments%20from%20a,the%20most%20incredible%20in-game%20dunks%20in%20basketball%20history."],
     "0926": ["https://en.wikipedia.org/wiki/Hollywood_Sign", "https://en.wikipedia.org/wiki/1960_United_States_presidential_debates", "https://en.wikipedia.org/wiki/Biosphere_2"],
@@ -439,50 +563,234 @@ var links={
         "https://en.wikipedia.org/wiki/Jefferson_Memorial",
         "https://en.wikipedia.org/wiki/Infrastructure_Investment_and_Jobs_Act"
     ],
-    "1116": ["", "", ""],
-    "1117": ["", "", ""],
-    "1118": ["", "", ""],
-    "1119": ["", "", ""],
-    "1120": ["", "", ""],
-    "1121": ["", "", ""],
-    "1122": ["", "", ""],
-    "1123": ["", "", ""],
-    "1124": ["", "", ""],
-    "1125": ["", "", ""],
-    "1126": ["", "", ""],
-    "1127": ["", "", ""],
-    "1128": ["", "", ""],
-    "1129": ["", "", ""],
-    "1130": ["", "", ""],
-    "1201": ["", "", ""],
-    "1202": ["", "", ""],
-    "1203": ["", "", ""],
-    "1204": ["", "", ""],
-    "1205": ["", "", ""],
-    "1206": ["", "", ""],
-    "1207": ["", "", ""],
-    "1208": ["", "", ""],
-    "1209": ["", "", ""],
-    "1210": ["", "", ""],
-    "1211": ["", "", ""],
-    "1212": ["", "", ""],
-    "1213": ["", "", ""],
-    "1214": ["", "", ""],
-    "1215": ["", "", ""],
-    "1216": ["", "", ""],
-    "1217": ["", "", ""],
-    "1218": ["", "", ""],
-    "1219": ["", "", ""],
-    "1220": ["", "", ""],
-    "1221": ["", "", ""],
-    "1222": ["", "", ""],
-    "1223": ["", "", ""],
-    "1224": ["", "", ""],
-    "1225": ["", "", ""],
-    "1226": ["", "", ""],
-    "1227": ["", "", ""],
-    "1228": ["", "", ""],
-    "1229": ["", "", ""],
-    "1230": ["", "", ""],
-    "1231": ["", "", ""]
+    "1116": [
+        "https://en.wikipedia.org/wiki/Ivan_the_Terrible",
+        "https://en.wikipedia.org/wiki/Ottoman_Empire",
+        "https://en.wikipedia.org/wiki/Albert_Hofmann"
+    ],
+    "1117": [
+        "https://en.wikipedia.org/wiki/United_States_Congress",
+        "https://en.wikipedia.org/wiki/Computer_mouse",
+        "https://en.wikipedia.org/wiki/Twilight_(2008_film)"
+    ],
+    "1118": [
+        "https://en.wikipedia.org/wiki/Old_St._Peter%27s_Basilica",
+        "https://en.wikipedia.org/wiki/St._Peter%27s_Basilica",
+        "https://en.wikipedia.org/wiki/Jonestown"
+    ],
+    "1119": [
+        "https://en.wikipedia.org/wiki/Gettysburg_Address",
+        "https://en.wikipedia.org/wiki/Apollo_12",
+        "https://en.wikipedia.org/wiki/Wii"
+    ],
+    "1120": [
+        "https://sportstar.thehindu.com/football/why-pele-milesimo-1000th-goal-still-matters-50-years-on/article64890042.ece",
+        "https://en.wikipedia.org/wiki/Drew_Barrymore",
+        "https://en.wikipedia.org/wiki/Amitabh_Bachchan"
+    ],
+    "1121": [
+        "https://en.wikipedia.org/wiki/Rocky_(film)",
+        "https://en.wikipedia.org/wiki/Inflight_smoking",
+        "https://en.wikipedia.org/wiki/Robert_Mugabe"
+    ],
+    "1122": [
+        "https://en.wikipedia.org/wiki/Vasco_da_Gama",
+        "https://en.wikipedia.org/wiki/Assassination_of_John_F._Kennedy",
+        "https://en.wikipedia.org/wiki/Mike_Tyson"
+    ],
+    "1123": [
+        "https://en.wikipedia.org/wiki/Jukebox",
+        "https://en.wikipedia.org/wiki/Volstead_Act",
+        "https://en.wikipedia.org/wiki/Ali_Abdullah_Saleh"
+    ],
+    "1124": [
+        "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
+        "https://en.wikipedia.org/wiki/Air_Force_One",
+        "https://en.wikipedia.org/wiki/Gangnam_Style"
+    ],
+    "1125": [
+        "https://en.wikipedia.org/wiki/Suriname",
+        "https://en.wikipedia.org/wiki/Lech_Wa%C5%82%C4%99sa",
+        "https://www.bbc.co.uk/news/business-50541004"
+    ],
+    "1126": [
+        "https://en.wikipedia.org/wiki/Kappa_Alpha_Society",
+        "https://en.wikipedia.org/wiki/Howard_Carter",
+        "https://en.wikipedia.org/wiki/Asterix_(satellite)"
+    ],
+    "1127": [
+        "https://en.wikipedia.org/wiki/Portuguese_Royal_Family",
+        "https://en.wikipedia.org/wiki/Alfred_Nobel",
+        "https://en.wikipedia.org/wiki/Helen_Clark"
+    ],
+    "1128": [
+        "https://en.wikipedia.org/wiki/Blackbeard",
+        "https://en.wikipedia.org/wiki/Duryea_Motor_Wagon",
+        "https://en.wikipedia.org/wiki/Xiomara_Castro"
+    ],
+    "1129": [
+        "https://en.wikipedia.org/wiki/Phonograph",
+        "https://en.wikipedia.org/wiki/United_Nations_Partition_Plan_for_Palestine",
+        "https://en.wikipedia.org/wiki/Pong"
+    ],
+    "1130": [
+        "https://en.wikipedia.org/wiki/Pastry_War",
+        "https://en.wikipedia.org/wiki/Yemen",
+        "https://en.wikipedia.org/wiki/Thriller_(album)"
+    ],
+    "1201": [
+        "https://en.wikipedia.org/wiki/Dominican_War_of_Independence",
+        "https://en.wikipedia.org/wiki/Assembly_line",
+        "https://en.wikipedia.org/wiki/Channel_Tunnel"
+    ],
+    "1202": [
+        "https://en.wikipedia.org/wiki/Coronation_of_Napoleon_I",
+        "https://en.wikipedia.org/wiki/Shippingport_Atomic_Power_Station",
+        "https://en.wikipedia.org/wiki/History_of_the_United_Arab_Emirates"
+    ],
+    "1203": [
+        "https://en.wikipedia.org/wiki/Eureka_Rebellion",
+        "https://en.wikipedia.org/wiki/Christiaan_Barnard",
+        "https://en.wikipedia.org/wiki/Malta_Summit"
+    ],
+    "1204": [
+        "https://en.wikipedia.org/wiki/Berkeley_Hundred",
+        "https://en.wikipedia.org/wiki/Burger_King",
+        "https://www.cnn.com/2018/12/04/health/uterus-transplant-deceased-donor-study/index.html"
+    ],
+    "1205": [
+        "https://en.wikipedia.org/wiki/French_franc",
+        "https://en.wikipedia.org/wiki/California_Gold_Rush",
+        "https://en.wikipedia.org/wiki/Montgomery_bus_boycott"
+    ],
+    "1206": [
+        "https://en.wikipedia.org/wiki/Siege_of_Kiev_(1240)",
+        "https://en.wikipedia.org/wiki/Anglo-Irish_Treaty",
+        "https://en.wikipedia.org/wiki/Blood_in_the_Water_match"
+    ],
+    "1207": [
+        "https://en.wikipedia.org/wiki/Bakelite",
+        "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+        "https://www.news.com.au/technology/environment/climate-change/chinas-most-populous-city-issues-first-ever-red-alert-amid-deteriorating-air-quality/news-story/6a954ff41e04c3b543ed6926eebafd83"
+    ],
+    "1208": [
+        "https://en.wikipedia.org/wiki/Outer_Space_Treaty",
+        "https://en.wikipedia.org/wiki/Death_of_John_Lennon",
+        "https://en.wikipedia.org/wiki/SpaceX"
+    ],
+    "1209": [
+        "https://en.wikipedia.org/wiki/Traffic_light",
+        "https://en.wikipedia.org/wiki/Heisman_Trophy",
+        "https://en.wikipedia.org/wiki/Lech_Wa%C5%82%C4%99sa"
+    ],
+    "1210": [
+        "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Wyoming",
+        "https://en.wikipedia.org/wiki/Treaty_of_Paris_(1898)",
+        "https://www.nytimes.com/1984/12/11/science/possible-planet-found-beyond-solar-system.html"
+    ],
+    "1211": [
+        "https://en.wikipedia.org/wiki/UNICEF",
+        "https://en.wikipedia.org/wiki/First_Chechen_War",
+        "https://en.wikipedia.org/wiki/Penis_transplant"
+    ],
+    "1212": [
+        "https://en.wikipedia.org/wiki/David_Kalakaua",
+        "https://en.wikipedia.org/wiki/Invention_of_radio",
+        "https://en.wikipedia.org/wiki/Abuja"
+    ],
+    "1213": [
+        "https://en.wikipedia.org/wiki/Abel_Tasman",
+        "https://en.wikipedia.org/wiki/Highest-scoring_NBA_games",
+        "https://en.wikipedia.org/wiki/2001_Indian_Parliament_attack"
+    ],
+    "1214": [
+        "https://en.wikipedia.org/wiki/Mary,_Queen_of_Scots",
+        "https://en.wikipedia.org/wiki/Roald_Amundsen",
+        "https://en.wikipedia.org/wiki/Dayton_Agreement"
+    ],
+    "1215": [
+        "https://en.wikipedia.org/wiki/United_States_Bill_of_Rights",
+        "https://en.wikipedia.org/wiki/Gustave_Eiffel",
+        "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa"
+    ],
+    "1216": [
+        "https://en.wikipedia.org/wiki/Boston_Tea_Party",
+        "https://en.wikipedia.org/wiki/Shirley_Temple",
+        "https://en.wikipedia.org/wiki/Victory_Day_(Bangladesh)"
+    ],
+    "1217": [
+        "https://en.wikipedia.org/wiki/Wright_brothers",
+        "https://en.wikipedia.org/wiki/Diesel_locomotive",
+        "https://en.wikipedia.org/wiki/On_the_Beach_(1959_film)"
+    ],
+    "1218": [
+        "https://en.wikipedia.org/wiki/Yuan_dynasty",
+        "https://en.wikipedia.org/wiki/Dutch_East_India_Company",
+        "https://en.wikipedia.org/wiki/Avatar_(2009_film)"
+    ],
+    "1219": [
+        "https://en.wikipedia.org/wiki/Project_SCORE",
+        "https://en.wikipedia.org/wiki/Sino-British_Joint_Declaration",
+        "https://en.wikipedia.org/wiki/Park_Geun-hye"
+    ],
+    "1220": [
+        "https://en.wikipedia.org/wiki/Grimm%27s_Fairy_Tales",
+        "https://en.wikipedia.org/wiki/Mein_Kampf",
+        "https://en.wikipedia.org/wiki/Georgy_Grechko"
+    ],
+    "1221": [
+        "https://en.wikipedia.org/wiki/Basketball",
+        "https://en.wikipedia.org/wiki/Crossword",
+        "https://en.wikipedia.org/wiki/Montgomery_bus_boycott"
+    ],
+    "1222": [
+        "https://en.wikipedia.org/wiki/Christmas_lights",
+        "https://en.wikipedia.org/wiki/Iraqi_invasion_of_Kuwait",
+        "https://en.wikipedia.org/wiki/Ebola_vaccine"
+    ],
+    "1223": [
+        "https://en.wikipedia.org/wiki/Vincent_van_Gogh?wprov=srpw1_0",
+        "https://en.wikipedia.org/wiki/Joseph_Murray",
+        "http://www.cnn.com/SPECIALS/1997/hanukkah/hanukkah.vatican/index.html"
+    ],
+    "1224": [
+        "https://en.wikipedia.org/wiki/Treaty_of_Ghent",
+        "https://en.wikipedia.org/wiki/I_Love_Lucy",
+        "https://en.wikipedia.org/wiki/First_Liberian_Civil_War"
+    ],
+    "1225": [
+        "https://en.wikipedia.org/wiki/Christmas",
+        "https://en.wikipedia.org/wiki/Celsius",
+        "https://www.youtube.com/watch?v=4lPjMh1zpEo"
+    ],
+    "1226": [
+        "https://en.wikipedia.org/wiki/Edwin_Howard_Armstrong",
+        "https://en.wikipedia.org/wiki/Flamingo_Las_Vegas",
+        "https://en.wikipedia.org/wiki/Time_Person_of_the_Year"
+    ],
+    "1227": [
+        "https://en.wikipedia.org/wiki/Radio_City_Music_Hall",
+        "https://en.wikipedia.org/wiki/1985_Rome_and_Vienna_airport_attacks",
+        "https://en.wikipedia.org/wiki/Assassination_of_Benazir_Bhutto"
+    ],
+    "1228": [
+        "https://en.wikipedia.org/wiki/Neptune",
+        "https://en.wikipedia.org/wiki/Harriet_Tubman",
+        "https://en.wikipedia.org/wiki/Andrea_Bocelli"
+    ],
+    "1229": [
+        "https://en.wikipedia.org/wiki/Treaty_of_New_Echota",
+        "https://en.wikipedia.org/wiki/Sun_Yat-sen",
+        "https://en.wikipedia.org/wiki/Hearing_aid"
+    ],
+    "1230": [
+        "https://en.wikipedia.org/wiki/Soviet_Union",
+        "https://en.wikipedia.org/wiki/Color_television",
+        "https://en.wikipedia.org/wiki/Paul_McCartney"
+    ],
+    "1231": [
+        "https://en.wikipedia.org/wiki/Times_Square_Ball",
+        "https://en.wikipedia.org/wiki/Marie_Curie",
+        "https://en.wikipedia.org/wiki/Beji_Caid_Essebsi"
+    ]
 }
