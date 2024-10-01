@@ -477,7 +477,7 @@
                 }
                 
                 if (getCookie("played_today") == "True"){
-                    // nothing
+                    // pass
                 }
                 else{
                     addNumGames()
@@ -674,7 +674,7 @@
 
 
                 if (getCookie("played_today") == "True"){
-                    pass
+                    // pass
                 }
                 else{
                     addNumGames()
@@ -1144,7 +1144,7 @@
         <div>
             <div class="popupCloseButton" onclick="close_end()">&times;</div>
             <h2 id="end_response"> </h2>
-            <p><b>Play our NEW GAME MODES!</b></p>
+            <p><b>Play our OTHER GAME MODES!</b></p>
             <button class="games_btn" id="sport_link" onclick="window.location.href='sport/index.html';">Sports Events <i class="fa fa-volleyball" aria-hidden="true"></i> </button>
             <button class="games_btn" id="celeb_link" onclick="window.location.href='celeb/index.html';">Celebrity Birthdays <i class="fa fa-regular fa-star" aria-hidden="true" onclick=""></i></button>
             <p id="end_date"></p>
@@ -1174,7 +1174,9 @@
         <span class="helper"></span>
         <div>
             <div class="popupCloseButton">&times;</div>
+            <p class="how_to_play></p>
             <p class="how_to_play">
+                <h3>It's Our One Year Anniversary!</h3> Over 55,000 plays! To celebrate, we made merch! Click on the shop icon
                 <h2>How to Play:</h2>
                 These major world events 
                 <br>
@@ -1218,7 +1220,7 @@
                     Black = 1000+ Years off
                 </div>
                 <br>
-                NEW GAME MODES: <br>
+                OTHER GAME MODES: <br>
                 <div style="display: flex; gap: 10px;">
                     <button class="games_btn" id="sport_link" onclick="window.location.href='sport/index.html';">Sports <i class="fa fa-volleyball" aria-hidden="true"></i> </button>
                     <button class="games_btn" id="celeb_link" onclick="window.location.href='celeb/index.html';">Celebs<i class="fa fa-regular fa-star" aria-hidden="true"></i></button>
@@ -1242,6 +1244,10 @@
 
         <a "class="coffee" style="float: right; padding: 5px; padding-top: 7.5px" href="https://buymeacoffee.com/todayinhistory">
             <i class="fa fa-mug-hot" aria-hidden="true" style="color: white;"></i>
+        </a> 
+
+        <a "class="store" style="float: right; padding: 5px; padding-top: 7.5px" href="https://jackdkc.etsy.com">
+            <i class="fa-solid fa-store" aria-hidden="true" style="color: white;"></i>
         </a> 
 
         <a class="stats" style="float: right; padding: 5px;">
