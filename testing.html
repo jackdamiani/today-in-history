@@ -283,9 +283,6 @@
                     clientDate.getSeconds()
                 ));
                 utcDate = utcDate.toISOString();
-                console.log("guess_number:", guess_number);
-                console.log("guess_number type:", typeof guess_number);
-                console.log("played_today cookie:", getCookie("played_today"));
                 if (getCookie("played_today") != "True" && guess_number >= 3){
                     if (guess_number != 1) {
                         insert_row_php(guess_number, utcDate)
@@ -1174,7 +1171,6 @@
         <span class="helper"></span>
         <div>
             <div class="popupCloseButton">&times;</div>
-            <p class="how_to_play></p>
             <p class="how_to_play">
                 <h3>It's Our One Year Anniversary!</h3> Over 55,000 plays! To celebrate, we made merch! Click on the shop icon
                 <h2>How to Play:</h2>
