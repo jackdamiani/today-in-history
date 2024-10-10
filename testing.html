@@ -537,7 +537,6 @@
                     streak_text += String.fromCodePoint(historyEmojis[j])
                 }
                 document.getElementById("streak").textContent = streak_text
-
                 document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("longest_streak")}`
 
                 setCookie("display_share_text_cookie", display_share_text_cookie, 0, 2)
@@ -680,7 +679,6 @@
 
                 let total_games_played = Number(getCookie("total_games"))
                 document.getElementById('games_played').textContent = 'Games Played = ' + total_games_played
-
                 document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("longest_streak")}`
 
                 if (getCookie("win_games") != ""){
@@ -1502,9 +1500,6 @@
                 let cont_streak = parseStreakArr("streak_arr")
                 let cont_streak_today = parseStreakArrToday("streak_arr")
 
-                console.log("Testing setup: ", cont_streak)
-                console.log("Testing setup: ", cont_streak_today)
-
                 if (cont_streak || cont_streak_today){
                     len_streak = parseStreakLen('streak_arr')
                     let historyEmojis = [
@@ -1554,7 +1549,6 @@
                         streak_text += String.fromCodePoint(historyEmojis[j])
                     }
                     document.getElementById("streak").textContent = streak_text
-
                     document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("longest_streak")}`
                 }
                 
@@ -1677,7 +1671,9 @@
                 }
             }
 
-            if (getCookie('streak_arr') != ""){
+            let cont_streak = parseStreakArr("streak_arr")
+            let cont_streak_today = parseStreakArrToday("streak_arr")
+            if (getCookie('streak_arr') != "" && (cont_streak || cont_streak_today)){
                 len_streak = parseStreakLen('streak_arr')
                 let historyEmojis = [
                     "0x1F5FF", // "🗿", Moai
