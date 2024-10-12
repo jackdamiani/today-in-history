@@ -1505,57 +1505,60 @@
                 display_share_text_post_post = post_play_display(display_share_text_post)
                 document.getElementById("share_text").textContent = display_share_text_post_post
 
-                len_streak = parseStreakLen('sstreak_arr')
-                let historyEmojis = [
-                    "0x1F5FF", // "🗿", Moai
-                    "128220", // "📜", Scroll
-                    "0x1F3FA", // "🏺", Amphora
-                    "0x2694", // "⚔️", Crossed Swords
-                    "127963", //"🏛️", Classical Building
-                    "0x26EA", // "⛪", Church
-                    "0x1F4D6", // "📖", Open Book
-                    "0x1F50D", // "🔍"  Magnifying Glass Tilted Right
-                    "0x1F30D", // "🌍", Globe Showing Europe-Africa
-                    "0x1F30E", // 🌎 Globe Showing Americas
-                    "0x1F30F", // 🌏 Globe Showing Asia-Australia
-                    "0x1F310",  // 🌐 Globe with Meridians
-                    "0x1F311", // 🌑 New Moon
-                    "0x1F31A", // 🌚 New Moon Face
-                    "0x1F312", // 🌒 Waxing Crescent Moon
-                    "0x1F313", // 🌓 First Quarter Moon
-                    "0x1F31B", // 🌛 First Quarter Moon Face
-                    "0x1F314", // 🌔 Waxing Gibbous Moon
-                    "0x1F315", // 🌕 Full Moon
-                    "0x1F31D", // 🌝 Full Moon with Face
-                    "0x1F316", // 🌖 Waning Gibbous Moon
-                    "0x1F317", // 🌗 Last Quarter Moon
-                    "0x1F31C", // 🌜 Last Quarter Moon Face
-                    "0x1F318", // 🌘 Waning Crescent Moon
-                    "0x1F319", // 🌙 Crescent Moon
-                    "0x1F3F0",  // 🏰 Castle
-                    "11088", // ⭐ Star
-                    "127942", // 🏆 Trophy
+                let cont_streak = parseStreakArr("streak_arr")
+                let cont_streak_today = parseStreakArrToday("streak_arr")
+
+                if (cont_streak || cont_streak_today){
+                    len_streak = parseStreakLen('sstreak_arr')
+                    let historyEmojis = [
+                        "0x1F5FF", // "🗿", Moai
+                        "128220", // "📜", Scroll
+                        "0x1F3FA", // "🏺", Amphora
+                        "0x2694", // "⚔️", Crossed Swords
+                        "127963", //"🏛️", Classical Building
+                        "0x26EA", // "⛪", Church
+                        "0x1F4D6", // "📖", Open Book
+                        "0x1F50D", // "🔍"  Magnifying Glass Tilted Right
+                        "0x1F30D", // "🌍", Globe Showing Europe-Africa
+                        "0x1F30E", // 🌎 Globe Showing Americas
+                        "0x1F30F", // 🌏 Globe Showing Asia-Australia
+                        "0x1F310",  // 🌐 Globe with Meridians
+                        "0x1F311", // 🌑 New Moon
+                        "0x1F31A", // 🌚 New Moon Face
+                        "0x1F312", // 🌒 Waxing Crescent Moon
+                        "0x1F313", // 🌓 First Quarter Moon
+                        "0x1F31B", // 🌛 First Quarter Moon Face
+                        "0x1F314", // 🌔 Waxing Gibbous Moon
+                        "0x1F315", // 🌕 Full Moon
+                        "0x1F31D", // 🌝 Full Moon with Face
+                        "0x1F316", // 🌖 Waning Gibbous Moon
+                        "0x1F317", // 🌗 Last Quarter Moon
+                        "0x1F31C", // 🌜 Last Quarter Moon Face
+                        "0x1F318", // 🌘 Waning Crescent Moon
+                        "0x1F319", // 🌙 Crescent Moon
+                        "0x1F3F0",  // 🏰 Castle
+                        "11088", // ⭐ Star
+                        "127942", // 🏆 Trophy
 
 
-                ];
+                    ];
 
-                let streak_text = `Streak: ${len_streak} `
-                for (let i = 0; i < len_streak; i++){
-                    if (i == 49 || i == 149){
-                        streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 2]);
-                        continue;
+                    let streak_text = `Streak: ${len_streak} `
+                    for (let i = 0; i < len_streak; i++){
+                        if (i == 49 || i == 149){
+                            streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 2]);
+                            continue;
+                        }
+                        if (i == 99 || i == 199){
+                            streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 1]);
+                            continue;
+                        }
+                        let j = i % (historyEmojis.length - 2);
+                        streak_text += String.fromCodePoint(historyEmojis[j])
                     }
-                    if (i == 99 || i == 199){
-                        streak_text += String.fromCodePoint(historyEmojis[historyEmojis.length - 1]);
-                        continue;
-                    }
-                    let j = i % (historyEmojis.length - 2);
-                    streak_text += String.fromCodePoint(historyEmojis[j])
+                    document.getElementById("streak").textContent = streak_text
+                    document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("slongest_streak")}`
                 }
-                document.getElementById("streak").textContent = streak_text
-
-                document.getElementById("longest_streak").textContent = `Longest Streak = ${getCookie("slongest_streak")}`
-
 
                 // document.getElementById("share_button").style.visibility = 'hidden';
                 // document.getElementById('end_response').textContent = 'Game Complete!'
@@ -1675,7 +1678,9 @@
                 }
             }
 
-            if (getCookie("sstreak_arr") != ""){
+            let cont_streak = parseStreakArr("streak_arr")
+            let cont_streak_today = parseStreakArrToday("streak_arr")
+            if (getCookie('streak_arr') != "" && (cont_streak || cont_streak_today)){
                 len_streak = parseStreakLen('sstreak_arr')
                 let historyEmojis = [
                     "0x1F5FF", // "🗿", Moai
@@ -1879,6 +1884,32 @@
         console.log(yesterday); // Output: (e.g., "2024-08-11")
 
         return yesterday == last_day
+    }
+
+    function parseStreakArrToday(cname) {
+        let arr_str = getCookie(cname);
+        let arr = arr_str.substring(1, arr_str.length - 1);
+        arr = arr.replace(/['"]+/g, '');
+        let streak_vals = arr.split(',');
+
+        console.log("streak value beginning", streak_vals);
+        console.log(streak_vals[streak_vals.length - 1]);
+
+        let last_day = streak_vals[streak_vals.length - 1];
+
+        let today = new Date();
+
+        // Format today's date as needed (YYYY-MM-DD)
+        let year = today.getFullYear();
+        let month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+        let day = String(today.getDate()).padStart(2, '0');
+
+        let today_ = `${year}-${month}-${day}`;
+
+        console.log(today_); // Output: (e.g., "2024-10-07")
+
+        // Check if today's date matches the last element in the streak array
+        return today_ == last_day;
     }
 
     function parseStreakLen(cname){
