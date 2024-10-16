@@ -837,12 +837,104 @@
             /* row-gap: 10px; */
         }
 
+        #top-header{
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #top-header {
+            display: flex; /* Flexbox for header */
+            justify-content: space-between; /* Space between text and buttons */
+            align-items: center; /* Align items in the center vertically */
+            height: 10vh; /* Increase the height of the header */
+            padding: 10px; /* Optional padding */
+            color: black; /* Text color */
+        }
+
+        #date-header {
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+            flex: 1; /* Make the text stretch across the left side */
+        }
+
+        #button-container {
+            display: block; /* Change to block to stack buttons */
+            text-align: right; /* Align buttons to the right */
+            padding: 15px;
+        }
+
+        .button-grid {
+            display: block; /* Keep buttons stacked */
+        }
+
+        .button-grid a {
+            padding: 5px;
+            color: white;
+            text-align: center;
+            display: block; /* Each button takes full width */
+            margin: 5px 0; /* Add vertical spacing between buttons */
+            text-decoration: none;
+            outline: none; /* Remove outline */
+            margin-right: 10px;
+        }
+
+        .button-grid a i {
+            font-size: 24px; /* Icon size */
+        }
+
+
+/*     
+        .free-text {
+            font-family: 'Poppins', sans-serif; 
+            font-size: 20px;
+            color: white;
+            text-align: left;
+            line-height: 1.6;
+            padding: 10px 20px; 
+            background-color: rgba(255, 255, 255, 0.2); 
+            border-radius: 20px; 
+            display: inline-block; 
+            border: 2px solid lightblue; 
+            position: relative;
+            margin-bottom: 3px; 
+            animation: popIn 0.8s ease both; 
+            padding: 100px;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        
+        .free-text:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+        }
+    */
+
+
+
         .square {
             height: 5vh;
             width: 5vh;
             background-color: #fff;
             border: 1px solid #000;
             display: inline-block;
+            border-radius: 12%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .rectangle:hover {
+            background-color: rgba(255, 255, 255, 1); /* Change background on hover */
+            border: 1px solid #555; /* Darker border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
         }
 
         .rectangle {
@@ -855,7 +947,17 @@
             font-size: 70%;
             text-align: center;
             vertical-align: middle;
+            border-radius: 5px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(220, 220, 220, 0.4));
+            opacity: 0;
+            animation: fadeIn 5s forwards;
         }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
 
         .square_empty {
             height: 5vh;
@@ -888,12 +990,22 @@
             text-align: left;
         }
 
-        .game_button{
-            background-color: #000;
+        .game_button {
+            background-color: black;
             color: white;
-            border: none;
             padding: 5px 10px;
+            border: none;
             border-radius: 7px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s;
+            box-shadow: 0 0 5px darkgrey; /* Subtle glow */
+            
+        }
+
+        .game_button:hover {
+            background-color: gray;
+            box-shadow: 0 0 10px darkgrey;
         }
 
         .discord_button{
@@ -927,7 +1039,8 @@
         #year_input{
             padding: 5px;
             border-radius: 3px;
-            border: .5px solid rgba(0, 0, 0, 0.6);
+            border: .5px solid rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 5px lightblue; /* Subtle glow */
         }
 
         ul {
@@ -1249,22 +1362,25 @@
             <p id="date-header" style="display: inline; font-size: 16px; font-family: 'Courier New', monospace;"></p>
         </li>
 
-               
-        <a class="trigger_help_menu" style="float: right; padding: 5px;">
-            <i class="fa fa-question-circle" aria-hidden="true" style="color: white;"></i>
-        </a>
+        <li id="button-container">
+            <div class="button-grid"></div>
+                <a class="stats" style="padding: 5px; color: rgba(243,243,0,1)">
+                    <i class="fa fa-bar-chart" aria-hidden="true" style="color: white"></i>
+                </a>
 
-        <a "class="coffee" style="float: right; padding: 5px; padding-top: 7.5px" href="https://buymeacoffee.com/todayinhistory">
-            <i class="fa fa-mug-hot" aria-hidden="true" style="color: white;"></i>
-        </a> 
+                <a "class="coffee" style=" padding: 5px; padding-top: 7.5px; color: rgba(243,243,0,1)" href="https://buymeacoffee.com/todayinhistory">
+                    <i class="fa fa-mug-hot" aria-hidden="true" style="color: white;"></i>
+                </a> 
 
-        <a "class="store" style="float: right; padding: 5px; padding-top: 7.5px" href="https://jackdkc.etsy.com">
-            <i class="fa-solid fa-store" aria-hidden="true" style="color: white;"></i>
-        </a> 
+                <a "class="store" style=" padding: 5px; padding-top: 7.5px; color: rgba(243,243,0,1)" href="https://jackdkc.etsy.com">
+                    <i class="fa-solid fa-store" aria-hidden="true" style="color: white;"></i>
+                </a> 
 
-        <a class="stats" style="float: right; padding: 5px;">
-            <i class="fa fa-bar-chart" aria-hidden="true" style="color: white"></i>
-        </a>
+                <a class="trigger_help_menu" style="padding: 5px; color: rgba(243,243,0,1)">
+                    <i class="fa fa-question-circle" aria-hidden="true" style="color: white;"></i>
+                </a>
+            </div>
+        </li>
 
     </ul>
 
