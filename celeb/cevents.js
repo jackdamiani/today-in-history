@@ -278,7 +278,7 @@ var today_in_history = {
     "1025": {
         "1957": "Nancy Cartwright, Voice Actress (Bart on The Simpsons)",
         "1971": "Craig Robinson, Actor (The Office, Hot Tub Time Machine)",
-        "1984": "Katy Perry, Singer (Firework, Dark Horse)"
+        "1984": "Katy Perry, Singer (Firework, Dark Horse) (Suggested by \u2615 Supporter)"
     },
     "1026": {
         "1967": "Keith Urban, Musician (Blue Ain't Your Color, Somebody Like You)",
@@ -298,7 +298,7 @@ var today_in_history = {
     "1029": {
         "1947": "Richard Dreyfuss, Actor (Jaws, Close Encounters of the Third Kind)",
         "1971": "Winona Ryder, Actress (Stranger Things, Beetlejuice)",
-        "1987": "Tove Lo, Singer (Habits, Talking Body)"
+        "1987": "Tove Lo, Singer (Habits, Talking Body) (Suggested by \u2615 Supporter)"
     },
     "1030": {
         "1957": "Kevin Pollak, Actor (The Usual Suspects, A Few Good Men)",
