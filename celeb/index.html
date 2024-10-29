@@ -129,6 +129,19 @@
 
         }
 
+        function animateSquare(square_element, maxSize = 5, duration = 1000) {
+            const square = document.getElementById(square_element);
+            
+            // Enlarge the square to a size based on viewport height (vh)
+            square.style.width = `${maxSize}vh`;
+            square.style.height = `${maxSize}vh`;
+            
+            // After the specified duration, return the square to its original size
+            setTimeout(() => {
+                square.style.width = '5vh';
+                square.style.height = '5vh';
+            }, duration);
+        }
 
 
         function get_difference_time_guess(guess, year){
@@ -268,6 +281,20 @@
             }
             else{
                 output_grid[guess_number-1][2] = set_colors(box3_str, year_diff3, year3);
+            }
+
+            // fun animation
+            if (output_grid[guess_number-1][0] == 6 && getCookie('canimation_1') == "False"){
+                animateSquare(box1_str, 10, 1000)
+                setCookie("canimation_1", "True", 0, 2)
+            }
+            if (output_grid[guess_number-1][1] == 6 && getCookie('canimation_2') == "False"){
+                animateSquare(box2_str, 10, 1000)
+                setCookie("canimation_2", "True", 0, 2)
+            }
+            if (output_grid[guess_number-1][2] == 6 && getCookie('canimation_3') == "False"){
+                animateSquare(box3_str, 10, 1000)
+                setCookie("canimation_3", "True", 0, 2)
             }
 
             var box0_str = "s".concat(guess_number.toString(), "_0");
@@ -928,6 +955,7 @@
             display: inline-block;
             border-radius: 12%;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease; /* Smooth transition */
         }
 
         .rectangle:hover {
@@ -1699,6 +1727,10 @@
 
             header_color.style.backgroundColor= 'rgba(243,243,0,1)';
             footer_color.style.backgroundColor= 'rgba(243,243,0,1)';
+
+            setCookie("canimation_1", "False", 0, 2)
+            setCookie("canimation_2", "False", 0, 2)
+            setCookie("canimation_3", "False", 0, 2)
 
             // // Actual Code
             // var find_today = new Date();
