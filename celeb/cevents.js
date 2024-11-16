@@ -1,4 +1,160 @@
 var today_in_history = {
+    "0101": {
+        "1946": "Rick Hurst (Actor, 'The Dukes of Hazzard')",
+        "1969": "Verne Troyer (Actor, 'Austin Powers')",
+        "1995": "Poppy (Singer, YouTuber)"
+    },
+    "0102": {
+        "1971": "Taye Diggs (Actor, 'Rent')",
+        "1983": "Kate Bosworth (Actress, 'Remember the Titans, Blue Crush')",
+        "1987": "Shelley Hennig (Actress, 'Teen Wolf')"
+    },
+    "0103": {
+        "1956": "Mel Gibson (Actor, 'Braveheart')",
+        "1986": "Lloyd (Singer, 'You')",
+        "1996": "Florence Pugh (Actress, 'Midsommar')"
+    },
+    "0104": {
+        "1965": "Julia Ormond (Actress, 'Legends of the Fall')",
+        "1986": "James Milner (Soccer Player, Liverpool FC)",
+        "1990": "Toni Kroos (Soccer Player, Real Madrid)"
+    },
+    "0105": {
+        "1946": "Diane Keaton (Actress, 'Annie Hall')",
+        "1975": "Bradley Cooper (Actor, 'A Star is Born')",
+        "1986": "Deepika Padukone (Actress, Bollywood)",
+    },
+    "0106": {
+        "1955": "Rowan Atkinson (Comedian, 'Mr. Bean')",
+        "1967": "A. R. Rahman (Composer, 'Slumdog Millionaire')",
+        "1982": "Eddie Redmayne (Actor, 'The Theory of Everything')",
+    },
+    "0107": {
+        "1964": "Nicolas Cage (Actor, 'National Treasure')",
+        "1971": "Jeremy Renner (Actor, 'Avengers')",
+        "1985": "Lewis Hamilton (F1 Driver)"
+    },
+    "0108": {
+        "1935": "Elvis Presley (Singer, 'King of Rock and Roll')",
+        "1947": "David Bowie (Singer, 'Space Oddity')",
+        "1977": "Amber Benson (Actress, 'Buffy the Vampire Slayer')"
+    },
+    "0109": {
+        "1944": "Jimmy Page (Guitarist, Led Zeppelin)",
+        "1967": "Dave Matthews (Musician, Dave Matthews Band)",
+        "1978": "AJ McLean (Singer, Backstreet Boys)"    },
+    "0110": {
+        "1945": "Rod Stewart (Singer, 'Maggie May')",
+        "1974": "Hrithik Roshan (Actor, Bollywood)",
+        "1981": "Jared Kushner (Businessman)"
+    },
+    "0111": {
+        "1971": "Mary J. Blige (Singer, 'Family Affair')",
+        "1972": "Amanda Peet (Actress, 'The Whole Nine Yards')",
+        "1996": "Leroy Sané (Soccer Player, Bayern Munich)"
+    },
+    "0112": {
+        "1944": "Joe Frazier (Boxer)",
+        "1987": "Naya Rivera (Actress, 'Glee')",
+        "1993": "Zain Javadd 'Zayn' Malik (Singer, One Direction)"
+    },
+    "0113": {
+        "1961": "Julia Louis-Dreyfus (Actress, 'Seinfeld')",
+        "1977": "Orlando Bloom (Actor, 'Pirates of the Caribbean')",
+        "1990": "Liam Hemsworth (Actor, 'The Hunger Games')"
+        },
+    "0114": {
+        "1941": "Faye Dunaway (Actress, 'Bonnie and Clyde')",
+        "1963": "Steven Soderbergh (Director, 'Ocean's Eleven')",
+        "1990": "Grant Gustin (Actor, 'The Flash')"
+    },
+    "0115": {
+        "1979": "Drew Brees (NFL Quarterback)",
+        "1981": "Pitbull (Rapper, 'Timber')",
+        "2004": "Grace VanderWaal (Singer, 'America's Got Talent')"
+    },
+    "0116": {
+        "1963": "Tracy Bingham (Actress, 'Baywatch')",
+        "1980": "Lin-Manuel Miranda (Actor and Composer, 'Hamilton')",
+        "1997": "Jennie Kim (Singer, BLACKPINK)"
+    },
+    "0117": {
+        "1962": "Jim Carrey (Actor, 'The Mask')",
+        "1980": "Zooey Deschanel (Actress, 'New Girl')",
+        "1997": "Jake Paul (YouTuber and Boxer)"
+    },
+    "0118": {
+        "1955": "Kevin Costner (Actor, 'Dances with Wolves')",
+        "1980": "Jason Segel (Actor, 'How I Met Your Mother')",
+        "1999": "Karan Brar (Actor, 'Jessie')"
+    },
+    "0119": {
+        "1946": "Dolly Parton (Singer, 'Jolene')",
+        "1982": "Jodie Sweetin (Actress, 'Full House')",
+        "1992": "Mac Miller (Rapper, 'Blue Slide Park')"
+    },
+    "0120": {
+        "1956": "Bill Maher (Comedian and TV Host, 'Real Time')",
+        "1971": "Gary Barlow (Singer, Take That)",
+        "1987": "Evan Peters (Actor, 'American Horror Story')"
+    },
+    "0121": {
+        "1953": "Paul Allen (Co-founder of Microsoft)",
+        "1963": "Hakeem Olajuwon (NBA Player)",
+        "1984": "Ashton Eaton (Olympic Decathlete)"
+    },
+    "0122": {
+        "1959": "Linda Blair (Actress, 'The Exorcist')",
+        "1969": "Olivia d'Abo (Actress, 'The Wonder Years')",
+        "1992": "Logic (Rapper, '1-800-273-8255')"
+    },
+    "0123": {
+        "1964": "Mariska Hargitay (Actress, 'Law & Order: SVU')",
+        "1974": "Tiffani Thiessen (Actress, 'Saved by the Bell')",
+        "1998": "Rachel Crow (Singer and Actress, 'The X Factor')"
+    },
+    "0124": {
+        "1941": "Neil Diamond (Singer, 'Sweet Caroline')",
+        "1981": "Carrie Coon (Actress, 'Fargo')",
+        "1990": "Mischa Barton (Actress, 'The O.C.')"
+    },
+    "0125": {
+        "1975": "Mia Kirshner (Actress, 'The L Word')",
+        "1981": "Alicia Keys (Singer, 'No One')",
+        "1985": "Michael Trevino (Actor, 'The Vampire Diaries')"
+    },
+    "0126": {
+        "1961": "Wayne Gretzky (Hockey Player, 'The Great One')",
+        "1981": "Colin O'Donoghue (Actor, 'Once Upon a Time')",
+        "1992": "Sasha Banks (Wrestler, WWE)",
+    },
+    "0127": {
+        "1948": "Mikhail Baryshnikov (Ballet Dancer and Choreographer)",
+        "1965": "Alan Cumming (TV and Broadway Actor, Macbeth)",
+        "1996": "Braeden Lemasters (Actor, 'Men of a Certain Age')"
+    },
+    "0128": {
+        "1938": "Alan Alda (Actor, 'M*A*S*H')",
+        "1976": "Rick Ross (Rapper, 'Hustlin')",
+        "1998": "Ariel Winter (Actress, 'Modern Family')"
+    },
+    "0129": {
+        "1954": "Oprah Winfrey (Talk Show Host, 'The Oprah Winfrey Show')",
+        "1992": "Adam Lambert (Singer, 'American Idol')",
+        "1999": "Madison Bailey (Actress, 'Outer Banks')"
+    },
+    "0130": {
+        "1941": "Dick Cheney (Vice President of the United States)",
+        "1974": "Christian Bale (Actor, 'The Dark Knight')",
+        "1990": "Jake Thomas (Actor, 'Lizzie McGuire')"
+    },
+    "0131": {
+        "1956": "John Lydon (Singer, Sex Pistols)",
+        "1970": "Minnie Driver (Actress, 'Good Will Hunting')",
+        "1996": "Joel Courtney (Actor, 'The Kissing Booth')"
+    },
+
+
     "0802": {"1951": "Joe Lynn Turner, singer", "1970": "Kevin Smith, filmaker", "1992": "Charli XCX, singer"},
     "0803": {"1963": "James Hetfield", "1977": "Tom Brady, football player", "1984": "Ryan Lochte, swimmer"},
     "0811": {"1111": "test", "1112": "test", "1113": "test"},

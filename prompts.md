@@ -62,3 +62,39 @@ Should be:
 Records are from october 19:
 
 You can put them all in one group like { "1019": { "YEAR": "EVENT", "YEAR": "EVENT", etc...}}. Order the events in order by year.
+
+
+--------------------------------------------------------------------------------
+
+
+I need you to generate a structured output of celebrity names and their birthdays.
+
+I need two weeks worth of dates. 
+
+I need them in the format:
+
+{
+    "MMDD": {
+        "YYYY": "NAME (Something they're famous for),
+        "YYYY": "NAME (Something they're famous for),
+        "YYYY": "NAME (Something they're famous for),
+        "YYYY": "NAME (Something they're famous for),
+        "YYYY": "NAME (Something they're famous for),
+        "YYYY": "NAME (Something they're famous for)
+    },
+    "MMDD": {
+        "YYYY": "NAME (Something they're famous for),
+        "YYYY": "NAME (Something they're famous for),
+        "YYYY": "NAME (Something they're famous for),
+        "YYYY": "NAME (Something they're famous for),
+        "YYYY": "NAME (Something they're famous for),
+        "YYYY": "NAME (Something they're famous for)
+    }, 
+
+    ...
+}
+
+I need the dates to start at 0101 (january first) and go on from there.
+I need the YYYY to be in order, and I need 6 per date.
+
+Also make sure that the years are never before 1935 and there is at least one or two from the 1990s or 2000s

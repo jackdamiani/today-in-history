@@ -597,7 +597,7 @@ var today_in_history = {
     "1112": {"1892": "William 'Pudge' Heffelfinger became the first professional football player by accepting $500 to play for the Allegheny Athletic Association", "1995": "Dan Marino passed Fran Tarkenton to become the NFL's all-time leader in passing yards at the time with 47,003", 
         "2019": "Mike Fiers revealed the Houston Astros' World Series sign-stealing scandal, leading to suspensions and firings in MLB",},
     "1113": {"1979": "Darryl Dawkins of the Philadelphia 76ers became the first player to shatter a backboard in an NBA game", "1994": "Drew Bledsoe breaks the NFL record for most pass attempts in a game with 70", "2005": "Nathan Vasher of the Chicago Bears returned a missed FG 108 yards for the longest play in NFL history at the time"},
-    "1114": {"1993": "Don Shula won his 325th game, becoming the NFL’s all-time leader in coaching victories", "2009": "Brandon Jennings broke the Milwaukee Bucks' rookie record with a 55-point game, the most by a rookie since 1968",
+    "1114": {"1993": "Don Shula won his 325th game, becoming the NFL's all-time leader in coaching victories", "2009": "Brandon Jennings broke the Milwaukee Bucks' rookie record with a 55-point game, the most by a rookie since 1968",
         "2019": "Myles Garrett (Cleveland Browns) infamously removed Mason Rudolph's helmet and used it as a weapon, leading to an indefinite suspension"},
     "1115": {"1961": "Roger Maris (NY Yankees) won AL MVP with just 4 more votes than his teammate Mickey Mantle after a record-breaking 61 HR season",
         "1970": "Paul Brown, as HC of the Bengals, exacted his revenge on the Browns (after firing him) in a 14-10 victory, calling it his 'greatest' victory",
@@ -651,7 +651,7 @@ var today_in_history = {
         "1985": "The 1985 Bears suffered their only loss of the season to the Dolphins, with tensions boiling over between head coach Mike Ditka and defensive coordinator Buddy Ryan",
         "2019": "Kirk Cousins recorded his eighth consecutive Monday Night Football loss, while Russell Wilson became the winningest QB on MNF with a record of 9-2"},
     "1203": {"1968": "MLB introduced major rule changes to increase offensive production, lowering the pitcher's mound and shrinking the strike zone",
-        "1993": "The Atlanta Hawks handed the Houston Rockets their first loss of the season, snapping Houston’s NBA record-tying 15-0 start",
+        "1993": "The Atlanta Hawks handed the Houston Rockets their first loss of the season, snapping Houston's NBA record-tying 15-0 start",
         "2019": "James Harden set the record for the most free throws made without a miss in a single game, going 24-for-24, though his 50-point effort came on a career-low 29% FG"},
     "1204": {"1976": "Aurelio Rodriguez won his first Gold Glove award, ending Brooks Robinson's 16-year streak at third base",
         "1996": "The Orlando Magic set a record for the fewest points in a game during the shot clock era, scoring just 57 points against the Cleveland Cavaliers",
@@ -665,33 +665,78 @@ var today_in_history = {
     "1207": {"1939": "Lou Gehrig became the first MLB player inducted into the Hall of Fame in less than a year since retirement",
         "1982": "The Utah Jazz set an NBA record by hitting all 39 of their free throw attempts without a single miss",
         "2006": "In a double-overtime showdown, Steve Nash and Jason Kidd led the Suns and Nets in one of the highest-scoring NBA games of the 21st century, with Phoenix winning 161-157"},
-    "1208": {"":"", " ": "", " ":""},
-    "1209": {"2001": "Tim Brown breaks the NFL record as the oldest player to return a punt for a touchdown at 35 years and 140 days", " ": "", "2018": "Tremaine Edmunds breaks the NFL record as the youngest player to have an interception at 20 years and 221 days"},
-    "1210": {"":"", " ": "", " ":""},
-    "1211": {"":"", " ": "", " ":""},
-    "1212": {"1999": "Qadry Ismail breaks the NFL record for most receiving yards in one quarter with 210", " ": "", " ":""},
-    "1213": {"":"", "2009": "Brandon Marshall breaks the NFL record for most pass receptions in a game with 21", 
-        " ":""},
-    "1214": {"1974": "George Blanda breaks the NFL record as the oldest player to throw a touchdown pass at 47 years and 88 days", " ": "", " ":""},
-    "1215": {"":"", " ": "", " ":""},
-    "1216": {"":"", " ": "", " ":""},
+    "1208": {
+        "1940": "The Chicago Bears set the NFL record for points in a game with a 73-0 victory over Washington in the NFL Championship",
+        "1992": "Dominique Wilkins sets the NBA record for most free throws made in a game without a miss, going 23-for-23",
+        "2000": "Shaquille O'Neal sets the NBA record for most free throws missed in a game, going 0-for-11"
+        },
+    "1209": {"2001": "Tim Brown breaks the NFL record as the oldest player to return a punt for a touchdown at 35 years and 140 days", "2004": "Tracy McGrady scored 13 points in the final 35 seconds to lead the Rockets to a comeback win over the Spurs",
+        "2018": "Tom Brady became the all-time passing touchdown leader during the 'Miami Miracle,' where the Dolphins defeated the Patriots on a historic last-second play"},
+    "1210": {
+        "1972": "The American League voted to adopt the designated hitter rule on a three-year trial, leading to its permanent adoption three years later",
+        "1989": "Steve Largent became the first NFL player to record 100 touchdown receptions, breaking Don Hutson's long-standing record",
+        "2017": "MLB announced the first-ever All-MLB Team, featuring 1st and 2nd teams that honored the top players at each position for the season"
+    },
+    "1211": {
+        "1959": "The Yankees acquired Roger Maris from the Kansas City Athletics in a trade for multiple players, including Don Larsen. Maris won back-to-back MVPs and broke Babe Ruth's single-season HR record",
+        "1977": "The Tampa Bay Buccaneers earned their first franchise victory after an 0-26 start by defeating the New Orleans Saints 33-14. The defense contributed 3 pick-sixes in the game",
+        "2019": "Anthony Rendon signed a 7-year, $245M deal with the Los Angeles Angels, making them the first MLB team to have three $200M+ contracts (with Mike Trout and Albert Pujols)"
+    },
+    "1212": {"1999": "Qadry Ismail breaks the NFL record for most receiving yards in one quarter with 210", 
+        "2002": "ESPN2 aired its first high school basketball game, featuring 17-year-old LeBron James. LeBron dazzled with 31 points, 13 rebounds, and 6 assists to lead St. Vincent-St. Mary to an upset over Oak Hill Academy", 
+       "2019": "Lamar Jackson broke Michael Vick's single-season QB rushing record of 1,039 yards during a Ravens win over the Jets. Jackson finished the season with 1,206 rushing yards, 33 passing TDs, and a unanimous MVP"
+    },
+    "1213": {"1983": "The Detroit Pistons defeated the Denver Nuggets 186-184 in a triple-overtime thriller, setting the record for the highest-scoring game in NBA history", "2009": "Brandon Marshall breaks the NFL record for most pass receptions in a game with 21", 
+        "2018": "Dirk Nowitzki debuted in his 21st season with the Dallas Mavericks, breaking Kobe Bryant's record for the most seasons played with one team. This marked Dirk's final season before retirement"},
+    "1214": {"1953": "Brooklyn Dodgers sign 18-year-old Sandy Koufax to a $6,000 contract with a $14,000 signing bonus",
+        "1974": "George Blanda breaks the NFL record as the oldest player to throw a touchdown pass at 47 years and 88 days", "1988": "Miami Heat win their first game ever, ending their 0-17 start to the season"},
+    "1215": {
+        "1891": "James Naismith invented the game of basketball",
+        "2002": "Marvin Harrison broke the single-season REC record with 127, going up to 143 by the end of the season",
+        "2019": "Raiders lost their final game in Oakland, Madison Bumgarner & Corey Kluber left their respective teams"
+    },
+    "1216": {
+        "1972": "Miami Dolphins completed the first undefeated regular season in the NFL's modern era",
+        "1973": "OJ Simpson broke Jim Brown's single-season rushing record with 2,003 yards",
+        "2019": "Drew Brees broke Peyton Manning's career passing TD record with 541"
+    },
     "1217": {"1988": "Jamie Morris breaks the NFL record for most rushing attempts in a game with 45",
-        " ": "", " ":""},
-    "1218": {"":"", " ": "", " ":""},
-    "1219": {"2004": "Jerry Rice breaks the NFL record as the oldest player to have a touchdown reception at 42 years and 67 days", " ": "", " ":""},
-    "1220": {"":"", " ": "", " ":""},
-    "1221": {"":"", " ": "", " ":""},
-    "1222": {"1985": "Stephone Paige breaks the NFL record for most receiving yards in one half with 258", "1996": "Clay Matthews Jr. breaks the NFL record as the oldest player to have a sack at 40 years and 282 days", " ":""},
-    "1223": {"":"", "2012": "Jamaal Charles breaks the NFL record for most yards gained in one quarter with 165", " ":""},
-    "1224": {"":"", "2000": "Vinny Testaverde breaks the NFL record for most pass attempts in a regulation game with 69",
+        "2000": "Terrell Owens set an NFL record with 20 receptions in a single game", "2008": "Chris Paul set a new NBA record with 106 consecutive games with a steal"},
+    "1218": {
+        "1959": "HOF QB Sammy Baugh was hired as the first head coach of the New York Titans, later known as the New York Jets",
+        "2002": "Charlotte Bobcats were created months after the Hornets relocated to New Orleans",
+        "2017": "The Lakers retired both of Kobe Bryant's jersey numbers (8 and 24)"
+    },
+    "1219": {
+        "1990": "Bo Jackson became the first player to be named an All-Star in two professional North American sports (MLB & NFL)", 
+        "2004": "Jerry Rice breaks the NFL record as the oldest player to have a touchdown reception at 42 years and 67 days", 
+        "2010": "The Eagles made a legendary comeback to defeat the Giants, capped by DeSean Jackson's game-winning punt return touchdown"
+    },
+    "1220": {
+        "1966": "The NBA officially granted Seattle an expansion franchise, the SuperSonics",
+        "2005": "Kobe Bryant scored 62 points through 3 quarters, outscoring the Dallas Mavericks' entire team (61 points) in a game",
+        "2006": "Philadelphia traded Allen Iverson to the Denver Nuggets"
+    },
+    "1221": {
+        "1941": "The Chicago Bears became the first team to win back-to-back NFL Championship Games",
+        "1969": "Vince Lombardi coached his last NFL game, with his Washington Redskins losing to the Dallas Cowboys 20-10",
+        "1980": "Harold Carmichael's (of Philadelphia Eagles) NFL-record reception streak ended after 127 consecutive games"
+    },
+    "1222": {"1985": "Stephone Paige breaks the NFL record for most receiving yards in one half with 258", "1996": "Clay Matthews Jr. breaks the NFL record as the oldest player to have a sack at 40 years and 282 days", "Michael Thomas": "Michael Thomas broke the single-season record with his 144th reception. He finished the season with 149 receptions"},
+    "1223": {"1992": "Phil Jackson became the fastest to win 200 career games, doing so in 270 games", "1996": "David Robinson's season ended with a broken foot, allowing the Spurs to select Tim Duncan with the No. 1 overall pick", "2012": "Jamaal Charles breaks the NFL record for most yards gained in one quarter with 165"},
+    "1224": {"1950": "Cleveland Browns beat the LA Rams to finish their inaugural NFL season with a championship", "2000": "Vinny Testaverde breaks the NFL record for most pass attempts in a regulation game with 69",
         "2011": "Eli Manning ties the record for longest pass completion at 99 yards"},
-    "1225": {"":"", " ": "", "2020": "Alvin Kamara ties the record for most touchdowns in a game with 6"},
-    "1226": {"":"", " ": "", "2020": "Tom Brady breaks the NFL record as the oldest player with a 158.3 perfect passer rating at 43 years, 145 days"},
-    "1227": {"1981": "Wayne Gretzky breaks the NHL record fastest 100 points from the start of a season in 34 games", " ": "", "2023": "Kris Letang breaks the NHL record most assists in one period with 5"},
-    "1228": {"":"", " ": "", " ":""},
-    "1229": {"2002": "Todd Lyght breaks the NFL record as the oldest player to return a blocked field goal for a touchdown at 33 years and 323 days", " ": "", " ":""},
-    "1230": {"":"", "2012": "Zach Brown ties the NFL record for most interceptions returned for touchdowns in a game with 2", " ":""},
-    "1231": {"":"", " ": "", "2023": "Beatrice Chebet sets the women's 5km road record with a time of 14:13"}
+    "1225": {"1971": "The Dolphins defeated the Chiefs in the longest game in NFL history (82:40), during an AFC Divisional Playoff", "2008": "Phil Jackson reached his 1,000th career coaching victory with the Lakers, making him the fastest coach to do so", "2020": "Alvin Kamara ties the record for most touchdowns in a game with 6"},
+    "1226": {"1919": "The Yankees and Red Sox reached an agreement to trade Babe Ruth to New York, a move that became known as the 'Curse of the Bambino' for Boston", "1960": "Vince Lombardi suffered his only career postseason loss as the Packers lost to the Eagles in the NFL Championship game at Franklin Field", "2020": "Tom Brady breaks the NFL record as the oldest player with a 158.3 perfect passer rating at 43 years, 145 days"},
+    "1227": {"1981": "Wayne Gretzky breaks the NHL record fastest 100 points from the start of a season in 34 games", "1998": "Emmitt Smith broke the NFL record for career rushing touchdowns, surpassing Marcus Allen with his 124th TD", "2023": "Kris Letang breaks the NHL record most assists in one period with 5"},
+    "1228": {
+        "1975": "Roger Staubach threw the first 'Hail Mary' pass to Drew Pearson, connecting on a 50-yard TD to win a playoff game for Dallas against Minnesota",
+        "1979": "Larry Bird and Magic Johnson faced off for the first time in the NBA, with Magic's Lakers defeating Bird's Celtics 123-105",
+        "2008": "The Detroit Lions became the first team in NFL history to go winless in a 16-game season, finishing 0-16"
+    },
+    "1229": {"1999": "Wilt Chamberlain became the first player to have three different teams retire his jersey, with the Warriors, Sixers, and Lakers all honoring his No. 13", "2002": "Todd Lyght breaks the NFL record as the oldest player to return a blocked field goal for a touchdown at 33 years and 323 days", "2007": "The New England Patriots completed the NFL's first perfect 16-game regular season, with Tom Brady setting the season's touchdown pass record at 50"},
+    "1230": {"1990": "Orlando Magic PG Scott Skiles recorded an NBA-record 30 assists in a win over the Denver Nuggets", "1995": "The Buffalo Bills and Miami Dolphins combined for a playoff-record 1,038 total yards in a game won by the Bills, 37-22", "2012": "Zach Brown ties the NFL record for most interceptions returned for touchdowns in a game with 2"},
+    "1231": {"1967": "Vince Lombardi's Packers won their fifth and final NFL Championship in the 'Ice Bowl' against the Dallas Cowboys, securing a third consecutive title", "1972": "Pirates OF Roberto Clemente tragically died in a plane crash while delivering relief supplies to Nicaragua, cementing his legacy as a trailblazer for Latino players and philanthropists", "2023": "Beatrice Chebet sets the women's 5km road record with a time of 14:13"}
     
     
 }
