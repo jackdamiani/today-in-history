@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!DOCTYPE html>
+    <head>
+        <tite style="display: none">Word Immaculate Grid</tite>
+        <meta name="decription" content="Fill in all 9 squares int the word immaculate grid!" />
+        <link rel="canonical" href="https://today-in-history-game.com/word-immaculate-grid" />
+    
+        <meta name="robots" content="nosnippet">
+        <meta property="og:title" content="Word Immaculate Grid">
+        <meta property="og:description" content="Fill in all 9 squares int the word immaculate grid!">
+        <meta property="og:type" content="game">
+        <meta property="og:url" content="https://today-in-history-game.com/word-immaculate-grid">
+        <meta property="og:image" content="logo2.png"/>
+    
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-M7QPSJ52');</script>
+        <!-- End Google Tag Manager -->
+    
+        <script src="https://kit.fontawesome.com/e302b4787d.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="style.css">
+        <script src="words_dictionary.js"></script>
+    </head>
+    
+    <body>
+        <div class="grid" id="grid"></div>
+    
+        <div id="autocomplete" class="autocomplete-suggestions" style="display: none;"></div>
+    
+        <script>        
+            // Create the 3x3 grid
+            const gridContainer = document.getElementById("grid");
+            for (let i = 0; i < 9; i++) {
+                const input = document.createElement("input");
+                input.setAttribute("type", "text");
+                input.setAttribute("maxlength", "20");
+                input.addEventListener("input", showAutocomplete);
+                gridContainer.appendChild(input);
+            }
+        
+            const autocompleteDiv = document.getElementById("autocomplete");
+        
+            function showAutocomplete(event) {
+                const query = event.target.value.toLowerCase();
+                const inputRect = event.target.getBoundingClientRect();
+        
+                if (query.length === 0) {
+                    autocompleteDiv.style.display = "none";
+                    return;
+                }
+        
+                // Filter words that match the query
+                const matches = Object.keys(words_dict).filter(word => word.startsWith(query)).slice(0, 5);
+        
+                if (matches.length > 0) {
+                    autocompleteDiv.style.display = "block";
+                    autocompleteDiv.style.left = `${inputRect.left + window.scrollX}px`;
+                    autocompleteDiv.style.top = `${inputRect.bottom + window.scrollY}px`;
+        
+                    // Clear previous suggestions
+                    autocompleteDiv.innerHTML = "";
+        
+                    // Add suggestions to the autocomplete div
+                    matches.forEach(match => {
+                        const suggestion = document.createElement("div");
+                        suggestion.textContent = match;
+                        suggestion.addEventListener("click", () => {
+                            event.target.value = match;
+                            autocompleteDiv.style.display = "none";
+                        });
+                        autocompleteDiv.appendChild(suggestion);
+                    });
+                } else {
+                    autocompleteDiv.style.display = "none";
+                }
+            }
+        
+            // Hide autocomplete when clicking outside
+            document.addEventListener("click", (e) => {
+                if (!autocompleteDiv.contains(e.target)) {
+                    autocompleteDiv.style.display = "none";
+                }
+            });
+        </script>
+        
+    </body>
+</html>
