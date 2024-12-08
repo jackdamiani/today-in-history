@@ -1,11 +1,39 @@
 var today_in_history = {
-    "0101": {"":"", " ": "", "2023": "Tom Brady breaks the NFL record as the oldest player to have a 400+ yard passing game at 45 years and 151 days"},
-    "0102": {"":"", " ": "", " ":""},
-    "0103": {"":"", " ": "", " ":""},
-    "0104": {"":"", " ": "", " ":""},
-    "0105": {"":"", " ": "", " ":""},
-    "0106": {"":"", " ": "", " ":""},
-    "0107": {"":"", " ": "", " ":""},
+    "0101": {
+        "1840": "The first recorded bowling match",
+        "1902": "The first Tournament of Roses football game was played in Pasadena, CA",
+        "2023": "Tom Brady breaks the NFL record as the oldest player to have a 400+ yard passing game at 45 years and 151 days"
+    },
+    "0102": {
+        "1996": "No. 1 Nebraska demolishes No. 2 Florida, 62-24, in the Fiesta Bowl, becoming the first repeat champion in 16 years",
+        "2009": "Utah finishes 13-0 with a 31-17 victory over Alabama in the Sugar Bowl, becoming the first team from a non-BCS conference to win two BCS bowls",
+        "2011": "Seattle becomes the first sub-.500 division champ in league history with a 16-6 win over St. Louis. The Seahawks finish as champs of the NFC West at 7-9"
+    },
+    "0103": {
+        "1993": "The Buffalo Bills stage the biggest comeback in NFL history to beat the Houston Oilers, 41-38, in overtime during the first round of the playoffs. Down 35-3 early in the third quarter",
+        "1998": "Michigan wins its first national championship since 1948 as the Wolverines are named No. 1 in the final Associated Press poll. Nebraska is named No. 1 in the coaches poll, creating a split national championship",
+        "2015": "A month shy of 43, Jaromir Jagr scores three times to pass Gordie Howe and becomes the oldest NHL player to record a hat trick, leading New Jersey to a 5-2 victory over the Philadelphia Flyers"
+    },
+    "0104": {
+        "1976": "The Dallas Cowboys become the first wild-card team to reach the Super Bowl with a 37-7 win over the Los Angeles Rams in the NFC title game",
+        "2005": "Matt Leinart leads USC to a 55-19 win over Oklahoma in the Orange Bowl, securing the Trojans' second consecutive AP national championship",
+        "2012": "Geno Smith ties a record with six touchdown passes in the Orange Bowl as West Virginia beats Clemson 70-33"
+    },
+    "0105": {
+        "1999": "Nolan Ryan, George Brett, and Robin Yount are voted into the Baseball Hall of Fame, the biggest class of first-time candidates since 1936",
+        "2009": "Pitt reaches No. 1 in the AP men’s college basketball poll for the first time, with a record nine Big East teams in the poll",
+        "2017": "The Columbus Blue Jackets lose 5-0 to the Capitals, ending their 16-game winning streak, one short of the NHL record"
+    },
+    "0106": {
+        "1951": "The Indianapolis Olympians beat the Rochester Royals 75-73 in six overtimes, the longest game in NBA history",
+        "1995": "Lenny Wilkens becomes the winningest coach in NBA history with his 939th win as the Atlanta Hawks beat the Washington Bullets",
+        "2016": "Ken Griffey Jr. is elected to the Baseball Hall of Fame with the highest voting percentage ever, 99.3%"
+    },
+    "0107": {
+        "1972": "The Los Angeles Lakers defeat the Atlanta Hawks, 134-90, for their 33rd straight victory, an NBA record",
+        "1997": "Rutgers-Camden snaps its NCAA-record 117-game losing streak with a 77-72 victory over Bloomfield College. The Division III Pioneers were winless since beating Ramapo 7 years earlier",
+        "2013": "Alabama rolls to its second consecutive BCS championship, and third in four seasons, beating No. 1 Notre Dame, 42-14, in a BCS championship game"
+    },
     "0108": {"":"", " ": "", " ":""},
     "0109": {"":"", " ": "", " ":""},
     "0110": {"":"", " ": "", " ":""},
