@@ -34,32 +34,92 @@ var today_in_history = {
         "1997": "Rutgers-Camden snaps its NCAA-record 117-game losing streak with a 77-72 victory over Bloomfield College. The Division III Pioneers were winless since beating Ramapo 7 years earlier",
         "2013": "Alabama rolls to its second consecutive BCS championship, and third in four seasons, beating No. 1 Notre Dame, 42-14, in a BCS championship game"
     },
-    "0108": {"":"", " ": "", " ":""},
+    "0108": {
+        "2009": "Tim Tebow leads No. 1 Florida to a 24-14 win over No. 2 Oklahoma in the BCS National Championship Bowl. Tebow outduels Heisman winner Sam Bradford to secure Florida’s second title in three years",
+        "2012": "Denver’s Tim Tebow connects with Demaryius Thomas for an 80-yard touchdown on the first play of overtime. The Broncos’ 29-23 win over the Steelers is the fastest-ending overtime in NFL playoff history",
+        "2018": "Alabama defeats Georgia, 26-23, in overtime to win its fifth national championship under Nick Saban. Tua Tagovailoa’s game-winning touchdown pass caps a thrilling comeback"
+    },
     "0109": {"":"", " ": "", " ":""},
     "0110": {"":"", " ": "", " ":""},
     "0111": {"":"", " ": "", " ":""},
-    "0112": {"":"", " ": "", " ":""},
-    "0113": {"":"", " ": "", " ":""},
+    "0112": {
+        "1958": "The NCAA rules committee makes the first change in football scoring rules in 50 years by adding the 2-point conversion",
+        "2007": "Tadd Fujikawa, just shy of his 16th birthday, shoots a 4-under-par 66, making him the youngest player in 50 years to make the cut on the PGA Tour",
+        "2017": "Justin Thomas becomes the seventh player to join the '59 Club' on the PGA Tour when he makes a 15-foot eagle putt on his last hole at the Sony Open for an 11-under 59"
+    },
+    "0113": {
+        "1974": "The Miami Dolphins win their second straight Super Bowl in their third straight appearance with a 24-7 victory over the Minnesota Vikings",
+        "1991": "Phil Mickelson overcomes an 8 on the 14th hole to become the second amateur in 50 years to win a PGA Tour event in the Northern Telecom Open",
+        "2013": "Tom Brady becomes the winningest quarterback in postseason play, beating Houston, 41-28. Brady gets his 17th victory, surpassing Joe Montana"
+    },
     "0114": {"":"", " ": "", "2024": "Agnes Ngetich sets the women's 10,000m record with a time of 29:01.03"},
-    "0115": {"":"", " ": "", " ":""},
-    "0116": {"":"", " ": "", " ":""},
-    "0117": {"":"", " ": "", " ":""},
-    "0118": {"":"", " ": "", " ":""},
-    "0119": {"":"", " ": "", " ":""},
-    "0120": {"":"", " ": "", " ":""},
+    "0115": {
+        "1978": "The Dallas Cowboys take advantage of eight Denver turnovers en route to a 27-10 victory over the Broncos in the Super Bowl. Butch Johnson's diving catch in the end zone completes a 45-yard touchdown pass from Roger Staubach and puts the Cowboys ahead 20-3 in the third quarter",
+        "2000": "The Jacksonville Jaguars steamroll their way into the history books and the AFC championship game. The Jaguars rout the Miami Dolphins, 62-7. The 55-point margin is the second-largest in playoff history",
+        "2011": "Sixth-seeded Green Bay routs the Falcons, 48-21, in Atlanta as Aaron Rodgers throws for three touchdowns and runs for one. The 48 points are the most for the Packers in a postseason game"
+    },
+    "0116": {
+        "1974": "Mickey Mantle and Whitey Ford are elected to the Baseball Hall of Fame. Mantle is elected in his first year of eligibility and Ford in his second year",
+        "1993": "Michael Jordan scores 64 points, but Chicago is upended in overtime by Orlando, 128-124. The Magic are led by rookie center Shaquille O'Neal, who has 29 points and 24 rebounds",
+        "2011": "New York Jets, led by Mark Sanchez, stun the New England Patriots, 28-21. The Patriots, who had the league's best record during the regular season"
+    },
+    "0117": {
+        "1971": "The first Super Bowl under the NFL-AFL merger ends with Baltimore rookie Jim O'Brien kicking a 32-yard field goal for a 16-13 victory over the Dallas Cowboys",
+        "1995": "The NFL Rams announce they are leaving Southern California after 49 years and moving to St. Louis",
+        "2014": "Five-time champion Serena Williams becomes the winningest woman at the Australian Open, notching career win No. 61 with a 6-3, 6-3 victory over Daniela Hantuchova to reach the fourth round"
+    },
+    "0118": {
+        "1973": "Orlando Cepeda becomes the first player signed specifically to be a designated hitter. He signs with the Boston Red Sox one week after the designated hitter rule is approved",
+        "2011": "Kim Clijsters starts her Australian Open run with a 6-0, 6-0 romp of three-time Grand Slam finalist and former No. 1-ranked player Dinara Safina. It's the first time a woman who was once the top-ranked player in the world ever lost by that score",
+        "2015": "Tom Brady throws for three touchdowns, and LeGarrette Blount runs in three more to lead the New England Patriots into the Super Bowl with a 45-7 victory over the Indianapolis Colts"
+    },
+    "0119": {
+        "2005": "LeBron James becomes the youngest player (20 years, 20 days) in NBA history to record a triple-double, with 27 points, 11 rebounds and 10 assists in Cleveland's 107-101 win over Portland.",
+        "2014": "Russell Wilson throws a 35-yard touchdown pass on fourth down, and Seattle's top-ranked defense forces two late turnovers, lifting the Seahawks into their second Super Bowl with a 23-17 victory over the San Francisco 49ers.",
+        "2017": "Six-time Australian Open champion Novak Djokovic is beaten, 7-6 (8), 5-7, 2-6, 7-6 (5), 6-4, by wild-card entry Denis Istomin in a second-round match. No. 2-ranked Djokovic had won five of the six previous titles at Melbourne Park and six overall, and had never dropped a set in six previous meetings against Istomin."
+    },
+    "0120": {
+        "1891": "The International YMCA in Springfield, Mass., is the site of the first official basketball game. Peach baskets were used, but it wasn't until 1905 that someone removed the baskets' bottoms.",
+        "1980": "Terry Bradshaw passes for 309 yards and sets two passing records to help the Pittsburgh Steelers beat the Los Angeles Rams 31-19 and become the first team to win four Super Bowls.",
+        "2008": "Lawrence Tynes, who missed a 36-yard field goal at the end of regulation following a bad snap, nails a 47-yarder in overtime to give the New York Giants a 23-20 win over Green Bay in the NFC championship at Lambeau Field. The Giants win their 10th straight on the road in the third-coldest championship game ever."
+    },
     "0121": {"":"", " ": "", " ":""},
     "0122": {"":"", " ": "", " ":""},
-    "0123": {"":"", " ": "", "2015":"Klay Thompson scores the most points in one quarter, 37"},
+    "0123": {
+        "1959": "In the NBA All-Star game in Detroit, St. Louis' Bob Pettit and Elgin Baylor of Minneapolis become the first co-winners of the MVP award as their West team wins 124-108",
+        "2011": "The Pittsburgh Steelers advanced to their third Super Bowl in six years with a 24-19 victory over the New York Jets",
+        "2015": "Klay Thompson sets an NBA record for the most points in a quarter, a thrilling 37-point third period that powers the Golden State Warriors to a 126-101 victory over the Sacramento Kings"
+    },
     "0124": {"":"", " ": "", " ":""},
-    "0125": {"":"", " ": "", " ":""},
+    "0125": {
+        "1960": "Wilt Chamberlain of the Philadelphia Warriors sets a record for rookies with 58 points in a 127-117 triumph over the Detroit Pistons. Chamberlain also grabs 42 rebounds",
+        "1993": "American sumo wrestler Chad Rowan was officially awarded the sport's highest rank, making him the first foreign 'yokozuna.' The 6-foot-8, 455-pound former basketball player from Honolulu is the 64th person to hold the top rank in the sport's history",
+        "2015": "Mike Krzyzewski earns his 1,000th career win, making him the first NCAA Division I men's coach to reach the milestone, when No. 5 Duke surges past St. John's for a 77-68 victory at Madison Square Garden"
+    },
     "0126": {"":"", " ": "", " ":""},
     "0127": {"":"", " ": "", " ":""},
     "0128": {"":"", " ": "", " ":""},
-    "0129": {"":"", " ": "", " ":""},
+    "0129": {
+        "1980": "Norm Nixon plays a then-NBA record 64 minutes for Los Angeles as the Lakers drop a 154-153 four-overtime decision to Cleveland",
+        "1995": "San Francisco's Steve Young throws a record six touchdown passes, and the 49ers became the first team to win five Super Bowls with a 49-26 rout of the San Diego Chargers",
+        "2012": "Novak Djokovic outlasts Rafael Nadal to defend his Australian Open title in the longest ever Grand Slam final. Djokovic completes a 5-hour, 53-minute 5-7, 6-4, 6-2, 6-7 (5), 7-5 victory over Nadal at 1:37 a.m"
+    },
     "0130": {"":"", " ": "", " ":""},
-    "0131": {"1920": "Joe Malone breaks the NHL record most goals in a regular season game with 7", " ": "", " ":""},
-    "0201": {"":"", " ": "", " ":""},
-    "0202": {"":"", " ": "", " ":""},
+    "0131": {
+        "1920": "Joe Malone breaks the NHL record most goals in a regular season game with 7", 
+        "2006": "Kobe Bryant scores 40 points in Los Angeles' 130-97 win over New York. The NBA's leading scorer averages 43.4 points in 13 games in January, joining Wilt Chamberlain as the only players in NBA history to average 40 or more points in a month more than once",
+        "2015": "Teen star Lydia Ko becomes the youngest golfer of either gender to reach No. 1 in the world ranking. The 17-year-old shares a second-place finish at the LPGA Tour's season opener, where she finishes a shot behind Na Yeon Choi in the Coates Golf Championship"
+    },
+    "0201": {
+        "1995": "Utah guard John Stockton becomes the NBA's career assist leader, setting up Karl Malone with 6:30 left in the first half of the Jazz's 129-88 victory over Denver. Stockton's 9,922nd assist moves him ahead of Magic Johnson",
+        "2009": "Ben Roethlisberger and the Pittsburgh Steelers offense end a Super Bowl  with a final-minute touchdown for a historic victory, 27-23 over the Arizona Cardinals. Steelers earn record-setting sixth Super Bowl win",
+        "2010": "UConn is No. 1 in The Associated Press women's basketball poll for a record 37th straight week, surpassing Louisiana Tech (1980-82) for the longest run atop the Top 25"
+    },
+    "0202": {
+        "1974": "Gordie Howe, the NHL's career scoring leader, comes out of retirement and signs a $1 million, four-year contract to play with the Houston Aeros of the WHA and his two sons, Mark and Marty",
+        "1976": "Muhammad Ali beats Jean-Pierre Coopman with a fifth-round knockout at Roberto Clemente Coliseum in Puerto Rico to defend his world heavyweight title",
+        "1998": "Tara Lipinski, 15, becomes the youngest Olympic figure skating champion in history, jumping over fellow teen and U.S. teammate Michelle Kwan to take the gold. Lipinski, at 15 years, 8 months and 10 days, is two months younger than Sonja Henie was in her 1928 victory"
+    },
     "0203": {"":"", " ": "", " ":""},
     "0204": {"":"", " ": "", " ":""},
     "0205": {"":"", " ": "", " ":""},
