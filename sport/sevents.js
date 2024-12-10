@@ -74,17 +74,25 @@ var today_in_history = {
         "2015": "Tom Brady throws for three touchdowns, and LeGarrette Blount runs in three more to lead the New England Patriots into the Super Bowl with a 45-7 victory over the Indianapolis Colts"
     },
     "0119": {
-        "2005": "LeBron James becomes the youngest player (20 years, 20 days) in NBA history to record a triple-double, with 27 points, 11 rebounds and 10 assists in Cleveland's 107-101 win over Portland.",
-        "2014": "Russell Wilson throws a 35-yard touchdown pass on fourth down, and Seattle's top-ranked defense forces two late turnovers, lifting the Seahawks into their second Super Bowl with a 23-17 victory over the San Francisco 49ers.",
-        "2017": "Six-time Australian Open champion Novak Djokovic is beaten, 7-6 (8), 5-7, 2-6, 7-6 (5), 6-4, by wild-card entry Denis Istomin in a second-round match. No. 2-ranked Djokovic had won five of the six previous titles at Melbourne Park and six overall, and had never dropped a set in six previous meetings against Istomin."
+        "2005": "LeBron James becomes the youngest player (20 years, 20 days) in NBA history to record a triple-double, with 27 points, 11 rebounds and 10 assists in Cleveland's 107-101 win over Portland",
+        "2014": "Russell Wilson throws a 35-yard touchdown pass on fourth down, and Seattle's top-ranked defense forces two late turnovers, lifting the Seahawks into their second Super Bowl with a 23-17 victory over the San Francisco 49ers",
+        "2017": "Six-time Australian Open champion Novak Djokovic is beaten, 7-6 (8), 5-7, 2-6, 7-6 (5), 6-4, by wild-card entry Denis Istomin in a second-round match. No. 2-ranked Djokovic had won five of the six previous titles at Melbourne Park and six overall, and had never dropped a set in six previous meetings against Istomin"
     },
     "0120": {
-        "1891": "The International YMCA in Springfield, Mass., is the site of the first official basketball game. Peach baskets were used, but it wasn't until 1905 that someone removed the baskets' bottoms.",
-        "1980": "Terry Bradshaw passes for 309 yards and sets two passing records to help the Pittsburgh Steelers beat the Los Angeles Rams 31-19 and become the first team to win four Super Bowls.",
-        "2008": "Lawrence Tynes, who missed a 36-yard field goal at the end of regulation following a bad snap, nails a 47-yarder in overtime to give the New York Giants a 23-20 win over Green Bay in the NFC championship at Lambeau Field. The Giants win their 10th straight on the road in the third-coldest championship game ever."
+        "1891": "The International YMCA in Springfield, Mass., is the site of the first official basketball game. Peach baskets were used, but it wasn't until 1905 that someone removed the baskets' bottoms",
+        "1980": "Terry Bradshaw passes for 309 yards and sets two passing records to help the Pittsburgh Steelers beat the Los Angeles Rams 31-19 and become the first team to win four Super Bowls",
+        "2008": "Lawrence Tynes, who missed a 36-yard field goal at the end of regulation following a bad snap, nails a 47-yarder in overtime to give the New York Giants a 23-20 win over Green Bay in the NFC championship at Lambeau Field. The Giants win their 10th straight on the road in the third-coldest championship game ever"
     },
-    "0121": {"":"", " ": "", " ":""},
-    "0122": {"":"", " ": "", " ":""},
+    "0121": {
+        "1953": "Dizzy Dean and Al Simmons are elected to the Baseball Hall of Fame. The baseball writers pass over Joe DiMaggio in his first year of eligibility",
+        "2005": "Four-time Olympic champion Ole Einar Bjoerndalen wins his 49th career World Cup biathlon, breaking the record for career victories",
+        "2010": "Los Angeles guard Kobe Bryant becomes the 15th player in NBA history to reach 25,000 career points and the youngest to hit the milestone. Bryant finishes with 31 points in the Lakers' 93-87 loss at Cleveland"
+    },
+    "0122": {
+        "1968": "The NBA awards expansion franchises to Milwaukee and Phoenix",
+        "2006": "Kobe Bryant scores a staggering 81 points -- the second-highest total in NBA history -- and the Los Angeles Lakers beat the Toronto Raptors, 122-104",
+        "2017": "Nathan Chen becomes the youngest men's U.S. figure skating champion in more than five decades. The 17-year-old Chen, performing to 'The Polovtsian Dances,' became the first skater in the world to land five clean quads in competition"
+    },
     "0123": {
         "1959": "In the NBA All-Star game in Detroit, St. Louis' Bob Pettit and Elgin Baylor of Minneapolis become the first co-winners of the MVP award as their West team wins 124-108",
         "2011": "The Pittsburgh Steelers advanced to their third Super Bowl in six years with a 24-19 victory over the New York Jets",
@@ -96,7 +104,11 @@ var today_in_history = {
         "1993": "American sumo wrestler Chad Rowan was officially awarded the sport's highest rank, making him the first foreign 'yokozuna.' The 6-foot-8, 455-pound former basketball player from Honolulu is the 64th person to hold the top rank in the sport's history",
         "2015": "Mike Krzyzewski earns his 1,000th career win, making him the first NCAA Division I men's coach to reach the milestone, when No. 5 Duke surges past St. John's for a 77-68 victory at Madison Square Garden"
     },
-    "0126": {"":"", " ": "", " ":""},
+    "0126": {
+        "1955": "Joe DiMaggio is elected to the Baseball Hall of Fame",
+        "2008": "Mirai Nagasu becomes the second-youngest woman to win the title at the U.S. Figure Skating Championships. The 4-foot-11 14-year-old falls on her opening jump, a double axel, but lands six triple jumps, three in combination, in her program",
+        "2014": "Stan Wawrinka holds off an injured Rafael Nadal to win his first Grand Slam title with a 6-3, 6-2, 3-6, 6-3 victory in the Australian Open final"
+    },
     "0127": {"":"", " ": "", " ":""},
     "0128": {"":"", " ": "", " ":""},
     "0129": {
@@ -104,7 +116,11 @@ var today_in_history = {
         "1995": "San Francisco's Steve Young throws a record six touchdown passes, and the 49ers became the first team to win five Super Bowls with a 49-26 rout of the San Diego Chargers",
         "2012": "Novak Djokovic outlasts Rafael Nadal to defend his Australian Open title in the longest ever Grand Slam final. Djokovic completes a 5-hour, 53-minute 5-7, 6-4, 6-2, 6-7 (5), 7-5 victory over Nadal at 1:37 a.m"
     },
-    "0130": {"":"", " ": "", " ":""},
+    "0130": {
+        "1971": "UCLA starts its 88-game winning streak with a 74-61 win over UC Santa Barbara",
+        "2000": "The St. Louis Rams hold on to beat the Tennessee Titans, 23-16, in the Super Bowl. Kurt Warner's 73-yard touchdown pass to Isaac Bruce with 1 minute, 54 seconds left gives the Rams the lead",
+        "2018": "James Harden becomes the first player in NBA history to score 60 points as part of a triple-double and the Houston Rockets beat the Orlando Magic, 114-107"
+    },
     "0131": {
         "1920": "Joe Malone breaks the NHL record most goals in a regular season game with 7", 
         "2006": "Kobe Bryant scores 40 points in Los Angeles' 130-97 win over New York. The NBA's leading scorer averages 43.4 points in 13 games in January, joining Wilt Chamberlain as the only players in NBA history to average 40 or more points in a month more than once",
@@ -120,17 +136,61 @@ var today_in_history = {
         "1976": "Muhammad Ali beats Jean-Pierre Coopman with a fifth-round knockout at Roberto Clemente Coliseum in Puerto Rico to defend his world heavyweight title",
         "1998": "Tara Lipinski, 15, becomes the youngest Olympic figure skating champion in history, jumping over fellow teen and U.S. teammate Michelle Kwan to take the gold. Lipinski, at 15 years, 8 months and 10 days, is two months younger than Sonja Henie was in her 1928 victory"
     },
-    "0203": {"":"", " ": "", " ":""},
-    "0204": {"":"", " ": "", " ":""},
-    "0205": {"":"", " ": "", " ":""},
-    "0206": {"":"", " ": "", " ":""},
-    "0207": {"":"", " ": "", " ":""},
-    "0208": {"":"", " ": "", " ":""},
-    "0209": {"":"", " ": "", " ":""},
-    "0210": {"":"", " ": "", " ":""},
-    "0211": {"":"", " ": "", " ":""},
-    "0212": {"":"", " ": "", " ":""},
-    "0213": {"":"", " ": "", " ":""},
+    "0203": {
+        "1980": "Larry Bird hits the first 3-point shot in the history of the NBA All-Star Game. Bird's 3 came in overtime as the East team outscores the West, 16-8, in the overtime for a 144-136 win",
+        "2008": "Eli Manning and the New York Giants end New England's unbeaten season and pull off one of the greatest upsets in Super Bowl history. Manning throws a 13-yard touchdown pass to Plaxico Burress with 35 seconds left to beat the Patriots, 17-14",
+        "2013": "The Baltimore Ravens survive a power outage at the Super Bowl to edge the San Francisco 49ers, 34-31. Jacoby Jones returns the second-half kickoff 108 yards, a Super Bowl record"
+    },
+    "0204": {
+        "1991": "The doors of Cooperstown are slammed shut on Pete Rose when the Hall of Fame's board of directors votes 12-0 to bar players on the permanently ineligible list from consideration",
+        "2017": "Gregg Popovich becomes the winningest coach with a single franchise in NBA history, leading the San Antonio Spurs to a 121-97 victory over the Denver Nuggets. Popovich earns his 1,128th victory to pass former Utah coach Jerry Sloan for the mark",
+        "2018": "The Philadelphia Eagles win a record-setting shootout between Nick Foles and Tom Brady in the Super Bowl. Foles, the backup quarterback, leads a pressure-packed 75-yard drive to the winning touchdown, 11 yards to Zach Etrz with 2 minutes, 21 seconds to go. Then the defense makes two final stands to win 41-33"
+    },
+    "0205": {
+        "1960": "Bill Russell grabs 51 rebounds in the Boston Celtics' 124-100 victory over the Syracuse Nationals. Russell is the first player in NBA history to pull in 50 or more rebounds",
+        "2012": "Eli Manning and the Giants one-up Tom Brady and the Patriots again, coming back with a last-minute score to beat New England, 21-17, for New York's fourth Super Bowl title",
+        "2017": "Tom Brady leads one of the greatest comebacks in sports, lifting New England from a 25-point hole to the Patriots' fifth NFL championship in the game's first overtime finish. The Patriots score 19 points in the final quarter, including a pair of 2-point conversions, beating the Atlanta Falcons, 34-28"
+    },
+    "0206": {
+        "1970": "The NBA expands to 18 teams with the addition of franchises in Buffalo, Cleveland, Houston and Portland",
+        "2005": "The New England Patriots win their third Super Bowl in four years, 24-21 over the Philadelphia Eagles. It's their ninth straight postseason victory, equaling Vince Lombardi's Green Bay Packers",
+        "2011": "Aaron Rodgers throws three touchdown passes and Nick Collins returns an interception for another score, leading the Green Bay Packers to a 31-25 victory over the Pittsburgh Steelers in the Super Bowl"
+    },
+    "0207": {
+        "1970": "Pete Maravich scores 69 points -- 47 in the second half -- to set an NCAA record, but LSU loses to Alabama 106-104",
+        "2010": "Drew Brees and the New Orleans Saints rally to beat Peyton Manning and the Indianapolis Colts, 31-17, in the Super Bowl",
+        "2018": "St. John's takes down another of the nation's elite, and stuns No. 1 Villanova, 79-75, for its second win over a top-five team in one week. St. John's beat then-No. 4 Duke, 81-77, on Feb. 3 at Madison Square Garden, snapping an 11-game losing streak"
+    },
+    "0208": {
+        "1986": "Atlanta's Spud Webb, at 5-foot-7, wins NBA Slam Dunk competition. Webb receives a perfect 50 from the judges in the last two rounds to shock defending dunk champion Dominique Wilkins and the crowd at Dallas' Reunion Arena",
+        "1998": "Johanna Ikonen scores twice, and Tiia Reima and Sari Krooks score a goal and an assist as Finland beats Sweden 6-0 in the first Olympic women's ice hockey game",
+        "2014": "At the Sochi Games, Norway's Ole Einar Bjoerndalen becomes the oldest Winter Olympic gold medalist at 40 and ties Bjoern Daehlie's record for most medals (12) won at the Winter Games. Bjoerndalen wins the men's 10-kilometer biathlon sprint, breaking the record held by Canadian skeleton racer Duff Gibson, who was 39 when he won gold at the 2006 Turin Olympics"
+    },
+    "0209": {
+        "1966": "The NHL doubles in size -- from six to 12 teams -- when the Owners-Governors award franchises to Pittsburgh, Los Angeles, Minneapolis-St. Paul, Philadelphia, San Francisco and St. Louis",
+        "1997": "Glen Rice breaks two scoring records in an MVP performance and Michael Jordan has the first triple-double in NBA All-Star game history. The East rallies to beat the West, 132-120. Rice, who finishes with 26 points, sets records with 20 in the third quarter and 24 in the second half",
+        "2011": "The Cleveland Cavaliers' losing streak reaches 26, matching the 1976-77 NFL Tampa Bay Buccaneers' record for consecutive incompetence with a 103-94 loss to the Detroit Pistons"
+    },
+    "0210": {
+        "1971": "Former first baseman Bill White becomes the first black announcer in major league history, signing to join the New York Yankees WPIX broadcast team",
+        "1998": "Picabo Street, Alpine skiing's comeback kid, overcomes a mistake about midway through her run and charges to an Olympic gold by one-hundredth of a second in the women's super-G -- the games' first Alpine medal after three days of snow-related postponements",
+        "2016": "Golden State storms into the All-Star break on an 11-game winning streak with a 112-104 victory over Phoenix. At 48-4, the Warriors have the best record through 52 games in NBA history, one win better than the 1995-96 Chicago Bulls and 1966-67 Philadelphia 76ers"
+    },
+    "0211": {
+        "1988": "Wayne Gretzky gets his NHL-record ninth 100-point season. Gretzky scores a goal and has two assists in the Edmonton Oilers' 7-2 victory at Vancouver to give him 101 points, He passes Marcel Dionne, who had eight seasons",
+        "2007": "Anja Paerson captures the downhill, becoming the first skier to win gold medals in all five disciplines at the world championships. Paerson, who also won the super-G and combined titles earlier in the week, won gold medals in the giant slalom at the last two worlds and one in the slalom",
+        "2018": "In Pyeongchang, South Korea, David Gleirscher is a surprise winner, giving Austria its first gold in men's luge in 50 years. Chris Mazdzer, whose season hit rock-bottom less than a month ago, makes history for the U.S., giving the Americans their first men's singles medal by finishing second in 3:10.728"
+    },
+    "0212": {
+        "1985": "The Pittsburgh Penguins' Mario Lemieux becomes the first rookie to be named most valuable player at the NHL All-Star game. The 19-year-old center scores two goals, including the winner, and has an assist to lead the Wales Conference to a 6-4 win over the Campbell Conference",
+        "1997": "Morocco's Hicham el Guerrouj breaks indoor track's oldest record, winning the mile in 3 minutes, 48.45 at the Flanders meet held in Ghent, Belgium",
+        "2007": "Duke, saddled by its first four-game losing skid in 11 years, falls out of the Associated Press men's poll for the first time in 200 straight weeks -- the second-longest streak behind UCLA's record 221 weeks"
+    },
+    "0213": {
+        "1994": "Tommy Moe wins the men's downhill over local hero Kjetil Andre Aamodt at the Winter Olympics in Lillehammer, Norway. Moe won by .04 seconds, the closest Alpine race in Olympic history",
+        "1995": "Connecticut is voted No. 1 in the Associated Press Top 25 and joins the school's women's team at the top. It is the first time teams from one school were ranked No. 1 in the men's and women's college basketball polls",
+        "2003": "Teresa Phillips becomes the first woman to coach a men's Division I team, but her presence couldn't stop Tennessee State from losing for the 17th straight time, 71-56 at Austin Peay"
+    },
     "0214": {"":"", " ": "", " ":""},
     "0215": {"":"", " ": "", " ":""},
     "0216": {"":"", " ": "", " ":""},
