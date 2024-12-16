@@ -191,10 +191,22 @@ var today_in_history = {
         "1995": "Connecticut is voted No. 1 in the Associated Press Top 25 and joins the school's women's team at the top. It is the first time teams from one school were ranked No. 1 in the men's and women's college basketball polls",
         "2003": "Teresa Phillips becomes the first woman to coach a men's Division I team, but her presence couldn't stop Tennessee State from losing for the 17th straight time, 71-56 at Austin Peay"
     },
-    "0214": {"":"", " ": "", " ":""},
-    "0215": {"":"", " ": "", " ":""},
+    "0214": {
+        "1966": "Philadelphia's Wilt Chamberlain scores 41 points in a 149-123 win over Detroit to become the NBA's all-time scoring leader, passing Bob Pettit (20,880 points).",
+        "1986": "Wayne Gretzky gets seven assists for the third time in his career as the Edmonton Oilers beat the Quebec Nordiques, 8-2. ",
+        "2015": "Mikaela Shiffrin becomes the third woman to win back-to-back slalom titles at world championships. She finishes in a combined time of 1:38.48, edging Frida Hansdotter of Sweden by 0.34 seconds."
+    },
+    "0215": {
+        "2002": "The worst judging scandal in Winter Olympics history is resolved, with Canadian pairs figure skaters Jamie Sale and David Pelletier declared co-gold medalists with the Russian winners.",
+        "2004": "Dale Earnhardt Jr. barrels past Tony Stewart to win the Daytona 500 on the same track that claimed his father's life three years ago. ",
+        "2014": "Renaud Lavillenie breaks Sergei Bubka's 21-year-old indoor pole vault world record in Donetsk, Ukraine. Lavillenie clears the bar comfortably at 6.16 meters (20 feet, 2 1/2inches) in Bubka's home city"
+    },
     "0216": {"":"", " ": "", " ":""},
-    "0217": {"":"", " ": "", " ":""},
+    "0217": {
+        "1968": "The Basketball Hall of Fame opens in Springfield, Mass.",
+        "2013": "Danica Patrick wins the Daytona 500 pole, becoming the first woman to secure the top spot for any Sprint Cup race.",
+        "2018": "Japan's Yuzuru Hanyu becomes the first man to successfully defend his Olympic figure skating title since Dick Button in 1952."
+    },
     "0218": {"":"", " ": "", " ":""},
     "0219": {"":"", " ": "", " ":""},
     "0220": {"":"", " ": "", " ":""},
