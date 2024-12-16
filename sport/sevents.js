@@ -21,7 +21,7 @@ var today_in_history = {
     },
     "0105": {
         "1999": "Nolan Ryan, George Brett, and Robin Yount are voted into the Baseball Hall of Fame, the biggest class of first-time candidates since 1936",
-        "2009": "Pitt reaches No. 1 in the AP men’s college basketball poll for the first time, with a record nine Big East teams in the poll",
+        "2009": "Pitt reaches No. 1 in the AP men's college basketball poll for the first time, with a record nine Big East teams in the poll",
         "2017": "The Columbus Blue Jackets lose 5-0 to the Capitals, ending their 16-game winning streak, one short of the NHL record"
     },
     "0106": {
@@ -35,13 +35,13 @@ var today_in_history = {
         "2013": "Alabama rolls to its second consecutive BCS championship, and third in four seasons, beating No. 1 Notre Dame, 42-14, in a BCS championship game"
     },
     "0108": {
-        "2009": "Tim Tebow leads No. 1 Florida to a 24-14 win over No. 2 Oklahoma in the BCS National Championship Bowl. Tebow outduels Heisman winner Sam Bradford to secure Florida’s second title in three years",
-        "2012": "Denver’s Tim Tebow connects with Demaryius Thomas for an 80-yard touchdown on the first play of overtime. The Broncos’ 29-23 win over the Steelers is the fastest-ending overtime in NFL playoff history",
-        "2018": "Alabama defeats Georgia, 26-23, in overtime to win its fifth national championship under Nick Saban. Tua Tagovailoa’s game-winning touchdown pass caps a thrilling comeback"
+        "2009": "Tim Tebow leads No. 1 Florida to a 24-14 win over No. 2 Oklahoma in the BCS National Championship Bowl. Tebow outduels Heisman winner Sam Bradford to secure Florida's second title in three years",
+        "2012": "Denver's Tim Tebow connects with Demaryius Thomas for an 80-yard touchdown on the first play of overtime. The Broncos' 29-23 win over the Steelers is the fastest-ending overtime in NFL playoff history",
+        "2018": "Alabama defeats Georgia, 26-23, in overtime to win its fifth national championship under Nick Saban. Tua Tagovailoa's game-winning touchdown pass caps a thrilling comeback"
     },
-    "0109": {"":"", " ": "", " ":""},
-    "0110": {"":"", " ": "", " ":""},
-    "0111": {"":"", " ": "", " ":""},
+    "0109": {"1972":"Kareem Abdul-Jabbar and the Bucks beat the Lakers ending their record 33 game win streak", "2000": "Dan Marino wins his final NFL game 20-17 vs Seattle", "2022":"Dan Cambell finishes first head coach NFL season with the Lions with a record of 3-13-1"},
+    "0110": {"1985":"Lenny Wilkens becomes the first NBA coach to hit 1000 career wins as the SuperSonics win", "2003": "NBA announces Charlotte Bobcats will be a new expansion team, later renamed Hornets", "2011":"Lionel Messi wins second straight Ballon d'Or; Brazillian forward Marta wins 5th straight women's award"},
+    "0111": {"1953":"J. Edgar Hoover, first director of the FBI, declines job offer to be the president of International Boxing", "1983": "Billy Martin named NY Yankees manager for the third time", "2024":"Bill Belichick leaves the New England Patriots after 24 seasons and 6 super bowls"},
     "0112": {
         "1958": "The NCAA rules committee makes the first change in football scoring rules in 50 years by adding the 2-point conversion",
         "2007": "Tadd Fujikawa, just shy of his 16th birthday, shoots a 4-under-par 66, making him the youngest player in 50 years to make the cut on the PGA Tour",
@@ -52,7 +52,7 @@ var today_in_history = {
         "1991": "Phil Mickelson overcomes an 8 on the 14th hole to become the second amateur in 50 years to win a PGA Tour event in the Northern Telecom Open",
         "2013": "Tom Brady becomes the winningest quarterback in postseason play, beating Houston, 41-28. Brady gets his 17th victory, surpassing Joe Montana"
     },
-    "0114": {"":"", " ": "", "2024": "Agnes Ngetich sets the women's 10,000m record with a time of 29:01.03"},
+    "0114": {"1968":"Super Bowl II, Green Bay Packers beat the Oakland Raiders 33-14", "1993": "Utah Jazz Mark Eaton becomes the second NBA player to record 3,000 career blocks", "2024": "Agnes Ngetich sets the women's 10,000m record with a time of 29:01.03"},
     "0115": {
         "1978": "The Dallas Cowboys take advantage of eight Denver turnovers en route to a 27-10 victory over the Broncos in the Super Bowl. Butch Johnson's diving catch in the end zone completes a 45-yard touchdown pass from Roger Staubach and puts the Cowboys ahead 20-3 in the third quarter",
         "2000": "The Jacksonville Jaguars steamroll their way into the history books and the AFC championship game. The Jaguars rout the Miami Dolphins, 62-7. The 55-point margin is the second-largest in playoff history",
@@ -98,7 +98,7 @@ var today_in_history = {
         "2011": "The Pittsburgh Steelers advanced to their third Super Bowl in six years with a 24-19 victory over the New York Jets",
         "2015": "Klay Thompson sets an NBA record for the most points in a quarter, a thrilling 37-point third period that powers the Golden State Warriors to a 126-101 victory over the Sacramento Kings"
     },
-    "0124": {"":"", " ": "", " ":""},
+    "0124": {"1950":"Jackie Robinson signs biggest Dodger's contract at that point, $35,000", "1984": "Apple unveils iconic Super Bowl Macintosh ad", "2018":"Former US Olympic doctor Larry Nassar found guilty of touching over 150 girls"},
     "0125": {
         "1960": "Wilt Chamberlain of the Philadelphia Warriors sets a record for rookies with 58 points in a 127-117 triumph over the Detroit Pistons. Chamberlain also grabs 42 rebounds",
         "1993": "American sumo wrestler Chad Rowan was officially awarded the sport's highest rank, making him the first foreign 'yokozuna.' The 6-foot-8, 455-pound former basketball player from Honolulu is the 64th person to hold the top rank in the sport's history",
@@ -109,8 +109,8 @@ var today_in_history = {
         "2008": "Mirai Nagasu becomes the second-youngest woman to win the title at the U.S. Figure Skating Championships. The 4-foot-11 14-year-old falls on her opening jump, a double axel, but lands six triple jumps, three in combination, in her program",
         "2014": "Stan Wawrinka holds off an injured Rafael Nadal to win his first Grand Slam title with a 6-3, 6-2, 3-6, 6-3 victory in the Australian Open final"
     },
-    "0127": {"":"", " ": "", " ":""},
-    "0128": {"":"", " ": "", " ":""},
+    "0127": {"1961":"Roy Emerson beats out Rod Laver for first Grand Slam in the Australian Open", "1989": "Kevin Johnson of Phoenix Suns starts NBA free throw streak of 57 games", "2007":"First time using Hawk-Eye system for official line calls. Serena Williams wins the Australian Open"},
+    "0128": {"1904":"First recorded gift of sports letters given. University of Chicago football seniors receive a C", "1969": "OJ Simpson of USC first pick by the Buffalo Bills", "2001":"Baltimore Ravens win the Super Bowl, naming Ray Lewis MVP"},
     "0129": {
         "1980": "Norm Nixon plays a then-NBA record 64 minutes for Los Angeles as the Lakers drop a 154-153 four-overtime decision to Cleveland",
         "1995": "San Francisco's Steve Young throws a record six touchdown passes, and the 49ers became the first team to win five Super Bowls with a 49-26 rout of the San Diego Chargers",

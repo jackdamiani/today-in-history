@@ -687,7 +687,7 @@ var today_in_history = {
         "1996": "Tori Kelly, Singer/Actress (Nobody Love, Sing)"
     },
     "1215": {
-        "1977": "Michelle Dockery, Actress (Downton Abbey)",
+        "1981": "Michelle Dockery, Actress (Downton Abbey)",
         "1982": "Charlie Cox, Actor (Daredevil)",
         "1997": "Maude Apatow, Actress (Euphoria)"
     },
