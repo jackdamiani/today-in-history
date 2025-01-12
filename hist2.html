@@ -120,7 +120,7 @@
             populateDays();
             populateMonths();
             const currentYear = new Date().getFullYear();
-            populateYears(currentYear, currentYear); // Example: last 100 years
+            populateYears(currentYear-1, currentYear); // Example: last 100 years
             setDefaultDate();
         });
 
