@@ -23,7 +23,7 @@ $wordsDictionary = json_decode($jsonData, true);
 $categoryName = 'noun';
 
 // Insert category if it doesn't exist
-$sql = "SELECT id FROM categories WHERE category_name = '$categoryName'";
+$sql = "SELECT id FROM category WHERE category = '$categoryName'";
 $result = $conn->query($sql);
 // Check if the query was successful
 if ($result === false) {
@@ -31,7 +31,7 @@ if ($result === false) {
     die('Query failed: ' . $conn->error);
 }
 if ($result->num_rows == 0) {
-    $conn->query("INSERT INTO categories (category_name) VALUES ('$categoryName')");
+    $conn->query("INSERT INTO categories (category) VALUES ('$categoryName')");
     $categoryId = $conn->insert_id;
 } else {
     $category = $result->fetch_assoc();
