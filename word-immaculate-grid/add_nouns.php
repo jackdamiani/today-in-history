@@ -25,6 +25,11 @@ $categoryName = 'noun';
 // Insert category if it doesn't exist
 $sql = "SELECT id FROM categories WHERE category_name = '$categoryName'";
 $result = $conn->query($sql);
+// Check if the query was successful
+if ($result === false) {
+    // Query failed, print error message
+    die('Query failed: ' . $conn->error);
+}
 if ($result->num_rows == 0) {
     $conn->query("INSERT INTO categories (category_name) VALUES ('$categoryName')");
     $categoryId = $conn->insert_id;
