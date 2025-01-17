@@ -5,7 +5,7 @@ $username = "u880862300_tih_user_stats";
 $password = "m?6Y|/&VexQ";
 $dbname = "u880862300_user_stats";
 
-$conn = new mysqli($host, $user, $pass, $db);
+$conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
