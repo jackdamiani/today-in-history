@@ -34,7 +34,7 @@ if ($result->num_rows == 0) {
     $conn->query("INSERT INTO categories (category) VALUES ('$categoryName')");
     $categoryId = $conn->insert_id;
 } else {
-    $stmt = $conn->prepare("SELECT category_id FROM categories WHERE categoryName = ?");
+    $stmt = $conn->prepare("SELECT id FROM categories WHERE category = ?");
     $stmt->bind_param("s", $categoryName);
 
     $stmt->execute();
