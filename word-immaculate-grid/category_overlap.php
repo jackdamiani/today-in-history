@@ -27,6 +27,11 @@ echo "<html><head><title>Overlapping Categories Count Report</title></head><body
 echo "<h1>Overlapping Categories Count Report</h1>";
 echo "<table border='1'><tr><th>Category Pair</th><th>Overlapping Words Count</th></tr>";
 
+// Output the combinations to the console using JavaScript for debugging purposes
+echo "<script>";
+echo "console.log('Combinations:', " . json_encode($combinations) . ");";
+echo "</script>";
+
 // Loop through all combinations of categories
 foreach ($combinations as $pair) {
     list($category1, $category2) = $pair;
@@ -47,9 +52,7 @@ foreach ($combinations as $pair) {
     if ($result) {
         // Fetch the total count of overlapping words
         $row = $result->fetch_assoc();
-        $overlapCount = $row['total_overlap_count'] ?? 0; // Default to 0 if no result
-
-        // Display the category pair and overlap count in the table
+        $overlapCount = $row['total_overlap_count'];
         echo "<tr><td>Category $category1 and Category $category2</td><td>$overlapCount</td></tr>";
     } else {
         echo "<tr><td>Category $category1 and Category $category2</td><td>Error executing query</td></tr>";
