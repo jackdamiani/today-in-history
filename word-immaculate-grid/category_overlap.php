@@ -14,10 +14,10 @@ while ($row = $result->fetch_assoc()) {
     $categories[] = $row['id']; // Store all category IDs in the array
 }
 
-// Generate all combinations of two categories
+// Generate all combinations of two categories (including same category pairs)
 $combinations = [];
 for ($i = 0; $i < count($categories); $i++) {
-    for ($j = $i + 1; $j < count($categories); $j++) {
+    for ($j = $i; $j < count($categories); $j++) { // Allow i == j for same category pairs
         $combinations[] = [$categories[$i], $categories[$j]];
     }
 }
