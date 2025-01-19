@@ -43,7 +43,7 @@ if ($result && $row = $result->fetch_assoc()) {
 $stmt->close();
 
 // Insert words for the selected part of speech
-$wordsDictionary = json_decode(file_get_contents(__DIR__ . '/../words.json'), true); // Adjust path to your JSON file
+$wordsDictionary = json_decode(file_get_contents(__DIR__ . '/words.json'), true); // Adjust path to your JSON file
 if (!$wordsDictionary) {
     die("Error reading or decoding words.json file.\n");
 }
