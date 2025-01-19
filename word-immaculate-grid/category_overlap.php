@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../db_config.php'; // Adjust the path as needed
 
 // Fetch all category IDs from the categories table
-$sql = "SELECT id FROM categories ORDERBY id";
+$sql = "SELECT id FROM categories ORDER BY id";
 $result = $conn->query($sql);
 if (!$result) {
     die("Error fetching categories: " . $conn->error);
