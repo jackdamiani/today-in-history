@@ -49,20 +49,40 @@ if ($result->num_rows == 0) {
 foreach ($wordsDictionary as $word => $posList) {
     if (in_array('n', $posList)) {
         // Insert word into the 'words' table if it doesn't exist yet
-        $sql = "INSERT IGNORE INTO words (word) VALUES ('$word')";
-        $conn->query($sql);
-        
-        // Get word ID (assumes word is unique)
-        $sql = "SELECT id FROM words WHERE word = '$word'";
-        $result = $conn->query($sql);
-        $word = $result->fetch_assoc();
-        $wordId = $word['id'];
+        $stmt = $conn->prepare("INSERT IGNORE INTO words (word) VALUES (?)");
+        if (!$stmt) {
+            die("Prepare failed for word insert: " . $conn->error);
+        }
+        $stmt->bind_param("s", $word);
+        $stmt->execute();
+        $stmt->close();
+
+        // Get the word ID (assumes word is unique)
+        $stmt = $conn->prepare("SELECT id FROM words WHERE word = ?");
+        if (!$stmt) {
+            die("Prepare failed for word select: " . $conn->error);
+        }
+        $stmt->bind_param("s", $word);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result && $row = $result->fetch_assoc()) {
+            $wordId = $row['id'];
+        } else {
+            die("Error fetching word ID: " . $conn->error);
+        }
+        $stmt->close();
 
         // Insert into 'word_category' table to associate the word with the 'noun' category
-        $sql = "INSERT INTO word_category (word_id, category_id) VALUES ('$wordId', '$categoryId')";
-        $conn->query($sql);
+        $stmt = $conn->prepare("INSERT IGNORE INTO word_category (word_id, category_id) VALUES (?, ?)");
+        if (!$stmt) {
+            die("Prepare failed for word_category insert: " . $conn->error);
+        }
+        $stmt->bind_param("ii", $wordId, $categoryId);
+        $stmt->execute();
+        $stmt->close();
     }
 }
+
 
 echo "Words categorized successfully!";
 $conn->close();
