@@ -34,8 +34,15 @@ if ($result->num_rows == 0) {
     $conn->query("INSERT INTO categories (category) VALUES ('$categoryName')");
     $categoryId = $conn->insert_id;
 } else {
-    $category = $result->fetch_assoc();
-    $categoryId = $category['id'];
+    $stmt = $conn->prepare("SELECT category_id FROM categories WHERE categoryName = ?");
+    $stmt->bind_param("s", $categoryName);
+
+    $stmt->execute();
+    $stmt->bind_result($categoryId);
+    $stmt->fetch();
+    $stmt->close();
+
+    echo "Category ID: " . $categoryId;
 }
 
 // Loop through the dictionary and filter for words with 'n' in their parts of speech
