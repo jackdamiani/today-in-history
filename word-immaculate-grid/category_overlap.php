@@ -31,20 +31,23 @@ echo "<table border='1'><tr><th>Category Pair</th><th>Overlapping Words Count</t
 foreach ($combinations as $pair) {
     list($category1, $category2) = $pair;
 
-    // SQL query to get the count of overlapping words for the category pair
+    // SQL query to get the total count of overlapping words for the category pair
     $sql = "
-        SELECT COUNT(DISTINCT wc.word_id) AS overlap_count
-        FROM word_category wc
-        WHERE wc.category_id IN ($category1, $category2)
-        GROUP BY wc.word_id
-        HAVING COUNT(DISTINCT wc.category_id) = 2
+        SELECT COUNT(*) AS total_overlap_count
+        FROM (
+            SELECT wc.word_id
+            FROM word_category wc
+            WHERE wc.category_id IN ($category1, $category2)
+            GROUP BY wc.word_id
+            HAVING COUNT(DISTINCT wc.category_id) = 2
+        ) AS overlapping_words
     ";
 
     $result = $conn->query($sql);
     if ($result) {
-        // Fetch the count of overlapping words
+        // Fetch the total count of overlapping words
         $row = $result->fetch_assoc();
-        $overlapCount = $row['overlap_count'] ?? 0; // Default to 0 if no result
+        $overlapCount = $row['total_overlap_count'] ?? 0; // Default to 0 if no result
 
         // Display the category pair and overlap count in the table
         echo "<tr><td>Category $category1 and Category $category2</td><td>$overlapCount</td></tr>";
