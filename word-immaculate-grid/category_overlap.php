@@ -17,13 +17,19 @@ while ($row = $result->fetch_assoc()) {
 // Generate all combinations of two categories (including same category pairs)
 $combinations = [];
 for ($i = 0; $i < count($categories); $i++) {
-    for ($j = $i; $j < count($categories); $j++) { // Allow i == j for same category pairs
+    for ($j = $i + 1; $j < count($categories); $j++) { 
         $combinations[] = [$categories[$i], $categories[$j]];
     }
 }
 
 // Start HTML output
-echo "<html><head><title>Overlapping Categories Count Report</title></head><body>";
+echo "<html><head><title>Overlapping Categories Count Report</title>";
+// Inline CSS to highlight the rows where overlap count > 100
+echo "<style>
+        .highlight {
+            background-color: yellow;
+        }
+      </style></head><body>";
 echo "<h1>Overlapping Categories Count Report</h1>";
 echo "<table border='1'><tr><th>Category Pair</th><th>Overlapping Words Count</th></tr>";
 
@@ -53,9 +59,17 @@ foreach ($combinations as $pair) {
         // Fetch the total count of overlapping words
         $row = $result->fetch_assoc();
         $overlapCount = $row['total_overlap_count'];
-        echo "<tr><td>Category $category1 and Category $category2</td><td>$overlapCount</td></tr>";
+
+        // Add the highlight class if the count is greater than 100
+        $highlightClass = ($overlapCount > 100) ? 'highlight' : '';
+
+        // Output the category pair and overlap count with or without highlight
+        echo "<tr class='$highlightClass'>
+                <td>Categories $category1 and $category2</td>
+                <td>$overlapCount</td>
+              </tr>";
     } else {
-        echo "<tr><td>Category $category1 and Category $category2</td><td>Error executing query</td></tr>";
+        echo "<tr><td>Categories $category1 and $category2</td><td>Error executing query</td></tr>";
     }
 }
 
