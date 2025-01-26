@@ -179,20 +179,20 @@
         function handleInputChange(event) {
             const inputField = event.target;
 
-            // **Trigger only when "Enter" key is pressed**
-            if (event.key === "Enter") {
-                const rowIndex = inputField.dataset.row; // Get the row from data-row
-                const colIndex = inputField.dataset.col; // Get the column from data-col
-                const word = inputField.value; // Get the word entered by the user
+                // **Trigger only when "Enter" key is pressed**
+                if (event.key === "Enter") {
+                    const rowIndex = inputField.dataset.row; // Get the row from data-row
+                    const colIndex = inputField.dataset.col; // Get the column from data-col
+                    const word = inputField.value; // Get the word entered by the user
 
-                // Assuming categories are passed dynamically or set
-                const category1 = `Category ${colIndex}`; // Top categories (for this example)
-                const category2 = `Side ${rowIndex}`; // Side categories (for this example)
+                    // Assuming categories are passed dynamically or set
+                    const category1 = `Category ${colIndex}`; // Top categories (for this example)
+                    const category2 = `Side ${rowIndex}`; // Side categories (for this example)
 
-                // Call checkWord to validate the input
-                checkWord(word, category1, category2);
+                    // Call checkWord to validate the input
+                    checkWord(word, category1, category2);
+            }
         }
-
         // // Helper function to validate input and call checkWord
         // function validateInput(inputField) {
         //     const word = inputField.value;
