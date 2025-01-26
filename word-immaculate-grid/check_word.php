@@ -1,4 +1,11 @@
 <?php
+// Check POST data
+if (!isset($_POST['word'], $_POST['category1'], $_POST['category2'])) {
+    echo json_encode(['status' => 'error', 'message' => 'Missing parameters']);
+    exit;
+}
+
+
 require_once __DIR__ . '/../db_config.php'; // Adjust as needed
 
 // Enable error reporting for debugging
