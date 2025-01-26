@@ -83,22 +83,23 @@
 
     <script>
         let top1, top2, top3, side1, side2, side3;
+        const games = {
+            1: ["noun", "verb", "adjective", "3letters", "4letters", "5letters"],
+            2: ["Category 2A", "Category 2B", "Category 2C", "Category 2D", "Category 2E", "Category 2F"],
+            3: ["Category 3A", "Category 3B", "Category 3C", "Category 3D", "Category 3E", "Category 3F"]
+        };
+
+        let gameNumber;
 
         // Function to select a game and display translated categories
-        function selectGame(gameNumber) {
-            // Define predetermined categories for each game
-            const games = {
-                1: ["noun", "verb", "adjective", "3letters", "4letters", "5letters"],
-                2: ["Category 2A", "Category 2B", "Category 2C", "Category 2D", "Category 2E", "Category 2F"],
-                3: ["Category 3A", "Category 3B", "Category 3C", "Category 3D", "Category 3E", "Category 3F"]
-            };
-
+        function selectGame(selectedGame) {            
+            gameNumber = selectedGame
             // Assign categories based on game selection
             const selectedCategories = games[gameNumber];
             [top1, top2, top3, side1, side2, side3] = selectedCategories;
 
 
-            generateGrid(games, gameNumber);
+            generateGrid(gameNumber);
             // Display translated categories in the grid
             // displayCategories();
 
@@ -123,7 +124,7 @@
             });
         }
 
-        function generateGrid(games, gameNumber) {
+        function generateGrid(gameNumber) {
             const gridContainer = document.getElementById("grid");
             gridContainer.innerHTML = ""; // Clear existing grid
 
@@ -186,27 +187,27 @@
                     const word = inputField.value; // Get the word entered by the user
 
                     // Assuming categories are passed dynamically or set
-                    const category1 = `Category ${colIndex}`; // Top categories (for this example)
-                    const category2 = `Side ${rowIndex}`; // Side categories (for this example)
+                    const { category1, category2 } = getCategories(1, 3);
 
                     // Call checkWord to validate the input
                     console.log(word, category1, category2);
                     checkWord(word, category1, category2);
             }
         }
-        // // Helper function to validate input and call checkWord
-        // function validateInput(inputField) {
-        //     const word = inputField.value;
-        //     const rowIndex = inputField.dataset.row;
-        //     const colIndex = inputField.dataset.col;
 
-        //     // Assuming categories are passed dynamically or set
-        //     const category1 = `Category ${colIndex}`; // Top categories (for this example)
-        //     const category2 = `Side ${rowIndex}`; // Side categories (for this example)
 
-        //     // Call checkWord to validate the input
-        //     checkWord(word, category1, category2);
-        // }
+        function getCategoriesIndex(rowIndex, colIndex) {
+            // Adjusting indices for 1-based indexing
+            const sideCategoryIndex = rowIndex - 1; // Adjust row index for side categories (side1, side2, side3)
+            const topCategoryIndex = colIndex + 2;  // Adjust column index for top categories (top1, top2, top3)
+
+            // Get the values from the games dictionary based on the adjusted indices
+            const sideCategory = games[gameNumber][sideCategoryIndex];  // Side category
+            const topCategory = games[gameNumber][topCategoryIndex];    // Top category
+
+            return { sideCategory, topCategory };
+        }
+    
 
         // Add event listener to handle input event for "Enter" key
         document.querySelectorAll("input").forEach(input => {
