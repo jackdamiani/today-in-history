@@ -180,7 +180,7 @@
             const inputField = event.target;
 
             // Trigger only when "Enter" key is pressed
-            if (event.type === "keydown" && event.key === "Enter") {
+            if (event.type === "input" && event.key === "Enter") {
                 validateInput(inputField); // Call the validation function
             }
         }
@@ -199,9 +199,9 @@
             checkWord(word, category1, category2);
         }
 
-        // Add event listener to handle keydown event for "Enter" key
+        // Add event listener to handle input event for "Enter" key
         document.querySelectorAll("input").forEach(input => {
-            input.addEventListener("keydown", handleInputChange); // Detect when Enter is pressed
+            input.addEventListener("input", handleInputChange); // Detect when Enter is pressed
         });
 
 
