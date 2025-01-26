@@ -1,6 +1,11 @@
 <?php
 require_once __DIR__ . '/../db_config.php'; // Adjust as needed
 
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Get POST data (assuming the word and categories are sent via POST)
 $word = $_POST['word'];
 $category1 = $_POST['category1'];
