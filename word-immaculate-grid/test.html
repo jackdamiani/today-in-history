@@ -201,10 +201,27 @@
                     } catch (error) {
                         console.error('Error:', error); // Catch errors
                     }
+            console.log(rowIndex,colIndex, wordValid)
+            updateCellColor(rowIndex, colIndex, wordValid)
 
-            if (wordValid){
-                // need to turn green
-                console.log(rowIndex)
+            }
+        }
+
+        function updateCellColor(rowIndex, colIndex, isValid) {
+            // Find the input element based on row and column indices
+            const inputField = document.querySelector(
+                `input[data-row="${rowIndex}"][data-col="${colIndex}"]`
+            );
+
+            if (inputField) {
+                // Apply the appropriate class based on the validity
+                if (isValid) {
+                    inputField.classList.add('valid');
+                    inputField.classList.remove('invalid');
+                } else {
+                    inputField.classList.add('invalid');
+                    inputField.classList.remove('valid');
+                }
             }
         }
 
