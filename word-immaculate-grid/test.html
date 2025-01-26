@@ -9,13 +9,14 @@
     <script src="category_translation.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Full viewport height */
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px; /* Adds space between sections */
+            flex-direction: column; /* Align items vertically */
+            align-items: center; /* Center horizontally */
+            justify-content: flex-start; /* Align at the top */
+            font-family: Arial, sans-serif; /* Optional: Set a nice font */
         }
 
         .grid {
@@ -79,7 +80,7 @@
     <p> How to play: Fill in each square with any English word <br> so that the word fits in both the vertical and horizontal categories</p>
     <p> You are part of the beta testers of the game! Thank you!<br> Please send any feedback to Jack at jack@today-in-history-game.com </p>
 
-    <button onclick="checkWord('ant', 'noun', '3letters')">Check Word</button>
+    <!-- <button onclick="checkWord('ant', 'noun', '3letters')">Check Word</button> -->
 
     <h2>Select a Game</h2>
     <div id="game-selector">
@@ -219,10 +220,10 @@
             }
         }
 
-        function updateCellColor(rowIndex, colIndex, isValid) {
+        function updateCellColor(rowIndex_flip, colIndex_flip, isValid) {
             // Find the input element based on row and column indices
             const inputField = document.querySelector(
-                `input[data-row="${rowIndex}"][data-col="${colIndex}"]`
+                `input[data-row="${colIndex_flip}"][data-col="${rowIndex_flip}"]`
             );
 
             if (inputField) {
