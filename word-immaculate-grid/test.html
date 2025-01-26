@@ -219,27 +219,31 @@
             fetch('check_words.php', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Type': 'application/json', // Change to application/json for sending JSON
                 },
-                body: new URLSearchParams({
+                body: JSON.stringify({
                     word: word,
                     category1: category1,
                     category2: category2,
                 }),
             })
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.status === 'success') {
-                        alert(data.message); // Word is valid
-                    } else {
-                        alert(data.message); // Word is not valid
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    alert('An error occurred. Please try again.');
-                });
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === 'success') {
+                    alert(data.message); // Word is valid
+                } else {
+                    alert(data.message); // Word is not valid
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
         }
+
+// Example of calling the function dynamically
+checkWord('ant', 'noun', '3letters'); // Dynamic values
+
 
 
     </script>
