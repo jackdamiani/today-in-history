@@ -1,12 +1,9 @@
 <?php
 // Ensure $_POST data is received properly
-// $word = $_POST['word'] ?? null;
-// $category1 = $_POST['category1'] ?? null;
-// $category2 = $_POST['category2'] ?? null;
+$word = $_POST['word'] ?? null;
+$category1 = $_POST['category1'] ?? null;
+$category2 = $_POST['category2'] ?? null;
 
-$word = "ant";
-$category1 = "noun";
-$category2 = "3letters";
 
 // Check for missing parameters
 if (!$word || !$category1 || !$category2) {
