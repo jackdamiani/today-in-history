@@ -1,11 +1,13 @@
 <?php
 header('Content-Type: application/json');
 
-// Ensure $_POST data is received properly
-$word = $_POST['word'] ?? null;
-$category1 = $_POST['category1'] ?? null;
-$category2 = $_POST['category2'] ?? null;
+// Get the raw POST data from the request body
+$data = json_decode(file_get_contents('php://input'), true);
 
+// Ensure the data is valid (check if word, category1, and category2 are present)
+$word = $data['word'] ?? null;
+$category1 = $data['category1'] ?? null;
+$category2 = $data['category2'] ?? null;
 
 // Check for missing parameters
 if (!$word || !$category1 || !$category2) {
@@ -37,12 +39,10 @@ $stmt->bind_param("sss", $category1, $category2, $word);
 $stmt->execute();
 $result = $stmt->get_result();
 
-
+// Check if results are found
 if ($result && $result->num_rows > 0) {
-    // If results are found
     echo json_encode(['status' => 'success', 'message' => 'Word is valid in both categories']);
 } else {
-    // If no results are found
     echo json_encode(['status' => 'error', 'message' => 'Word is not valid in both categories']);
 }
 ?>
