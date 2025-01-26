@@ -46,3 +46,5 @@ WHERE wc.category_id IN (1, 2)
 GROUP BY wc.word_id
 HAVING COUNT(DISTINCT wc.category_id) = 2;
 
+
+
