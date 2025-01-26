@@ -223,9 +223,9 @@
                     'Content-Type': 'application/json', // Change to application/json for sending JSON
                 },
                 body: JSON.stringify({
-                    word: word,
-                    category1: category1,
-                    category2: category2,
+                    "word": word,
+                    "category1": category1,
+                    "category2": category2,
                 }),
             })
             .then((response) => response.json())
@@ -237,7 +237,7 @@
                 }
             })
             .catch((error) => {
-                console.error('Error:');
+                console.error('Error:', error);
                 alert('An error occurred. Please try again.');
             });
         }
