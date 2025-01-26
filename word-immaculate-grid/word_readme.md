@@ -49,3 +49,10 @@ HAVING COUNT(DISTINCT wc.category_id) = 2;
 
 To see words that are set up for a sertain category_id:
 SELECT w.word FROM `word_category` AS wc JOIN words w ON w.id = wc.word_id WHERE category_id = 9 LIMIT 100 
+
+SELECT w.word 
+FROM word_category AS wc
+JOIN words AS w ON w.id = wc.word_id
+JOIN categories AS c ON c.id = wc.category_id
+WHERE c.category = 'palindrome'
+LIMIT 100;

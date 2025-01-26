@@ -31,6 +31,8 @@ foreach ($combinations as $pair) {
     // Skip if impossible_group is the same and not NULL
     if ($category1['impossible_group'] !== null &&
         $category2['impossible_group'] !== null &&
+        $category1['impossible_group'] !== 0 &&
+        $category2['impossible_group'] !== 0 &&
         $category1['impossible_group'] === $category2['impossible_group']) {
         continue;
     }
