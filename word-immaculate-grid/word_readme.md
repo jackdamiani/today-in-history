@@ -47,4 +47,5 @@ GROUP BY wc.word_id
 HAVING COUNT(DISTINCT wc.category_id) = 2;
 
 
-
+To see words that are set up for a sertain category_id:
+SELECT w.word FROM `word_category` AS wc JOIN words w ON w.id = wc.word_id WHERE category_id = 9 LIMIT 100 
