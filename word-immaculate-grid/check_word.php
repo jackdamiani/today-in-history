@@ -35,8 +35,6 @@ $stmt->bind_param("sss", $category1, $category2, $word);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Debugging output
-echo "successfully here"; 
 
 if ($result && $result->num_rows > 0) {
     // If results are found
