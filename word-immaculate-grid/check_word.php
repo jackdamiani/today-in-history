@@ -30,8 +30,8 @@ $sql = "
 
 // Execute the query
 $result = $conn->query($sql);
-echo "successfully here"
-echo $result
+echo "successfully here";
+echo $result;
 
 if ($result && $result->num_rows > 0) {
     // If results are found
