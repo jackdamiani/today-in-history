@@ -1,13 +1,10 @@
 <?php
 header('Content-Type: application/json');
 
-// Get the raw POST data from the request body
-$data = json_decode(file_get_contents('php://input'), true);
-
-// Ensure the data is valid (check if word, category1, and category2 are present)
-$word = $data['word'] ?? null;
-$category1 = $data['category1'] ?? null;
-$category2 = $data['category2'] ?? null;
+// Ensure the form data is received
+$word = $_POST['word'] ?? null;
+$category1 = $_POST['category1'] ?? null;
+$category2 = $_POST['category2'] ?? null;
 
 // Check for missing parameters
 if (!$word || !$category1 || !$category2) {

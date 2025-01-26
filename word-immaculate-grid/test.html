@@ -217,31 +217,29 @@
 
 
         function checkWord(word, category1, category2) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "check_word.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // Set content type for form data
 
-            fetch('check_words.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json', // Change to application/json for sending JSON
-                },
-                body: JSON.stringify({
-                    "word": word,
-                    "category1": category1,
-                    "category2": category2,
-                }),
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.status === 'success') {
-                    alert(data.message); // Word is valid
-                } else {
-                    alert(data.message); // Word is not valid
+            // Prepare the data to send
+            var params = "word=" + encodeURIComponent(word) + "&category1=" + encodeURIComponent(category1) + "&category2=" + encodeURIComponent(category2);
+
+            // Set up the callback to handle the response
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    if (data.status === 'success') {
+                        alert(data.message); // Word is valid
+                    } else {
+                        alert(data.message); // Word is not valid
+                    }
                 }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again.');
-            });
+            };
+
+            // Send the data
+            xhr.send(params);
         }
+
 
 
 
