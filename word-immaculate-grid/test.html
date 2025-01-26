@@ -292,9 +292,10 @@
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText);
                     if (data.status === 'success') {
+                        console.log('success')
                         return 1; // Word is valid
                     } else {
-                        alert(data.message); // Word is not valid
+                        console.log('fail'); // Word is not valid
                         return 0;
                     }
                 }
