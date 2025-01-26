@@ -1,3 +1,4 @@
+<?php
 // Ensure $_POST data is received properly
 $word = $_POST['word'] ?? null;
 $category1 = $_POST['category1'] ?? null;
@@ -33,3 +34,4 @@ if ($result && $result->num_rows > 0) {
     // If no results are found
     echo json_encode(['status' => 'error', 'message' => 'Word is not valid in both categories']);
 }
+?>
