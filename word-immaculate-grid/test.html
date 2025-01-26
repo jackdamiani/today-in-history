@@ -199,7 +199,7 @@
                     // Call checkWord to validate the input
                     console.log(word, category1, category2)
                     try {
-                        const wordValid = await checkWord("example", "noun", "3letters");
+                        const wordValid = await checkWord(word, category1, category2);
                         console.log(wordValid); // Logs 1 or 0 based on the server response
                     } catch (error) {
                         console.error('Error:', error); // Catch errors
