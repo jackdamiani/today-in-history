@@ -128,9 +128,11 @@
             const gridContainer = document.getElementById("grid");
             gridContainer.innerHTML = ""; // Clear existing grid
 
-            // Fetch categories for the selected game number
-            const topCategories = games[gameNumber];
-            const sideCategories = games[gameNumber];
+            const categories = games[gameNumber];
+
+            // Use the first 3 categories for top and the next 3 for side
+            const topCategories = categories.slice(0, 3);
+            const sideCategories = categories.slice(3, 6);
 
             // Row 0: Blank and top categories
             const topRow = document.createElement("div");
