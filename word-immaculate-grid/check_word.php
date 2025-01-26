@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 // Ensure $_POST data is received properly
 $word = $_POST['word'] ?? null;
 $category1 = $_POST['category1'] ?? null;
