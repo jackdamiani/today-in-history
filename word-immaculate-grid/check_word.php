@@ -29,7 +29,10 @@ $sql = "
 ";
 
 // Execute the query
-$result = $conn->query($sql);
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sss", $category1, $category2, $word);
+$stmt->execute();
+$result = $stmt->get_result();
 echo "successfully here";
 echo $result;
 
