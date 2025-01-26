@@ -17,24 +17,29 @@ if (!$word || !$category1 || !$category2) {
 // Database connection (Ensure $conn is already established in your db_config.php)
 require_once __DIR__ . '/../db_config.php'; // Adjust path if needed
 
-// Use a raw SQL query
+// Use a SQL query with placeholders
 $sql = "
     SELECT *
     FROM words w
     JOIN word_category wc1 ON w.id = wc1.word_id
-    JOIN categories c1 ON wc1.category_id = c1.id AND c1.category = '$category1'
+    JOIN categories c1 ON wc1.category_id = c1.id AND c1.category = ?
     JOIN word_category wc2 ON w.id = wc2.word_id
-    JOIN categories c2 ON wc2.category_id = c2.id AND c2.category = '$category2'
-    WHERE w.word = '$word'
+    JOIN categories c2 ON wc2.category_id = c2.id AND c2.category = ?
+    WHERE w.word = ?
 ";
 
-// Execute the query
+// Prepare the query
 $stmt = $conn->prepare($sql);
+
+// Bind parameters to placeholders
 $stmt->bind_param("sss", $category1, $category2, $word);
+
+// Execute the query
 $stmt->execute();
 $result = $stmt->get_result();
-echo "successfully here";
-echo $result;
+
+// Debugging output
+echo "successfully here"; 
 
 if ($result && $result->num_rows > 0) {
     // If results are found
