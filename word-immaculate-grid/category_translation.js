@@ -1,4 +1,4 @@
-{
+const categoryTranslations = {
     "noun": "Noun",
     "verb": "Verb",
     "adjective": "Adjective",
