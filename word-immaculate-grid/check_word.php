@@ -40,6 +40,6 @@ $result = $stmt->get_result();
 if ($result && $result->num_rows > 0) {
     echo json_encode(['status' => 'success', 'message' => 'Word is valid in both categories']);
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Word is not valid in both categories']);
+    echo json_encode(['status' => 'error', 'message' => 'Word is not valid in both categories', 'result' => $result]);
 }
 ?>
