@@ -177,6 +177,7 @@
 
         // Function to handle input change when "Enter" is pressed
         async function handleInputChange(event) {
+            let wordValid = 0
             const inputField = event.target;
 
                 // **Trigger only when "Enter" key is pressed**
@@ -195,16 +196,16 @@
                     // Call checkWord to validate the input
                     console.log(word, category1, category2)
                     try {
-                        const wordValid = await checkWord(word, category1, category2);
+                        wordValid = await checkWord(word, category1, category2);
                         console.log(wordValid); // Logs 1 or 0 based on the server response
                     } catch (error) {
                         console.error('Error:', error); // Catch errors
                     }
 
-                    if (wordValid){
-                        // need to turn green
-                        console.log(rowIndex)
-                    }
+            if (wordValid){
+                // need to turn green
+                console.log(rowIndex)
+            }
         }
 
             
