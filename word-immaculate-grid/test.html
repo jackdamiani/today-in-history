@@ -124,43 +124,65 @@
         }
 
 
-        function generateGrid() {
+        function generateGrid(topCategories, sideCategories) {
             const gridContainer = document.getElementById("grid");
             gridContainer.innerHTML = ""; // Clear existing grid
 
-            // Row 0: Blank and top categories
-            const top0Cell = createCell();
-            top0Cell.id = "top0"; // Add ID for top1
-            gridContainer.appendChild(top0Cell);
+            // Create the top row (top categories)
+            const topRow = document.createElement("div");
+            topRow.classList.add("grid-row");
 
-            const top1Cell = createCell(top1);
-            top1Cell.id = "top1"; // Add ID for top1
-            gridContainer.appendChild(top1Cell);
+            // Create top category cells (e.g., top1, top2)
+            topCategories.forEach((category, index) => {
+                const cell = createCell(category);
+                cell.id = `top${index}`; // Add unique ID for each top category
+                topRow.appendChild(cell);
+            });
+            gridContainer.appendChild(topRow);
 
-            const top2Cell = createCell(top2);
-            top2Cell.id = "top2"; // Add ID for top2
-            gridContainer.appendChild(top2Cell);
+            // Create the side rows (side categories)
+            sideCategories.forEach((sideCategory, rowIndex) => {
+                const row = document.createElement("div");
+                row.classList.add("grid-row");
 
-            const top3Cell = createCell(top3);
-            top3Cell.id = "top3"; // Add ID for top3
-            gridContainer.appendChild(top3Cell);
-
-            // Rows 1-3: Side categories and inputs
-            [side1, side2, side3].forEach((sideCategory, rowIndex) => {
+                // Create the side category cell (e.g., side1, side2)
                 const sideCell = createCell(sideCategory);
-                sideCell.id = `side${rowIndex + 1}`; // Add ID for side1, side2, side3
-                gridContainer.appendChild(sideCell);
+                sideCell.id = `side${rowIndex}`; // Add unique ID for each side category
+                row.appendChild(sideCell);
 
-                for (let i = 0; i < 3; i++) {
+                // Create input fields for each column (based on top categories)
+                topCategories.forEach((topCategory, colIndex) => {
                     const input = document.createElement("input");
                     input.setAttribute("type", "text");
                     input.setAttribute("maxlength", "20");
-                    input.addEventListener("input", showAutocomplete);
-                    gridContainer.appendChild(input);
-                }
+                    input.setAttribute("data-row", rowIndex + 1);
+                    input.setAttribute("data-col", colIndex + 1);
+                    input.addEventListener("input", handleInputChange); // Handle input change
+                    row.appendChild(input);
+                });
+
+                gridContainer.appendChild(row);
             });
         }
 
+
+        // Handle input change event
+        function handleInputChange(event) {
+            const inputField = event.target;
+            const word = inputField.value;
+            const rowIndex = inputField.dataset.row;
+            const colIndex = inputField.dataset.col;
+
+            // Assuming categories are passed dynamically or set
+            const category1 = `Category ${colIndex}`; // Top categories (for this example)
+            const category2 = `Side ${rowIndex}`; // Side categories (for this example)
+
+            // Call checkWord to validate the input
+            console.log(word, category1, category2)
+            
+            let x = checkWord(word, category1, category2);
+            console.log(x)
+        }
 
         function createCell(content) {
             const cell = document.createElement("div");
@@ -229,9 +251,10 @@
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText);
                     if (data.status === 'success') {
-                        alert(data.message); // Word is valid
+                        return 1; // Word is valid
                     } else {
                         alert(data.message); // Word is not valid
+                        return 0;
                     }
                 }
             };

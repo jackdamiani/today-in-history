@@ -17,7 +17,7 @@ require_once __DIR__ . '/../db_config.php'; // Adjust path if needed
 
 // Use a SQL query with placeholders
 $sql = "
-    SELECT *
+    SELECT w.*
     FROM words w
     JOIN word_category wc1 ON w.id = wc1.word_id
     JOIN categories c1 ON wc1.category_id = c1.id AND c1.category = ?
