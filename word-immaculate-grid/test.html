@@ -180,7 +180,7 @@
 
 
         // Function to handle input change when "Enter" is pressed
-        function handleInputChange(event) {
+        async function handleInputChange(event) {
             const inputField = event.target;
 
                 // **Trigger only when "Enter" key is pressed**
@@ -198,8 +198,12 @@
 
                     // Call checkWord to validate the input
                     console.log(word, category1, category2)
-                    let word_valid = checkWord(word, category1, category2);
-                    console.log(word_valid)
+                    try {
+                        const wordValid = await checkWord("example", "noun", "3letters");
+                        console.log(wordValid); // Logs 1 or 0 based on the server response
+                    } catch (error) {
+                        console.error('Error:', error); // Catch errors
+                    }
 
             }
         }
@@ -279,30 +283,35 @@
         });
 
 
-        function checkWord(word, category1, category2) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "check_word.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // Set content type for form data
+        async function checkWord(word, category1, category2) {
+            return new Promise((resolve, reject) => {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "check_word.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-            // Prepare the data to send
-            var params = "word=" + encodeURIComponent(word) + "&category1=" + encodeURIComponent(category1) + "&category2=" + encodeURIComponent(category2);
+                // Prepare the data to send
+                var params = "word=" + encodeURIComponent(word) + "&category1=" + encodeURIComponent(category1) + "&category2=" + encodeURIComponent(category2);
 
-            // Set up the callback to handle the response
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var data = JSON.parse(xhr.responseText);
-                    if (data.status === 'success') {
-                        console.log('success')
-                        return 1; // Word is valid
-                    } else {
-                        console.log('(data.message)'); // Word is not valid
-                        return 0;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var data = JSON.parse(xhr.responseText);
+                        if (data.status === 'success') {
+                            console.log('success');
+                            resolve(1);
+                        } else {
+                            console.log('fail');
+                            resolve(0);
+                        }
                     }
-                }
-            };
+                };
 
-            // Send the data
-            xhr.send(params);
+                xhr.onerror = function () {
+                    reject(new Error("Request failed"));
+                };
+
+                // Send the data
+                xhr.send(params);
+            });
         }
 
 
