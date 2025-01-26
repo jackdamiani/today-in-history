@@ -22,21 +22,7 @@ for ($i = 0; $i < count($categories); $i++) {
     }
 }
 
-// Start HTML output
-echo "<html><head><title>Overlapping Categories Count Report</title>";
-// Inline CSS to highlight the rows where overlap count > 100
-echo "<style>
-        .highlight {
-            background-color: yellow;
-        }
-      </style></head><body>";
-echo "<h1>Overlapping Categories Count Report</h1>";
-echo "<table border='1'>
-        <tr>
-            <th>Category Pair</th>
-            <th>Impossible Groups</th>
-            <th>Overlapping Words Count</th>
-        </tr>";
+$rows = []; // Array to store results for sorting
 
 // Loop through all combinations of categories
 foreach ($combinations as $pair) {
@@ -74,23 +60,48 @@ foreach ($combinations as $pair) {
         $row = $result->fetch_assoc();
         $overlapCount = $row['total_overlap_count'];
 
-        // Add the highlight class if the count is greater than 100
-        $highlightClass = ($overlapCount > 100) ? 'highlight' : '';
-
-        // Output the category pair, impossible groups, and overlap count
-        echo "<tr class='$highlightClass'>
-                <td>{$category1['category']} and {$category2['category']}</td>
-                <td>" .
-                    ($category1['impossible_group'] ?? 'NULL') . " / " .
-                    ($category2['impossible_group'] ?? 'NULL') .
-                "</td>
-                <td>$overlapCount</td>
-              </tr>";
-    } else {
-        echo "<tr><td>{$category1['category']} and {$category2['category']}</td><td>Error executing query</td><td></td></tr>";
+        // Add the row to the $rows array
+        $rows[] = [
+            'categories' => "{$category1['category']} and {$category2['category']}",
+            'impossible_groups' =>
+                ($category1['impossible_group'] ?? 'NULL') . " / " .
+                ($category2['impossible_group'] ?? 'NULL'),
+            'overlap_count' => $overlapCount,
+        ];
     }
 
     $stmt->close();
+}
+
+// Sort rows by overlap_count in descending order
+usort($rows, function ($a, $b) {
+    return $b['overlap_count'] <=> $a['overlap_count'];
+});
+
+// Start HTML output
+echo "<html><head><title>Overlapping Categories Count Report</title>";
+// Inline CSS to highlight the rows where overlap count > 100
+echo "<style>
+        .highlight {
+            background-color: yellow;
+        }
+      </style></head><body>";
+echo "<h1>Overlapping Categories Count Report</h1>";
+echo "<table border='1'>
+        <tr>
+            <th>Category Pair</th>
+            <th>Impossible Groups</th>
+            <th>Overlapping Words Count</th>
+        </tr>";
+
+// Output sorted rows
+foreach ($rows as $row) {
+    $highlightClass = ($row['overlap_count'] > 100) ? 'highlight' : '';
+    echo "<tr class='$highlightClass'>
+            <td>{$row['categories']}</td>
+            <td>{$row['impossible_groups']}</td>
+            <td>{$row['overlap_count']}</td>
+          </tr>";
 }
 
 // Close the table and HTML tags
