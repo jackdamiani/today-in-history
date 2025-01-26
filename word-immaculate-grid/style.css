@@ -6,15 +6,17 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    margin: 20px;
 }
 
-.grid {
+/* .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
-}
+} */
 
-.grid input {
+/* .grid input {
     width: 100px;
     height: 100px;
     text-align: center;
@@ -22,7 +24,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .autocomplete-suggestions {
     position: absolute;
@@ -48,3 +50,98 @@ body {
     background-color: #f0f0f0;
 }
 
+
+h1, h2 {
+    text-align: center;
+}
+
+#category-selection, #game-selection, #grid-container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 1 column for side headers + 3 columns for inputs */
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 500px;
+}
+
+.grid-header {
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#grid-top {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+    max-width: 500px;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid-top .grid-header {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.grid .grid-header {
+    grid-column: 1; /* Ensures the side categories align in the first column */
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#category-selector {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#category-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+label {
+    font-size: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}

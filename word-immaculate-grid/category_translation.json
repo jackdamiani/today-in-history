@@ -1,0 +1,27 @@
+{
+    "noun": "Noun",
+    "verb": "Verb",
+    "adjective": "Adjective",
+    "preposition": "Preposition",
+    "conjunction": "Conjunction",
+    "pronoun": "Pronoun",
+    "interjection": "Interjection",
+    "2letters": "2 Letters",
+    "3letters": "3 Letters",
+    "4letters": "4 Letters",
+    "5letters": "5 Letters",
+    "6letters": "6 Letters",
+    "7letters": "7 Letters",
+    "8letters": "8 Letters",
+    "9letters": "9 Letters",
+    "10letters": "10 Letters",
+    "5letters_palindrome": "5 Letter Palindrome",
+    "no_repeated_letters": "No Repeated Letters",
+    "3e": "3 E's",
+    "start_end_same_letter": "Same First and Last Letter",
+    "double_letter": "Double Letter",
+    "all5_vowels": "All 5 Vowels",
+    "ends_ing": "Ends with -ing",
+    "starts_pre": "Starts with pre-"
+
+}
