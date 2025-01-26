@@ -176,6 +176,8 @@
                     input.setAttribute("maxlength", "20");
                     input.setAttribute("data-row", rowIndex + 1);
                     input.setAttribute("data-col", colIndex + 1);
+                    input.setAttribute("data-cell", i);
+                    input.addEventListener("input", showAutocomplete);
                     input.addEventListener("keydown", handleInputChange);
                     row.appendChild(input);
                 });
