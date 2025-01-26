@@ -98,7 +98,7 @@
             [top1, top2, top3, side1, side2, side3] = selectedCategories;
 
 
-            generateGrid();
+            generateGrid(games, gameNumber);
             // Display translated categories in the grid
             displayCategories();
 
@@ -124,11 +124,15 @@
         }
 
 
-        function generateGrid(topCategories, sideCategories) {
+        function generateGrid(gameNumber) {
             const gridContainer = document.getElementById("grid");
             gridContainer.innerHTML = ""; // Clear existing grid
 
-            // Create the top row (top categories)
+            // Fetch categories for the selected game number
+            const topCategories = games[gameNumber];
+            const sideCategories = games[gameNumber];
+
+            // Row 0: Blank and top categories
             const topRow = document.createElement("div");
             topRow.classList.add("grid-row");
 
@@ -178,10 +182,7 @@
             const category2 = `Side ${rowIndex}`; // Side categories (for this example)
 
             // Call checkWord to validate the input
-            console.log(word, category1, category2)
-            
-            let x = checkWord(word, category1, category2);
-            console.log(x)
+            checkWord(word, category1, category2);
         }
 
         function createCell(content) {
