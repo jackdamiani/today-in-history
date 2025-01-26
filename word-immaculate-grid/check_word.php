@@ -1,9 +1,13 @@
 <?php
 // Check POST data
-if (!isset($_POST['word'], $_POST['category1'], $_POST['category2'])) {
-    echo json_encode(['status' => 'error', 'message' => 'Missing parameters']);
-    exit;
-}
+// if (!isset($_POST['word'], $_POST['category1'], $_POST['category2'])) {
+//     echo json_encode(['status' => 'error', 'message' => 'Missing parameters']);
+//     exit;
+// }
+
+$word = "ant";
+$category1 = "noun";
+$category2 = "3letters";
 
 
 require_once __DIR__ . '/../db_config.php'; // Adjust as needed
@@ -14,9 +18,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Get POST data (assuming the word and categories are sent via POST)
-$word = $_POST['word'];
-$category1 = $_POST['category1'];
-$category2 = $_POST['category2'];
+// $word = $_POST['word'];
+// $category1 = $_POST['category1'];
+// $category2 = $_POST['category2'];
 
 // Prepare the SQL query
 $sql = "SELECT *
