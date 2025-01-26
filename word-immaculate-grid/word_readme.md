@@ -56,3 +56,14 @@ JOIN words AS w ON w.id = wc.word_id
 JOIN categories AS c ON c.id = wc.category_id
 WHERE c.category = 'palindrome'
 LIMIT 100;
+
+Good ideas:
+Words with No Repeated Letters:
+Category Name: "Unique Letters Only"
+Regex: ^(?!.*(.).*\1).*
+Matches words where each letter is unique (e.g., "brick", "jumbo").
+
+Words with More Vowels Than Consonants:
+Category Name: "Vowel Heavy"
+Regex: ^(?=(.*[aeiou]){5})(?=(.*[^aeiou]){0,4}).*$
+Matches words with more vowels than consonants (e.g., "ouija", "idea").
