@@ -82,6 +82,7 @@
     <div id="autocomplete" class="autocomplete-suggestions" style="display: none;"></div>
 
     <script>
+        
         let top1, top2, top3, side1, side2, side3;
         const games = {
             1: ["noun", "verb", "adjective", "3letters", "4letters", "5letters"],
@@ -90,6 +91,8 @@
         };
 
         let gameNumber;
+
+        
 
         // Function to select a game and display translated categories
         function selectGame(selectedGame) {            
@@ -182,16 +185,21 @@
 
                 // **Trigger only when "Enter" key is pressed**
                 if (event.key === "Enter") {
-                    const rowIndex = inputField.dataset.row; // Get the row from data-row
-                    const colIndex = inputField.dataset.col; // Get the column from data-col
+                    let rowIndex = inputField.dataset.col; // Get the row from data-row
+                    let colIndex = inputField.dataset.row; // Get the column from data-col
                     const word = inputField.value; // Get the word entered by the user
+                    rowIndex = parseInt(rowIndex);
+                    colIndex = parseInt(colIndex);
+
+                    console.log(rowIndex, colIndex);
 
                     // Assuming categories are passed dynamically or set
-                    const { category1, category2 } = getCategoriesIndex(rowIndex, colIndex);
+                    let { sideCategory: category1, topCategory: category2 } = getCategoriesIndex(rowIndex, colIndex);
 
                     // Call checkWord to validate the input
-                    console.log(word, category1, category2);
-                    checkWord(word, category1, category2);
+                    let word_valid = checkWord(word, category1, category2);
+                    console.log(word_valid)
+
             }
         }
 
@@ -202,11 +210,12 @@
             const topCategoryIndex = colIndex + 2;  // Adjust column index for top categories (top1, top2, top3)
 
             // Get the values from the games dictionary based on the adjusted indices
-            const sideCategory = games[gameNumber][sideCategoryIndex];  // Side category
-            const topCategory = games[gameNumber][topCategoryIndex];    // Top category
+            let sideCategory = games[gameNumber][sideCategoryIndex];  // Side category
+            let topCategory = games[gameNumber][topCategoryIndex];    // Top category
 
             return { sideCategory, topCategory };
         }
+
     
 
         // Add event listener to handle input event for "Enter" key
