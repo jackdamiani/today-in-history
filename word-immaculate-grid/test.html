@@ -217,6 +217,17 @@
 
 
         function checkWord(word, category1, category2) {
+
+            let x = JSON.stringify({
+                    "word": word,
+                    "category1": category1,
+                    "category2": category2,
+                })
+
+            console.log(x)
+
+
+
             fetch('check_words.php', {
                 method: 'POST',
                 headers: {
