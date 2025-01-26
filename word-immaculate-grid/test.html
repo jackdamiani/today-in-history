@@ -187,7 +187,7 @@
                     const word = inputField.value; // Get the word entered by the user
 
                     // Assuming categories are passed dynamically or set
-                    const { category1, category2 } = getCategoriesIndex(1, 3);
+                    const { category1, category2 } = getCategoriesIndex(rowIndex, colIndex);
 
                     // Call checkWord to validate the input
                     console.log(word, category1, category2);
