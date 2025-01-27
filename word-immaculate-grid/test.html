@@ -3,7 +3,22 @@
 <head>
     <title>Word Immaculate Grid</title>
     <meta name="description" content="Fill in all 16 squares in the word immaculate grid!" />
+
+    <tite style="display: none">Word Immaculate Grid</tite>
+    <meta name="decription" content="Fill in all 9 squares int the word immaculate grid!" />
+    <link rel="canonical" href="https://today-in-history-game.com/word-immaculate-grid" />
+
+    <meta name="robots" content="nosnippet">
+    <meta property="og:title" content="Word Immaculate Grid">
+    <meta property="og:description" content="Fill in all 9 squares in the word immaculate grid!">
+    <meta property="og:type" content="game">
+    <meta property="og:url" content="https://today-in-history-game.com/word-immaculate-grid">
+    <meta property="og:image" content="logo2.png"/>
+
+    <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="style.css">
     <script src="dictionary.js"></script>
     <script src="category_translation.js"></script>
@@ -19,12 +34,48 @@
             font-family: Arial, sans-serif; /* Optional: Set a nice font */
         }
 
-        .grid {
+
+        #grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-            max-width: 400px;
+            grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 columns: 1 blank + 3 top categories */
+            gap: 0; /* No gaps between cells */
+            width: 600px; /* Fixed width for the grid */
+            margin: 20px auto; 
+            border: 2px solid #333; /* Optional: border around the entire grid */
+            box-sizing: border-box;
         }
+
+        .grid-row {
+            display: contents; /* Allow items to align directly into the grid container */
+        }
+
+        .grid-row > div,
+        .grid-row > input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%; /* Automatically adjusts to fit grid cell */
+            aspect-ratio: 1; /* Makes cells square */
+            border: 1px solid #333; /* Optional: border between cells */
+            background-color: #f9f9f9; /* Light background */
+            font-size: 16px; /* Font size for content */
+            font-weight: bold;
+            box-sizing: border-box;
+            border-radius: 0px;
+        }
+
+        input {
+            border: 1px solid #aaa;
+            padding: 0;
+            font-size: 14px;
+            text-align: center;
+            width: 100%; /* Make input field fit grid cell */
+            height: 100%; /* Match square dimensions */
+            box-sizing: border-box;
+            border-radius: 0px;
+        }
+        
 
         #game-selector {
             display: flex;
@@ -49,7 +100,11 @@
             background-color: white;
             border: 1px solid #ccc;
             z-index: 1000;
-            max-width: 300px;
+            left: 0; /* Align the suggestions to the left edge of the input */
+            top: 100%; /* Place the suggestions right below the input */
+            transform: translateY(-5px); /* Add some spacing between the input and suggestions */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow for a modern look */
+            border-radius: 4px; /* Optional: rounded corners */
         }
 
         .autocomplete-suggestions div {
@@ -150,6 +205,8 @@
             // Row 0: Blank and top categories
             const topRow = document.createElement("div");
             topRow.classList.add("grid-row");
+            const cell = createCell()
+            topRow.appendChild(cell);
 
             // Create top category cells (e.g., top1, top2, top3)
             topCategories.forEach((category, index) => {
