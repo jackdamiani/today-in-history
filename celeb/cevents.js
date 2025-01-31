@@ -153,7 +153,153 @@ var today_in_history = {
         "1970": "Minnie Driver (Actress, 'Good Will Hunting')",
         "1996": "Joel Courtney (Actor, 'The Kissing Booth')"
     },
-
+    "0201": {
+        "1971": "Michael C. Hall, Actor, 'Dexter'",
+        "1987": "Ronda Rousey, Mixed Martial Artist/Actress, 'UFC Champion'",
+        "1994": "Harry Styles, Singer/Actor, 'One Direction'"
+    },
+    "0202": {
+        "1947": "Farrah Fawcett, Actress, 'Charlie's Angels'",
+        "1977": "Shakira, Singer/Songwriter, 'Hips Don't Lie'",
+        "1987": "Gerard Piqué, Footballer, 'FC Barcelona'"
+    },
+    "0203": {
+        "1943": "Blythe Danner, Actress, 'Meet the Parents'",
+        "1981": "Elisa Donovan, Actress, 'Clueless'",
+        "1990": "Sean Kingston, Singer, 'Beautiful Girls'"
+    },
+    "0204": {
+        "1973": "Oscar De La Hoya, Boxer, 'Olympic Gold Medalist'",
+        "1975": "Natalie Imbruglia, Singer/Actress, 'Torn'",
+        "1983": "Hannibal Buress, Comedian/Actor, 'Broad City'"
+    },
+    "0205": {
+        "1969": "Michael Sheen, Actor, 'Frost/Nixon'",
+        "1985": "Cristiano Ronaldo, Footballer, 'Real Madrid'",
+        "1992": "Neymar, Footballer, 'Paris Saint-Germain'"
+    },
+    "0206": {
+        "1911": "Ronald Reagan, Actor/40th U.S. President, 'Bedtime for Bonzo'",
+        "1962": "Axl Rose, Singer, 'Guns N' Roses'",
+        "1966": "Rick Astley, Singer, 'Never Gonna Give You Up'"
+    },
+    "0207": {
+        "1965": "Chris Rock, Comedian/Actor, 'Everybody Hates Chris'",
+        "1978": "Ashton Kutcher, Actor, 'That '70s Show'",
+        "1988": "Matthew Stafford, Football Player, 'Los Angeles Rams'"
+    },
+    "0208": {
+        "1955": "John Grisham, Author, 'The Firm'",
+        "1968": "Gary Coleman, Actor, 'Diff'rent Strokes'",
+        "1990": "Klay Thompson, Basketball Player, 'Golden State Warriors'"
+    },
+    "0209": {
+        "1942": "Carole King, Singer/Songwriter, 'Tapestry'",
+        "1987": "Michael B. Jordan, Actor, 'Creed'",
+        "1991": "Avan Jogia, Actor, 'Victorious'",
+    },
+    "0210": {
+        "1950": "Mark Spitz, Olympic Swimmer, 'Seven Gold Medals in 1972'",
+        "1991": "Emma Roberts, Actress, 'American Horror Story'",
+        "1997": "Chloe Grace Moretz, Actress, 'Kick-Ass'"
+    },
+    "0211": {
+        "1969": "Jennifer Aniston, Actress, 'Friends'",
+        "1972": "Damian Lewis, Actor, 'Homeland'",
+        "1992": "Taylor Lautner, Actor, 'Twilight'"
+    },
+    "0212": {
+        "1950": "Steve Hackett, Guitarist, 'Genesis'",
+        "1980": "Christina Ricci, Actress, 'The Addams Family'",
+        "1988": "Mike Posner, Singer, 'Cooler Than Me'"
+    },
+    "0213": {
+        "1933": "Kim Novak, Actress, 'Vertigo'",
+        "1974": "Robbie Williams, Singer, 'Angels'",
+        "1977": "Randy Moss, Football Player, 'Minnesota Vikings'"
+    },
+    "0214": {
+        "1948": "Teller, Magician, 'Penn & Teller'",
+        "1972": "Rob Thomas, Singer/Songwriter, 'Matchbox Twenty'",
+        "1992": "Christian Eriksen, Footballer, 'Denmark National Team'"
+    },
+    "0215": {
+        "1954": "Matt Groening, Cartoonist, 'The Simpsons'",
+        "1964": "Chris Farley, Comedian/Actor, 'Tommy Boy'",
+        "1985": "Amber Riley, Actress/Singer, 'Glee'"
+    },
+    "0216": {
+        "1958": "Ice-T, Rapper/Actor, 'Law & Order: SVU'",
+        "1989": "Elizabeth Olsen, Actress, 'WandaVision'",
+        "1990": "The Weeknd, Singer, 'Blinding Lights'"
+    },
+    "0217": {
+        "1963": "Michael Jordan, Basketball Player, 'Chicago Bulls'",
+        "1991": "Ed Sheeran, Singer, 'Shape of You'",
+        "1994": "Sasha Pieterse, Actress, 'Pretty Little Liars'"
+    },
+    "0218": {
+        "1965": "Dr. Dre, Rapper/Producer, 'The Chronic'",
+        "1974": "Jillian Michaels, Fitness Trainer, 'The Biggest Loser'",
+        "1994": "J-Hope, Rapper/Dancer, 'BTS'"
+    },
+    "0219": {
+        "1955": "Jeff Daniels, Actor, 'Dumb and Dumber'",
+        "1967": "Benicio del Toro, Actor, 'Traffic'",
+        "1993": "Victoria Justice, Actress, 'Victorious'"
+    },
+    "0220": {
+        "1966": "Cindy Crawford, Model, 'Pepsi Commercial'",
+        "1988": "Rihanna, Singer/Entrepreneur, 'Umbrella'",
+        "2003": "Olivia Rodrigo, Singer, 'Drivers License'"
+    },
+    "0221": {
+        "1933": "Nina Simone, Singer/Pianist, 'Feeling Good'",
+        "1946": "Alan Rickman, Actor, 'Harry Potter'",
+        "1996": "Sophie Turner, Actress, 'Game of Thrones'"
+    },
+    "0222": {
+        "1950": "Julius Erving, Basketball Player, 'Dr. J'",
+        "1975": "Drew Barrymore, Actress, 'E.T. the Extra-Terrestrial'",
+        "1986": "Rajon Rondo, Basketball Player, 'Boston Celtics'"
+    },
+    "0223": {
+        "1965": "Kristin Davis, Actress, 'Sex and the City'",
+        "1983": "Emily Blunt, Actress, 'A Quiet Place'",
+        "1994": "Dakota Fanning, Actress, 'War of the Worlds'"
+    },
+    "0224": {
+        "1955": "Steve Jobs, Businessman, 'Co-Founder of Apple'",
+        "1977": "Floyd Mayweather Jr., Boxer, 'Undefeated Champion'",
+        "1991": "O'Shea Jackson Jr., Actor/Rapper, 'Straight Outta Compton'"
+    },
+    "0225": {
+        "1943": "George Harrison, Musician, 'The Beatles'",
+        "1971": "Sean Astin, Actor, 'The Lord of the Rings'",
+        "1986": "James Phelps, Actor, 'Harry Potter'"
+    },
+    "0226": {
+        "1932": "Johnny Cash, Singer, 'Ring of Fire'",
+        "1968": "Tim Commerford, Bassist, 'Rage Against the Machine'",
+        "1982": "Nate Ruess, Singer, 'Fun.'"
+    },
+    "0227": {
+        "1966": "Donal Logue, Actor, 'Gotham'",
+        "1981": "Josh Groban, Singer, 'You Raise Me Up'",
+        "1986": "Jwoww, Reality TV Star, 'Jersey Shore'"
+    },
+    "0228": {
+        "1948": "Bernadette Peters, Actress, 'Into the Woods'",
+        "1953": "Paul Krugman, Economist, 'Nobel Prize Winner'",
+        "1966": "Cindy Wilson, Singer, 'The B-52s'",
+        "1976": "Ali Larter, Actress, 'Final Destination'",
+        "1986": "Karolina Kurkova, Model, 'Victoria's Secret'"
+    },
+    "0229": {
+        "1936": "Jack Lousma, Astronaut, 'Skylab 3 Mission'",
+        "1972": "Antonio Sabàto Jr., Actor/Model, 'General Hospital'",
+        "1980": "Simon Gagné, Hockey Player, 'Stanley Cup Champion'"
+    },
 
     "0802": {"1951": "Joe Lynn Turner, singer", "1970": "Kevin Smith, filmaker", "1992": "Charli XCX, singer"},
     "0803": {"1963": "James Hetfield", "1977": "Tom Brady, football player", "1984": "Ryan Lochte, swimmer"},
