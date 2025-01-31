@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="dictionary.js"></script>
     <script src="category_translation.js"></script>
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+
     <style>
         body {
             margin: 0;
@@ -126,13 +128,97 @@
             color: white !important;
         }
 
+        /* .accordion {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .accordion-btn {
+            background-color: #aaa;
+            color: white;
+            border: none;
+            padding: 15px;
+            text-align: left;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+            border-radius: 5px;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 0 15px;
+        }
+        .accordion-content p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .accordion .active .accordion-content {
+            max-height: 500px; /* Adjust this value based on your content height */
+            padding: 15px;
+        } */
+
+        /* Help Bar */
+        .help-bar {
+            width: 100%;
+            background-color: #444;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            cursor: pointer;
+            font-size: 18px;
+            user-select: none;
+        }
+
+        .help-bar i {
+            margin-right: 10px;
+        }
+
+        /* Help Content */
+        .help-content {
+            display: none;
+            width: 75%;
+            max-width: 600px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+
 
     </style>
 </head>
 <body>
+    <!-- Help Bar with Icon -->
+    <div class="help-bar" onclick="toggleHelp()">
+        How to Play <i class="fa fa-question-circle"></i> 
+    </div>
+
+    <!-- Hidden Help Instructions -->
+    <div class="help-content" id="help-content">
+        <p>Fill in each square with an English word so that it fits both the vertical and horizontal categories.</p>
+        <p>Tips: Words typically do not have -s (plural) or -ed (past tense) endings.</p>
+        <p>You are part of the beta testers! Send feedback to <a href="mailto:jack@today-in-history-game.com">jack@today-in-history-game.com</a></p>
+    </div>
+
+
     <h1>Word Immaculate Grid</h1>
-    <p> How to play: Fill in each square with any English word <br> so that the word fits in both the vertical and horizontal categories</p>
-    <p> You are part of the beta testers of the game! Thank you!<br> Please send any feedback to Jack at jack@today-in-history-game.com </p>
+    <!-- <div class="accordion">
+        <button class="accordion-btn">How to play</button>
+        <div class="accordion-content">
+            <p> How to play:<br> Fill in each square with any English word <br> so that the word fits in both the vertical and horizontal categories</p>
+            <p> Tips: words don't have -s (plural or verb) or -ed (past tense) endings. 
+            <p> You are part of the beta testers of the game! Thank you!<br> Please send any feedback to Jack: <a href="mailto:jack@today-in-history-game.com">jack@today-in-history-game.com</a> </p>
+        </div>
+    </div> -->
 
     <!-- <button onclick="checkWord('ant', 'noun', '3letters')">Check Word</button> -->
 
@@ -149,6 +235,10 @@
     <div id="autocomplete" class="autocomplete-suggestions" style="display: none;"></div>
 
     <script>
+        function toggleHelp() {
+            var helpContent = document.getElementById("help-content");
+            helpContent.style.display = helpContent.style.display === "block" ? "none" : "block";
+        }
         
         let top1, top2, top3, side1, side2, side3;
         const games = {
@@ -185,8 +275,10 @@
             // Update category elements with translations
             Object.entries(categoryElements).forEach(([key, element]) => {
                 const category = eval(key); // Use variable name to get value
-                const translation = categoryTranslations[category] || category; // Fallback to the original if no translation
-                element.textContent = translation;
+                const translationData = categoryTranslations[category] || [category, "No description available."]; 
+
+                element.textContent = translationData[0]; // Display text
+                element.title = translationData[1]; // Tooltip on hover
             });
         }
 
@@ -239,6 +331,12 @@
                 });
 
                 gridContainer.appendChild(row);
+            });
+
+            document.querySelectorAll('.grid-row > div').forEach(categoryCell => {
+                categoryCell.addEventListener('click', function() {
+                    alert(this.title);
+                });
             });
 
             // Call displayCategories after grid generation
@@ -320,6 +418,18 @@
         document.querySelectorAll("input").forEach(input => {
             input.addEventListener("input", handleInputChange); // Detect when Enter is pressed
         });
+
+        document.querySelector('.accordion-btn').addEventListener('click', function () {
+            this.classList.toggle('active');
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+
+
 
 
         function createCell(content) {
