@@ -128,6 +128,11 @@
             color: white !important;
         }
 
+        input.gold {
+            background-color: gold !important;
+            color: white !important;
+        }
+
         /* .accordion {
             width: 100%;
             max-width: 600px;
@@ -367,8 +372,18 @@
                     }
 
             if (wordValid){
+                // setting up gold points and percentages
                 let percentage_json = getPercentage(word, category1, category2)
-                console.log(percentage_json)
+                let totalCount = percentage_json['totalCount']
+                let wordCount = percentage_json['wordCount']
+
+                if (totalCount == 0){
+                    return;
+                }
+
+                if (wordCount == 1){
+                    updateCellColor()
+                }
                 
             }
 
@@ -378,20 +393,24 @@
             }
         }
 
-        function updateCellColor(rowIndex_flip, colIndex_flip, isValid) {
+        function updateCellColor(rowIndex_flip, colIndex_flip, isValid, gold) {
             // Find the input element based on row and column indices
             const inputField = document.querySelector(
                 `input[data-row="${colIndex_flip}"][data-col="${rowIndex_flip}"]`
             );
 
             if (inputField) {
-                // Apply the appropriate class based on the validity
+                // Apply the appropriate class based on the validity and gold status
                 if (isValid) {
-                    inputField.classList.add('valid');
+                    if (gold) {
+                        inputField.classList.add('gold'); // Add the gold class if it's a super winner
+                    } else {
+                        inputField.classList.add('valid'); // Add valid class if not gold
+                    }
                     inputField.classList.remove('invalid');
                 } else {
-                    inputField.classList.add('invalid');
-                    inputField.classList.remove('valid');
+                    inputField.classList.add('invalid'); // Always invalid if not valid
+                    inputField.classList.remove('valid', 'gold'); // Remove both valid and gold classes
                 }
             }
         }
