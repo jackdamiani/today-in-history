@@ -45,6 +45,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $resultTotal = $stmtTotal->get_result()->fetch_assoc();
     $totalGuesses = $resultTotal['total'] == 0 ? 1 : $resultTotal['total'];
 
+    // Get total number of guesses in this category
+    $queryTotal2 = "SELECT COUNT(*) AS total FROM answers 
+                JOIN categories c1 ON answers.category2_id = c1.id 
+                JOIN categories c2 ON answers.category1_id = c2.id 
+                WHERE c1.category = ? AND c2.category = ?";
+    $stmtTotal = $conn->prepare($queryTotal);
+    $stmtTotal->bind_param("ss", $category1, $category2);
+    $stmtTotal->execute();
+    $resultTotal2 = $stmtTotal->get_result()->fetch_assoc();
+    $totalGuesses2 = $resultTotal2['total'] == 0 ? 1 : $resultTotal2['total'];
+
+    $totalGuessesTotal = $totalGuesses + $totalGuesses2;
+
     // Get count of the specific word guessed
     $queryWord = "SELECT COUNT(*) AS total FROM answers 
     JOIN categories c1 ON answers.category1_id = c1.id 
@@ -57,9 +70,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $resultWord = $stmtWord->get_result()->fetch_assoc();
     $wordCount = $resultWord['count'] ?? 0;
 
-    // Calculate percentage
-    $percentage = ($wordCount / $totalGuesses) * 100;
+    // Get count of the specific word guessed
+    $queryWord2 = "SELECT COUNT(*) AS total FROM answers 
+    JOIN categories c1 ON answers.category2_id = c1.id 
+    JOIN categories c2 ON answers.category1_id = c2.id 
+    JOIN words w ON answers.word_id = w.id 
+    WHERE c1.category = ? AND c2.category = ? AND w.word = ?";
+    $stmtWord = $conn->prepare($queryWord2);
+    $stmtWord->bind_param("sss", $category1, $category2, $word);
+    $stmtWord->execute();
+    $resultWord2 = $stmtWord->get_result()->fetch_assoc();
+    $wordCount2 = $resultWord2['count'] ?? 0;
 
-    echo json_encode(['status' => 'success', "percentage" => $percentage, "totalCount" => $resultTotal['total'], "wordCount" => $resultWord['total']]);
+    $wordCountTotal = $wordCount + $wordCount2;
+
+    // Calculate percentage
+    $percentage = ($wordCountTotal / $totalGuessesTotal) * 100;
+
+    echo json_encode(['status' => 'success', "percentage" => $percentage, "totalCount" => $totalGuessesTotal, "wordCount" => $wordCountTotal]);
 }
 ?>
