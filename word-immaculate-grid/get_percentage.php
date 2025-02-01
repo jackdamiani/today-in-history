@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmtTotal->bind_param("ss", $category1, $category2);
     $stmtTotal->execute();
     $resultTotal = $stmtTotal->get_result()->fetch_assoc();
-    $totalGuesses = $resultTotal['total'] == 0 ? 1 : $resultTotal['total'];
+    $totalGuesses = $resultTotal['total'] ?? 0;
 
     // Get total number of guesses in this category
     $queryTotal2 = "SELECT COUNT(*) AS total FROM answers 
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmtTotal->bind_param("ss", $category1, $category2);
     $stmtTotal->execute();
     $resultTotal2 = $stmtTotal->get_result()->fetch_assoc();
-    $totalGuesses2 = $resultTotal2['total'] == 0 ? 1 : $resultTotal2['total'];
+    $totalGuesses2 = $resultTotal2['total'] ?? 0;
 
     $totalGuessesTotal = $totalGuesses + $totalGuesses2;
 
@@ -85,8 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $wordCountTotal = $wordCount + $wordCount2;
 
     // Calculate percentage
-    $percentage = ($wordCountTotal / $totalGuessesTotal) * 100;
+    // $percentage = ($wordCountTotal / $totalGuessesTotal) * 100;
 
-    echo json_encode(['status' => 'success', "percentage" => $percentage, "totalCount" => $totalGuessesTotal, "wordCount" => $wordCountTotal, "total1" => $totalGuesses, "total2" => $totalGuesses2, "word1" => $wordCount, "word2" => $wordCount2]);
+    echo json_encode(['status' => 'success', "totalCount" => $totalGuessesTotal, "wordCount" => $wordCountTotal, "total1" => $totalGuesses, "total2" => $totalGuesses2, "word1" => $wordCount, "word2" => $wordCount2]);
 }
 ?>
