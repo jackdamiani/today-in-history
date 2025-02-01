@@ -38,7 +38,7 @@ $resultWord = $stmtWord->get_result()->fetch_assoc();
 $wordid = $resultWord['id'] ?? 0;
 
 // Lookup category1 ID
-$category1idQuery = "SELECT id FROM categories WHERE name = ?";
+$category1idQuery = "SELECT id FROM categories WHERE category = ?";
 $stmtCategory1 = $conn->prepare($category1idQuery);
 $stmtCategory1->bind_param("s", $category1);
 $stmtCategory1->execute();
@@ -46,7 +46,7 @@ $resultCategory1 = $stmtCategory1->get_result()->fetch_assoc();
 $category1id = $resultCategory1['id'] ?? 0;
 
 // Lookup category2 ID
-$category2idQuery = "SELECT id FROM categories WHERE name = ?";
+$category2idQuery = "SELECT id FROM categories WHERE category = ?";
 $stmtCategory2 = $conn->prepare($category2idQuery);
 $stmtCategory2->bind_param("s", $category2);
 $stmtCategory2->execute();
