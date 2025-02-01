@@ -3,18 +3,18 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
 
-// Ensure the form data is received
-$word = $_POST['word'] ?? null;
-$category1 = $_POST['category1'] ?? null;
-$category2 = $_POST['category2'] ?? null;
+// // Ensure the form data is received
+// $word = $_POST['word'] ?? null;
+// $category1 = $_POST['category1'] ?? null;
+// $category2 = $_POST['category2'] ?? null;
 
-// Check for missing parameters
-if (!$word || !$category1 || !$category2) {
-    echo json_encode(['status' => 'error', 'message' => 'Missing required parameters']);
-    exit;
-}
+// // Check for missing parameters
+// if (!$word || !$category1 || !$category2) {
+//     echo json_encode(['status' => 'error', 'message' => 'Missing required parameters']);
+//     exit;
+// }
 
 // Database connection (Ensure $conn is already established in your db_config.php)
 require_once __DIR__ . '/../db_config.php'; // Adjust path if needed

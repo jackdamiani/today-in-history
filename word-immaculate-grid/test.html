@@ -371,34 +371,32 @@
                         console.error('Error:', error); // Catch errors
                     }
 
-            if (wordValid){
+                if (wordValid){
 
-                // insert word
-                await insertAnswer(word, category1, category2)
+                    // insert word
+                    await insertAnswer(word, category1, category2)
 
 
-                // setting up gold points and percentages
-                let percentage_json = await getPercentage(word, category1, category2)
-                let totalCount = percentage_json['totalCount']
-                let wordCount = percentage_json['wordCount']
+                    // setting up gold points and percentages
+                    let percentage_json = await getPercentage(word, category1, category2)
+                    let totalCount = percentage_json['totalCount']
+                    let wordCount = percentage_json['wordCount']
 
-                // if (totalCount == 0){
-                //     return;
-                // }
+                    // if (totalCount == 0){
+                    //     return;
+                    // }
 
-                if (wordCount == 1){
-                    updateCellColor(rowIndex, colIndex, wordValid, 1)
+                    if (wordCount == 1){
+                        updateCellColor(rowIndex, colIndex, wordValid, 1)
+                    }
+                    else{
+                        updateCellColor(rowIndex, colIndex, wordValid, 0)
+                    }
+                    
                 }
                 else{
                     updateCellColor(rowIndex, colIndex, wordValid, 0)
                 }
-                
-            }
-            else{
-                updateCellColor(rowIndex, colIndex, wordValid, 0)
-            }
-
-            
 
             }
         }
