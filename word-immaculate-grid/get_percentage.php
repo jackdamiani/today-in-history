@@ -87,6 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Calculate percentage
     $percentage = ($wordCountTotal / $totalGuessesTotal) * 100;
 
-    echo json_encode(['status' => 'success', "percentage" => $percentage, "totalCount" => $totalGuessesTotal, "wordCount" => $wordCountTotal]);
+    echo json_encode(['status' => 'success', "percentage" => $percentage, "totalCount" => $totalGuessesTotal, "wordCount" => $wordCountTotal, "total1" => $totalGuesses, "total2" => $totalGuesses2, "word1" => $wordCount, "word2" => $wordCount2]);
 }
 ?>
