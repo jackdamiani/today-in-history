@@ -357,20 +357,14 @@
                     rowIndex = parseInt(rowIndex);
                     colIndex = parseInt(colIndex);
 
-                    console.log(rowIndex, colIndex);
-
                     // Assuming categories are passed dynamically or set
                     let { sideCategory: category1, topCategory: category2 } = getCategoriesIndex(rowIndex, colIndex);
 
-                    // Call checkWord to validate the input
-                    console.log(word, category1, category2)
                     try {
                         wordValid = await checkWord(word, category1, category2);
-                        console.log(wordValid); // Logs 1 or 0 based on the server response
                     } catch (error) {
                         console.error('Error:', error); // Catch errors
                     }
-            console.log(rowIndex,colIndex, wordValid)
 
             if (wordValid){
                 let percentage_json = getPercentage(word, category1, category2)
