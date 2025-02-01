@@ -487,6 +487,7 @@
         });
 
         async function getPercentage(word, category1, category2) {
+            console.log(word, category1, category2)
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "get_percentage.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
