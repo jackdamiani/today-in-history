@@ -373,7 +373,7 @@
 
             if (wordValid){
                 // setting up gold points and percentages
-                let percentage_json = getPercentage(word, category1, category2)
+                let percentage_json = await getPercentage(word, category1, category2)
                 let totalCount = percentage_json['totalCount']
                 let wordCount = percentage_json['wordCount']
 
