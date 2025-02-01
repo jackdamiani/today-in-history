@@ -407,14 +407,12 @@
                 `input[data-row="${colIndex_flip}"][data-col="${rowIndex_flip}"]`
             );
 
-            console.log(isValid, gold)
 
             if (inputField) {
                 // Apply the appropriate class based on the validity and gold status
                 if (isValid) {
                     if (gold) {
                         inputField.classList.add('gold'); // Add the gold class if it's a super winner
-                        console.log('gold?')
                     } else {
                         inputField.classList.add('valid'); // Add valid class if not gold
                     }
