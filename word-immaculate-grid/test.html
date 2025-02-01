@@ -368,6 +368,8 @@
 
             if (wordValid){
                 let percentage_json = getPercentage(word, category1, category2)
+                console.log(percentage_json)
+                
             }
 
 
@@ -495,7 +497,7 @@
                         console.log(data); // Log the entire response
                         if (data.status === 'success') {
                             console.log('success');
-                            resolve(1);
+                            resolve(data);
                         } else {
                             console.log('fail');
                             resolve(0);
