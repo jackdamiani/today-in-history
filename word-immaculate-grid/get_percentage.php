@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 JOIN categories c1 ON answers.category1_id = c1.id 
                 JOIN categories c2 ON answers.category2_id = c2.id 
                 WHERE c2.category = ? AND c1.category = ?";
-    $stmtTotal = $conn->prepare($queryTotal);
+    $stmtTotal = $conn->prepare($queryTotal2);
     $stmtTotal->bind_param("ss", $category1, $category2);
     $stmtTotal->execute();
     $resultTotal2 = $stmtTotal->get_result()->fetch_assoc();
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmtWord->bind_param("sss", $category1, $category2, $word);
     $stmtWord->execute();
     $resultWord = $stmtWord->get_result()->fetch_assoc();
-    $wordCount = $resultWord['count'] ?? 0;
+    $wordCount = $resultWord['total'] ?? 0;
 
     // Get count of the specific word guessed
     $queryWord2 = "SELECT COUNT(*) AS total FROM answers 
@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmtWord->bind_param("sss", $category1, $category2, $word);
     $stmtWord->execute();
     $resultWord2 = $stmtWord->get_result()->fetch_assoc();
-    $wordCount2 = $resultWord2['count'] ?? 0;
+    $wordCount2 = $resultWord2['total'] ?? 0;
 
     $wordCountTotal = $wordCount + $wordCount2;
 
