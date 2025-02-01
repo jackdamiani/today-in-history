@@ -43,7 +43,7 @@ $stmtTotal = $conn->prepare($queryTotal);
 $stmtTotal->bind_param("ss", $category1, $category2);
 $stmtTotal->execute();
 $resultTotal = $stmtTotal->get_result()->fetch_assoc();
-$totalGuesses = $resultTotal['total'] ?? 1; // Avoid division by zero
+$totalGuesses = $resultTotal['total'] == 0 ? 1 : $resultTotal['total'];
 
 // Get count of the specific word guessed
 $queryWord = "SELECT COUNT(*) AS total FROM answers 
