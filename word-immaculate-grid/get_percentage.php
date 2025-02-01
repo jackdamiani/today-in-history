@@ -19,47 +19,47 @@ header('Content-Type: application/json');
 // Database connection (Ensure $conn is already established in your db_config.php)
 require_once __DIR__ . '/../db_config.php'; // Adjust path if needed
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // $word = $_POST['word'] ?? '';
-    // $category1 = $_POST['category1'] ?? '';
-    // $category2 = $_POST['category2'] ?? '';
+// if ($_SERVER["REQUEST_METHOD"] === "POST") {
+// $word = $_POST['word'] ?? '';
+// $category1 = $_POST['category1'] ?? '';
+// $category2 = $_POST['category2'] ?? '';
 
-    // // Test words
-    $word = 'set';
-    $category1 = '3letters';
-    $category2 = 'noun';
+// // Test words
+$word = 'set';
+$category1 = '3letters';
+$category2 = 'noun';
 
-    if (empty($word) || empty($category1) || empty($category2)) {
-        echo json_encode(["error" => "Invalid input"]);
-        exit;
-    }
-
-    // Get total number of guesses in this category
-    $queryTotal = "SELECT COUNT(*) AS total FROM answers 
-               JOIN categories c1 ON answers.category1_id = c1.id 
-               JOIN categories c2 ON answers.category2_id = c2.id 
-               WHERE c1.category = ? AND c2.category = ?";
-    $stmtTotal = $conn->prepare($queryTotal);
-    $stmtTotal->bind_param("ss", $category1, $category2);
-    $stmtTotal->execute();
-    $resultTotal = $stmtTotal->get_result()->fetch_assoc();
-    $totalGuesses = $resultTotal['total'] ?? 1; // Avoid division by zero
-
-    // Get count of the specific word guessed
-    $queryWord = "SELECT COUNT(*) AS total FROM answers 
-    JOIN categories c1 ON answers.category1_id = c1.id 
-    JOIN categories c2 ON answers.category2_id = c2.id 
-    JOIN words w ON answers.word_id = w.id 
-    WHERE c1.category = ? AND c2.category = ? AND w.word = ?";
-    $stmtWord = $conn->prepare($queryWord);
-    $stmtWord->bind_param("sss", $category1, $category2, $word);
-    $stmtWord->execute();
-    $resultWord = $stmtWord->get_result()->fetch_assoc();
-    $wordCount = $resultWord['count'] ?? 0;
-
-    // Calculate percentage
-    $percentage = ($wordCount / $totalGuesses) * 100;
-
-    echo json_encode([["percentage" => $percentage, "totalCount" => $resultTotal['total'], "wordCount" => $resultWord['total']]]);
+if (empty($word) || empty($category1) || empty($category2)) {
+    echo json_encode(["error" => "Invalid input"]);
+    exit;
 }
+
+// Get total number of guesses in this category
+$queryTotal = "SELECT COUNT(*) AS total FROM answers 
+            JOIN categories c1 ON answers.category1_id = c1.id 
+            JOIN categories c2 ON answers.category2_id = c2.id 
+            WHERE c1.category = ? AND c2.category = ?";
+$stmtTotal = $conn->prepare($queryTotal);
+$stmtTotal->bind_param("ss", $category1, $category2);
+$stmtTotal->execute();
+$resultTotal = $stmtTotal->get_result()->fetch_assoc();
+$totalGuesses = $resultTotal['total'] ?? 1; // Avoid division by zero
+
+// Get count of the specific word guessed
+$queryWord = "SELECT COUNT(*) AS total FROM answers 
+JOIN categories c1 ON answers.category1_id = c1.id 
+JOIN categories c2 ON answers.category2_id = c2.id 
+JOIN words w ON answers.word_id = w.id 
+WHERE c1.category = ? AND c2.category = ? AND w.word = ?";
+$stmtWord = $conn->prepare($queryWord);
+$stmtWord->bind_param("sss", $category1, $category2, $word);
+$stmtWord->execute();
+$resultWord = $stmtWord->get_result()->fetch_assoc();
+$wordCount = $resultWord['count'] ?? 0;
+
+// Calculate percentage
+$percentage = ($wordCount / $totalGuesses) * 100;
+
+echo json_encode([["percentage" => $percentage, "totalCount" => $resultTotal['total'], "wordCount" => $resultWord['total']]]);
+// }
 ?>
