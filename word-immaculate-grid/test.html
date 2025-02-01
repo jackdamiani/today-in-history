@@ -487,34 +487,32 @@
         });
 
         async function getPercentage(word, category1, category2) {
-            console.log(word, category1, category2)
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "get_percentage.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            return new Promise((resolve, reject) => {
+                console.log(word, category1, category2)
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "get_percentage.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    try {
-                        let response = JSON.parse(xhr.responseText);
-                        let match = response.find(r => r.word === word && r.category1 === category1 && r.category2 === category2);
+                var params = "word=" + encodeURIComponent(word) + "&category1=" + encodeURIComponent(category1) + "&category2=" + encodeURIComponent(category2);
 
-                        if (match) {
-                            let percentage = match.percentage.toFixed(2);
-                            inputField.nextElementSibling.innerText = `Guessed by ${percentage}% of users`;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var data = JSON.parse(xhr.responseText);
+                        console.log(data); // Log the entire response
+                        var data = JSON.parse(xhr.responseText);
+                        if (data.status === 'success') {
+                            console.log('success');
+                            resolve(1);
+                        } else {
+                            console.log('fail');
+                            resolve(0);
                         }
-                    } catch (error) {
-                        console.error("Error parsing response:", error);
                     }
-                }
-            };
+                };
 
-            let params = `word=${encodeURIComponent(word)}&category1=${encodeURIComponent(category1)}&category2=${encodeURIComponent(category2)}`;
-            xhr.send(params);
+                xhr.send(params);
 
-            let percentage_json = JSON.parse(xhr.responseText);
-            console.log("Percentage JSON")
-            console.log(percentage_json)
-            return percentage_json
+            });
         }
 
 
