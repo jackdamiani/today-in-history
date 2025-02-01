@@ -5,29 +5,29 @@ error_reporting(E_ALL);
 
 header('Content-Type: application/json');
 
-// Ensure the form data is received
-$word = $_POST['word'] ?? null;
-$category1 = $_POST['category1'] ?? null;
-$category2 = $_POST['category2'] ?? null;
+// // Ensure the form data is received
+// $word = $_POST['word'] ?? null;
+// $category1 = $_POST['category1'] ?? null;
+// $category2 = $_POST['category2'] ?? null;
 
-// Check for missing parameters
-if (!$word || !$category1 || !$category2) {
-    echo json_encode(['status' => 'error', 'message' => 'Missing required parameters']);
-    exit;
-}
+// // Check for missing parameters
+// if (!$word || !$category1 || !$category2) {
+//     echo json_encode(['status' => 'error', 'message' => 'Missing required parameters']);
+//     exit;
+// }
 
 // Database connection (Ensure $conn is already established in your db_config.php)
 require_once __DIR__ . '/../db_config.php'; // Adjust path if needed
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $word = $_POST['word'] ?? '';
-    $category1 = $_POST['category1'] ?? '';
-    $category2 = $_POST['category2'] ?? '';
+    // $word = $_POST['word'] ?? '';
+    // $category1 = $_POST['category1'] ?? '';
+    // $category2 = $_POST['category2'] ?? '';
 
     // // Test words
-    // $word = 'set';
-    // $category1 = '3letters';
-    // $category2 = 'noun';
+    $word = 'set';
+    $category1 = '3letters';
+    $category2 = 'noun';
 
     if (empty($word) || empty($category1) || empty($category2)) {
         echo json_encode(["error" => "Invalid input"]);
