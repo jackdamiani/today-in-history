@@ -130,7 +130,7 @@
 
         input.gold {
             background-color: gold !important;
-            color: white !important;
+            color: black !important;
         }
 
         /* .accordion {
@@ -372,6 +372,11 @@
                     }
 
             if (wordValid){
+
+                // insert word
+                await insertAnswer(word, category1, category2)
+
+
                 // setting up gold points and percentages
                 let percentage_json = await getPercentage(word, category1, category2)
                 let totalCount = percentage_json['totalCount']
@@ -381,7 +386,7 @@
                 //     return;
                 // }
 
-                if (wordCount == 0 || wordCount == 1){
+                if (wordCount == 1){
                     updateCellColor(rowIndex, colIndex, wordValid, 1)
                 }
                 else{
@@ -571,8 +576,37 @@
             });
         }
 
+        // Function to insert the word into the database
+        function insertAnswer(word, category1, category2) {
+            const xhr = new XMLHttpRequest();  // Create a new XMLHttpRequest object
 
-
+            // Open a POST request to the PHP backend
+            xhr.open("POST", "insert_answer.php", true);
+            
+            // Set the content-type for the request
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            
+            // Prepare the data to send (you can encode it here)
+            const data = `word=${encodeURIComponent(word)}&category1=${encodeURIComponent(category1)}&category2=${encodeURIComponent(category2)}`;
+            
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    console.log(data); // Log the entire response
+                    var data = JSON.parse(xhr.responseText);
+                    if (data.status === 'success') {
+                        console.log('success');
+                        resolve(1);
+                    } else {
+                        console.log('fail');
+                        resolve(0);
+                    }
+                }
+            };
+            
+            // Send the data to the backend
+            xhr.send(data);
+        }
 
 
     </script>
