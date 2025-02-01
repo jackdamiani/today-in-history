@@ -382,13 +382,18 @@
                 }
 
                 if (wordCount == 0 || wordCount == 1){
-                    updateCellColor()
+                    updateCellColor(rowIndex, colIndex, wordValid, 1)
+                }
+                else{
+                    updateCellColor(rowIndex, colIndex, wordValid, 0)
                 }
                 
             }
+            else{
+                updateCellColor(rowIndex, colIndex, wordValid, 0)
+            }
 
-
-            updateCellColor(rowIndex, colIndex, wordValid)
+            
 
             }
         }
