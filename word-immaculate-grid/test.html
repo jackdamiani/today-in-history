@@ -484,9 +484,7 @@
                 `input[data-row="${colIndex_flip}"][data-col="${rowIndex_flip}"]`
             );
 
-            console.log(rowIndex_flip, colIndex_flip)
             const percentageText = document.getElementById(`percentage-${colIndex_flip}-${rowIndex_flip}`);
-            console.log(percentageText)
 
             if (inputField) {
                 // Apply the appropriate class based on the validity and gold status
@@ -602,7 +600,6 @@
 
         async function getPercentage(word, category1, category2) {
             return new Promise((resolve, reject) => {
-                console.log(word, category1, category2)
                 let xhr = new XMLHttpRequest();
                 xhr.open("POST", "get_percentage.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -612,14 +609,14 @@
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         var data = JSON.parse(xhr.responseText);
-                        console.log(data); // Log the entire response
-                        if (data.status === 'success') {
-                            console.log('success');
-                            resolve(data);
-                        } else {
-                            console.log('fail');
-                            resolve(0);
-                        }
+                        // // console.log(data); // Log the entire response
+                        // if (data.status === 'success') {
+                        //     // console.log('success');
+                        //     resolve(data);
+                        // } else {
+                        //     // console.log('fail');
+                        //     resolve(0);
+                        // }
                     }
                 };
 
@@ -641,15 +638,14 @@
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         var data = JSON.parse(xhr.responseText);
-                        console.log(data); // Log the entire response
-                        var data = JSON.parse(xhr.responseText);
-                        if (data.status === 'success') {
-                            console.log('success');
-                            resolve(1);
-                        } else {
-                            console.log('fail');
-                            resolve(0);
-                        }
+                        // // console.log(data); // Log the entire response
+                        // if (data.status === 'success') {
+                        //     // console.log('success');
+                        //     resolve(1);
+                        // } else {
+                        //     // console.log('fail');
+                        //     resolve(0);
+                        // }
                     }
                 };
 
@@ -678,13 +674,12 @@
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText);
-                    console.log(data); // Log the entire response
-                    var data = JSON.parse(xhr.responseText);
-                    if (data.status === 'success') {
-                        console.log('success');
-                    } else {
-                        console.log('fail');
-                    }
+                    // // console.log(data); // Log the entire response
+                    // if (data.status === 'success') {
+                    //     // console.log('success');
+                    // } else {
+                    //     // console.log('fail');
+                    // }
                 }
             };
             
