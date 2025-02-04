@@ -446,11 +446,11 @@
                     let roundedPercentage = Math.round(percentage * 10) / 10;
 
                     // Convert to a string
-                    let totalCountstr = `${totalCount}%`;
-                    let wordCountstr = `${wordCount}%`;
-                    let percentageString = `${roundedPercentage}%`;
+                    let totalCountstr = `${totalCount}`;
+                    let wordCountstr = `${wordCount}`;
+                    let percentageString = `${roundedPercentage}`;
 
-                    finalPercentage = totalCountstr + "/" + wordCountstr + " = " + percentageString + "% -- nice!";
+                    finalPercentage = wordCountstr + "/" + totalCountstr + " = " + percentageString + "%";
                     
                     updatePercentage(finalPercentage, rowIndex, colIndex);
 
@@ -479,18 +479,25 @@
                 `input[data-row="${colIndex_flip}"][data-col="${rowIndex_flip}"]`
             );
 
+            console.log(rowIndex_flip, colIndex_flip)
+            const percentageText = document.getElementById(`percentage-${colIndex_flip + 1}-${rowIndex_flip + 1}`);
+
 
             if (inputField) {
                 // Apply the appropriate class based on the validity and gold status
                 if (isValid) {
                     if (gold) {
                         inputField.classList.add('gold'); // Add the gold class if it's a super winner
+                        if (percentageText) percentageText.style.color = "black";
+
                     } else {
                         inputField.classList.add('valid'); // Add valid class if not gold
+                        if (percentageText) percentageText.style.color = "white";
                     }
                     inputField.classList.remove('invalid');
                 } else {
                     inputField.classList.add('invalid'); // Always invalid if not valid
+                    if (percentageText) percentageText.style.color = "white";
                     inputField.classList.remove('valid', 'gold'); // Remove both valid and gold classes
                 }
             }
