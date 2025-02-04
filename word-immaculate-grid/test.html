@@ -51,33 +51,86 @@
             display: contents; /* Allow items to align directly into the grid container */
         }
 
-        .grid-row > div,
-        .grid-row > input {
+        .grid-row > div {
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Stack content inside the cell */
+            justify-content: space-between; /* Space between category text & percentage text */
             align-items: center;
             text-align: center;
-            width: 100%; /* Automatically adjusts to fit grid cell */
+            width: 100%;
             aspect-ratio: 1; /* Makes cells square */
-            border: 1px solid #333; /* Optional: border between cells */
-            background-color: #f9f9f9; /* Light background */
-            font-size: 16px; /* Font size for content */
+            border: 1px solid #333;
+            background-color: #999;
+            font-size: 16px;
             font-weight: bold;
+            justify-content: center;
             box-sizing: border-box;
+            position: relative;
             border-radius: 0px;
         }
 
+        .grid-cell {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+        }
+
+        /* .input-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: none;
+        } */
+
+
         input {
-            border: 1px solid #aaa;
+            border: none; /* Remove border for seamless look */
             padding: 0;
-            font-size: 14px;
+            font-size: 16px; /* Adjust input text size */
             text-align: center;
-            width: 100%; /* Make input field fit grid cell */
-            height: 100%; /* Match square dimensions */
+            width: 100%;
+            height: 100%;
             box-sizing: border-box;
             border-radius: 0px;
+            background-color: white; /* Matches background */
+            color: black; /* Main input text color */
+            position: relative; /* Needed for pseudo-element */
+            font-weight: bold;
         }
-        
+
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 0px;
+            text-align: center;
+        }
+
+        .input-container {
+            position: relative; /* Needed for absolute positioning */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 0;
+        }
+
+        .percentage-text {
+            position: absolute;
+            bottom: .5em;
+            /* left: 50%; */
+            /* transform: translateX(-50%); */
+            font-size: 12px;
+            color: white;
+            /* pointer-events: none; Ensures text does not interfere with input */
+            z-index: 100 !important;
+        }
 
         #game-selector {
             display: flex;
@@ -106,7 +159,7 @@
             top: 100%; /* Place the suggestions right below the input */
             transform: translateY(-5px); /* Add some spacing between the input and suggestions */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow for a modern look */
-            border-radius: 4px; /* Optional: rounded corners */
+            /* border-radius: 4px; Optional: rounded corners */
         }
 
         .autocomplete-suggestions div {
@@ -133,53 +186,19 @@
             color: black !important;
         }
 
-        /* .accordion {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-        .accordion-btn {
-            background-color: #aaa;
-            color: white;
-            border: none;
-            padding: 15px;
-            text-align: left;
-            width: 100%;
-            font-size: 16px;
-            cursor: pointer;
-            outline: none;
-            border-radius: 5px;
-        }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background-color: #f9f9f9;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 0 15px;
-        }
-        .accordion-content p {
-            margin: 10px 0;
-            line-height: 1.6;
-        }
-        .accordion .active .accordion-content {
-            max-height: 500px; /* Adjust this value based on your content height */
-            padding: 15px;
-        } */
 
         /* Help Bar */
         .help-bar {
             width: 100%;
-            background-color: #444;
+            background-color: green;
             color: white;
             padding: 10px 15px;
-            display: flex;
             align-items: center;
             justify-content: flex-start;
             cursor: pointer;
             font-size: 18px;
             user-select: none;
+            text-align: center;
         }
 
         .help-bar i {
@@ -197,6 +216,30 @@
             text-align: left;
         }
 
+        .green-square {
+            display: inline-block; /* Ensure it behaves like an inline element */
+            width: 10px; /* Adjust the size of the square */
+            height: 10px; /* Adjust the size of the square */
+            background-color: green; /* Replace with your website's green color */
+            margin-left: 5px; /* Optional, to space out the square from text */
+        }
+
+        .red-square {
+            display: inline-block; /* Ensure it behaves like an inline element */
+            width: 10px; /* Adjust the size of the square */
+            height: 10px; /* Adjust the size of the square */
+            background-color: red; /* Replace with your website's green color */
+            margin-left: 5px; /* Optional, to space out the square from text */
+        }
+
+        .gold-square {
+            display: inline-block; /* Ensure it behaves like an inline element */
+            width: 10px; /* Adjust the size of the square */
+            height: 10px; /* Adjust the size of the square */
+            background-color: gold; /* Replace with your website's green color */
+            margin-left: 5px; /* Optional, to space out the square from text */
+        }
+
 
 
     </style>
@@ -204,12 +247,13 @@
 <body>
     <!-- Help Bar with Icon -->
     <div class="help-bar" onclick="toggleHelp()">
-        How to Play <i class="fa fa-question-circle"></i> 
+        How to Play  <i class="fa fa-question-circle"></i> 
     </div>
 
     <!-- Hidden Help Instructions -->
     <div class="help-content" id="help-content">
         <p>Fill in each square with an English word so that it fits both the vertical and horizontal categories.</p>
+        <p><span class="green-square"></span> Green is correct, <span class="red-square"></span> Red is wrong, and <span class="gold-square"></span> Gold means your the first to guess that word for that category combination!</p>
         <p>Tips: Words typically do not have -s (plural) or -ed (past tense) endings.</p>
         <p>You are part of the beta testers! Send feedback to <a href="mailto:jack@today-in-history-game.com">jack@today-in-history-game.com</a></p>
     </div>
@@ -266,24 +310,18 @@
             generateGrid(gameNumber);
         }
 
-        // Function to display translated categories on the grid
         function displayCategories() {
-            const categoryElements = {
-                top1: document.getElementById('top1'),
-                top2: document.getElementById('top2'),
-                top3: document.getElementById('top3'),
-                side1: document.getElementById('side1'),
-                side2: document.getElementById('side2'),
-                side3: document.getElementById('side3')
-            };
+            const categoryKeys = ['top1', 'top2', 'top3', 'side1', 'side2', 'side3'];
 
-            // Update category elements with translations
-            Object.entries(categoryElements).forEach(([key, element]) => {
-                const category = eval(key); // Use variable name to get value
-                const translationData = categoryTranslations[category] || [category, "No description available."]; 
+            categoryKeys.forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    const category = element.textContent.trim(); // Get category text from element
+                    const translationData = categoryTranslations[category] || [category, "No description available."];
 
-                element.textContent = translationData[0]; // Display text
-                element.title = translationData[1]; // Tooltip on hover
+                    element.textContent = translationData[0]; // Display translated category
+                    element.title = translationData[1]; // Tooltip for description
+                }
             });
         }
 
@@ -291,61 +329,79 @@
             const gridContainer = document.getElementById("grid");
             gridContainer.innerHTML = ""; // Clear existing grid
 
-            // Fetch categories for the selected game number
             const categories = games[gameNumber];
-
-            // Use the first 3 categories for top and the next 3 for side
             const topCategories = categories.slice(0, 3);
             const sideCategories = categories.slice(3, 6);
 
-            // Row 0: Blank and top categories
             const topRow = document.createElement("div");
             topRow.classList.add("grid-row");
-            const cell = createCell()
+            const cell = createCell();
             topRow.appendChild(cell);
 
-            // Create top category cells (e.g., top1, top2, top3)
+            // adds top category
             topCategories.forEach((category, index) => {
                 const cell = createCell(category);
-                cell.id = `top${index + 1}`; // Add unique ID for each top category (top1, top2, top3)
+                cell.id = `top${index + 1}`;
+
+                // Add category element below
+                const topCategoryElement = document.createElement("div");
+                topCategoryElement.textContent = ""; // Reset content
+                cell.appendChild(topCategoryElement);
+
                 topRow.appendChild(cell);
             });
+
             gridContainer.appendChild(topRow);
 
-            // Create the side rows (side categories)
             sideCategories.forEach((sideCategory, rowIndex) => {
                 const row = document.createElement("div");
                 row.classList.add("grid-row");
 
-                // Create the side category cell (e.g., side1, side2, side3)
                 const sideCell = createCell(sideCategory);
-                sideCell.id = `side${rowIndex + 1}`; // Add unique ID for each side category (side1, side2, side3)
+                sideCell.id = `side${rowIndex + 1}`;
+
+                // Add side category element below
+                const sideCategoryElement = document.createElement("div");
+                sideCategoryElement.textContent = ""; // Reset content
+                sideCell.appendChild(sideCategoryElement);
+
                 row.appendChild(sideCell);
 
-                // Create input fields for each column (based on top categories)
-                topCategories.forEach((topCategory, colIndex) => {
+                topCategories.forEach((_, colIndex) => {
+                    const inputContainer = document.createElement("div");
+                    inputContainer.classList.add("input-container");
+
+                    // Create a span element for extra info
+                    const percentageText = document.createElement("span");
+                    percentageText.classList.add("percentage-text");
+                    percentageText.textContent = ""; // Initial percentage text
+
                     const input = document.createElement("input");
                     input.setAttribute("type", "text");
                     input.setAttribute("maxlength", "20");
                     input.setAttribute("data-row", rowIndex + 1);
                     input.setAttribute("data-col", colIndex + 1);
-                    // input.setAttribute("data-cell", i);
                     input.addEventListener("input", showAutocomplete);
                     input.addEventListener("keydown", checkInput);
-                    row.appendChild(input);
+                    percentageText.id = `percentage-${rowIndex + 1}-${colIndex + 1}`;
+
+                    inputContainer.appendChild(percentageText); // Append percentage text above
+                    inputContainer.appendChild(input);
+                    row.appendChild(inputContainer);
+
+                        gridContainer.appendChild(row);
+                    });
                 });
 
-                gridContainer.appendChild(row);
-            });
-
-            document.querySelectorAll('.grid-row > div').forEach(categoryCell => {
-                categoryCell.addEventListener('click', function() {
-                    alert(this.title);
-                });
-            });
-
-            // Call displayCategories after grid generation
             displayCategories();
+        }
+
+        // Updated function to change percentage text for a specific input Row/Col
+        function updatePercentage(newText, rowIndex, colIndex) {
+            const percentageText = document.getElementById(`percentage-${colIndex}-${rowIndex}`);
+            if (percentageText) {
+                percentageText.textContent = newText;
+            }
         }
 
 
@@ -359,6 +415,7 @@
                     let rowIndex = inputField.dataset.col; // Get the row from data-row
                     let colIndex = inputField.dataset.row; // Get the column from data-col
                     const word = inputField.value; // Get the word entered by the user
+                    console.log("Word Guessed: ", word)
                     rowIndex = parseInt(rowIndex);
                     colIndex = parseInt(colIndex);
 
@@ -381,6 +438,21 @@
                     let percentage_json = await getPercentage(word, category1, category2)
                     let totalCount = percentage_json['totalCount']
                     let wordCount = percentage_json['wordCount']
+
+                    // Calculate the percentage
+                    let percentage = (wordCount / totalCount) * 100;
+
+                    // Round to the nearest tenth
+                    let roundedPercentage = Math.round(percentage * 10) / 10;
+
+                    // Convert to a string
+                    let totalCountstr = `${totalCountstr}%`;
+                    let wordCountstr = `${wordCountstr}%`;
+                    let percentageString = `${roundedPercentage}%`;
+
+                    finalPercentage = totalCountstr + "/" + wordCountstr + " = " + percentageString + "% -- nice!";
+                    
+                    updatePercentage(finalPercentage, rowIndex, colIndex);
 
                     // if (totalCount == 0){
                     //     return;
@@ -437,25 +509,11 @@
             return { sideCategory, topCategory };
         }
 
-    
 
         // Add event listener to handle input event for "Enter" key
         document.querySelectorAll("input").forEach(input => {
             input.addEventListener("input", checkInput); // Detect when Enter is pressed
         });
-
-        document.querySelector('.accordion-btn').addEventListener('click', function () {
-            this.classList.toggle('active');
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-
-
-
 
         function createCell(content) {
             const cell = document.createElement("div");
@@ -464,9 +522,10 @@
             return cell;
         }
 
-        const autocompleteDiv = document.getElementById("autocomplete");
+        
 
         function showAutocomplete(event) {
+            const autocompleteDiv = document.getElementById("autocomplete");
             const query = event.target.value.toLowerCase();
             const inputRect = event.target.getBoundingClientRect();
 
@@ -493,8 +552,22 @@
                     const suggestion = document.createElement("div");
                     suggestion.textContent = match;
                     suggestion.addEventListener("click", () => {
-                        event.target.value = match;
+                        const inputField = event.target.closest('.input-container').querySelector('input');
+                        inputField.value = match;
+                        // event.target.value = match;
                         autocompleteDiv.style.display = "none";
+
+                        // acts like enter was hit!
+                        const simulatedEvent = new KeyboardEvent("keydown", {
+                            key: "Enter",
+                            keyCode: 13, // KeyCode for Enter
+                            code: "Enter",
+                            which: 13,
+                            bubbles: true, // Ensure the event bubbles up to other listeners if needed
+                        });
+
+                        // Call checkInput with the simulated event
+                        checkInput({ target: inputField, key: "Enter", value: inputField.value });
                     });
                     autocompleteDiv.appendChild(suggestion);
                 });
@@ -503,9 +576,11 @@
             }
         }
 
-        // Hide autocomplete when clicking outside
         document.addEventListener("click", (e) => {
-            if (!autocompleteDiv.contains(e.target)) {
+            const inputField = e.target.closest("input"); // Find the clicked input field
+
+            // Check if the click is outside the input and autocomplete
+            if (!autocompleteDiv.contains(e.target) && !inputField) {
                 autocompleteDiv.style.display = "none";
             }
         });
@@ -592,10 +667,8 @@
                     var data = JSON.parse(xhr.responseText);
                     if (data.status === 'success') {
                         console.log('success');
-                        resolve(1);
                     } else {
                         console.log('fail');
-                        resolve(0);
                     }
                 }
             };
