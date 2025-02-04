@@ -480,8 +480,8 @@
             );
 
             console.log(rowIndex_flip, colIndex_flip)
-            const percentageText = document.getElementById(`percentage-${colIndex_flip + 1}-${rowIndex_flip + 1}`);
-
+            const percentageText = document.getElementById(`percentage-${colIndex_flip}-${rowIndex_flip}`);
+            console.log(percentageText)
 
             if (inputField) {
                 // Apply the appropriate class based on the validity and gold status
