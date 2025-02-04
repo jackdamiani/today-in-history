@@ -489,10 +489,12 @@
                     if (gold) {
                         inputField.classList.add('gold'); // Add the gold class if it's a super winner
                         if (percentageText) percentageText.style.color = "black";
+                        inputField.classList.remove('valid');
 
                     } else {
                         inputField.classList.add('valid'); // Add valid class if not gold
                         if (percentageText) percentageText.style.color = "white";
+                        inputField.classList.remove('gold');
                     }
                     inputField.classList.remove('invalid');
                 } else {
