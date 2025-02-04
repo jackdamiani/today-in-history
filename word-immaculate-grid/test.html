@@ -404,6 +404,10 @@
             }
         }
 
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
 
         // Function to handle input change when "Enter" is pressed
         async function checkInput(event) {
@@ -433,6 +437,7 @@
                     // insert word
                     await insertAnswer(word, category1, category2)
 
+                    await sleep(100);
 
                     // setting up gold points and percentages
                     let percentage_json = await getPercentage(word, category1, category2)
