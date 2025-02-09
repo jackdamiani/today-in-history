@@ -41,7 +41,8 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 columns: 1 blank + 3 top categories */
             gap: 0; /* No gaps between cells */
-            width: 600px; /* Fixed width for the grid */
+            width: 90vw; /* Use viewport width for responsive scaling */
+            max-width: 600px;
             margin: 20px auto; 
             border: 2px solid #333; /* Optional: border around the entire grid */
             box-sizing: border-box;
@@ -134,10 +135,34 @@
 
         #game-selector {
             display: flex;
-            flex-direction: row; /* Stack buttons vertically */
-            align-items: center;
-            gap: 10px; /* Space between buttons */
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            justify-content: center; /* Center the buttons */
+            gap: 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
+
+        #game-selector button {
+            flex: 1 1 calc(33.33% - 10px); /* Make each button take up 1/3 of the available space */
+            min-width: 100px; /* Set a minimum width for each button */
+            max-width: 300px; /* Prevent buttons from becoming too wide */
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: green;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        #game-selector button:hover {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+
+        
 
         button {
             padding: 10px 20px;
@@ -260,6 +285,10 @@
 
 
     <h1>Word Immaculate Grid</h1>
+    <div id="gold-points-display" style="font-size: 20px; font-weight: bold; color: black;">
+        Gold Points: <span style="color: gold;">0</span>
+    </div>
+
     <!-- <div class="accordion">
         <button class="accordion-btn">How to play</button>
         <div class="accordion-content">
@@ -478,6 +507,49 @@
             }
         }
 
+        function setCookie(name, value) {
+            const expires = "expires=Fri, 31 Dec 9999 23:59:59 GMT";  // Never expires
+            document.cookie = `${name}=${value}; ${expires}; path=/`;
+        }
+
+        // Get a cookie value by name
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let c = cookies[i].trim();
+                if (c.indexOf(name + "=") === 0) {
+                    return c.substring(name.length + 1, c.length);
+                }
+            }
+            return null;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            let goldPoints = getCookie('goldPoints');
+            if (goldPoints === null) {
+                setCookie('goldPoints', 0);  // Create a cookie that lasts 1 year
+                goldPoints = 0;
+            }
+            updateGoldPointsDisplay(goldPoints);
+        });
+
+        function addGoldPoint() {
+            let goldPoints = parseInt(getCookie('goldPoints')) || 0;
+            goldPoints += 1;  // Add 1 gold point
+            setCookie('goldPoints', goldPoints);  // Update cookie
+            updateGoldPointsDisplay(goldPoints);
+        }
+
+        function updateGoldPointsDisplay(points) {
+            const goldPointsElement = document.querySelector('#gold-points-display span');
+            goldPointsElement.textContent = points;
+        }
+
+        // Delete a cookie (optional if you need a reset)
+        function deleteCookie(name) {
+            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        }
+
         function updateCellColor(rowIndex_flip, colIndex_flip, isValid, gold) {
             // Find the input element based on row and column indices
             const inputField = document.querySelector(
@@ -493,6 +565,10 @@
                         inputField.classList.add('gold'); // Add the gold class if it's a super winner
                         if (percentageText) percentageText.style.color = "black";
                         inputField.classList.remove('valid');
+
+                        // add gold points
+                        addGoldPoint();
+
 
                     } else {
                         inputField.classList.add('valid'); // Add valid class if not gold
