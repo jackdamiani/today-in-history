@@ -457,12 +457,12 @@
 
                     try {
                         wordValid = await checkWord(word, category1, category2);
+                        console.log("Word Valid: ", wordValid)
                     } catch (error) {
                         console.error('Error:', error); // Catch errors
                     }
 
                 if (wordValid){
-
                     // insert word
                     await insertAnswer(word, category1, category2)
 
