@@ -201,16 +201,36 @@ var today_in_history = {
         "2004": "Dale Earnhardt Jr. barrels past Tony Stewart to win the Daytona 500 on the same track that claimed his father's life three years ago. ",
         "2014": "Renaud Lavillenie breaks Sergei Bubka's 21-year-old indoor pole vault world record in Donetsk, Ukraine. Lavillenie clears the bar comfortably at 6.16 meters (20 feet, 2 1/2inches) in Bubka's home city"
     },
-    "0216": {"":"", " ": "", " ":""},
+    "0216": {
+        "1970": "Joe Frazier retains his world heavyweight title with a fifth-round knockout of Jimmy Ellis.",
+        "1972": "Wilt Chamberlain becomes the first NBA player to reach 30,000 career points during the Los Angeles Lakers' 110-109 loss to the Phoenix Suns.",
+        "1997": "Jeff Gordon becomes the youngest Daytona 500 winner at age 25."
+    },
     "0217": {
         "1968": "The Basketball Hall of Fame opens in Springfield, Mass.",
         "2013": "Danica Patrick wins the Daytona 500 pole, becoming the first woman to secure the top spot for any Sprint Cup race.",
         "2018": "Japan's Yuzuru Hanyu becomes the first man to successfully defend his Olympic figure skating title since Dick Button in 1952."
     },
-    "0218": {"":"", " ": "", " ":""},
-    "0219": {"":"", " ": "", " ":""},
-    "0220": {"":"", " ": "", " ":""},
-    "0221": {"":"", " ": "", " ":""},
+    "0218": {
+        "1995": "John Stockton becomes the first NBA player to reach 10,000 assists in Utah's win over Boston.",
+        "2001": "Dale Earnhardt dies in a last-lap crash at the Daytona 500.",
+        "2006": "Shani Davis becomes the first black athlete to win an individual gold medal at the Winter Olympics."
+    },
+    "0219": {
+        "2005": "Lindsay Kennedy becomes the first woman to play in a Major Indoor Soccer League game.",
+        "2017": "Anthony Davis scores an All-Star Game record 52 points as the Western Conference beats the East 192-182.",
+        "2021": "Russia competes under the acronym 'ROC' at the Olympics after a WADA ban on the country."
+    },
+    "0220": {
+        "1974": "Gordie Howe signs a $1 million, four-year contract to play with the Houston Aeros of the WHA alongside his sons, Mark and Marty.",
+        "2009": "Lindsey Van becomes the first women's ski jumping world champion.",
+        "2011": "Kobe Bryant wins his record-tying fourth NBA All-Star game MVP award."
+    },
+    "0221": {
+        "1970": "Pete Maravich of LSU scores 64 points in a loss to Kentucky, while Dan Issel scores 51 for the Wildcats.",
+        "2003": "Michael Jordan becomes the first 40-year-old in NBA history to score at least 40 points with 43 in the Washington Wizards’ win over the New Jersey Nets.",
+        "2014": "Mikaela Shiffrin becomes the youngest Olympic slalom gold medalist at 18 years old."
+    },
     "0222": {"1981": "Peter Stastny and Anton Stastny break the NHL record most points in a road game with 8", " ": "", " ":""},
     "0223": {"":"", " ": "", " ":""},
     "0224": {"":"", " ": "", " ":""},

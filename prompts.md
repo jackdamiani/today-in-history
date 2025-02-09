@@ -98,3 +98,26 @@ I need the dates to start at 0101 (january first) and go on from there.
 I need the YYYY to be in order, and I need 6 per date.
 
 Also make sure that the years are never before 1935 and there is at least one or two from the 1990s or 2000s
+
+
+--------------------------------------------------------------------------
+
+I'm going to give you an article with records. I only need them if they have the month, day, and year of the record broken. If there are two dates, only use the second one. If it reaches that condition, I need it in the format: 
+
+{"DATE": {"YEAR": "EVENT", ... }, ...} 
+
+The dates should be 4 digits and sorted in order from 0101 to 1231, and if there are multiple from the same day, they should be in order too.
+
+Example:
+
+
+Most touchdowns, game: 6, Alvin Kamara, December 25, 2020
+
+Should be:
+{"1225": {"2020": "Alvin Kamara breaks the NHL record most touchdowns in a game with 6"}}
+
+Records are from february 16: 
+
+You can put them all in one group like { "1019": { "YEAR": "EVENT", "YEAR": "EVENT", etc...}}. Make sure to Order the events in order by year.
+
+The article will come on the next prompt. Any questions?
