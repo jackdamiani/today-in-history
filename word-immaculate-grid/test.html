@@ -458,7 +458,7 @@
                     try {
                         console.log("in the function ")
                         wordValid = await checkWord(word, category1, category2);
-                        console.log("Word Valid: ", wordValid)
+                        console.log(wordValid)
                     } catch (error) {
                         console.error('Error:', error); // Catch errors
                     }
@@ -717,7 +717,7 @@
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         var data = JSON.parse(xhr.responseText);
-                        console.log(data); // Log the entire response
+                        // console.log(data); // Log the entire response
                         // if (data.status === 'success') {
                         //     // console.log('success');
                         //     resolve(1);
