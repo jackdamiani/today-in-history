@@ -1,96 +1,772 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!DOCTYPE html>
-    <head>
-        <tite style="display: none">Word Immaculate Grid</tite>
-        <meta name="decription" content="Fill in all 9 squares int the word immaculate grid!" />
-        <link rel="canonical" href="https://today-in-history-game.com/word-immaculate-grid" />
-    
-        <meta name="robots" content="nosnippet">
-        <meta property="og:title" content="Word Immaculate Grid">
-        <meta property="og:description" content="Fill in all 9 squares in the word immaculate grid!">
-        <meta property="og:type" content="game">
-        <meta property="og:url" content="https://today-in-history-game.com/word-immaculate-grid">
-        <meta property="og:image" content="logo2.png"/>
-    
-        <meta name="format-detection" content="telephone=no">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-M7QPSJ52');</script>
-        <!-- End Google Tag Manager -->
-    
-        <script src="https://kit.fontawesome.com/e302b4787d.js" crossorigin="anonymous"></script>
+<head>
+    <title>Word Immaculate Grid</title>
+    <meta name="description" content="Fill in all 16 squares in the word immaculate grid!" />
 
-        <link rel="stylesheet" href="style.css">
-        <script src="dictionary.js"></script>
-    </head>
-    
-    <body>
-        <div class="grid" id="grid"></div>
-    
-        <div id="autocomplete" class="autocomplete-suggestions" style="display: none;"></div>
-    
-        <script>        
-            // Create the 3x3 grid
-            const gridContainer = document.getElementById("grid");
-            for (let i = 0; i < 9; i++) {
-                const input = document.createElement("input");
-                input.setAttribute("type", "text");
-                input.setAttribute("maxlength", "20");
-                input.addEventListener("input", showAutocomplete);
-                gridContainer.appendChild(input);
-            }
+    <tite style="display: none">Word Immaculate Grid</tite>
+    <meta name="decription" content="Fill in all 9 squares int the word immaculate grid!" />
+    <link rel="canonical" href="https://today-in-history-game.com/word-immaculate-grid" />
+
+    <meta name="robots" content="nosnippet">
+    <meta property="og:title" content="Word Immaculate Grid">
+    <meta property="og:description" content="Fill in all 9 squares in the word immaculate grid!">
+    <meta property="og:type" content="game">
+    <meta property="og:url" content="https://today-in-history-game.com/word-immaculate-grid">
+    <meta property="og:image" content="logo2.png"/>
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"> -->
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="style.css">
+    <script src="dictionary.js"></script>
+    <script src="category_translation.js"></script>
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column; /* Align items vertically */
+            align-items: center; /* Center horizontally */
+            justify-content: flex-start; /* Align at the top */
+            font-family: Arial, sans-serif; /* Optional: Set a nice font */
+        }
+
+
+        #grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 columns: 1 blank + 3 top categories */
+            gap: 0; /* No gaps between cells */
+            width: 90vw; /* Use viewport width for responsive scaling */
+            max-width: 600px;
+            margin: 20px auto; 
+            border: 2px solid #333; /* Optional: border around the entire grid */
+            box-sizing: border-box;
+        }
+
+        .grid-row {
+            display: contents; /* Allow items to align directly into the grid container */
+        }
+
+        .grid-row > div {
+            display: flex;
+            flex-direction: column; /* Stack content inside the cell */
+            justify-content: space-between; /* Space between category text & percentage text */
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            aspect-ratio: 1; /* Makes cells square */
+            border: 1px solid #333;
+            background-color: #ccc;
+            font-size: 16px;
+            font-weight: bold;
+            justify-content: center;
+            box-sizing: border-box;
+            position: relative;
+            border-radius: 0px;
+        }
+
+        .grid-cell {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+        }
+
+        /* .input-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: none;
+        } */
+
+
+        input {
+            border: none; /* Remove border for seamless look */
+            padding: 0;
+            font-size: 16px; /* Adjust input text size */
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border-radius: 0px;
+            background-color: white; /* Matches background */
+            color: black; /* Main input text color */
+            position: relative; /* Needed for pseudo-element */
+            font-weight: bold;
+        }
+
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 0px;
+            text-align: center;
+        }
+
+        .input-container {
+            position: relative; /* Needed for absolute positioning */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 0;
+        }
+
+        .percentage-text {
+            position: absolute;
+            bottom: .5em;
+            /* left: 50%; */
+            /* transform: translateX(-50%); */
+            font-size: 12px;
+            color: white;
+            /* pointer-events: none; Ensures text does not interfere with input */
+            z-index: 100 !important;
+        }
+
+        #game-selector {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            justify-content: center; /* Center the buttons */
+            gap: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #game-selector button {
+            flex: 1 1 calc(33.33% - 10px); /* Make each button take up 1/3 of the available space */
+            min-width: 100px; /* Set a minimum width for each button */
+            max-width: 300px; /* Prevent buttons from becoming too wide */
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: green;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        #game-selector button:hover {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+
         
-            const autocompleteDiv = document.getElementById("autocomplete");
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 150px; /* Make buttons uniform */
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        .autocomplete-suggestions {
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            z-index: 1000;
+            left: 0; /* Align the suggestions to the left edge of the input */
+            top: 100%; /* Place the suggestions right below the input */
+            transform: translateY(-5px); /* Add some spacing between the input and suggestions */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow for a modern look */
+            /* border-radius: 4px; Optional: rounded corners */
+        }
+
+        .autocomplete-suggestions div {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .autocomplete-suggestions div:hover {
+            background-color: #eee;
+        }
+
+        input.valid {
+            background-color: green !important;
+            color: white !important;
+        }
+
+        input.invalid {
+            background-color: red !important;
+            color: white !important;
+        }
+
+        input.gold {
+            background-color: gold !important;
+            color: black !important;
+        }
+
+
+        /* Help Bar */
+        .help-bar {
+            width: 100%;
+            background-color: green;
+            color: white;
+            padding: 10px 15px;
+            align-items: center;
+            justify-content: flex-start;
+            cursor: pointer;
+            font-size: 18px;
+            user-select: none;
+            text-align: center;
+        }
+
+        .help-bar i {
+            margin-right: 10px;
+        }
+
+        /* Help Content */
+        .help-content {
+            display: none;
+            width: 75%;
+            max-width: 600px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .green-square {
+            display: inline-block; /* Ensure it behaves like an inline element */
+            width: 10px; /* Adjust the size of the square */
+            height: 10px; /* Adjust the size of the square */
+            background-color: green; /* Replace with your website's green color */
+            margin-left: 5px; /* Optional, to space out the square from text */
+        }
+
+        .red-square {
+            display: inline-block; /* Ensure it behaves like an inline element */
+            width: 10px; /* Adjust the size of the square */
+            height: 10px; /* Adjust the size of the square */
+            background-color: red; /* Replace with your website's green color */
+            margin-left: 5px; /* Optional, to space out the square from text */
+        }
+
+        .gold-square {
+            display: inline-block; /* Ensure it behaves like an inline element */
+            width: 10px; /* Adjust the size of the square */
+            height: 10px; /* Adjust the size of the square */
+            background-color: gold; /* Replace with your website's green color */
+            margin-left: 5px; /* Optional, to space out the square from text */
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Help Bar with Icon -->
+    <div class="help-bar" onclick="toggleHelp()">
+        How to Play  <i class="fa fa-question-circle"></i> 
+    </div>
+
+    <!-- Hidden Help Instructions -->
+    <div class="help-content" id="help-content">
+        <p>Fill in each square with an English word so that it fits both the vertical and horizontal categories.</p>
+        <p><span class="green-square"></span> Green is correct, <span class="red-square"></span> Red is wrong, and <span class="gold-square"></span> Gold means your the first to guess that word for that category combination!</p>
+        <p>Tips: Words typically do not have -s (plural) or -ed (past tense) endings.</p>
+        <p>You are part of the beta testers! Send feedback to <a href="mailto:jack@today-in-history-game.com">jack@today-in-history-game.com</a></p>
+    </div>
+
+
+    <h1>Word Immaculate Grid</h1>
+    <div id="gold-points-display" style="font-size: 20px; font-weight: bold; color: black;">
+        Gold Points: <span style="color: gold;">0</span>
+    </div>
+
+    <!-- <div class="accordion">
+        <button class="accordion-btn">How to play</button>
+        <div class="accordion-content">
+            <p> How to play:<br> Fill in each square with any English word <br> so that the word fits in both the vertical and horizontal categories</p>
+            <p> Tips: words don't have -s (plural or verb) or -ed (past tense) endings. 
+            <p> You are part of the beta testers of the game! Thank you!<br> Please send any feedback to Jack: <a href="mailto:jack@today-in-history-game.com">jack@today-in-history-game.com</a> </p>
+        </div>
+    </div> -->
+
+    <!-- <button onclick="checkWord('ant', 'noun', '3letters')">Check Word</button> -->
+
+    <h2>Select a Game</h2>
+    <div id="game-selector">
         
-            function showAutocomplete(event) {
-                const query = event.target.value.toLowerCase();
-                const inputRect = event.target.getBoundingClientRect();
+        <button onclick="selectGame(1)">Game 1</button>
+        <button onclick="selectGame(2)">Game 2</button>
+        <button onclick="selectGame(3)">Game 3</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <div id="autocomplete" class="autocomplete-suggestions" style="display: none;"></div>
+
+    <script>
+        function toggleHelp() {
+            var helpContent = document.getElementById("help-content");
+            helpContent.style.display = helpContent.style.display === "block" ? "none" : "block";
+        }
         
-                if (query.length === 0) {
-                    autocompleteDiv.style.display = "none";
-                    return;
-                }
+        let top1, top2, top3, side1, side2, side3;
+        const games = {
+            1: ["noun", "verb", "adjective", "3letters", "4letters", "5letters"],
+            2: ["4letters", "6letters", "8letters", "adverb", "double_letter", "alternate_vowel_consonant"],
+            3: ["5letters", "6letters", "all5_vowels", "double_letter", "start_end_same_letter", "no_repeated_letters"]
+        };
+
+        let gameNumber;
+
         
-                // Filter words that match the query
-                const matches = Object.keys(words_dict).filter(word => word.startsWith(query)).slice(0, 5);
-        
-                if (matches.length > 0) {
-                    autocompleteDiv.style.display = "block";
-                    autocompleteDiv.style.left = `${inputRect.left + window.scrollX}px`;
-                    autocompleteDiv.style.top = `${inputRect.bottom + window.scrollY}px`;
-        
-                    // Clear previous suggestions
-                    autocompleteDiv.innerHTML = "";
-        
-                    // Add suggestions to the autocomplete div
-                    matches.forEach(match => {
-                        const suggestion = document.createElement("div");
-                        suggestion.textContent = match;
-                        suggestion.addEventListener("click", () => {
-                            event.target.value = match;
-                            autocompleteDiv.style.display = "none";
-                        });
-                        autocompleteDiv.appendChild(suggestion);
-                    });
-                } else {
-                    autocompleteDiv.style.display = "none";
-                }
-            }
-        
-            // Hide autocomplete when clicking outside
-            document.addEventListener("click", (e) => {
-                if (!autocompleteDiv.contains(e.target)) {
-                    autocompleteDiv.style.display = "none";
+
+        // Function to select a game and display translated categories
+        function selectGame(selectedGame) {            
+            gameNumber = selectedGame
+            // Assign categories based on game selection
+            const selectedCategories = games[gameNumber];
+            [top1, top2, top3, side1, side2, side3] = selectedCategories;
+
+            generateGrid(gameNumber);
+        }
+
+        function displayCategories() {
+            const categoryKeys = ['top1', 'top2', 'top3', 'side1', 'side2', 'side3'];
+
+            categoryKeys.forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    const category = element.textContent.trim(); // Get category text from element
+                    const translationData = categoryTranslations[category] || [category, "No description available."];
+
+                    element.textContent = translationData[0]; // Display translated category
+                    element.title = translationData[1]; // Tooltip for description
                 }
             });
-        </script>
+        }
+
+        function generateGrid(gameNumber) {
+            const gridContainer = document.getElementById("grid");
+            gridContainer.innerHTML = ""; // Clear existing grid
+
+            const categories = games[gameNumber];
+            const topCategories = categories.slice(0, 3);
+            const sideCategories = categories.slice(3, 6);
+
+            const topRow = document.createElement("div");
+            topRow.classList.add("grid-row");
+            const cell = createCell();
+            topRow.appendChild(cell);
+
+            // adds top category
+            topCategories.forEach((category, index) => {
+                const cell = createCell(category);
+                cell.id = `top${index + 1}`;
+
+                // Add category element below
+                const topCategoryElement = document.createElement("div");
+                topCategoryElement.textContent = ""; // Reset content
+                cell.appendChild(topCategoryElement);
+
+                topRow.appendChild(cell);
+            });
+
+            gridContainer.appendChild(topRow);
+
+            sideCategories.forEach((sideCategory, rowIndex) => {
+                const row = document.createElement("div");
+                row.classList.add("grid-row");
+
+                const sideCell = createCell(sideCategory);
+                sideCell.id = `side${rowIndex + 1}`;
+
+                // Add side category element below
+                const sideCategoryElement = document.createElement("div");
+                sideCategoryElement.textContent = ""; // Reset content
+                sideCell.appendChild(sideCategoryElement);
+
+                row.appendChild(sideCell);
+
+                topCategories.forEach((_, colIndex) => {
+                    const inputContainer = document.createElement("div");
+                    inputContainer.classList.add("input-container");
+
+                    // Create a span element for extra info
+                    const percentageText = document.createElement("span");
+                    percentageText.classList.add("percentage-text");
+                    percentageText.textContent = ""; // Initial percentage text
+
+                    const input = document.createElement("input");
+                    input.setAttribute("type", "text");
+                    input.setAttribute("maxlength", "20");
+                    input.setAttribute("data-row", rowIndex + 1);
+                    input.setAttribute("data-col", colIndex + 1);
+                    input.addEventListener("input", showAutocomplete);
+                    input.addEventListener("keydown", checkInput);
+                    percentageText.id = `percentage-${rowIndex + 1}-${colIndex + 1}`;
+
+                    inputContainer.appendChild(percentageText); // Append percentage text above
+                    inputContainer.appendChild(input);
+                    row.appendChild(inputContainer);
+
+                        gridContainer.appendChild(row);
+                    });
+                });
+
+            displayCategories();
+        }
+
+        // Updated function to change percentage text for a specific input Row/Col
+        function updatePercentage(newText, rowIndex, colIndex) {
+            const percentageText = document.getElementById(`percentage-${colIndex}-${rowIndex}`);
+            if (percentageText) {
+                percentageText.textContent = newText;
+            }
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+
+        // Function to handle input change when "Enter" is pressed
+        async function checkInput(event) {
+            let wordValid = 0
+            const inputField = event.target;
+
+                // **Trigger only when "Enter" key is pressed**
+                if (event.key === "Enter") {
+                    let rowIndex = inputField.dataset.col; // Get the row from data-row
+                    let colIndex = inputField.dataset.row; // Get the column from data-col
+                    const word = inputField.value; // Get the word entered by the user
+                    console.log("Word Guessed: ", word)
+                    rowIndex = parseInt(rowIndex);
+                    colIndex = parseInt(colIndex);
+
+                    // Assuming categories are passed dynamically or set
+                    let { sideCategory: category1, topCategory: category2 } = getCategoriesIndex(rowIndex, colIndex);
+
+                    try {
+                        console.log("in the function ")
+                        wordValid = await checkWord(word, category1, category2);
+                        console.log(wordValid)
+                    } catch (error) {
+                        console.error('Error:', error); // Catch errors
+                    }
+
+                if (wordValid){
+                    // insert word
+                    await insertAnswer(word, category1, category2)
+
+                    await sleep(100);
+
+                    // setting up gold points and percentages
+                    let percentage_json = await getPercentage(word, category1, category2)
+                    let totalCount = percentage_json['totalCount']
+                    let wordCount = percentage_json['wordCount']
+
+                    // Calculate the percentage
+                    let percentage = (wordCount / totalCount) * 100;
+
+                    // Round to the nearest tenth
+                    let roundedPercentage = Math.round(percentage * 10) / 10;
+
+                    // Convert to a string
+                    let totalCountstr = `${totalCount}`;
+                    let wordCountstr = `${wordCount}`;
+                    let percentageString = `${roundedPercentage}`;
+
+                    finalPercentage = wordCountstr + "/" + totalCountstr + " = " + percentageString + "%";
+                    
+                    updatePercentage(finalPercentage, rowIndex, colIndex);
+
+                    // if (totalCount == 0){
+                    //     return;
+                    // }
+
+                    if (wordCount == 1){
+                        updateCellColor(rowIndex, colIndex, wordValid, 1)
+                    }
+                    else{
+                        updateCellColor(rowIndex, colIndex, wordValid, 0)
+                    }
+                    
+                }
+                else{
+                    updateCellColor(rowIndex, colIndex, wordValid, 0)
+                }
+
+            }
+        }
+
+        function setCookie(name, value) {
+            const expires = "expires=Fri, 31 Dec 9999 23:59:59 GMT";  // Never expires
+            document.cookie = `${name}=${value}; ${expires}; path=/`;
+        }
+
+        // Get a cookie value by name
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let c = cookies[i].trim();
+                if (c.indexOf(name + "=") === 0) {
+                    return c.substring(name.length + 1, c.length);
+                }
+            }
+            return null;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            let goldPoints = getCookie('goldPoints');
+            if (goldPoints === null) {
+                setCookie('goldPoints', 0);  // Create a cookie that lasts 1 year
+                goldPoints = 0;
+            }
+            updateGoldPointsDisplay(goldPoints);
+        });
+
+        function addGoldPoint() {
+            let goldPoints = parseInt(getCookie('goldPoints')) || 0;
+            goldPoints += 1;  // Add 1 gold point
+            setCookie('goldPoints', goldPoints);  // Update cookie
+            updateGoldPointsDisplay(goldPoints);
+        }
+
+        function updateGoldPointsDisplay(points) {
+            const goldPointsElement = document.querySelector('#gold-points-display span');
+            goldPointsElement.textContent = points;
+        }
+
+        // Delete a cookie (optional if you need a reset)
+        function deleteCookie(name) {
+            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        }
+
+        function updateCellColor(rowIndex_flip, colIndex_flip, isValid, gold) {
+            // Find the input element based on row and column indices
+            const inputField = document.querySelector(
+                `input[data-row="${colIndex_flip}"][data-col="${rowIndex_flip}"]`
+            );
+
+            const percentageText = document.getElementById(`percentage-${colIndex_flip}-${rowIndex_flip}`);
+
+            if (inputField) {
+                // Apply the appropriate class based on the validity and gold status
+                if (isValid) {
+                    if (gold) {
+                        inputField.classList.add('gold'); // Add the gold class if it's a super winner
+                        if (percentageText) percentageText.style.color = "black";
+                        inputField.classList.remove('valid');
+
+                        console.log('Gold Point')
+
+                        // add gold points
+                        addGoldPoint();
+
+
+                    } else {
+                        inputField.classList.add('valid'); // Add valid class if not gold
+                        if (percentageText) percentageText.style.color = "white";
+                        inputField.classList.remove('gold');
+                    }
+                    inputField.classList.remove('invalid');
+                } else {
+                    inputField.classList.add('invalid'); // Always invalid if not valid
+                    if (percentageText) percentageText.style.color = "white";
+                    inputField.classList.remove('valid', 'gold'); // Remove both valid and gold classes
+                }
+            }
+        }
+
+
+        function getCategoriesIndex(rowIndex, colIndex) {
+            // Adjusting indices for 1-based indexing
+            const sideCategoryIndex = rowIndex - 1; // Adjust row index for side categories (side1, side2, side3)
+            const topCategoryIndex = colIndex + 2;  // Adjust column index for top categories (top1, top2, top3)
+
+            // Get the values from the games dictionary based on the adjusted indices
+            let sideCategory = games[gameNumber][sideCategoryIndex];  // Side category
+            let topCategory = games[gameNumber][topCategoryIndex];    // Top category
+
+            return { sideCategory, topCategory };
+        }
+
+
+        // Add event listener to handle input event for "Enter" key
+        document.querySelectorAll("input").forEach(input => {
+            input.addEventListener("input", checkInput); // Detect when Enter is pressed
+        });
+
+        function createCell(content) {
+            const cell = document.createElement("div");
+            cell.textContent = content;
+            cell.style.fontWeight = "bold";
+            return cell;
+        }
+
         
-    </body>
+
+        function showAutocomplete(event) {
+            const autocompleteDiv = document.getElementById("autocomplete");
+            const query = event.target.value.toLowerCase();
+            const inputRect = event.target.getBoundingClientRect();
+
+            if (query.length === 0) {
+                autocompleteDiv.style.display = "none";
+                return;
+            }
+
+            // Filter words that match the query
+            const matches = Object.keys(words_dict)
+                .filter((word) => word.startsWith(query))
+                .slice(0, 5);
+
+            if (matches.length > 0) {
+                autocompleteDiv.style.display = "block";
+                autocompleteDiv.style.left = `${inputRect.left + window.scrollX}px`;
+                autocompleteDiv.style.top = `${inputRect.bottom + window.scrollY}px`;
+
+                // Clear previous suggestions
+                autocompleteDiv.innerHTML = "";
+
+                // Add suggestions to the autocomplete div
+                matches.forEach((match) => {
+                    const suggestion = document.createElement("div");
+                    suggestion.textContent = match;
+                    suggestion.addEventListener("click", () => {
+                        const inputField = event.target.closest('.input-container').querySelector('input');
+                        inputField.value = match;
+                        // event.target.value = match;
+                        autocompleteDiv.style.display = "none";
+
+                        // acts like enter was hit!
+                        const simulatedEvent = new KeyboardEvent("keydown", {
+                            key: "Enter",
+                            keyCode: 13, // KeyCode for Enter
+                            code: "Enter",
+                            which: 13,
+                            bubbles: true, // Ensure the event bubbles up to other listeners if needed
+                        });
+
+                        // Call checkInput with the simulated event
+                        checkInput({ target: inputField, key: "Enter", value: inputField.value });
+                    });
+                    autocompleteDiv.appendChild(suggestion);
+                });
+            } else {
+                autocompleteDiv.style.display = "none";
+            }
+        }
+
+        document.addEventListener("click", (e) => {
+            const autocompleteDiv = document.getElementById("autocomplete");
+            const inputField = e.target.closest("input"); // Find the clicked input field
+
+            // Check if the click is outside the input and autocomplete
+            if (!autocompleteDiv.contains(e.target) && !inputField) {
+                autocompleteDiv.style.display = "none";
+            }
+        });
+
+        async function getPercentage(word, category1, category2) {
+            return new Promise((resolve, reject) => {
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "get_percentage.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                var params = "word=" + encodeURIComponent(word) + "&category1=" + encodeURIComponent(category1) + "&category2=" + encodeURIComponent(category2);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var data = JSON.parse(xhr.responseText);
+                        // console.log(data); // Log the entire response
+                        if (data.status === 'success') {
+                            // console.log('success');
+                            resolve(data);
+                        } else {
+                            // console.log('fail');
+                            resolve(0);
+                        }
+                    }
+                };
+
+                xhr.send(params);
+
+            });
+        }
+
+
+        async function checkWord(word, category1, category2) {
+            return new Promise((resolve, reject) => {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "check_word.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                // Prepare the data to send
+                var params = "word=" + encodeURIComponent(word) + "&category1=" + encodeURIComponent(category1) + "&category2=" + encodeURIComponent(category2);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var data = JSON.parse(xhr.responseText);
+                        // console.log(data); // Log the entire response
+                        if (data.status === 'success') {
+                            // console.log('success');
+                            resolve(1);
+                        } else {
+                            // console.log('fail');
+                            resolve(0);
+                        }
+                    }
+                };
+
+                xhr.onerror = function () {
+                    reject(new Error("Request failed"));
+                };
+
+                // Send the data
+                xhr.send(params);
+            });
+        }
+
+        // Function to insert the word into the database
+        function insertAnswer(word, category1, category2) {
+            const xhr = new XMLHttpRequest();  // Create a new XMLHttpRequest object
+
+            // Open a POST request to the PHP backend
+            xhr.open("POST", "insert_answer.php", true);
+            
+            // Set the content-type for the request
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            
+            // Prepare the data to send (you can encode it here)
+            const data = `word=${encodeURIComponent(word)}&category1=${encodeURIComponent(category1)}&category2=${encodeURIComponent(category2)}`;
+            
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    // // console.log(data); // Log the entire response
+                    // if (data.status === 'success') {
+                    //     // console.log('success');
+                    // } else {
+                    //     // console.log('fail');
+                    // }
+                }
+            };
+            
+            // Send the data to the backend
+            xhr.send(data);
+        }
+
+
+    </script>
+</body>
 </html>
