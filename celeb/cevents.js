@@ -300,6 +300,17 @@ var today_in_history = {
         "1972": "Antonio Sabàto Jr., Actor/Model, 'General Hospital'",
         "1980": "Simon Gagné, Hockey Player, 'Stanley Cup Champion'"
     },
+    "0301": {
+        "1954": "Ron Howard (Actor, Andy Griffith Show)",
+        "1974": "Mark-Paul Gosselaar (Actor, 'Saved by the Bell')",
+        "1994": "Justin Bieber (Pop singer)"
+    },
+    "0302": {
+        "1968": "Daniel Craig (Actor, 'James Bond')",
+        "1977": "Chris Martin (Singer, Coldplay)",
+        "1990": "Luke Combs (Singer 'Beer Never Broke My Heart')"
+    },
+    
 
     "0802": {"1951": "Joe Lynn Turner, singer", "1970": "Kevin Smith, filmaker", "1992": "Charli XCX, singer"},
     "0803": {"1963": "James Hetfield", "1977": "Tom Brady, football player", "1984": "Ryan Lochte, swimmer"},

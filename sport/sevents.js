@@ -192,53 +192,83 @@ var today_in_history = {
         "2003": "Teresa Phillips becomes the first woman to coach a men's Division I team, but her presence couldn't stop Tennessee State from losing for the 17th straight time, 71-56 at Austin Peay"
     },
     "0214": {
-        "1966": "Philadelphia's Wilt Chamberlain scores 41 points in a 149-123 win over Detroit to become the NBA's all-time scoring leader, passing Bob Pettit (20,880 points).",
+        "1966": "Philadelphia's Wilt Chamberlain scores 41 points in a 149-123 win over Detroit to become the NBA's all-time scoring leader, passing Bob Pettit (20,880 points)",
         "1986": "Wayne Gretzky gets seven assists for the third time in his career as the Edmonton Oilers beat the Quebec Nordiques, 8-2. ",
-        "2015": "Mikaela Shiffrin becomes the third woman to win back-to-back slalom titles at world championships. She finishes in a combined time of 1:38.48, edging Frida Hansdotter of Sweden by 0.34 seconds."
+        "2015": "Mikaela Shiffrin becomes the third woman to win back-to-back slalom titles at world championships. She finishes in a combined time of 1:38.48, edging Frida Hansdotter of Sweden by 0.34 seconds"
     },
     "0215": {
-        "2002": "The worst judging scandal in Winter Olympics history is resolved, with Canadian pairs figure skaters Jamie Sale and David Pelletier declared co-gold medalists with the Russian winners.",
+        "2002": "The worst judging scandal in Winter Olympics history is resolved, with Canadian pairs figure skaters Jamie Sale and David Pelletier declared co-gold medalists with the Russian winners",
         "2004": "Dale Earnhardt Jr. barrels past Tony Stewart to win the Daytona 500 on the same track that claimed his father's life three years ago. ",
         "2014": "Renaud Lavillenie breaks Sergei Bubka's 21-year-old indoor pole vault world record in Donetsk, Ukraine. Lavillenie clears the bar comfortably at 6.16 meters (20 feet, 2 1/2inches) in Bubka's home city"
     },
     "0216": {
-        "1970": "Joe Frazier retains his world heavyweight title with a fifth-round knockout of Jimmy Ellis.",
-        "1972": "Wilt Chamberlain becomes the first NBA player to reach 30,000 career points during the Los Angeles Lakers' 110-109 loss to the Phoenix Suns.",
-        "1997": "Jeff Gordon becomes the youngest Daytona 500 winner at age 25."
+        "1970": "Joe Frazier retains his world heavyweight title with a fifth-round knockout of Jimmy Ellis",
+        "1972": "Wilt Chamberlain becomes the first NBA player to reach 30,000 career points during the Los Angeles Lakers' 110-109 loss to the Phoenix Suns",
+        "1997": "Jeff Gordon becomes the youngest Daytona 500 winner at age 25"
     },
     "0217": {
-        "1968": "The Basketball Hall of Fame opens in Springfield, Mass.",
-        "2013": "Danica Patrick wins the Daytona 500 pole, becoming the first woman to secure the top spot for any Sprint Cup race.",
-        "2018": "Japan's Yuzuru Hanyu becomes the first man to successfully defend his Olympic figure skating title since Dick Button in 1952."
+        "1968": "The Basketball Hall of Fame opens in Springfield, Mass",
+        "2013": "Danica Patrick wins the Daytona 500 pole, becoming the first woman to secure the top spot for any Sprint Cup race",
+        "2018": "Japan's Yuzuru Hanyu becomes the first man to successfully defend his Olympic figure skating title since Dick Button in 1952"
     },
     "0218": {
-        "1995": "John Stockton becomes the first NBA player to reach 10,000 assists in Utah's win over Boston.",
-        "2001": "Dale Earnhardt dies in a last-lap crash at the Daytona 500.",
-        "2006": "Shani Davis becomes the first black athlete to win an individual gold medal at the Winter Olympics."
+        "1995": "John Stockton becomes the first NBA player to reach 10,000 assists in Utah's win over Boston",
+        "2001": "Dale Earnhardt dies in a last-lap crash at the Daytona 500",
+        "2006": "Shani Davis becomes the first black athlete to win an individual gold medal at the Winter Olympics"
     },
     "0219": {
-        "2005": "Lindsay Kennedy becomes the first woman to play in a Major Indoor Soccer League game.",
-        "2017": "Anthony Davis scores an All-Star Game record 52 points as the Western Conference beats the East 192-182.",
-        "2021": "Russia competes under the acronym 'ROC' at the Olympics after a WADA ban on the country."
+        "2005": "Lindsay Kennedy becomes the first woman to play in a Major Indoor Soccer League game",
+        "2017": "Anthony Davis scores an All-Star Game record 52 points as the Western Conference beats the East 192-182",
+        "2021": "Russia competes under the acronym 'ROC' at the Olympics after a WADA ban on the country"
     },
     "0220": {
-        "1974": "Gordie Howe signs a $1 million, four-year contract to play with the Houston Aeros of the WHA alongside his sons, Mark and Marty.",
-        "2009": "Lindsey Van becomes the first women's ski jumping world champion.",
-        "2011": "Kobe Bryant wins his record-tying fourth NBA All-Star game MVP award."
+        "1974": "Gordie Howe signs a $1 million, four-year contract to play with the Houston Aeros of the WHA alongside his sons, Mark and Marty",
+        "2009": "Lindsey Van becomes the first women's ski jumping world champion",
+        "2011": "Kobe Bryant wins his record-tying fourth NBA All-Star game MVP award"
     },
     "0221": {
-        "1970": "Pete Maravich of LSU scores 64 points in a loss to Kentucky, while Dan Issel scores 51 for the Wildcats.",
-        "2003": "Michael Jordan becomes the first 40-year-old in NBA history to score at least 40 points with 43 in the Washington Wizards’ win over the New Jersey Nets.",
-        "2014": "Mikaela Shiffrin becomes the youngest Olympic slalom gold medalist at 18 years old."
+        "1970": "Pete Maravich of LSU scores 64 points in a loss to Kentucky, while Dan Issel scores 51 for the Wildcats",
+        "2003": "Michael Jordan becomes the first 40-year-old in NBA history to score at least 40 points with 43 in the Washington Wizards’ win over the New Jersey Nets",
+        "2014": "Mikaela Shiffrin becomes the youngest Olympic slalom gold medalist at 18 years old"
     },
-    "0222": {"1981": "Peter Stastny and Anton Stastny break the NHL record most points in a road game with 8", " ": "", " ":""},
-    "0223": {"":"", " ": "", " ":""},
-    "0224": {"":"", " ": "", " ":""},
-    "0225": {"":"", " ": "", " ":""},
-    "0226": {"":"", " ": "", " ":""},
-    "0227": {"":"", " ": "", " ":""},
-    "0228": {"":"", " ": "", " ":""},
-    "0229": {"":"", " ": "", " ":""},
+    "0222": {"1980": "Miracle on Ice: The U.S. ice hockey team stuns the heavily favored Soviet Union 4-3 at Lake Placid, one of the biggest upsets in Olympic history. The Americans go on to win gold",
+        "1981": "Peter Stastny and Anton Stastny break the NHL record most points in a road game with 8",
+        "2003": "Pakistani pacer Shoaib Akhtar bowls the fastest recorded delivery in cricket history at 100.2 mph (161.3 km/h)"
+    },
+    "0223": {
+        "1987": "Seattle's Nate McMillan sets an NBA rookie record with 25 assists in a win over the Los Angeles Clippers",
+        "1991": "North Carolina becomes the first team in NCAA basketball history to win 1,500 games with a victory over Clemson",
+        "2010": "Dutch skater Sven Kramer loses the Olympic 10,000-meter speedskating gold after his coach mistakenly directs him into the wrong lane"
+    },
+    "0224": {
+        "1980": "The U.S. ice hockey team clinches the Olympic gold medal with a 4-2 win over Finland at the Lake Placid Winter Olympics, following their 'Miracle on Ice' victory over the Soviet Union",
+        "2010": "Sachin Tendulkar becomes the first cricketer to score a double century in One Day International (ODI) history",
+        "2020": "A memorial service for NBA legend Kobe Bryant is held at the Staples Center in Los Angeles"
+    },
+    "0225": {
+        "1977": "Pete Maravich scores 68 points, the most by an NBA guard, leading the New Orleans Jazz to a 124-107 win over the Knicks",
+        "1987": "The SMU football team is suspended for the 1987 season after an investigation reveals payments to players from a booster slush fund", 
+        "2017": "Kelsey Plum becomes the NCAA's all-time scoring leader with 57 points in Washington’s 84-77 win over Utah"
+    },
+    "0226": {
+        "1935": "Babe Ruth is released by the New York Yankees and signs with the Boston Braves",
+        "1967": "Mario Andretti wins the Daytona 500, becoming the first person born outside the United States to win the race. He pulls away from 1965 champion Fred Lorenzen in the closing laps",
+        "2018": "The top-ranked UConn women's basketball team completes an undefeated regular season for the 10th time in program history with an 82-53 win over No. 20 South Florida. The Huskies improve to 98-0 against AAC opponents, including 86-0 in the regular season and four straight conference tournament titles"
+    },
+    "0227": {"1959": "The Boston Celtics defeat the Minneapolis Lakers 173-139, setting seven NBA records, including most points in a game (179), most points in a half (90), most points in a quarter (52), and most field goals (72). Tom Heinsohn scores 43 points, and Bob Cousy sets an NBA record with 28 assists",
+        "1982": "Mary Russ becomes the first female jockey to win a Grade I stakes race in North America, riding Lord Darnley to victory in the Widener Handicap at Hialeah Park",
+        "2006": "Effa Manley becomes the first woman elected to the Baseball Hall of Fame. The former Newark Eagles co-owner is among 17 individuals from the Negro Leagues and pre-Negro Leagues selected by a special committee"
+    },
+    "0228": {
+        "1940": "College basketball is televised for the first time. Station W2XBS broadcasts a doubleheader from Madison Square Garden featuring Pitt vs. Fordham and New York University vs. Georgetown",
+        "1960": "The U.S. hockey team scores six goals in the third period to defeat Czechoslovakia 9-4 and win the gold medal at the Winter Olympics in Squaw Valley, California",
+        "1987": "Los Angeles Lakers broadcaster Chick Hearn calls his 2,000th consecutive game for the team, a streak spanning 22 years"
+    },
+    "0229": {
+        "1964": "Cincinnati's Jerry Lucas and Oscar Robertson combine for a rare 40-40 performance as the Royals defeat the Philadelphia 76ers, 117-114. NBA MVP Robertson scores 43 points, while Rookie of the Year Lucas grabs 40 rebounds",
+        "1972": "Future Hall of Fame right fielder Hank Aaron becomes the first MLB player to earn an average annual salary of $200,000, signing a three-year deal with the Atlanta Braves after hitting .327 with 47 home runs and 118 RBIs in the previous season",
+        "1976": "Richard Petty wins the only Winston Cup race ever run on Leap Day, taking the Carolina 500 at Rockingham by two laps over Darrell Waltrip"
+    },
     "0301": {"":"", " ": "", " ":""},
     "0302": {"":"", " ": "", " ":""},
     "0303": {"":"", " ": "", " ":""},
