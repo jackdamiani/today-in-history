@@ -269,13 +269,48 @@ var today_in_history = {
         "1972": "Future Hall of Fame right fielder Hank Aaron becomes the first MLB player to earn an average annual salary of $200,000, signing a three-year deal with the Atlanta Braves after hitting .327 with 47 home runs and 118 RBIs in the previous season",
         "1976": "Richard Petty wins the only Winston Cup race ever run on Leap Day, taking the Carolina 500 at Rockingham by two laps over Darrell Waltrip"
     },
-    "0301": {"":"", " ": "", " ":""},
-    "0302": {"":"", " ": "", " ":""},
-    "0303": {"":"", " ": "", " ":""},
-    "0304": {"":"", " ": "", " ":""},
-    "0305": {"":"", " ": "", " ":""},
-    "0306": {"":"", " ": "", " ":""},
-    "0307": {"":"", " ": "", " ":""},
+    "0301": {
+        "1969": "New York Yankees legend Mickey Mantle announces his retirement from baseball.",
+        "1980": "Eddie Sutton becomes the first NCAA basketball coach to lead four different schools to 20-win seasons.",
+        "1992": "The Pittsburgh Penguins acquire Rick Tocchet, Kjell Samuelsson, and Ken Wregget from the Philadelphia Flyers in exchange for Mark Recchi and a draft pick.",
+        "2002": "The Vancouver Canucks retire Stan Smyl's No. 12 jersey, the first number retired in franchise history."
+    },
+    "0302": {
+        "1962": "Wilt Chamberlain scores 100 points in a single NBA game, leading the Philadelphia Warriors to a 169-147 victory over the New York Knicks.",
+        "1977": "Bette Davis becomes the first woman to receive the American Film Institute's Lifetime Achievement Award.",
+        "1995": "Internet giant Yahoo! is incorporated.",
+        "2012": "Major League Baseball expands its playoff format to include an additional wild card team in each league."
+    },
+    "0303": {
+        "1985": "The TV show 'Moonlighting,' starring Bruce Willis and Cybill Shepherd, premieres on ABC.",
+        "1991": "Los Angeles police officers beat motorist Rodney King, leading to widespread outrage and subsequent riots.",
+        "2005": "Steve Fossett becomes the first person to fly an airplane solo nonstop around the world without refueling.",
+        "2013": "A UN report states that the Syrian civil war has caused over 70,000 deaths."
+    },
+    "0304": {
+        "1974": "People magazine publishes its first issue, featuring Mia Farrow on the cover.",
+        "1994": "Four Arab terrorists are convicted of bombing the World Trade Center in 1993.",
+        "2004": "Martha Stewart is convicted on charges related to insider trading.",
+        "2018": "The Academy Awards ceremony is held, with 'The Shape of Water' winning Best Picture."
+    },
+    "0305": {
+        "1963": "Country music stars Patsy Cline, Cowboy Copas, and Hawkshaw Hawkins die in a plane crash near Camden, Tennessee.",
+        "1971": "The Pakistani civil war begins, leading to the creation of Bangladesh.",
+        "1982": "Comedian John Belushi dies of a drug overdose at the age of 33.",
+        "2002": "MTV's reality television series 'The Osbournes' premieres."
+    },
+    "0306": {
+        "1957": "Ghana becomes the first African country to gain independence from colonial rule.",
+        "1967": "Stalin's daughter, Svetlana Alliluyeva, defects to the United States.",
+        "1987": "The British ferry MS Herald of Free Enterprise capsizes, resulting in 193 deaths.",
+        "2018": "Former Russian spy Sergei Skripal and his daughter are poisoned in the UK, leading to international tensions."
+    },
+    "0307": {
+        "1876": "Alexander Graham Bell is granted a patent for the telephone.",
+        "1965": "Civil rights activists are brutally attacked by state troopers in Selma, Alabama, on a day that becomes known as 'Bloody Sunday.'",
+        "1999": "Stanley Kubrick, renowned film director, dies at the age of 70.",
+        "2010": "Kathryn Bigelow becomes the first woman to win the Academy Award for Best Director for 'The Hurt Locker.'"
+    },
     "0308": {"":"", " ": "", " ":""},
     "0309": {"":"", " ": "", " ":""},
     "0310": {"":"", " ": "", " ":""},

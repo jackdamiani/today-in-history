@@ -56,7 +56,7 @@
             display: flex;
             flex-direction: column; /* Stack content inside the cell */
             justify-content: space-between; /* Space between category text & percentage text */
-            align-items: center;
+            /* align-items: center; */
             text-align: center;
             width: 100%;
             aspect-ratio: 1; /* Makes cells square */
@@ -265,6 +265,13 @@
             margin-left: 5px; /* Optional, to space out the square from text */
         }
 
+        #guesses-remaining-container {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+            text-align: center;
+        }
+
 
 
     </style>
@@ -273,6 +280,9 @@
     <!-- Help Bar with Icon -->
     <div class="help-bar" onclick="toggleHelp()">
         How to Play  <i class="fa fa-question-circle"></i> 
+        <a "class="coffee" style=" padding: 5px; padding-top: 7.5px; color: lightblue" href="https://buymeacoffee.com/todayinhistory">
+            <i class="fa fa-mug-hot" aria-hidden="true" style="color: white;"></i>
+        </a> 
     </div>
 
     <!-- Hidden Help Instructions -->
@@ -308,6 +318,10 @@
         <button onclick="selectGame(3)">Game 3</button>
     </div>
 
+    <div id="guesses-remaining-container">
+        Guesses Remaining: <span id="guesses-remaining">12</span>
+    </div>
+    
     <div class="grid" id="grid"></div>
 
     <div id="autocomplete" class="autocomplete-suggestions" style="display: none;"></div>
@@ -326,9 +340,20 @@
         };
 
         let gameNumber;
+        let guessesRemaining = 12;
 
+        // Function to update the displayed guesses remaining
+        function updateGuessesRemaining() {
+            const guessesRemainingElement = document.getElementById('guesses-remaining');
+            guessesRemainingElement.textContent = guessesRemaining;
+
+            // Check if guesses remaining is zero
+            if (guessesRemaining === 0) {
+                alert("Game over! No more guesses remaining.");
+                // Disable buttons or perform other game over actions
+            }
+        }
         
-
         // Function to select a game and display translated categories
         function selectGame(selectedGame) {            
             gameNumber = selectedGame
@@ -461,6 +486,11 @@
                         console.log(wordValid)
                     } catch (error) {
                         console.error('Error:', error); // Catch errors
+                    }
+
+                    if (guessesRemaining > 0) {
+                        guessesRemaining--;  // Decrease guesses remaining
+                        updateGuessesRemaining();  // Update the display
                     }
 
                 if (wordValid){
