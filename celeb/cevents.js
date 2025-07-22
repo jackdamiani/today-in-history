@@ -631,13 +631,86 @@ var today_in_history = {
         "1986": "Amber Heard (Actress known for 'Aquaman')",
         "1990": "Machine Gun Kelly (Rapper and actor)"
     },
-    
-
-    "0802": {"1951": "Joe Lynn Turner, singer", "1970": "Kevin Smith, filmaker", "1992": "Charli XCX, singer"},
-    "0803": {"1963": "James Hetfield", "1977": "Tom Brady, football player", "1984": "Ryan Lochte, swimmer"},
-    "0811": {"1111": "test", "1112": "test", "1113": "test"},
-    "0825": {"1984": "Jack", "1994":"Jack D.", "2004": "Damiani"},
-
+    "0801": {
+        "1936": "Yves Saint-Laurent (Fashion designer)",
+        "1990": "Jack O'Connell (Actor, Skins, Unbroken)",
+        "1992": "Mrunal Thakur (Actress in Indian cinema)"
+    },
+    "0802": {
+        "1986": "Lily Gladstone (Actress, Killers of the Flower Moon)",
+        "1992": "Charli XCX (English singer-songwriter)",
+        "1995": "Kristaps Porziņģis (Latvian basketball player)"
+    },
+    "0803": {
+        "1941": "Martha Stewart (chess, actress, tv personality)",
+        "1947": "Sean Tyla (Vocalist for Ducks Deluxe)",
+        "1977": "Tom Brady (NFL Quarterback Patriots, Buccs)"
+    },
+    "0804": {
+        "1955": "Billy Bob Thornton (Actor, director)",
+        "1961": "Barack Obama (44th U.S. President)",
+        "1991": "Dylan Sprouse (TV actor)"
+    },
+    "0805": {
+        "1930": "Neil Armstrong (Astronaut, first man on the Moon)",
+        "1966": "James Gunn (Director, writer, musician)",
+        "1997": "Olivia Holt (Actress, singer)"
+    },
+    "0806": {
+        "1972": "Geri Halliwell (Singer, Spice Girls)",
+        "1981": "Leslie Odom Jr. (Actor, singer)",
+        "2002": "Nessa Barrett (Pop singer)"
+    },
+    "0807": {
+        "1966": "Jimmy Wales (Wikipedia co-founder)",
+        "1978": "Alexandre Aja (Film director)",
+        "1991": "Mike Trout (MLB player)" 
+    },
+    "0808": {
+        "1981": "Roger Federer (Tennis player)",
+        "1997": "Corpse Husband (YouTube creator)",
+        "1998": "Shawn Mendes (Pop singer)"
+    },
+    "0809": {
+        "1963": "Whitney Houston (Singer, actress)",
+        "1985": "Anna Kendrick (Actress)",
+        "1990": "Bill Skarsgård (Actor)" 
+    },
+    "0810": {
+        "1947": "Ian Anderson (Musician, Jethro Tull)",
+        "1971": "Justin Theroux (Actor, writer)",
+        "1999": "Ja Morant (Basketball player)",
+    },
+    "0811": {
+        "1965": "Viola Davis (Academy Award-winning actress)",
+        "1967": "Joe Rogan (Podcast host, comedian)",
+        "1983": "Chris Hemsworth (Actor, Marvel's Thor)"
+    },
+    "0812": {
+        "1963": "Sir Mix-a-Lot (Rapper, hip-hop artist)",
+        "1971": "Pete Sampras (Tennis player)",
+        "2001": "Dixie D'Amelio (TikTok star)"
+    },
+    "0813": {
+        "1962": "John Slattery (Actor)",
+        "1963": "Valerie Plame (CIA officer, writer)",
+        "1990": "DeMarcus Cousins (NBA player)"
+    },
+    "0814": {
+        "1959": "Magic Johnson (Basketball legend)",
+        "1968": "Halle Berry (Oscar-winning actress)",
+        "2004": "Marsai Martin (TV actress)" ,
+    },
+    "0815": {
+        "1972": "Ben Affleck (Actor, director)",
+        "1989": "Joe Jonas (Singer, Jonas Brothers)",
+        "1990": "Jennifer Lawrence (Oscar-winning actress)"
+    },
+    "0816": {
+        "1954": "James Cameron (Film director)",
+        "1962": "Steve Carell (Actor, comedian)",
+        "2001": "Jannik Sinner (Tennis player)"
+    },
 
     "0901": {
         "1946": "Barry Gibb, Singer (Bee Gees)", 
