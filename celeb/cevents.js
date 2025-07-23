@@ -711,6 +711,94 @@ var today_in_history = {
         "1962": "Steve Carell (Actor, comedian)",
         "2001": "Jannik Sinner (Tennis player)"
     },
+    "0817": {
+        "1944": "Larry Ellison (Co-founder of Oracle, tech entrepreneur)",
+        "1960": "Sean Penn (Actor, director)",
+        "2003": "The Kid Laroi (Rapper)"
+    },
+    "0818": {
+        "1969": "Christian Slater (Actor)",
+        "1970": "Malcolm-Jamal Warner (Actor)",
+        "1998": "Clairo (Pop singer)"
+    },
+    "0819": {
+        "1946": "Bill Clinton (42nd U.S. President)",
+        "1963": "John Stamos (Actor)",
+        "1969": "Matthew Perry (Actor, Friends)"
+    },
+    "0820": {
+        "1974": "Amy Adams (Actress)",
+        "1983": "Andrew Garfield (Actor)",
+        "1992": "Demi Lovato (Pop singer)"
+    },
+    "0821": {
+        "1956": "Kim Cattrall (Actress, Sex and the City)",
+        "1986": "Usain Bolt (Olympic sprinter)",
+        "1995": "Hayden Panettiere (Actress)"
+    },
+    "0822": {
+        "1973": "Kristen Wiig (Comedian, actress)",
+        "1978": "James Corden (Comedian, TV host)",
+        "1995": "Dua Lipa (Pop singer)"
+    },
+    "0823": {
+        "1931": "Barbara Eden (Actress, I Dream of Jeannie)",
+        "1970": "River Phoenix (Actor, musician)",
+        "1997": "Lil Yachty (Rapper)"
+    },
+    "0824": {
+        "1958": "Steve Guttenberg (Actor)",
+        "1973": "Dave Chappelle (Comedian)", 
+        "1988": "Rupert Grint (Actor)"
+    },
+    "0825": {
+        "1937": "Gene Simmons (Singer, bassist of Kiss)",
+        "1966": "Tim Burton (Film director)",
+        "1987": "Blake Lively (Actress, *Gossip Girl*)",
+        "1998": "China Anne McClain (Actress, singer)",
+        "2000": "Nicki Nicole (Argentine rapper)",
+        "2001": "Rebeka Jančová (Slovak alpine ski racer)"
+    },
+    "0826": {
+        "1964": "Melissa McCarthy (Actress, comedian)",
+        "1980": "Macaulay Culkin (Actor, *Home Alone*)",
+        "1982": "John Mulaney (Comedian, writer)",
+        "1991": "Dylan O'Brien (Actor, *Teen Wolf*)",
+        "1993": "Keke Palmer (Actress)",
+        "1962": "Shirley Manson (Singer, Garbage)"
+    },
+    "0827": {
+        "1944": "G. W. Bailey (Actor, *M*A*S*H*)",
+        "1959": "Jeanette Winterson (Writer)",
+        "1976": "Sarah Chalke (Actress, *Scrubs*)",
+        "1979": "Aaron Paul (Actor, *Breaking Bad*)",
+        "1992": "Kim Petras (Singer)",
+        "1998": "Rod Wave (Rapper)"
+    },
+    "0828": {
+        "1968": "Tom Ford (Fashion designer, filmmaker)",
+        "1954": "Jennifer Coolidge (Actress)",
+        "1976": "Shania Twain (Singer)",
+        "1994": "Lea Michele (Actress, singer)",
+        "1983": "Jason Priestley (Actor)",
+        "1955": "David Soul (Actor)"
+    },
+    "0829": {
+        "1958": "Michael Jackson (Pop singer)",
+        "1936": "John McCain (U.S. Senator, presidential candidate)",
+        "1959": "Rebecca De Mornay (Actress)",
+        "1938": "Elliott Gould (Actor)",
+        "1993": "Liam Payne (Pop singer, One Direction)",
+        "1990": "Nicole Anderson (TV actress)"
+    },
+    "0830": {
+        "1930": "Warren Buffett (Investor, Berkshire Hathaway)",
+        "1972": "Cameron Diaz (Actress)",
+        "1982": "Andy Roddick (Tennis player)",
+        "1943": "Jean‑Claude Killy (Olympic skier & businessman)",
+        "1963": "Michael Chiklis (Actor, producer)",
+        "2000": "Manavi Jaluka (my pretty girlfriend <3)
+    },
 
     "0901": {
         "1946": "Barry Gibb, Singer (Bee Gees)", 
