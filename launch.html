@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launch Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #fff3e0; /* Light orange */
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      background-color: #5d4037; /* Rich brown to complement orange */
+      color: #fff;
+      width: 100%;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      width: 95%;
+      max-width: 1100px;
+      margin: 3rem 0;
+    }
+
+    @media (min-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    section {
+      background: #ffe0b2; /* Light peach tone */
+      border-radius: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      padding: 2.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: #000;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #d84315; /* Deep orange */
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .link {
+      background-color: #fff8e1; /* Soft yellow/orange */
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .link:hover {
+      background-color: #ffe082;
+      transform: scale(1.05);
+    }
+
+    .coming-soon {
+      font-style: italic;
+      color: #555;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Games by Jack Damiani</h1>
+    <p>Explore history, cities, and word games!</p>
+  </header>
+
+  <div class="grid-container">
+    <section>
+      <h2 class="section-title">Today in History</h2>
+      <p>Guess the years of major world events that happened on today's date!</p>
+      <br>
+      <div class="links">
+        <a href="https://today-in-history-game.com" class="link">Main Game</a>
+        <a href="https://today-in-history-game.com/celebs" class="link">Celebrities</a>
+        <a href="https://today-in-history-game.com/sports" class="link">Sports</a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">City-Seeker</h2>
+      <p>Guess the mystery city in a given country!</p>
+      <br>
+      <a href="https://city-seeker-game.com" class="link">Play City Seeker</a>
+    </section>
+
+    <section>
+      <h2 class="section-title">Word Immaculate Grid</h2>
+      <p>Play the immaculate grid with English words!</p>
+      <br>
+      <a href="https://today-in-history-game.com/word-immaculate-grid" class="link">Play our beta!</a>
+    </section>
+
+    <section>
+      <h2 class="section-title">About Us / Blog</h2>
+      <p>Learn about our mission, the team, and read fun updates on our blog.</p>
+      <br>
+      <a href="https://today-in-history-game.com/about-us" class="link">Read More</a>
+    </section>
+  </div>
+</body>
