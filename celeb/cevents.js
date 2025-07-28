@@ -752,54 +752,40 @@ var today_in_history = {
         "1988": "Rupert Grint (Actor)"
     },
     "0825": {
-        "1937": "Gene Simmons (Singer, bassist of Kiss)",
         "1966": "Tim Burton (Film director)",
-        "1987": "Blake Lively (Actress, *Gossip Girl*)",
         "1998": "China Anne McClain (Actress, singer)",
-        "2000": "Nicki Nicole (Argentine rapper)",
-        "2001": "Rebeka Jančová (Slovak alpine ski racer)"
+        "2000": "Nicki Nicole (Argentine rapper)"
     },
     "0826": {
-        "1964": "Melissa McCarthy (Actress, comedian)",
-        "1980": "Macaulay Culkin (Actor, *Home Alone*)",
+        "1970": "Melissa McCarthy (Actress, comedian)",
         "1982": "John Mulaney (Comedian, writer)",
-        "1991": "Dylan O'Brien (Actor, *Teen Wolf*)",
-        "1993": "Keke Palmer (Actress)",
-        "1962": "Shirley Manson (Singer, Garbage)"
+        "1993": "Keke Palmer (Actress)"
     },
     "0827": {
-        "1944": "G. W. Bailey (Actor, *M*A*S*H*)",
-        "1959": "Jeanette Winterson (Writer)",
         "1976": "Sarah Chalke (Actress, *Scrubs*)",
         "1979": "Aaron Paul (Actor, *Breaking Bad*)",
-        "1992": "Kim Petras (Singer)",
-        "1998": "Rod Wave (Rapper)"
+        "1992": "Kim Petras (Singer)"
     },
     "0828": {
-        "1968": "Tom Ford (Fashion designer, filmmaker)",
-        "1954": "Jennifer Coolidge (Actress)",
-        "1976": "Shania Twain (Singer)",
-        "1994": "Lea Michele (Actress, singer)",
-        "1983": "Jason Priestley (Actor)",
-        "1955": "David Soul (Actor)"
+        "1961": "Jennifer Coolidge (Actress)",
+        "1965": "Shania Twain (Singer)",
+        "1983": "Jason Priestley (Actor)"
     },
     "0829": {
         "1958": "Michael Jackson (Pop singer)",
-        "1936": "John McCain (U.S. Senator, presidential candidate)",
-        "1959": "Rebecca De Mornay (Actress)",
-        "1938": "Elliott Gould (Actor)",
-        "1993": "Liam Payne (Pop singer, One Direction)",
-        "1990": "Nicole Anderson (TV actress)"
+        "1986": "Lea Michele (Actress, singer)",
+        "1993": "Liam Payne (Pop singer, One Direction)"
     },
     "0830": {
         "1930": "Warren Buffett (Investor, Berkshire Hathaway)",
         "1972": "Cameron Diaz (Actress)",
-        "1982": "Andy Roddick (Tennis player)",
-        "1943": "Jean‑Claude Killy (Olympic skier & businessman)",
-        "1963": "Michael Chiklis (Actor, producer)",
         "2000": "Manavi Jaluka (my pretty girlfriend <3)
     },
-
+    "0831": {
+        "1945": "Van Morrison (Singer, songwriter, *Brown Eyed Girl*)",
+        "1970": "Debbie Gibson (Pop singer, songwriter, actress)",
+        "1996": "Jalen Brunson (NBA player, New York Knicks)"
+    },
     "0901": {
         "1946": "Barry Gibb, Singer (Bee Gees)", 
         "1950": "Phil McGraw, Television Host (Dr. Phil)", 
