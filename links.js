@@ -504,9 +504,9 @@ var links={
         "https://en.wikipedia.org/wiki/One_World_Trade_Center"
     ],
     "1104": [
-        "https://en.wikipedia.org/wiki/California_trail",
         "https://en.wikipedia.org/wiki/Thomas_Elkins",
-        "https://en.wikipedia.org/wiki/Iran_hostage_crisis"
+        "https://en.wikipedia.org/wiki/Iran_hostage_crisis",
+        "https://www.obamalibrary.gov/obamas/president-barack-obama#:~:text=On%20November%204%2C%202008%2C%20Obama,States%20on%20January%2020%2C%202009."
     ],
     "1105": [
         "https://en.wikipedia.org/wiki/Northwest_Passage",
