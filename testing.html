@@ -220,6 +220,9 @@
                 }
                 var guessArray_ = parseGuessArr()
                 const year_input_ = Number(year_input);
+                // Remove
+                console.log("Guess Arr ", guessArray_)
+                console.log("Year input in? ", guessArray_.includes(year_input_))
                 if (guessArray_.includes(year_input_)) {
                     alert("Please guess a year you haven't guessed yet");
                     document.getElementById('year_input').value = '';
