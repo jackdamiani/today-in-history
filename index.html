@@ -218,6 +218,13 @@
                     document.getElementById('year_input').value = '';
                     return false;
                 }
+                var guessArray_ = parseGuessArr()
+                const year_input_ = Number(year_input);
+                if (guessArray_.includes(year_input_)) {
+                    alert("Please guess a year you haven't guessed yet");
+                    document.getElementById('year_input').value = '';
+                    return False
+                }
             }
 
             if (getCookie("played_today") != "True"){
