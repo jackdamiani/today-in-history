@@ -656,29 +656,25 @@
             return classes.includes('jelly') || classes.includes('regular');
             });
             
-            let validArrangement = false;
-            let numbers = [];
+            const numbers = new Array(validSquares.length).fill(0);
             
-            while (!validArrangement) {
-            numbers = [];
-            for (let i = 1; i <= maxNumber; i++) {
-                const count = Math.floor(validSquares.length / maxNumber);
-                for (let j = 0; j < count; j++) {
-                numbers.push(i);
+            for (let i = 0; i < validSquares.length; i++) {
+            let placed = false;
+            let attempts = 0;
+            
+            while (!placed && attempts < 100) {
+                const randomNum = Math.floor(Math.random() * maxNumber) + 1;
+                numbers[i] = randomNum;
+                
+                if (!hasConflictAtIndex(numbers, i)) {
+                placed = true;
                 }
+                attempts++;
             }
             
-            const remaining = validSquares.length - numbers.length;
-            for (let i = 0; i < remaining; i++) {
-                numbers.push((i % maxNumber) + 1);
+            if (!placed) {
+                numbers[i] = ((i % maxNumber) + 1);
             }
-            
-            for (let i = numbers.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
-            }
-            
-            validArrangement = !hasInitialMatches(numbers);
             }
             
             validSquares.forEach((square, index) => {
@@ -690,6 +686,78 @@
             btn.onclick = resetLevel;
 
             playGame();
+        }
+
+        function hasConflictAtIndex(numbers, currentIndex) {
+            const playSquares = document.querySelectorAll('#playGrid .play-square');
+            const validIndices = new Set();
+            
+            playSquares.forEach((square, idx) => {
+                const classes = square.className;
+                if (classes.includes('jelly') || classes.includes('regular')) {
+                    validIndices.add(idx);
+                }
+            });
+            
+            console.log('Checking conflict at index:', currentIndex, 'Value:', numbers[currentIndex]);
+            
+            // Check horizontal 3-in-a-row
+            for (let row = 0; row < gridSize; row++) {
+                for (let col = 0; col < gridSize - 2; col++) {
+                    const idx1 = row * gridSize + col;
+                    const idx2 = row * gridSize + col + 1;
+                    const idx3 = row * gridSize + col + 2;
+                    
+                    if ([idx1, idx2, idx3].includes(currentIndex) && 
+                        validIndices.has(idx1) && validIndices.has(idx2) && validIndices.has(idx3) &&
+                        numbers[idx1] && numbers[idx2] && numbers[idx3]) {
+                        if (numbers[idx1] === numbers[idx2] && numbers[idx1] === numbers[idx3]) {
+                            console.log('Horizontal 3-in-a-row conflict found at:', idx1, idx2, idx3);
+                            return true;
+                        }
+                    }
+                }
+            }
+            
+            // Check vertical 3-in-a-row
+            for (let col = 0; col < gridSize; col++) {
+                for (let row = 0; row < gridSize - 2; row++) {
+                    const idx1 = row * gridSize + col;
+                    const idx2 = (row + 1) * gridSize + col;
+                    const idx3 = (row + 2) * gridSize + col;
+                    
+                    if ([idx1, idx2, idx3].includes(currentIndex) && 
+                        validIndices.has(idx1) && validIndices.has(idx2) && validIndices.has(idx3) &&
+                        numbers[idx1] && numbers[idx2] && numbers[idx3]) {
+                        if (numbers[idx1] === numbers[idx2] && numbers[idx1] === numbers[idx3]) {
+                            console.log('Vertical 3-in-a-row conflict found at:', idx1, idx2, idx3);
+                            return true;
+                        }
+                    }
+                }
+            }
+            
+            // Check 2x2 squares
+            for (let row = 0; row < gridSize - 1; row++) {
+                for (let col = 0; col < gridSize - 1; col++) {
+                    const idx1 = row * gridSize + col;
+                    const idx2 = row * gridSize + col + 1;
+                    const idx3 = (row + 1) * gridSize + col;
+                    const idx4 = (row + 1) * gridSize + col + 1;
+                    
+                    if ([idx1, idx2, idx3, idx4].includes(currentIndex) && 
+                        validIndices.has(idx1) && validIndices.has(idx2) && validIndices.has(idx3) && validIndices.has(idx4) &&
+                        numbers[idx1] && numbers[idx2] && numbers[idx3] && numbers[idx4]) {
+                        if (numbers[idx1] === numbers[idx2] && numbers[idx1] === numbers[idx3] && numbers[idx1] === numbers[idx4]) {
+                            console.log('2x2 square conflict found at:', idx1, idx2, idx3, idx4);
+                            return true;
+                        }
+                    }
+                }
+            }
+            
+            console.log('No conflict at index:', currentIndex);
+            return false;
         }
 
         function hasInitialMatches(numbers) {
