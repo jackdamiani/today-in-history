@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SumShift!r</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .main-container {
+            display: flex;
+            gap: 40px;
+        }
+        .container {
+            max-width: 600px;
+        }
+        .play-container {
+            flex: 1;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .options {
+            margin-bottom: 20px;
+        }
+        .option-btn {
+            padding: 8px 16px;
+            margin-right: 10px;
+            font-size: 14px;
+            border: 2px solid #999;
+            background-color: white;
+            cursor: pointer;
+        }
+        .option-btn.selected {
+            border-color: #333;
+            font-weight: bold;
+        }
+        #grid {
+            display: grid;
+            gap: 4px;
+            margin-top: 20px;
+            width: fit-content;
+        }
+        #playGrid {
+            display: grid;
+            gap: 4px;
+            margin-top: 20px;
+            width: fit-content;
+        }
+        .square {
+            width: 40px;
+            height: 40px;
+            background-color: #f0f0f0;
+            border: 1px solid #000;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .square:hover {
+            background-color: #e0e0e0;
+        }
+        .square.jelly {
+            background-color: rgba(173, 216, 230, 0.6);
+            border: 1px solid #000;
+        }
+        .square.candy {
+            background-color: rgba(255, 192, 203, 0.6);
+            border: 1px solid #000;
+        }
+        .square.hole {
+            background-color: rgba(255, 255, 255, 1);
+            border: none;
+        }
+        .square.regular {
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 1px solid #000;
+        }
+        .square.record {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 1px solid #000;
+        }
+        .play-square {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+        }
+        .play-square.jelly {
+            background-color: rgba(173, 216, 230, 0.6);
+            border: 1px solid #000;
+        }
+        .play-square.candy {
+            background-color: rgba(255, 192, 203, 0.6);
+            border: 1px solid #000;
+        }
+        .play-square.hole {
+            background-color: rgba(255, 255, 255, 1);
+            border: none;
+        }
+        .play-square.regular {
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 1px solid #000;
+        }
+        .play-square.record {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 1px solid #000;
+        }
+        .play-square {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="main-container">
+        <div class="container">
+            <h1>Sum Shift</h1>
+            <h2>Design your level!</h2>
+            <div class="controls">
+            <label for="gridSize">Grid Size:</label>
+            <input type="number" id="gridSize" min="5" max="10" value="5">
+            <button onclick="adjustGridSize()">Adjust Grid Size</button>
+            </div>
+            <div class="options" id="options"></div>
+            <div id="grid"></div>
+            <div class="controls">
+            <label for="maxNumber">How many different numbers? <button type="button" class="info-btn" title="Values between 3-7. Lower = easier, Higher = harder">?</button></label>
+            <input type="number" id="maxNumber" min="3" max="7" value="3">
+            </div>
+            <button onclick="generateLevel()">Generate Level</button>
+        </div>
+        <div class="play-container">
+            <h2>Play your level! <button type="button" class="info-btn" title="Populate level to play. Click on two adjacent squares to swap. Try to get 3 in a row. Hit reset to reset the whole level">?</button></h2>
+            
+            <div id="playGrid"></div>
+            <button onclick="populateLevel()">Populate and Play!</button>
+        </div>
+        </div>
+
+        <script>
+        const TILE_TYPES = {
+            regular: 'rgba(255, 255, 255, 0.6)',
+            hole: 'rgba(255, 255, 255, 1)',
+            jelly: 'rgba(173, 216, 230, 0.6)',
+            candy: 'rgba(255, 192, 203, 0.6)',
+            record: 'rgba(0, 0, 0, 0.6)'
+        };
+
+        let selectedType = null;
+        let gridSize = 5;
+
+        function initializeOptions() {
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            
+            Object.keys(TILE_TYPES).forEach(type => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+                btn.onclick = () => selectOption(type, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(type, btn) {
+            document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedType = type;
+        }
+
+        function adjustGridSize() {
+            const size = parseInt(document.getElementById('gridSize').value);
+            if (size < 5 || size > 10) {
+                alert('Please enter a number between 5 and 10');
+                return;
+            }
+
+            gridSize = size;
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '';
+            grid.style.gridTemplateColumns = `repeat(${size}, 40px)`;
+
+            for (let i = 0; i < size * size; i++) {
+                const square = document.createElement('div');
+                square.className = 'square regular';
+                square.onclick = () => updateSquare(square);
+                grid.appendChild(square);
+            }
+        }
+
+        function updateSquare(square) {
+            if (!selectedType) {
+                alert('Please select a tile type first');
+                return;
+            }
+            square.id = selectedType;
+            square.className = `square ${selectedType}`;
+        }
+
+        function generateLevel() {
+            const squares = document.querySelectorAll('#grid .square');
+            const playGrid = document.getElementById('playGrid');
+            playGrid.innerHTML = '';
+            playGrid.style.gridTemplateColumns = `repeat(${gridSize}, 40px)`;
+
+            squares.forEach(square => {
+                const playSquare = document.createElement('div');
+                playSquare.className = `play-square ${square.className.replace('square ', '')}`;
+                playGrid.appendChild(playSquare);
+            });
+        }
+
+        let selectedSquare = null;
+
+        function isAdjacent(square1, square2) {
+            const allSquares = Array.from(document.querySelectorAll('#playGrid .play-square'));
+            const index1 = allSquares.indexOf(square1);
+            const index2 = allSquares.indexOf(square2);
+            const row1 = Math.floor(index1 / gridSize);
+            const col1 = index1 % gridSize;
+            const row2 = Math.floor(index2 / gridSize);
+            const col2 = index2 % gridSize;
+            return Math.abs(row1 - row2) + Math.abs(col1 - col2) === 1;
+        }
+
+        function swapSquares(square1, square2) {
+            // Animate scaling up
+            square1.style.transition = 'transform 0.2s ease-in-out';
+            square2.style.transition = 'transform 0.2s ease-in-out';
+            square1.style.transform = 'scale(1.3)';
+            square2.style.transform = 'scale(1.3)';
+
+            // Swap content after a brief delay
+            setTimeout(() => {
+            const temp = square1.textContent;
+            square1.textContent = square2.textContent;
+            square2.textContent = temp;
+
+            // Animate scaling back down
+            square1.style.transform = 'scale(1)';
+            square2.style.transform = 'scale(1)';
+            }, 150);
+
+            // Clean up transition after animation completes
+            setTimeout(() => {
+            square1.style.transition = '';
+            square2.style.transition = '';
+            }, 350);
+        }
+
+        function checkForMatches() {
+            const playSquares = document.querySelectorAll('#playGrid .play-square');
+            const matches = new Set();
+            const matchType = new Map();
+            let allMatches = [];
+
+            // Check for 2x2 squares
+            for (let row = 0; row < gridSize - 1; row++) {
+            for (let col = 0; col < gridSize - 1; col++) {
+            const idx1 = row * gridSize + col;
+            const idx2 = row * gridSize + col + 1;
+            const idx3 = (row + 1) * gridSize + col;
+            const idx4 = (row + 1) * gridSize + col + 1;
+            
+            const sq1 = playSquares[idx1];
+            if (!sq1.textContent) continue;
+            
+            if (sq1.textContent === playSquares[idx2].textContent &&
+            sq1.textContent === playSquares[idx3].textContent &&
+            sq1.textContent === playSquares[idx4].textContent) {
+            const matchGroup = [idx1, idx2, idx3, idx4];
+            matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'gray');
+            });
+            allMatches.push(matchGroup);
+            }
+            }
+            }
+
+            // Check for L and T shapes (5 squares total)
+            for (let row = 0; row < gridSize; row++) {
+            for (let col = 0; col < gridSize; col++) {
+            const idx = row * gridSize + col;
+            if (matches.has(idx)) continue;
+            
+            const sq = playSquares[idx];
+            if (!sq.textContent) continue;
+            
+            const val = sq.textContent;
+            
+            if (row > 1 && row < gridSize - 2 && col > 1 && col < gridSize - 1) {
+            const up = (row - 1) * gridSize + col;
+            const down = (row + 1) * gridSize + col;
+            const left = row * gridSize + col - 1;
+            const right = row * gridSize + col + 1;
+            const up2 = (row - 2) * gridSize + col;
+            const down2 = (row + 2) * gridSize + col;
+            
+            // T pointing up
+            if (up2 >= 0 && playSquares[up2] &&
+                playSquares[up2].textContent === val &&
+                playSquares[up].textContent === val &&
+                playSquares[left].textContent === val &&
+                playSquares[right].textContent === val) {
+                const matchGroup = [idx, up, up2, left, right];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'lightgreen');
+                });
+                allMatches.push(matchGroup);
+                continue;
+            }
+            
+            // T pointing down
+            if (down2 < playSquares.length && playSquares[down2] &&
+                playSquares[down2].textContent === val &&
+                playSquares[down].textContent === val &&
+                playSquares[left].textContent === val &&
+                playSquares[right].textContent === val) {
+                const matchGroup = [idx, down, down2, left, right];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'lightgreen');
+                });
+                allMatches.push(matchGroup);
+                continue;
+            }
+            
+            // T pointing left
+            if (col > 2 && playSquares[col - 2] &&
+                playSquares[idx - 2].textContent === val &&
+                playSquares[left].textContent === val &&
+                playSquares[up].textContent === val &&
+                playSquares[down].textContent === val) {
+                const matchGroup = [idx, left, idx - 2, up, down];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'lightgreen');
+                });
+                allMatches.push(matchGroup);
+                continue;
+            }
+            
+            // T pointing right
+            if (col < gridSize - 3 && playSquares[idx + 2] &&
+                playSquares[idx + 2].textContent === val &&
+                playSquares[right].textContent === val &&
+                playSquares[up].textContent === val &&
+                playSquares[down].textContent === val) {
+                const matchGroup = [idx, right, idx + 2, up, down];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'lightgreen');
+                });
+                allMatches.push(matchGroup);
+                continue;
+            }
+            }
+            
+            if (row > 1 && col > 1 && col < gridSize - 1) {
+            const up = (row - 1) * gridSize + col;
+            const up2 = (row - 2) * gridSize + col;
+            const left = row * gridSize + col - 1;
+            const left2 = row * gridSize + col - 2;
+            const right = row * gridSize + col + 1;
+            const right2 = row * gridSize + col + 2;
+            
+            // L: up2, up, center, left, left2
+            if (up2 >= 0 && left2 >= 0 && playSquares[up2] && playSquares[left2] &&
+                playSquares[up2].textContent === val &&
+                playSquares[up].textContent === val &&
+                playSquares[left].textContent === val &&
+                playSquares[left2].textContent === val) {
+                const matchGroup = [idx, up, up2, left, left2];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'lightgreen');
+                });
+                allMatches.push(matchGroup);
+                continue;
+            }
+            
+            // L: up2, up, center, right, right2
+            if (up2 >= 0 && right2 < playSquares.length && playSquares[up2] && playSquares[right2] &&
+                playSquares[up2].textContent === val &&
+                playSquares[up].textContent === val &&
+                playSquares[right].textContent === val &&
+                playSquares[right2].textContent === val) {
+                const matchGroup = [idx, up, up2, right, right2];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'lightgreen');
+                });
+                allMatches.push(matchGroup);
+                continue;
+            }
+            }
+            
+            if (row < gridSize - 2 && col > 1 && col < gridSize - 1) {
+            const down = (row + 1) * gridSize + col;
+            const down2 = (row + 2) * gridSize + col;
+            const left = row * gridSize + col - 1;
+            const left2 = row * gridSize + col - 2;
+            const right = row * gridSize + col + 1;
+            const right2 = row * gridSize + col + 2;
+            
+            // L: down2, down, center, left, left2
+            if (down2 < playSquares.length && left2 >= 0 && playSquares[down2] && playSquares[left2] &&
+                playSquares[down2].textContent === val &&
+                playSquares[down].textContent === val &&
+                playSquares[left].textContent === val &&
+                playSquares[left2].textContent === val) {
+                const matchGroup = [idx, down, down2, left, left2];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'lightgreen');
+                });
+                allMatches.push(matchGroup);
+                continue;
+            }
+            
+            // L: down2, down, center, right, right2
+            if (down2 < playSquares.length && right2 < playSquares.length && playSquares[down2] && playSquares[right2] &&
+                playSquares[down2].textContent === val &&
+                playSquares[down].textContent === val &&
+                playSquares[right].textContent === val &&
+                playSquares[right2].textContent === val) {
+                const matchGroup = [idx, down, down2, right, right2];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'lightgreen');
+                });
+                allMatches.push(matchGroup);
+                continue;
+            }
+            }
+            }
+            }
+
+            // Check horizontal matches (3+)
+            for (let row = 0; row < gridSize; row++) {
+            for (let col = 0; col < gridSize; col++) {
+            const idx = row * gridSize + col;
+            if (matches.has(idx)) continue;
+            
+            const sq = playSquares[idx];
+            if (!sq.textContent) continue;
+            
+            if (col <= gridSize - 5) {
+            const idx2 = row * gridSize + col + 1;
+            const idx3 = row * gridSize + col + 2;
+            const idx4 = row * gridSize + col + 3;
+            const idx5 = row * gridSize + col + 4;
+            
+            if (sq.textContent === playSquares[idx2].textContent && 
+                sq.textContent === playSquares[idx3].textContent &&
+                sq.textContent === playSquares[idx4].textContent &&
+                sq.textContent === playSquares[idx5].textContent) {
+                const matchGroup = [idx, idx2, idx3, idx4, idx5];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'green');
+                });
+                allMatches.push(matchGroup);
+                col += 4;
+                continue;
+            }
+            }
+            
+            if (col <= gridSize - 4) {
+            const idx2 = row * gridSize + col + 1;
+            const idx3 = row * gridSize + col + 2;
+            const idx4 = row * gridSize + col + 3;
+            
+            if (sq.textContent === playSquares[idx2].textContent && 
+                sq.textContent === playSquares[idx3].textContent &&
+                sq.textContent === playSquares[idx4].textContent) {
+                const matchGroup = [idx, idx2, idx3, idx4];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'red');
+                });
+                allMatches.push(matchGroup);
+                col += 3;
+                continue;
+            }
+            }
+            
+            if (col <= gridSize - 3) {
+            const idx2 = row * gridSize + col + 1;
+            const idx3 = row * gridSize + col + 2;
+            
+            if (sq.textContent === playSquares[idx2].textContent && 
+                sq.textContent === playSquares[idx3].textContent) {
+                const matchGroup = [idx, idx2, idx3];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'blue');
+                });
+                allMatches.push(matchGroup);
+                col += 2;
+            }
+            }
+            }
+            }
+
+            // Check vertical matches (3+)
+            for (let col = 0; col < gridSize; col++) {
+            for (let row = 0; row < gridSize; row++) {
+            const idx = row * gridSize + col;
+            if (matches.has(idx)) continue;
+            
+            const sq = playSquares[idx];
+            if (!sq.textContent) continue;
+            
+            if (row <= gridSize - 5) {
+            const idx2 = (row + 1) * gridSize + col;
+            const idx3 = (row + 2) * gridSize + col;
+            const idx4 = (row + 3) * gridSize + col;
+            const idx5 = (row + 4) * gridSize + col;
+            
+            if (sq.textContent === playSquares[idx2].textContent && 
+                sq.textContent === playSquares[idx3].textContent &&
+                sq.textContent === playSquares[idx4].textContent &&
+                sq.textContent === playSquares[idx5].textContent) {
+                const matchGroup = [idx, idx2, idx3, idx4, idx5];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'orange');
+                });
+                allMatches.push(matchGroup);
+                row += 4;
+                continue;
+            }
+            }
+            
+            if (row <= gridSize - 4) {
+            const idx2 = (row + 1) * gridSize + col;
+            const idx3 = (row + 2) * gridSize + col;
+            const idx4 = (row + 3) * gridSize + col;
+            
+            if (sq.textContent === playSquares[idx2].textContent && 
+                sq.textContent === playSquares[idx3].textContent &&
+                sq.textContent === playSquares[idx4].textContent) {
+                const matchGroup = [idx, idx2, idx3, idx4];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'red');
+                });
+                allMatches.push(matchGroup);
+                row += 3;
+                continue;
+            }
+            }
+            
+            if (row <= gridSize - 3) {
+            const idx2 = (row + 1) * gridSize + col;
+            const idx3 = (row + 2) * gridSize + col;
+            
+            if (sq.textContent === playSquares[idx2].textContent && 
+                sq.textContent === playSquares[idx3].textContent) {
+                const matchGroup = [idx, idx2, idx3];
+                matchGroup.forEach(i => {
+                matches.add(i);
+                matchType.set(i, 'blue');
+                });
+                allMatches.push(matchGroup);
+                row += 2;
+            }
+            }
+            }
+            }
+
+            // Apply colors and animations in order
+            let delay = 0;
+            allMatches.forEach(matchGroup => {
+            setTimeout(() => {
+                matchGroup.forEach(idx => {
+                playSquares[idx].style.color = matchType.get(idx);
+                const element = playSquares[idx];
+                element.style.transform = 'scale(1.5)';
+                element.style.transition = 'transform 0.5s ease-out';
+                
+                setTimeout(() => {
+                    element.style.transform = 'scale(1)';
+                }, 500);
+                });
+            }, delay);
+            delay += 500;
+            });
+
+            return matches.size > 0;
+        }
+
+
+        function playGame() {
+            const playSquares = document.querySelectorAll('#playGrid .play-square');
+            
+            // Check for matches at the beginning
+            checkForMatches();
+            
+            playSquares.forEach(square => {
+            square.addEventListener('click', function() {
+            const isSwappable = square.className.includes('regular') || square.className.includes('jelly');
+            
+            if (!isSwappable) return;
+            
+            if (!selectedSquare) {
+            selectedSquare = square;
+            square.style.border = '3px solid blue';
+            } else if (selectedSquare === square) {
+            selectedSquare.style.border = '1px solid #000';
+            selectedSquare = null;
+            } 
+            // This is where the magic happens. If a valid swap, everything else happens!
+            else if (isAdjacent(selectedSquare, square)) {
+            swapSquares(selectedSquare, square);
+            selectedSquare.style.border = '1px solid #000';
+            selectedSquare = null;
+            
+            // Check for matches after valid swap
+            setTimeout(() => {
+                checkForMatches();
+            }, 200);
+            } else {
+            selectedSquare.style.border = '1px solid #000';
+            selectedSquare = square;
+            square.style.border = '3px solid blue';
+            }
+            });
+            });
+        }
+
+        function populateLevel() {
+            const maxNumber = parseInt(document.getElementById('maxNumber').value);
+            const playSquares = document.querySelectorAll('#playGrid .play-square');
+            
+            const validSquares = Array.from(playSquares).filter(square => {
+            const classes = square.className;
+            return classes.includes('jelly') || classes.includes('regular');
+            });
+            
+            let validArrangement = false;
+            let numbers = [];
+            
+            while (!validArrangement) {
+            numbers = [];
+            for (let i = 1; i <= maxNumber; i++) {
+                const count = Math.floor(validSquares.length / maxNumber);
+                for (let j = 0; j < count; j++) {
+                numbers.push(i);
+                }
+            }
+            
+            const remaining = validSquares.length - numbers.length;
+            for (let i = 0; i < remaining; i++) {
+                numbers.push((i % maxNumber) + 1);
+            }
+            
+            for (let i = numbers.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+            }
+            
+            validArrangement = !hasInitialMatches(numbers);
+            }
+            
+            validSquares.forEach((square, index) => {
+            square.textContent = numbers[index];
+            });
+
+            const btn = event.target;
+            btn.textContent = 'Reset Level';
+            btn.onclick = resetLevel;
+
+            playGame();
+        }
+
+        function hasInitialMatches(numbers) {
+            // Check for 2x2 squares
+            for (let row = 0; row < gridSize - 1; row++) {
+            for (let col = 0; col < gridSize - 1; col++) {
+                const idx1 = row * gridSize + col;
+                const idx2 = row * gridSize + col + 1;
+                const idx3 = (row + 1) * gridSize + col;
+                const idx4 = (row + 1) * gridSize + col + 1;
+                
+                if (numbers[idx1] === numbers[idx2] && 
+                numbers[idx1] === numbers[idx3] && 
+                numbers[idx1] === numbers[idx4]) {
+                return true;
+                }
+            }
+            }
+            
+            // Check horizontal 3-in-a-row
+            for (let row = 0; row < gridSize; row++) {
+            for (let col = 0; col < gridSize - 2; col++) {
+                const idx1 = row * gridSize + col;
+                const idx2 = row * gridSize + col + 1;
+                const idx3 = row * gridSize + col + 2;
+                
+                if (numbers[idx1] === numbers[idx2] && numbers[idx1] === numbers[idx3]) {
+                return true;
+                }
+            }
+            }
+            
+            // Check vertical 3-in-a-row
+            for (let col = 0; col < gridSize; col++) {
+            for (let row = 0; row < gridSize - 2; row++) {
+                const idx1 = row * gridSize + col;
+                const idx2 = (row + 1) * gridSize + col;
+                const idx3 = (row + 2) * gridSize + col;
+                
+                if (numbers[idx1] === numbers[idx2] && numbers[idx1] === numbers[idx3]) {
+                return true;
+                }
+            }
+            }
+            
+            return false;
+        }
+
+        function resetLevel() {
+            const playSquares = document.querySelectorAll('#playGrid .play-square');
+            playSquares.forEach(square => {
+            square.textContent = '';
+            square.style.color = 'black';
+            });
+
+            const btn = event.target;
+            btn.textContent = 'Populate and play!';
+            btn.onclick = populateLevel;
+        }
+
+        initializeOptions();
+        adjustGridSize();
+    </script>
+</body>
+</html>

@@ -1,0 +1,459 @@
+
+body{
+    font-family: sans-serif;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    /* overflow: scroll; */
+    /* background-color: #888; */
+    /* padding-right: 15vw;
+    padding-left: 0vw;  */
+    row-gap: 10px;
+    place-items: center;
+}
+
+.grid-facts {
+    display: table;
+    /* grid-gap: 100px; */
+    grid-template-columns: auto auto auto;
+    row-gap: 10px;
+
+    /* padding-right: 5vw; */
+    padding-left: 5vw; 
+    /* row-gap: 10px; */
+}
+
+.grid-help {
+    display: grid;
+    /* grid-gap: 100px; */
+    grid-template-columns: auto auto auto;
+    row-gap: 8px;
+    column-gap: 10px;
+
+    /* padding-right: 5vw; */
+    /* padding-left: 5vw;  */
+    /* row-gap: 10px; */
+}
+
+#top-header{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#top-header {
+    display: flex; /* Flexbox for header */
+    justify-content: space-between; /* Space between text and buttons */
+    align-items: center; /* Align items in the center vertically */
+    height: 10vh; /* Increase the height of the header */
+    padding: 10px; /* Optional padding */
+    color: black; /* Text color */
+}
+
+#date-header {
+    font-size: 16px;
+    font-family: 'Courier New', monospace;
+    flex: 1; /* Make the text stretch across the left side */
+}
+
+#button-container {
+    display: block; /* Change to block to stack buttons */
+    text-align: right; /* Align buttons to the right */
+    padding: 15px;
+}
+
+.button-grid {
+    display: block; /* Keep buttons stacked */
+}
+
+.button-grid a {
+    padding: 5px;
+    color: white;
+    text-align: center;
+    display: block; /* Each button takes full width */
+    margin: 5px 0; /* Add vertical spacing between buttons */
+    text-decoration: none;
+    outline: none; /* Remove outline */
+    margin-right: 10px;
+}
+
+.button-grid a i {
+    font-size: 24px; /* Icon size */
+}
+
+
+/*     
+.free-text {
+    font-family: 'Poppins', sans-serif; 
+    font-size: 20px;
+    color: white;
+    text-align: left;
+    line-height: 1.6;
+    padding: 10px 20px; 
+    background-color: rgba(255, 255, 255, 0.2); 
+    border-radius: 20px; 
+    display: inline-block; 
+    border: 2px solid lightblue; 
+    position: relative;
+    margin-bottom: 3px; 
+    animation: popIn 0.8s ease both; 
+    padding: 100px;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.free-text:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+}
+*/
+
+
+
+.square {
+    height: 5vh;
+    width: 5vh;
+    background-color: #fff;
+    border: 1px solid #000;
+    display: inline-block;
+    border-radius: 12%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease; /* Smooth transition */
+}
+
+.rectangle:hover {
+    background-color: rgba(255, 255, 255, 1); /* Change background on hover */
+    border: 1px solid #555; /* Darker border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rectangle {
+    width: 33vw;
+    height: 12vh;
+    display: table-cell;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: .5px solid #888;
+    padding: 3px;
+    font-size: 70%;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 5px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(220, 220, 220, 0.4));
+    opacity: 0;
+    animation: fadeIn 5s forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+.square_empty {
+    height: 5vh;
+    width: 5vh;
+    background-color: #fff;
+    display: inline-block;
+    text-align: right;
+    vertical-align: middle;
+    line-height: 5vh;
+}
+
+.square_stats {
+    font-size: 10px; 
+    white-space: nowrap; 
+    justify-self: start;
+    text-align: left;
+}
+
+div.form
+{
+    display: block;
+    text-align: center;
+}
+
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.game_button {
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s;
+    box-shadow: 0 0 5px darkgrey; /* Subtle glow */
+    
+}
+
+.game_button:hover {
+    background-color: gray;
+    box-shadow: 0 0 10px darkgrey;
+}
+
+.discord_button{
+    background-color: #7289da;
+    color: white;
+    border-style: solid;
+    border-width: medium;
+    border-color: white;
+    padding: 5px 10px;
+    border-radius: 7px;
+}
+
+.social_button{
+    background-color: #000;
+    color: white;
+    border-style: solid;
+    border-width: medium;
+    border-color: white;
+    padding: 5px 10px;
+    border-radius: 7px;
+}
+
+/* #share_button{
+    background-color: #000;
+    color: ;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+} */
+
+#year_input{
+    padding: 5px;
+    border-radius: 3px;
+    border: .5px solid rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 5px lightblue; /* Subtle glow */
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden; */
+    background-color: lightblue;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    /* padding-top: 8px; */
+}
+
+li {
+    float: left;
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-bottom: 8px
+}
+
+#help_button_div{
+    float: right;
+    padding-right: 8px;
+    height: 28px;
+}
+
+#help_button{
+    border-radius: 100%; 
+    background-color: black; 
+    border: none; 
+    display: inline-block;
+}
+
+.help_menu{
+    background:rgba(0,0,0,.4);
+    cursor:pointer;
+    display: block;
+    height:100%;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:10000;
+    overflow-y:scroll;
+    padding-block-start: 30px;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+.help_menu .helper{
+    display:inline-block;
+    height:100%;
+    vertical-align:middle;
+}
+.help_menu > div {
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: auto;
+    max-width: 250px;
+    min-height: 100px;
+    vertical-align: middle;
+    width: 100%;
+    position: relative;
+    border-radius: 8px;
+    padding: 15px 5%;
+}
+
+.end_menu{
+    background:rgba(0,0,0,.4);
+    cursor:pointer;
+    display: none;
+    height:100%;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:10000;
+    overflow-y:scroll;
+    padding-block-start: 30px;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+.end_menu .helper{
+    display:inline-block;
+    height:100%;
+    vertical-align:middle;
+}
+.end_menu > div {
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: auto;
+    max-width: 275px;
+    min-height: 100px;
+    vertical-align: middle;
+    width: 100%;
+    position: relative;
+    border-radius: 8px;
+    padding: 15px 5%;
+
+}
+
+/* Closes How To Menu */
+.popupCloseButton {
+    background-color: #fff;
+    border: 3px solid #999;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.popupCloseButton:hover {
+    background-color: #ccc;
+}
+
+.trigger_help_menu {
+    cursor: pointer;
+    font-size: 20px;
+    /* margin: 20px; */
+    display: inline-block;
+    font-weight: bold;
+}
+
+.coffee {
+    cursor: pointer;
+    font-size: 50px;
+    /* margin: 20px; */
+    display: inline-block;
+    font-weight: bold;
+}
+
+.stats {
+    cursor: pointer;
+    font-size: 20px;
+    /* margin: 20px; */
+    display: inline-block;
+    font-weight: bold;
+}
+
+#fireworkCanvas {
+    cursor: crosshair;
+    display: block;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#scoreHistogram {
+    display: block;
+    z-index: 10001;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 30px;
+}
+
+footer {
+    /* position: fixed; */
+    bottom: 0;
+    width: 100%;
+    background-color: lightblue; /* Dark background color */
+    color: #000; /* White text color */
+    text-align: center;
+    padding: 10px 0;
+    font-family: Courier New;
+    font-size: 14px;
+    z-index: 1000; /* Ensures the footer stays on top */
+}
+
+.copyright {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copyright::before {
+    content: "\00A9"; /* Unicode for the copyright symbol */
+    margin-right: 5px;
+}
+
+.games_btn-container {
+    margin: 20px 0;
+}
+
+.games_btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 10px;
+    transition: background-color 0.3s;
+}
+
+.games_btn:hover {
+    background-color: gray;
+}
