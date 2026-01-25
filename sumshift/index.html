@@ -145,10 +145,10 @@
             <button onclick="generateLevel()">Generate Level</button>
         </div>
         <div class="play-container">
-            <h2>Play your level! <button type="button" class="info-btn" title="Populate level to play. Click on two adjacent squares to swap. Try to get 3 in a row. Hit reset to reset the whole level">?</button></h2>
+            <h2>Play your level! <button type="button" class="info-btn"  title="Populate level to play. Click on two adjacent squares to swap. Try to get 3 in a row. Hit reset to reset the whole level">?</button></h2>
             
             <div id="playGrid"></div>
-            <button onclick="populateLevel()">Populate and Play!</button>
+            <button type="button" style="margin-top: 20px;" onclick="populateLevel()">Populate and Play!</button>
         </div>
         </div>
 
@@ -163,6 +163,7 @@
 
         let selectedType = null;
         let gridSize = 5;
+        let lastSwappedSquares = null;
 
         function initializeOptions() {
             const optionsContainer = document.getElementById('options');
@@ -238,375 +239,413 @@
             return Math.abs(row1 - row2) + Math.abs(col1 - col2) === 1;
         }
 
-        function swapSquares(square1, square2) {
+        function addSpecialToSquare(square, special) {
+            const validSpecials = ['2', '4', '5', 'L'];
+            if (!validSpecials.includes(special)) {
+                console.error('Invalid special. Use: 2, 4, 5, or L');
+                return;
+            }
+            
+            square.style.position = 'relative';
+            let specialElement = square.querySelector('.special-badge');
+            
+            if (!specialElement) {
+                specialElement = document.createElement('div');
+                specialElement.className = 'special-badge';
+                specialElement.style.position = 'absolute';
+                specialElement.style.top = '2px';
+                specialElement.style.right = '2px';
+                specialElement.style.fontSize = '8px';
+                specialElement.style.fontWeight = 'bold';
+                specialElement.style.backgroundColor = '#000';
+                specialElement.style.color = '#fff';
+                specialElement.style.width = '12px';
+                specialElement.style.height = '12px';
+                specialElement.style.borderRadius = '50%';
+                specialElement.style.display = 'flex';
+                specialElement.style.alignItems = 'center';
+                specialElement.style.justifyContent = 'center';
+                square.appendChild(specialElement);
+            }
+            
+            specialElement.textContent = special;
+        }
+
+        function removeSpecialFromSquare(square) {
+            const specialElement = square.querySelector('.special-badge');
+            if (specialElement) {
+            square.removeChild(specialElement);
+            }
+        }
+
+        function checkSpecialInSquare(square) {
+            const specialElement = square.querySelector('.special-badge');
+            return specialElement ? specialElement.textContent : null;
+        }
+
+        function populateWithSpecials() {
+            // For testing purposes only. Populates all playable squares with random specials.
+            const playSquares = document.querySelectorAll('#playGrid .play-square');
+            const specials = ['2', 'L', '4', '5'];
+            
+            playSquares.forEach((square, index) => {
+                const isPlayable = square.className.includes('jelly') || square.className.includes('regular');
+                if (isPlayable) {
+                    const randomSpecial = specials[Math.floor(Math.random() * specials.length)];
+                    addSpecialToSquare(square, randomSpecial);
+                }
+            });
+        }
+
+        
+
+        function swapSquares(square1, square2, index1, index2) {
             // Animate scaling up
             square1.style.transition = 'transform 0.2s ease-in-out';
             square2.style.transition = 'transform 0.2s ease-in-out';
             square1.style.transform = 'scale(1.3)';
             square2.style.transform = 'scale(1.3)';
 
-            // Swap content after a brief delay
             setTimeout(() => {
-            const temp = square1.textContent;
-            square1.textContent = square2.textContent;
-            square2.textContent = temp;
+                // Swap the main text symbols
+                const tempText = square1.textContent;
+                square1.textContent = square2.textContent;
+                square2.textContent = tempText;
 
-            // Animate scaling back down
-            square1.style.transform = 'scale(1)';
-            square2.style.transform = 'scale(1)';
+                // Swap special badges using addSpecialToSquare
+                const badge1 = square1.querySelector('.special-badge')?.textContent;
+                const badge2 = square2.querySelector('.special-badge')?.textContent;
+
+                // Clear current badges
+                if (square1.querySelector('.special-badge')) square1.removeChild(square1.querySelector('.special-badge'));
+                if (square2.querySelector('.special-badge')) square2.removeChild(square2.querySelector('.special-badge'));
+
+                // Re-add swapped badges
+                if (badge1) addSpecialToSquare(square2, badge1);
+                if (badge2) addSpecialToSquare(square1, badge2);
+
+                // Animate scaling back down
+                square1.style.transform = 'scale(1)';
+                square2.style.transform = 'scale(1)';
             }, 150);
 
-            // Clean up transition after animation completes
+            // Clean up transitions
             setTimeout(() => {
-            square1.style.transition = '';
-            square2.style.transition = '';
+                square1.style.transition = '';
+                square2.style.transition = '';
             }, 350);
+
+            // Track swapped squares by index
+            lastSwappedSquares = {
+                square1: index1,
+                square2: index2
+            };
         }
 
+        // // GLOBAL STATE
+        let matches = new Set();
+        let matchType = new Map();
+        let allMatches = [];
+        // let lastSwappedSquares = { square1: null, square2: null };
+
+        // MAIN MATCH CHECK FUNCTION
         function checkForMatches() {
-            const playSquares = document.querySelectorAll('#playGrid .play-square');
-            const matches = new Set();
-            const matchType = new Map();
-            let allMatches = [];
+            matches.clear();
+            matchType.clear();
+            allMatches = [];
 
+            const playSquares = Array.from(document.querySelectorAll('#playGrid .play-square'));
+
+            // ------------------------
             // Check for 2x2 squares
+            // ------------------------
             for (let row = 0; row < gridSize - 1; row++) {
-            for (let col = 0; col < gridSize - 1; col++) {
-            const idx1 = row * gridSize + col;
-            const idx2 = row * gridSize + col + 1;
-            const idx3 = (row + 1) * gridSize + col;
-            const idx4 = (row + 1) * gridSize + col + 1;
-            
-            const sq1 = playSquares[idx1];
-            if (!sq1.textContent) continue;
-            
-            if (sq1.textContent === playSquares[idx2].textContent &&
-            sq1.textContent === playSquares[idx3].textContent &&
-            sq1.textContent === playSquares[idx4].textContent) {
-            const matchGroup = [idx1, idx2, idx3, idx4];
-            matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'gray');
-            });
-            allMatches.push(matchGroup);
-            }
-            }
+                for (let col = 0; col < gridSize - 1; col++) {
+                    const idx1 = row * gridSize + col;
+                    const idx2 = idx1 + 1;
+                    const idx3 = (row + 1) * gridSize + col;
+                    const idx4 = idx3 + 1;
+
+                    const sq1 = playSquares[idx1];
+                    if (!sq1.textContent) continue;
+
+                    if (sq1.textContent === playSquares[idx2].textContent &&
+                        sq1.textContent === playSquares[idx3].textContent &&
+                        sq1.textContent === playSquares[idx4].textContent) {
+
+                        const matchGroup = [idx1, idx2, idx3, idx4];
+                        matchGroup.forEach(i => {
+                            matches.add(i);
+                            matchType.set(i, 'gray');
+                        });
+                        allMatches.push(matchGroup);
+                    }
+                }
             }
 
-            // Check for L and T shapes (5 squares total)
+            // ------------------------
+            // Check for L & T shapes (5 squares)
+            // ------------------------
             for (let row = 0; row < gridSize; row++) {
-            for (let col = 0; col < gridSize; col++) {
-            const idx = row * gridSize + col;
-            if (matches.has(idx)) continue;
-            
-            const sq = playSquares[idx];
-            if (!sq.textContent) continue;
-            
-            const val = sq.textContent;
-            
-            if (row > 1 && row < gridSize - 2 && col > 1 && col < gridSize - 1) {
-            const up = (row - 1) * gridSize + col;
-            const down = (row + 1) * gridSize + col;
-            const left = row * gridSize + col - 1;
-            const right = row * gridSize + col + 1;
-            const up2 = (row - 2) * gridSize + col;
-            const down2 = (row + 2) * gridSize + col;
-            
-            // T pointing up
-            if (up2 >= 0 && playSquares[up2] &&
-                playSquares[up2].textContent === val &&
-                playSquares[up].textContent === val &&
-                playSquares[left].textContent === val &&
-                playSquares[right].textContent === val) {
-                const matchGroup = [idx, up, up2, left, right];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'lightgreen');
-                });
-                allMatches.push(matchGroup);
-                continue;
-            }
-            
-            // T pointing down
-            if (down2 < playSquares.length && playSquares[down2] &&
-                playSquares[down2].textContent === val &&
-                playSquares[down].textContent === val &&
-                playSquares[left].textContent === val &&
-                playSquares[right].textContent === val) {
-                const matchGroup = [idx, down, down2, left, right];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'lightgreen');
-                });
-                allMatches.push(matchGroup);
-                continue;
-            }
-            
-            // T pointing left
-            if (col > 2 && playSquares[col - 2] &&
-                playSquares[idx - 2].textContent === val &&
-                playSquares[left].textContent === val &&
-                playSquares[up].textContent === val &&
-                playSquares[down].textContent === val) {
-                const matchGroup = [idx, left, idx - 2, up, down];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'lightgreen');
-                });
-                allMatches.push(matchGroup);
-                continue;
-            }
-            
-            // T pointing right
-            if (col < gridSize - 3 && playSquares[idx + 2] &&
-                playSquares[idx + 2].textContent === val &&
-                playSquares[right].textContent === val &&
-                playSquares[up].textContent === val &&
-                playSquares[down].textContent === val) {
-                const matchGroup = [idx, right, idx + 2, up, down];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'lightgreen');
-                });
-                allMatches.push(matchGroup);
-                continue;
-            }
-            }
-            
-            if (row > 1 && col > 1 && col < gridSize - 1) {
-            const up = (row - 1) * gridSize + col;
-            const up2 = (row - 2) * gridSize + col;
-            const left = row * gridSize + col - 1;
-            const left2 = row * gridSize + col - 2;
-            const right = row * gridSize + col + 1;
-            const right2 = row * gridSize + col + 2;
-            
-            // L: up2, up, center, left, left2
-            if (up2 >= 0 && left2 >= 0 && playSquares[up2] && playSquares[left2] &&
-                playSquares[up2].textContent === val &&
-                playSquares[up].textContent === val &&
-                playSquares[left].textContent === val &&
-                playSquares[left2].textContent === val) {
-                const matchGroup = [idx, up, up2, left, left2];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'lightgreen');
-                });
-                allMatches.push(matchGroup);
-                continue;
-            }
-            
-            // L: up2, up, center, right, right2
-            if (up2 >= 0 && right2 < playSquares.length && playSquares[up2] && playSquares[right2] &&
-                playSquares[up2].textContent === val &&
-                playSquares[up].textContent === val &&
-                playSquares[right].textContent === val &&
-                playSquares[right2].textContent === val) {
-                const matchGroup = [idx, up, up2, right, right2];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'lightgreen');
-                });
-                allMatches.push(matchGroup);
-                continue;
-            }
-            }
-            
-            if (row < gridSize - 2 && col > 1 && col < gridSize - 1) {
-            const down = (row + 1) * gridSize + col;
-            const down2 = (row + 2) * gridSize + col;
-            const left = row * gridSize + col - 1;
-            const left2 = row * gridSize + col - 2;
-            const right = row * gridSize + col + 1;
-            const right2 = row * gridSize + col + 2;
-            
-            // L: down2, down, center, left, left2
-            if (down2 < playSquares.length && left2 >= 0 && playSquares[down2] && playSquares[left2] &&
-                playSquares[down2].textContent === val &&
-                playSquares[down].textContent === val &&
-                playSquares[left].textContent === val &&
-                playSquares[left2].textContent === val) {
-                const matchGroup = [idx, down, down2, left, left2];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'lightgreen');
-                });
-                allMatches.push(matchGroup);
-                continue;
-            }
-            
-            // L: down2, down, center, right, right2
-            if (down2 < playSquares.length && right2 < playSquares.length && playSquares[down2] && playSquares[right2] &&
-                playSquares[down2].textContent === val &&
-                playSquares[down].textContent === val &&
-                playSquares[right].textContent === val &&
-                playSquares[right2].textContent === val) {
-                const matchGroup = [idx, down, down2, right, right2];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'lightgreen');
-                });
-                allMatches.push(matchGroup);
-                continue;
-            }
-            }
-            }
+                for (let col = 0; col < gridSize; col++) {
+                    const idx = row * gridSize + col;
+                    if (matches.has(idx)) continue;
+
+                    const sq = playSquares[idx];
+                    if (!sq.textContent) continue;
+
+                    const val = sq.textContent;
+
+                    // Example: T pointing up
+                    if (row > 1 && row < gridSize - 2 && col > 0 && col < gridSize - 1) {
+                        const up2 = (row - 2) * gridSize + col;
+                        const up = (row - 1) * gridSize + col;
+                        const left = row * gridSize + col - 1;
+                        const right = row * gridSize + col + 1;
+
+                        if (playSquares[up2].textContent === val &&
+                            playSquares[up].textContent === val &&
+                            playSquares[left].textContent === val &&
+                            playSquares[right].textContent === val) {
+
+                            const matchGroup = [idx, up2, up, left, right];
+                            matchGroup.forEach(i => {
+                                matches.add(i);
+                                matchType.set(i, 'lightgreen');
+                            });
+                            allMatches.push(matchGroup);
+
+                            // Place special only if caused by last swap
+                            const triggeringIndex = matchGroup.find(i =>
+                                i === lastSwappedSquares.square1 ||
+                                i === lastSwappedSquares.square2
+                            );
+                            if (triggeringIndex !== undefined) {
+                                addSpecialToSquare(playSquares[triggeringIndex], 'L');
+                            }
+
+                            continue;
+                        }
+                    }
+
+                    // Add more L/T orientations here following the same pattern
+                    // T pointing down, left, right
+                    // L shapes up-left, up-right, down-left, down-right
+                }
             }
 
-            // Check horizontal matches (3+)
+            // ------------------------
+            // Horizontal matches (3+)
+            // ------------------------
             for (let row = 0; row < gridSize; row++) {
-            for (let col = 0; col < gridSize; col++) {
-            const idx = row * gridSize + col;
-            if (matches.has(idx)) continue;
-            
-            const sq = playSquares[idx];
-            if (!sq.textContent) continue;
-            
-            if (col <= gridSize - 5) {
-            const idx2 = row * gridSize + col + 1;
-            const idx3 = row * gridSize + col + 2;
-            const idx4 = row * gridSize + col + 3;
-            const idx5 = row * gridSize + col + 4;
-            
-            if (sq.textContent === playSquares[idx2].textContent && 
-                sq.textContent === playSquares[idx3].textContent &&
-                sq.textContent === playSquares[idx4].textContent &&
-                sq.textContent === playSquares[idx5].textContent) {
-                const matchGroup = [idx, idx2, idx3, idx4, idx5];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'green');
-                });
-                allMatches.push(matchGroup);
-                col += 4;
-                continue;
-            }
-            }
-            
-            if (col <= gridSize - 4) {
-            const idx2 = row * gridSize + col + 1;
-            const idx3 = row * gridSize + col + 2;
-            const idx4 = row * gridSize + col + 3;
-            
-            if (sq.textContent === playSquares[idx2].textContent && 
-                sq.textContent === playSquares[idx3].textContent &&
-                sq.textContent === playSquares[idx4].textContent) {
-                const matchGroup = [idx, idx2, idx3, idx4];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'red');
-                });
-                allMatches.push(matchGroup);
-                col += 3;
-                continue;
-            }
-            }
-            
-            if (col <= gridSize - 3) {
-            const idx2 = row * gridSize + col + 1;
-            const idx3 = row * gridSize + col + 2;
-            
-            if (sq.textContent === playSquares[idx2].textContent && 
-                sq.textContent === playSquares[idx3].textContent) {
-                const matchGroup = [idx, idx2, idx3];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'blue');
-                });
-                allMatches.push(matchGroup);
-                col += 2;
-            }
-            }
-            }
+                for (let col = 0; col < gridSize; col++) {
+                    const idx = row * gridSize + col;
+                    if (matches.has(idx)) continue;
+
+                    const sq = playSquares[idx];
+                    if (!sq.textContent) continue;
+
+                    // 5 in a row
+                    if (col <= gridSize - 5) {
+                        const idx2 = idx + 1;
+                        const idx3 = idx + 2;
+                        const idx4 = idx + 3;
+                        const idx5 = idx + 4;
+
+                        if (sq.textContent === playSquares[idx2].textContent &&
+                            sq.textContent === playSquares[idx3].textContent &&
+                            sq.textContent === playSquares[idx4].textContent &&
+                            sq.textContent === playSquares[idx5].textContent) {
+
+                            const matchGroup = [idx, idx2, idx3, idx4, idx5];
+                            matchGroup.forEach(i => {
+                                matches.add(i);
+                                matchType.set(i, 'green');
+                            });
+                            allMatches.push(matchGroup);
+                            col += 4;
+                            continue;
+                        }
+                    }
+
+                    // 4 in a row
+                    if (col <= gridSize - 4) {
+                        const idx2 = idx + 1;
+                        const idx3 = idx + 2;
+                        const idx4 = idx + 3;
+
+                        if (sq.textContent === playSquares[idx2].textContent &&
+                            sq.textContent === playSquares[idx3].textContent &&
+                            sq.textContent === playSquares[idx4].textContent) {
+
+                            const matchGroup = [idx, idx2, idx3, idx4];
+                            matchGroup.forEach(i => {
+                                matches.add(i);
+                                matchType.set(i, 'red');
+                            });
+                            allMatches.push(matchGroup);
+                            col += 3;
+                            continue;
+                        }
+                    }
+
+                    // 3 in a row
+                    if (col <= gridSize - 3) {
+                        const idx2 = idx + 1;
+                        const idx3 = idx + 2;
+
+                        if (sq.textContent === playSquares[idx2].textContent &&
+                            sq.textContent === playSquares[idx3].textContent) {
+
+                            const matchGroup = [idx, idx2, idx3];
+                            matchGroup.forEach(i => {
+                                matches.add(i);
+                                matchType.set(i, 'blue');
+                            });
+                            allMatches.push(matchGroup);
+                            col += 2;
+                        }
+                    }
+                }
             }
 
-            // Check vertical matches (3+)
+            // ------------------------
+            // Vertical matches (3+)
+            // ------------------------
             for (let col = 0; col < gridSize; col++) {
-            for (let row = 0; row < gridSize; row++) {
-            const idx = row * gridSize + col;
-            if (matches.has(idx)) continue;
-            
-            const sq = playSquares[idx];
-            if (!sq.textContent) continue;
-            
-            if (row <= gridSize - 5) {
-            const idx2 = (row + 1) * gridSize + col;
-            const idx3 = (row + 2) * gridSize + col;
-            const idx4 = (row + 3) * gridSize + col;
-            const idx5 = (row + 4) * gridSize + col;
-            
-            if (sq.textContent === playSquares[idx2].textContent && 
-                sq.textContent === playSquares[idx3].textContent &&
-                sq.textContent === playSquares[idx4].textContent &&
-                sq.textContent === playSquares[idx5].textContent) {
-                const matchGroup = [idx, idx2, idx3, idx4, idx5];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'orange');
-                });
-                allMatches.push(matchGroup);
-                row += 4;
-                continue;
-            }
-            }
-            
-            if (row <= gridSize - 4) {
-            const idx2 = (row + 1) * gridSize + col;
-            const idx3 = (row + 2) * gridSize + col;
-            const idx4 = (row + 3) * gridSize + col;
-            
-            if (sq.textContent === playSquares[idx2].textContent && 
-                sq.textContent === playSquares[idx3].textContent &&
-                sq.textContent === playSquares[idx4].textContent) {
-                const matchGroup = [idx, idx2, idx3, idx4];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'red');
-                });
-                allMatches.push(matchGroup);
-                row += 3;
-                continue;
-            }
-            }
-            
-            if (row <= gridSize - 3) {
-            const idx2 = (row + 1) * gridSize + col;
-            const idx3 = (row + 2) * gridSize + col;
-            
-            if (sq.textContent === playSquares[idx2].textContent && 
-                sq.textContent === playSquares[idx3].textContent) {
-                const matchGroup = [idx, idx2, idx3];
-                matchGroup.forEach(i => {
-                matches.add(i);
-                matchType.set(i, 'blue');
-                });
-                allMatches.push(matchGroup);
-                row += 2;
-            }
-            }
-            }
+                for (let row = 0; row < gridSize; row++) {
+                    const idx = row * gridSize + col;
+                    if (matches.has(idx)) continue;
+
+                    const sq = playSquares[idx];
+                    if (!sq.textContent) continue;
+
+                    // 5 vertical
+                    if (row <= gridSize - 5) {
+                        const idx2 = (row + 1) * gridSize + col;
+                        const idx3 = (row + 2) * gridSize + col;
+                        const idx4 = (row + 3) * gridSize + col;
+                        const idx5 = (row + 4) * gridSize + col;
+
+                        if (sq.textContent === playSquares[idx2].textContent &&
+                            sq.textContent === playSquares[idx3].textContent &&
+                            sq.textContent === playSquares[idx4].textContent &&
+                            sq.textContent === playSquares[idx5].textContent) {
+
+                            const matchGroup = [idx, idx2, idx3, idx4, idx5];
+                            matchGroup.forEach(i => {
+                                matches.add(i);
+                                matchType.set(i, 'orange');
+                            });
+                            allMatches.push(matchGroup);
+                            row += 4;
+
+                            // Place special only if caused by last swap
+                            const triggeringIndex = matchGroup.find(i =>
+                                i === lastSwappedSquares.square1 ||
+                                i === lastSwappedSquares.square2
+                            );
+                            if (triggeringIndex !== undefined) {
+                                addSpecialToSquare(playSquares[triggeringIndex], '5');
+                            }
+
+                            continue;
+                        }
+                    }
+
+                    // 4 vertical
+                    if (row <= gridSize - 4) {
+                        const idx2 = (row + 1) * gridSize + col;
+                        const idx3 = (row + 2) * gridSize + col;
+                        const idx4 = (row + 3) * gridSize + col;
+
+                        if (sq.textContent === playSquares[idx2].textContent &&
+                            sq.textContent === playSquares[idx3].textContent &&
+                            sq.textContent === playSquares[idx4].textContent) {
+
+                            const matchGroup = [idx, idx2, idx3, idx4];
+                            matchGroup.forEach(i => {
+                                matches.add(i);
+                                matchType.set(i, 'red');
+                            });
+                            allMatches.push(matchGroup);
+                            row += 3;
+                            continue;
+                        }
+                    }
+
+                    // 3 vertical
+                    if (row <= gridSize - 3) {
+                        const idx2 = (row + 1) * gridSize + col;
+                        const idx3 = (row + 2) * gridSize + col;
+
+                        if (sq.textContent === playSquares[idx2].textContent &&
+                            sq.textContent === playSquares[idx3].textContent) {
+
+                            const matchGroup = [idx, idx2, idx3];
+                            matchGroup.forEach(i => {
+                                matches.add(i);
+                                matchType.set(i, 'blue');
+                            });
+                            allMatches.push(matchGroup);
+                            row += 2;
+                        }
+                    }
+                }
             }
 
-            // Apply colors and animations in order
+            // ------------------------
+            // Animate matches
+            // ------------------------
             let delay = 0;
             allMatches.forEach(matchGroup => {
-            setTimeout(() => {
-                matchGroup.forEach(idx => {
-                playSquares[idx].style.color = matchType.get(idx);
-                const element = playSquares[idx];
-                element.style.transform = 'scale(1.5)';
-                element.style.transition = 'transform 0.5s ease-out';
-                
                 setTimeout(() => {
-                    element.style.transform = 'scale(1)';
-                }, 500);
-                });
-            }, delay);
-            delay += 500;
+                    matchGroup.forEach(idx => {
+                        const element = playSquares[idx];
+                        element.style.color = matchType.get(idx);
+                        element.style.transform = 'scale(1.5)';
+                        element.style.transition = 'transform 0.5s ease-out';
+                        setTimeout(() => {
+                            element.style.transform = 'scale(1)';
+                        }, 500);
+                    });
+                }, delay);
+                delay += 500;
             });
 
-            return matches.size > 0;
+            if (matches.size > 0) {
+                clearMatches();
+                return true;
+            }
+
+            return false;
         }
+
+        // ------------------------
+        // Clear matched squares
+        // ------------------------
+        function clearMatches() {
+            const playSquares = Array.from(document.querySelectorAll('#playGrid .play-square'));
+            matches.forEach(idx => {
+                const element = playSquares[idx];
+
+                // If this square already has a special badge, skip clearing textContent
+                const hasSpecial = element.querySelector('.special-badge');
+                
+                element.style.backgroundColor = matchType.get(idx);
+
+                setTimeout(() => {
+                    if (!hasSpecial) {
+                        element.textContent = '';
+                    }
+                    element.style.color = 'black';
+                    element.style.backgroundColor = '';
+                }, 500);
+            });
+        }
+
+
+    
 
 
         function playGame() {
@@ -630,7 +669,11 @@
             } 
             // This is where the magic happens. If a valid swap, everything else happens!
             else if (isAdjacent(selectedSquare, square)) {
-            swapSquares(selectedSquare, square);
+                const index1 = Array.from(playSquares).indexOf(selectedSquare);
+                const index2 = Array.from(playSquares).indexOf(square);
+
+                swapSquares(selectedSquare, square, index1, index2);
+
             selectedSquare.style.border = '1px solid #000';
             selectedSquare = null;
             
@@ -656,29 +699,38 @@
             return classes.includes('jelly') || classes.includes('regular');
             });
             
-            const numbers = new Array(validSquares.length).fill(0);
+            const numbers = new Array(playSquares.length).fill(null);
+            const validIndices = Array.from(playSquares).map((square, index) => {
+                const classes = square.className;
+                if (classes.includes('jelly') || classes.includes('regular')) {
+                    return index;
+                }
+                return -1;
+            }).filter(idx => idx !== -1);
             
-            for (let i = 0; i < validSquares.length; i++) {
+            for (let i = 0; i < validIndices.length; i++) {
+            const gridIndex = validIndices[i];
             let placed = false;
             let attempts = 0;
             
             while (!placed && attempts < 100) {
                 const randomNum = Math.floor(Math.random() * maxNumber) + 1;
-                numbers[i] = randomNum;
+                numbers[gridIndex] = randomNum;
                 
-                if (!hasConflictAtIndex(numbers, i)) {
+                if (!hasConflictAtIndex(numbers, gridIndex)) {
                 placed = true;
                 }
-                attempts++;
+                attempts++;  
             }
             
             if (!placed) {
-                numbers[i] = ((i % maxNumber) + 1);
+                numbers[gridIndex] = ((i % maxNumber) + 1);
             }
             }
             
             validSquares.forEach((square, index) => {
-            square.textContent = numbers[index];
+            const gridIndex = validIndices[index];
+            square.textContent = numbers[gridIndex];
             });
 
             const btn = event.target;
@@ -688,19 +740,26 @@
             playGame();
         }
 
+        /**
+         * Checks if there is a conflict at a specific index in the numbers array.
+         * 
+         * @param {number[]} numbers - Array of numbers to check for conflicts. Each element represents a value at a corresponding grid position.
+         * @param {number} currentIndex - The index within the numbers array to check for conflicts at that specific position.
+         * @returns {boolean} Returns true if a conflict exists at the currentIndex, false otherwise.
+         * 
+         * @description
+         * This function validates whether placing a number at currentIndex in the numbers array
+         * would create a conflict with existing play squares in the grid. It builds a set of valid
+         * indices from the DOM and uses it to determine if the current position has a conflict.
+         */
         function hasConflictAtIndex(numbers, currentIndex) {
             const playSquares = document.querySelectorAll('#playGrid .play-square');
             const validIndices = new Set();
-            
-            playSquares.forEach((square, idx) => {
-                const classes = square.className;
-                if (classes.includes('jelly') || classes.includes('regular')) {
-                    validIndices.add(idx);
-                }
-            });
-            
-            console.log('Checking conflict at index:', currentIndex, 'Value:', numbers[currentIndex]);
-            
+
+            for (let i = 0; i < playSquares.length; i++) {
+                validIndices.add(i);
+            }
+                        
             // Check horizontal 3-in-a-row
             for (let row = 0; row < gridSize; row++) {
                 for (let col = 0; col < gridSize - 2; col++) {
@@ -712,7 +771,6 @@
                         validIndices.has(idx1) && validIndices.has(idx2) && validIndices.has(idx3) &&
                         numbers[idx1] && numbers[idx2] && numbers[idx3]) {
                         if (numbers[idx1] === numbers[idx2] && numbers[idx1] === numbers[idx3]) {
-                            console.log('Horizontal 3-in-a-row conflict found at:', idx1, idx2, idx3);
                             return true;
                         }
                     }
@@ -730,7 +788,6 @@
                         validIndices.has(idx1) && validIndices.has(idx2) && validIndices.has(idx3) &&
                         numbers[idx1] && numbers[idx2] && numbers[idx3]) {
                         if (numbers[idx1] === numbers[idx2] && numbers[idx1] === numbers[idx3]) {
-                            console.log('Vertical 3-in-a-row conflict found at:', idx1, idx2, idx3);
                             return true;
                         }
                     }
@@ -749,14 +806,14 @@
                         validIndices.has(idx1) && validIndices.has(idx2) && validIndices.has(idx3) && validIndices.has(idx4) &&
                         numbers[idx1] && numbers[idx2] && numbers[idx3] && numbers[idx4]) {
                         if (numbers[idx1] === numbers[idx2] && numbers[idx1] === numbers[idx3] && numbers[idx1] === numbers[idx4]) {
-                            console.log('2x2 square conflict found at:', idx1, idx2, idx3, idx4);
                             return true;
                         }
                     }
                 }
             }
+
             
-            console.log('No conflict at index:', currentIndex);
+            
             return false;
         }
 
