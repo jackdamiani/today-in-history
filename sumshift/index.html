@@ -240,9 +240,9 @@
         }
 
         function addSpecialToSquare(square, special) {
-            const validSpecials = ['2', '4', '5', 'L'];
+            const validSpecials = ['2', '4', '5', 'L', 'T'];
             if (!validSpecials.includes(special)) {
-                console.error('Invalid special. Use: 2, 4, 5, or L');
+                console.error('Invalid special. Use: 2, 4, 5, L, or T');
                 return;
             }
             
@@ -307,27 +307,35 @@
             square2.style.transform = 'scale(1.3)';
 
             setTimeout(() => {
-                // Swap the main text symbols
-                const tempText = square1.textContent;
-                square1.textContent = square2.textContent;
-                square2.textContent = tempText;
+            // Get ONLY the text node (not badge text)
+            const getMainText = (square) => {
+                return [...square.childNodes]
+                    .find(n => n.nodeType === Node.TEXT_NODE);
+            };
 
-                // Swap special badges using addSpecialToSquare
-                const badge1 = square1.querySelector('.special-badge')?.textContent;
-                const badge2 = square2.querySelector('.special-badge')?.textContent;
+            const textNode1 = getMainText(square1);
+            const textNode2 = getMainText(square2);
 
-                // Clear current badges
-                if (square1.querySelector('.special-badge')) square1.removeChild(square1.querySelector('.special-badge'));
-                if (square2.querySelector('.special-badge')) square2.removeChild(square2.querySelector('.special-badge'));
+            const tempText = textNode1?.textContent || '';
+            if (textNode1) textNode1.textContent = textNode2?.textContent || '';
+            if (textNode2) textNode2.textContent = tempText;
 
-                // Re-add swapped badges
-                if (badge1) addSpecialToSquare(square2, badge1);
-                if (badge2) addSpecialToSquare(square1, badge2);
+            // Get badge values
+            const badge1 = square1.querySelector('.special-badge')?.textContent;
+            const badge2 = square2.querySelector('.special-badge')?.textContent;
 
-                // Animate scaling back down
-                square1.style.transform = 'scale(1)';
-                square2.style.transform = 'scale(1)';
-            }, 150);
+            // Remove existing badges
+            square1.querySelector('.special-badge')?.remove();
+            square2.querySelector('.special-badge')?.remove();
+
+            // Re-add swapped badges
+            if (badge1) addSpecialToSquare(square2, badge1);
+            if (badge2) addSpecialToSquare(square1, badge2);
+
+            // Animate scaling back down
+            square1.style.transform = 'scale(1)';
+            square2.style.transform = 'scale(1)';
+        }, 150);
 
             // Clean up transitions
             setTimeout(() => {
@@ -379,6 +387,15 @@
                             matchType.set(i, 'gray');
                         });
                         allMatches.push(matchGroup);
+
+                        // Place special only if caused by last swap
+                        const triggeringIndex = matchGroup.find(i =>
+                            i === lastSwappedSquares.square1 ||
+                            i === lastSwappedSquares.square2
+                        );
+                        if (triggeringIndex !== undefined) {
+                            addSpecialToSquare(playSquares[triggeringIndex], '2');
+                        }
                     }
                 }
             }
@@ -396,41 +413,133 @@
 
                     const val = sq.textContent;
 
-                    // Example: T pointing up
+                    const tryMatch = (matchGroup, special_letter) => {
+                        matchGroup.forEach(i => {
+                            matches.add(i);
+                            matchType.set(i, 'lightgreen');
+                        });
+                        allMatches.push(matchGroup);
+
+                        const triggeringIndex = matchGroup.find(i =>
+                            i === lastSwappedSquares.square1 ||
+                            i === lastSwappedSquares.square2
+                        );
+                        if (triggeringIndex !== undefined) {
+                            addSpecialToSquare(playSquares[triggeringIndex], special_letter);
+                        }
+                    };
+
+                    // ========================
+                    // T SHAPES
+                    // ========================
+
+                    // T pointing UP
                     if (row > 1 && row < gridSize - 2 && col > 0 && col < gridSize - 1) {
                         const up2 = (row - 2) * gridSize + col;
                         const up = (row - 1) * gridSize + col;
                         const left = row * gridSize + col - 1;
                         const right = row * gridSize + col + 1;
 
-                        if (playSquares[up2].textContent === val &&
-                            playSquares[up].textContent === val &&
-                            playSquares[left].textContent === val &&
-                            playSquares[right].textContent === val) {
-
-                            const matchGroup = [idx, up2, up, left, right];
-                            matchGroup.forEach(i => {
-                                matches.add(i);
-                                matchType.set(i, 'lightgreen');
-                            });
-                            allMatches.push(matchGroup);
-
-                            // Place special only if caused by last swap
-                            const triggeringIndex = matchGroup.find(i =>
-                                i === lastSwappedSquares.square1 ||
-                                i === lastSwappedSquares.square2
-                            );
-                            if (triggeringIndex !== undefined) {
-                                addSpecialToSquare(playSquares[triggeringIndex], 'L');
-                            }
-
+                        if ([up2, up, left, right].every(i => playSquares[i].textContent === val)) {
+                            tryMatch([idx, up2, up, left, right], 'T');
                             continue;
                         }
                     }
 
-                    // Add more L/T orientations here following the same pattern
-                    // T pointing down, left, right
-                    // L shapes up-left, up-right, down-left, down-right
+                    // T pointing DOWN
+                    if (row < gridSize - 3 && col > 0 && col < gridSize - 1) {
+                        const down = (row + 1) * gridSize + col;
+                        const down2 = (row + 2) * gridSize + col;
+                        const left = row * gridSize + col - 1;
+                        const right = row * gridSize + col + 1;
+
+                        if ([down, down2, left, right].every(i => playSquares[i].textContent === val)) {
+                            tryMatch([idx, down, down2, left, right], 'T');
+                            continue;
+                        }
+                    }
+
+                    // T pointing LEFT
+                    if (col > 1 && row > 0 && row < gridSize - 1) {
+                        const left = row * gridSize + col - 1;
+                        const left2 = row * gridSize + col - 2;
+                        const up = (row - 1) * gridSize + col;
+                        const down = (row + 1) * gridSize + col;
+
+                        if ([left, left2, up, down].every(i => playSquares[i].textContent === val)) {
+                            tryMatch([idx, left, left2, up, down], 'T');
+                            continue;
+                        }
+                    }
+
+                    // T pointing RIGHT
+                    if (col < gridSize - 3 && row > 0 && row < gridSize - 1) {
+                        const right = row * gridSize + col + 1;
+                        const right2 = row * gridSize + col + 2;
+                        const up = (row - 1) * gridSize + col;
+                        const down = (row + 1) * gridSize + col;
+
+                        if ([right, right2, up, down].every(i => playSquares[i].textContent === val)) {
+                            tryMatch([idx, right, right2, up, down], 'T');
+                            continue;
+                        }
+                    }
+
+                    // ========================
+                    // L SHAPES
+                    // ========================
+
+                    // L up-left
+                    if (row > 1 && col > 1) {
+                        const up = (row - 1) * gridSize + col;
+                        const up2 = (row - 2) * gridSize + col;
+                        const left = row * gridSize + col - 1;
+                        const left2 = row * gridSize + col - 2;
+
+                        if ([up, up2, left, left2].every(i => playSquares[i].textContent === val)) {
+                            tryMatch([idx, up, up2, left, left2], 'L');
+                            continue;
+                        }
+                    }
+
+                    // L up-right
+                    if (row > 1 && col < gridSize - 2) {
+                        const up = (row - 1) * gridSize + col;
+                        const up2 = (row - 2) * gridSize + col;
+                        const right = row * gridSize + col + 1;
+                        const right2 = row * gridSize + col + 2;
+
+                        if ([up, up2, right, right2].every(i => playSquares[i].textContent === val)) {
+                            tryMatch([idx, up, up2, right, right2], 'L');
+                            continue;
+                        }
+                    }
+
+                    // L down-left
+                    if (row < gridSize - 2 && col > 1) {
+                        const down = (row + 1) * gridSize + col;
+                        const down2 = (row + 2) * gridSize + col;
+                        const left = row * gridSize + col - 1;
+                        const left2 = row * gridSize + col - 2;
+
+                        if ([down, down2, left, left2].every(i => playSquares[i].textContent === val)) {
+                            tryMatch([idx, down, down2, left, left2], 'L');
+                            continue;
+                        }
+                    }
+
+                    // L down-right
+                    if (row < gridSize - 2 && col < gridSize - 2) {
+                        const down = (row + 1) * gridSize + col;
+                        const down2 = (row + 2) * gridSize + col;
+                        const right = row * gridSize + col + 1;
+                        const right2 = row * gridSize + col + 2;
+
+                        if ([down, down2, right, right2].every(i => playSquares[i].textContent === val)) {
+                            tryMatch([idx, down, down2, right, right2], 'L');
+                            continue;
+                        }
+                    }
                 }
             }
 
@@ -464,6 +573,16 @@
                             });
                             allMatches.push(matchGroup);
                             col += 4;
+
+                            // Place special only if caused by last swap
+                            const triggeringIndex = matchGroup.find(i =>
+                                i === lastSwappedSquares.square1 ||
+                                i === lastSwappedSquares.square2
+                            );
+                            console.log('Triggering index for 5 in a row:', triggeringIndex);
+                            if (triggeringIndex !== undefined) {
+                                addSpecialToSquare(playSquares[triggeringIndex], '5');
+                            }
                             continue;
                         }
                     }
@@ -485,6 +604,15 @@
                             });
                             allMatches.push(matchGroup);
                             col += 3;
+
+                            // Place special only if caused by last swap
+                            const triggeringIndex = matchGroup.find(i =>
+                                i === lastSwappedSquares.square1 ||
+                                i === lastSwappedSquares.square2
+                            );
+                            if (triggeringIndex !== undefined) {
+                                addSpecialToSquare(playSquares[triggeringIndex], '4');
+                            }
                             continue;
                         }
                     }
@@ -570,6 +698,16 @@
                             });
                             allMatches.push(matchGroup);
                             row += 3;
+
+                            // Place special only if caused by last swap
+                            const triggeringIndex = matchGroup.find(i =>
+                                i === lastSwappedSquares.square1 ||
+                                i === lastSwappedSquares.square2
+                            );
+                            if (triggeringIndex !== undefined) {
+                                addSpecialToSquare(playSquares[triggeringIndex], '4');
+                            }
+
                             continue;
                         }
                     }
