@@ -133,7 +133,7 @@
             <h2>Design your level!</h2>
             <div class="controls">
             <label for="gridSize">Grid Size:</label>
-            <input type="number" id="gridSize" min="5" max="10" value="5">
+            <input type="number" id="gridSize" min="5" max="10" value="10">
             <button onclick="adjustGridSize()">Adjust Grid Size</button>
             </div>
             <div class="options" id="options"></div>
@@ -365,36 +365,92 @@
             const playSquares = Array.from(document.querySelectorAll('#playGrid .play-square'));
 
             // ------------------------
-            // Check for 2x2 squares
+            // Horizontal matches 5
             // ------------------------
-            for (let row = 0; row < gridSize - 1; row++) {
-                for (let col = 0; col < gridSize - 1; col++) {
-                    const idx1 = row * gridSize + col;
-                    const idx2 = idx1 + 1;
-                    const idx3 = (row + 1) * gridSize + col;
-                    const idx4 = idx3 + 1;
+            for (let row = 0; row < gridSize; row++) {
+                for (let col = 0; col < gridSize; col++) {
+                    const idx = row * gridSize + col;
+                    if (matches.has(idx)) continue;
 
-                    const sq1 = playSquares[idx1];
-                    if (!sq1.textContent) continue;
+                    const sq = playSquares[idx];
+                    if (!sq.textContent) continue;
 
-                    if (sq1.textContent === playSquares[idx2].textContent &&
-                        sq1.textContent === playSquares[idx3].textContent &&
-                        sq1.textContent === playSquares[idx4].textContent) {
+                    // 5 in a row
+                    if (col <= gridSize - 5) {
+                        const idx2 = idx + 1;
+                        const idx3 = idx + 2;
+                        const idx4 = idx + 3;
+                        const idx5 = idx + 4;
 
-                        const matchGroup = [idx1, idx2, idx3, idx4];
-                        matchGroup.forEach(i => {
-                            matches.add(i);
-                            matchType.set(i, 'gray');
-                        });
-                        allMatches.push(matchGroup);
+                        if (sq.textContent === playSquares[idx2].textContent &&
+                            sq.textContent === playSquares[idx3].textContent &&
+                            sq.textContent === playSquares[idx4].textContent &&
+                            sq.textContent === playSquares[idx5].textContent) {
 
-                        // Place special only if caused by last swap
-                        const triggeringIndex = matchGroup.find(i =>
-                            i === lastSwappedSquares.square1 ||
-                            i === lastSwappedSquares.square2
-                        );
-                        if (triggeringIndex !== undefined) {
-                            addSpecialToSquare(playSquares[triggeringIndex], '2');
+                            const matchGroup = [idx, idx2, idx3, idx4, idx5];
+                            matchGroup.forEach(i => {
+                                matches.add(i);
+                                matchType.set(i, 'green');
+                            });
+                            allMatches.push(matchGroup);
+                            col += 4;
+
+                            // Place special only if caused by last swap
+                            const triggeringIndex = matchGroup.find(i =>
+                                i === lastSwappedSquares.square1 ||
+                                i === lastSwappedSquares.square2
+                            );
+                            console.log('Triggering index for 5 in a row:', triggeringIndex);
+                            if (triggeringIndex !== undefined) {
+                                addSpecialToSquare(playSquares[triggeringIndex], '5');
+                            }
+                            continue;
+                        }
+                    }
+                }
+            }
+
+            // ------------------------
+            // Vertical matches 5
+            // ------------------------
+            for (let col = 0; col < gridSize; col++) {
+                for (let row = 0; row < gridSize; row++) {
+                    const idx = row * gridSize + col;
+                    if (matches.has(idx)) continue;
+
+                    const sq = playSquares[idx];
+                    if (!sq.textContent) continue;
+
+                    // 5 vertical
+                    if (row <= gridSize - 5) {
+                        const idx2 = (row + 1) * gridSize + col;
+                        const idx3 = (row + 2) * gridSize + col;
+                        const idx4 = (row + 3) * gridSize + col;
+                        const idx5 = (row + 4) * gridSize + col;
+
+                        if (sq.textContent === playSquares[idx2].textContent &&
+                            sq.textContent === playSquares[idx3].textContent &&
+                            sq.textContent === playSquares[idx4].textContent &&
+                            sq.textContent === playSquares[idx5].textContent) {
+
+                            const matchGroup = [idx, idx2, idx3, idx4, idx5];
+                            matchGroup.forEach(i => {
+                                matches.add(i);
+                                matchType.set(i, 'orange');
+                            });
+                            allMatches.push(matchGroup);
+                            row += 4;
+
+                            // Place special only if caused by last swap
+                            const triggeringIndex = matchGroup.find(i =>
+                                i === lastSwappedSquares.square1 ||
+                                i === lastSwappedSquares.square2
+                            );
+                            if (triggeringIndex !== undefined) {
+                                addSpecialToSquare(playSquares[triggeringIndex], '5');
+                            }
+
+                            continue;
                         }
                     }
                 }
@@ -544,7 +600,7 @@
             }
 
             // ------------------------
-            // Horizontal matches (3+)
+            // Horizontal matches 4
             // ------------------------
             for (let row = 0; row < gridSize; row++) {
                 for (let col = 0; col < gridSize; col++) {
@@ -553,39 +609,6 @@
 
                     const sq = playSquares[idx];
                     if (!sq.textContent) continue;
-
-                    // 5 in a row
-                    if (col <= gridSize - 5) {
-                        const idx2 = idx + 1;
-                        const idx3 = idx + 2;
-                        const idx4 = idx + 3;
-                        const idx5 = idx + 4;
-
-                        if (sq.textContent === playSquares[idx2].textContent &&
-                            sq.textContent === playSquares[idx3].textContent &&
-                            sq.textContent === playSquares[idx4].textContent &&
-                            sq.textContent === playSquares[idx5].textContent) {
-
-                            const matchGroup = [idx, idx2, idx3, idx4, idx5];
-                            matchGroup.forEach(i => {
-                                matches.add(i);
-                                matchType.set(i, 'green');
-                            });
-                            allMatches.push(matchGroup);
-                            col += 4;
-
-                            // Place special only if caused by last swap
-                            const triggeringIndex = matchGroup.find(i =>
-                                i === lastSwappedSquares.square1 ||
-                                i === lastSwappedSquares.square2
-                            );
-                            console.log('Triggering index for 5 in a row:', triggeringIndex);
-                            if (triggeringIndex !== undefined) {
-                                addSpecialToSquare(playSquares[triggeringIndex], '5');
-                            }
-                            continue;
-                        }
-                    }
 
                     // 4 in a row
                     if (col <= gridSize - 4) {
@@ -616,29 +639,11 @@
                             continue;
                         }
                     }
-
-                    // 3 in a row
-                    if (col <= gridSize - 3) {
-                        const idx2 = idx + 1;
-                        const idx3 = idx + 2;
-
-                        if (sq.textContent === playSquares[idx2].textContent &&
-                            sq.textContent === playSquares[idx3].textContent) {
-
-                            const matchGroup = [idx, idx2, idx3];
-                            matchGroup.forEach(i => {
-                                matches.add(i);
-                                matchType.set(i, 'blue');
-                            });
-                            allMatches.push(matchGroup);
-                            col += 2;
-                        }
-                    }
                 }
             }
 
             // ------------------------
-            // Vertical matches (3+)
+            // Vertical matches 4
             // ------------------------
             for (let col = 0; col < gridSize; col++) {
                 for (let row = 0; row < gridSize; row++) {
@@ -647,39 +652,6 @@
 
                     const sq = playSquares[idx];
                     if (!sq.textContent) continue;
-
-                    // 5 vertical
-                    if (row <= gridSize - 5) {
-                        const idx2 = (row + 1) * gridSize + col;
-                        const idx3 = (row + 2) * gridSize + col;
-                        const idx4 = (row + 3) * gridSize + col;
-                        const idx5 = (row + 4) * gridSize + col;
-
-                        if (sq.textContent === playSquares[idx2].textContent &&
-                            sq.textContent === playSquares[idx3].textContent &&
-                            sq.textContent === playSquares[idx4].textContent &&
-                            sq.textContent === playSquares[idx5].textContent) {
-
-                            const matchGroup = [idx, idx2, idx3, idx4, idx5];
-                            matchGroup.forEach(i => {
-                                matches.add(i);
-                                matchType.set(i, 'orange');
-                            });
-                            allMatches.push(matchGroup);
-                            row += 4;
-
-                            // Place special only if caused by last swap
-                            const triggeringIndex = matchGroup.find(i =>
-                                i === lastSwappedSquares.square1 ||
-                                i === lastSwappedSquares.square2
-                            );
-                            if (triggeringIndex !== undefined) {
-                                addSpecialToSquare(playSquares[triggeringIndex], '5');
-                            }
-
-                            continue;
-                        }
-                    }
 
                     // 4 vertical
                     if (row <= gridSize - 4) {
@@ -707,10 +679,88 @@
                             if (triggeringIndex !== undefined) {
                                 addSpecialToSquare(playSquares[triggeringIndex], '4');
                             }
-
                             continue;
                         }
                     }
+                }
+            }
+
+            // ------------------------
+            // Check for 2x2 squares
+            // ------------------------
+            for (let row = 0; row < gridSize - 1; row++) {
+                for (let col = 0; col < gridSize - 1; col++) {
+                    const idx1 = row * gridSize + col;
+                    const idx2 = idx1 + 1;
+                    const idx3 = (row + 1) * gridSize + col;
+                    const idx4 = idx3 + 1;
+
+                    const sq1 = playSquares[idx1];
+                    if (!sq1.textContent) continue;
+
+                    if (sq1.textContent === playSquares[idx2].textContent &&
+                        sq1.textContent === playSquares[idx3].textContent &&
+                        sq1.textContent === playSquares[idx4].textContent) {
+
+                        const matchGroup = [idx1, idx2, idx3, idx4];
+                        matchGroup.forEach(i => {
+                            matches.add(i);
+                            matchType.set(i, 'gray');
+                        });
+                        allMatches.push(matchGroup);
+
+                        // Place special only if caused by last swap
+                        const triggeringIndex = matchGroup.find(i =>
+                            i === lastSwappedSquares.square1 ||
+                            i === lastSwappedSquares.square2
+                        );
+                        if (triggeringIndex !== undefined) {
+                            addSpecialToSquare(playSquares[triggeringIndex], '2');
+                        }
+                    }
+                }
+            }
+
+            // ------------------------
+            // Horizontal matches 3
+            // ------------------------
+            for (let row = 0; row < gridSize; row++) {
+                for (let col = 0; col < gridSize; col++) {
+                    const idx = row * gridSize + col;
+                    if (matches.has(idx)) continue;
+
+                    const sq = playSquares[idx];
+                    if (!sq.textContent) continue;
+                    // 3 in a row
+                    if (col <= gridSize - 3) {
+                        const idx2 = idx + 1;
+                        const idx3 = idx + 2;
+
+                        if (sq.textContent === playSquares[idx2].textContent &&
+                            sq.textContent === playSquares[idx3].textContent) {
+
+                            const matchGroup = [idx, idx2, idx3];
+                            matchGroup.forEach(i => {
+                                matches.add(i);
+                                matchType.set(i, 'blue');
+                            });
+                            allMatches.push(matchGroup);
+                            col += 2;
+                        }
+                    }
+                }
+            }
+
+            // ------------------------
+            // Vertical matches 3
+            // ------------------------
+            for (let col = 0; col < gridSize; col++) {
+                for (let row = 0; row < gridSize; row++) {
+                    const idx = row * gridSize + col;
+                    if (matches.has(idx)) continue;
+
+                    const sq = playSquares[idx];
+                    if (!sq.textContent) continue;
 
                     // 3 vertical
                     if (row <= gridSize - 3) {
@@ -759,31 +809,159 @@
             return false;
         }
 
-        // ------------------------
-        // Clear matched squares
-        // ------------------------
         function clearMatches() {
             const playSquares = Array.from(document.querySelectorAll('#playGrid .play-square'));
+
             matches.forEach(idx => {
                 const element = playSquares[idx];
-
-                // If this square already has a special badge, skip clearing textContent
                 const hasSpecial = element.querySelector('.special-badge');
-                
                 element.style.backgroundColor = matchType.get(idx);
 
                 setTimeout(() => {
                     if (!hasSpecial) {
                         element.textContent = '';
                     }
+
                     element.style.color = 'black';
                     element.style.backgroundColor = '';
                 }, 500);
             });
+
+            setTimeout(() => {
+                gravity();
+            }, 550);
         }
 
 
-    
+        function getSquareValue(square) {
+            // Look only for the text node that represents the number
+            for (let i = 0; i < square.childNodes.length; i++) {
+                const node = square.childNodes[i];
+
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const value = node.nodeValue.trim();
+                    return value === '' ? '' : value;
+                }
+            }
+
+            return '';
+        }
+
+
+        function setSquareValue(square, value) {
+            // Remove ONLY text nodes (leave badges intact)
+            for (let i = square.childNodes.length - 1; i >= 0; i--) {
+                const node = square.childNodes[i];
+                if (node.nodeType === Node.TEXT_NODE) {
+                    node.remove();
+                }
+            }
+
+            // Add new value if not empty
+            if (value !== '') {
+                square.prepend(document.createTextNode(value));
+            }
+        }
+
+
+
+
+        function gravity() {
+            const playSquares = Array.from(
+                document.querySelectorAll('#playGrid .play-square')
+            );
+
+            let moved = false;
+
+            for (let col = 0; col < gridSize; col++) {
+                for (let row = gridSize - 1; row >= 0; row--) {
+                    const idx = row * gridSize + col;
+                    const current = playSquares[idx];
+
+                    // If current square has no number
+                    if (getSquareValue(current) === '') {
+
+                        // Look upward in the same column
+                        for (let aboveRow = row - 1; aboveRow >= 0; aboveRow--) {
+                            const aboveIdx = aboveRow * gridSize + col;
+                            const above = playSquares[aboveIdx];
+
+                            const aboveValue = getSquareValue(above);
+                            if (aboveValue !== '') {
+
+                                // ---- Move number ----
+                                setSquareValue(current, aboveValue);
+                                setSquareValue(above, '');
+
+                                // ---- Move special badge (if any) ----
+                                const badge = above.querySelector('.special-badge');
+                                if (badge) {
+                                    badge.remove();          // detach cleanly
+                                    current.appendChild(badge);
+                                }
+
+                                moved = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Only recheck if something actually moved
+            if (moved) {
+                setTimeout(() => {
+                    checkForMatches();
+                }, 100);
+            }
+        }
+
+
+
+
+
+        // function gravity() {
+        //     const playSquares = Array.from(document.querySelectorAll('#playGrid .play-square'));
+
+        //     for (let col = 0; col < gridSize; col++) {
+        //         for (let row = gridSize - 1; row >= 0; row--) {
+        //             const idx = row * gridSize + col;
+        //             const current = playSquares[idx];
+
+        //             // if empty, pull from above
+        //             if (current.textContent === '') {
+
+        //                 for (let aboveRow = row - 1; aboveRow >= 0; aboveRow--) {
+        //                     const aboveIdx = aboveRow * gridSize + col;
+        //                     const above = playSquares[aboveIdx];
+
+        //                     if (above.textContent !== '') {
+
+        //                         // move special badge if present
+        //                         const badge = above.querySelector('.special-badge');
+        //                         if (badge) {
+        //                             current.appendChild(badge);
+        //                             console.log('MOVED badge to', idx);
+        //                         }
+
+        //                         // move number
+        //                         current.textContent = above.textContent;
+        //                         above.textContent = '';
+
+                                
+
+        //                         break;
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+
+        //     // Re-check entire grid after gravity
+        //     setTimeout(() => {
+        //         checkForMatches();
+        //     }, 1000);
+        // }
 
 
         function playGame() {
