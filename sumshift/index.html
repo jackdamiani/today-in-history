@@ -512,19 +512,161 @@
             });
         }
 
+        function createsMatchAt(index, i1, i2, v1, v2) {
+            const row = Math.floor(index / gridSize);
+            const col = index % gridSize;
 
-        function isValidSwap(square1, square2) {
-            const isAllowed = (sq) =>
+            const val = getVirtualValueAt(index, i1, i2, v1, v2);
+            if (!val) return false;
+
+            const v = (r, c) =>
+                getVirtualValueAt(r * gridSize + c, i1, i2, v1, v2);
+
+            // =========================
+            // HORIZONTAL 3
+            // =========================
+            if (
+                col >= 2 &&
+                v(row, col - 1) === val &&
+                v(row, col - 2) === val
+            ) {
+                return true;
+            }
+
+            if (
+                col >= 1 && col < gridSize - 1 &&
+                v(row, col - 1) === val &&
+                v(row, col + 1) === val
+            ) {
+                return true;
+            }
+
+            if (
+                col < gridSize - 2 &&
+                v(row, col + 1) === val &&
+                v(row, col + 2) === val
+            ) { 
+                return true;
+            }
+
+            // =========================
+            // VERTICAL 3
+            // =========================
+            if (
+                row >= 2 &&
+                v(row - 1, col) === val &&
+                v(row - 2, col) === val
+            ) { 
+                return true; 
+            }
+
+            if (
+                row >= 1 && row < gridSize - 1 &&
+                v(row - 1, col) === val &&
+                v(row + 1, col) === val
+            ) { 
+                return true; 
+            }
+
+            if (
+                row < gridSize - 2 &&
+                v(row + 1, col) === val &&
+                v(row + 2, col) === val
+            ) { 
+                return true; 
+            }
+
+            // =========================
+            // 2x2 SQUARES (4 orientations)
+            // =========================
+            const squares = [
+                [[0, 0], [1, 0], [0, 1], [1, 1]],     // down-right
+                [[0, 0], [-1, 0], [0, 1], [-1, 1]],   // up-right
+                [[0, 0], [1, 0], [0, -1], [1, -1]],   // down-left
+                [[0, 0], [-1, 0], [0, -1], [-1, -1]]  // up-left
+            ];
+
+            for (const pattern of squares) {
+                if (
+                    pattern.every(([dr, dc]) => {
+                        const r = row + dr;
+                        const c = col + dc;
+                        return inBounds(r, c) && v(r, c) === val;
+                    })
+                ) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
+        function isValidSwap(square1, square2, index1, index2) {
+
+            // Only jelly or regular can be swapped
+            const allowed = sq =>
                 sq.classList.contains('regular') ||
                 sq.classList.contains('jelly');
 
-            return isAllowed(square1) && isAllowed(square2);
+            if (!allowed(square1) || !allowed(square2)) return false;
+
+            const val1 = getSquareNumber(square1);
+            const val2 = getSquareNumber(square2);
+            if (!val1 || !val2) return false;
+
+            // Check BOTH swapped positions
+            return (
+                createsMatchAt(index1, index1, index2, val1, val2) ||
+                createsMatchAt(index2, index1, index2, val1, val2)
+            );
+        }
+
+        function getVirtualValueAt(index, i1, i2, v1, v2) {
+            if (index === i1) return v2;
+            if (index === i2) return v1;
+            return getSquareNumber(playSquares[index]);
+        }
+
+        function inBounds(row, col) {
+            return row >= 0 && row < gridSize && col >= 0 && col < gridSize;
+        }
+
+        function shakeSquares(square1, square2) {
+            const squares = [square1, square2];
+            const duration = 300; // total shake duration in ms
+            const magnitude = 10; // pixels to move left/right
+            const steps = 6; // number of shakes
+
+            squares.forEach(square => {
+                square.style.transition = `transform ${duration / steps}ms ease-in-out`;
+            });
+
+            let count = 0;
+            const interval = setInterval(() => {
+                const offset = (count % 2 === 0 ? magnitude : -magnitude);
+                squares.forEach(square => {
+                    square.style.transform = `translateX(${offset}px)`;
+                });
+                count++;
+                if (count > steps) {
+                    clearInterval(interval);
+                    // reset position
+                    squares.forEach(square => {
+                        square.style.transform = '';
+                        square.style.transition = '';
+                    });
+                }
+            }, duration / steps);
         }
 
         
 
         function swapSquares(square1, square2, index1, index2) {
-            if (!isValidSwap(square1, square2)) return;
+            if (!isValidSwap(square1, square2, index1, index2)) {
+                shakeSquares(square1, square2);
+                return;
+            }
 
 
             // Animate scaling up
@@ -1272,11 +1414,9 @@
 
                     // Only fill valid empty fall targets
                     if (!isFallTarget(square)) {
-                        console.log('not a fall target' + idx);
                         continue;
                     }
                     if (getSquareValue(square) !== '') {
-                        console.log('Found filled square at', idx);
                         continue;
                     }
                         
