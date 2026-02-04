@@ -96,7 +96,12 @@
             width: 40px;
             height: 40px;
             border: 1px solid #000;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         .play-square.jelly {
             background-color: rgba(173, 216, 230, 0.6);
             border: 1px solid #000;
@@ -123,7 +128,45 @@
             justify-content: center;
             font-size: 20px;
             font-weight: bold;
+            position: relative;
         }
+        /* .num-to-go {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        } */
+        .num-to-go {
+            position: absolute;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            pointer-events: none;
+        }
+
+        .value-selector {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 12px;
+        }
+
+        .value-selector span {
+            width: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
         </style>
     </head>
     <body>
@@ -172,6 +215,30 @@
             '7': '#616161'  // light gray
         };
 
+        const DEPTH_COLORS = {
+            jelly: [
+                'rgba(173, 216, 230, 0.3)',
+                'rgba(173, 216, 230, 0.45)',
+                'rgba(173, 216, 230, 0.6)',
+                'rgba(173, 216, 230, 0.75)',
+                'rgba(173, 216, 230, 0.9)'
+            ],
+            candy: [
+                'rgba(255, 192, 203, 0.3)',
+                'rgba(255, 192, 203, 0.45)',
+                'rgba(255, 192, 203, 0.6)',
+                'rgba(255, 192, 203, 0.75)',
+                'rgba(255, 192, 203, 0.9)'
+            ],
+            record: [
+                'rgba(0, 0, 0, 0.25)',
+                'rgba(0, 0, 0, 0.4)',
+                'rgba(0, 0, 0, 0.55)',
+                'rgba(0, 0, 0, 0.7)',
+                'rgba(0, 0, 0, 0.85)'
+            ]
+        };
+
         const TILE_TYPES = {
             regular: 'rgba(255, 255, 255, 0.6)',
             hole: 'rgba(255, 255, 255, 1)',
@@ -180,7 +247,6 @@
             record: 'rgba(0, 0, 0, 0.6)'
         };
 
-        let selectedType = null;
         let gridSize = 5;
         let lastSwappedSquares = null;
 
@@ -191,13 +257,16 @@
             GRAVITY_STEP: 500,
         };
 
+        let selectedType = null;
+        let selectedValue = 1; // 1–8
 
         // // ALL FUNCTIONS
 
         function initializeOptions() {
             const optionsContainer = document.getElementById('options');
             optionsContainer.innerHTML = '';
-            
+
+            // Tile buttons
             Object.keys(TILE_TYPES).forEach(type => {
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
@@ -205,13 +274,43 @@
                 btn.onclick = () => selectOption(type, btn);
                 optionsContainer.appendChild(btn);
             });
+
+            // Counter UI
+            const counter = document.createElement('div');
+            counter.className = 'value-selector';
+
+            const minus = document.createElement('button');
+            minus.textContent = '-';
+            minus.onclick = () => {
+                if (selectedValue > 1) updateValue(selectedValue - 1);
+            };
+
+            const valueDisplay = document.createElement('span');
+            valueDisplay.id = 'valueDisplay';
+            valueDisplay.textContent = selectedValue;
+
+            const plus = document.createElement('button');
+            plus.textContent = '+';
+            plus.onclick = () => {
+                if (selectedValue < 8) updateValue(selectedValue + 1);
+            };
+
+            counter.append(minus, valueDisplay, plus);
+            optionsContainer.appendChild(counter);
         }
+
 
         function selectOption(type, btn) {
             document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
             btn.classList.add('selected');
             selectedType = type;
         }
+
+        function updateValue(val) {
+            selectedValue = val;
+            document.getElementById('valueDisplay').textContent = selectedValue;
+        }
+
 
         function adjustGridSize() {
             const size = parseInt(document.getElementById('gridSize').value);
@@ -234,26 +333,98 @@
         }
 
         function updateSquare(square) {
-            if (!selectedType) {
-                alert('Please select a tile type first');
-                return;
+            if (!selectedType) return;
+
+            square.classList.remove('jelly', 'candy', 'record', 'regular', 'hole');
+            square.classList.add(selectedType);
+
+            if (['jelly', 'candy', 'record'].includes(selectedType)) {
+                square.dataset.numToGo = selectedValue;
+                applyDepthColor(square);
+            } else {
+                delete square.dataset.numToGo;
+                square.style.backgroundColor = '';
             }
-            square.id = selectedType;
-            square.className = `square ${selectedType}`;
+        }
+
+
+        function incrementDepth(square) {
+            if (!square.dataset.numToGo) return;
+
+            let value = parseInt(square.dataset.numToGo, 10);
+            if (value >= 5) return;
+
+            square.dataset.numToGo = value + 1;
+            applyDepthColor(square);
+        }
+
+
+
+        function applyDepthColor(square) {
+            const type = square.classList.contains('jelly') ? 'jelly'
+                    : square.classList.contains('candy') ? 'candy'
+                    : square.classList.contains('record') ? 'record'
+                    : null;
+
+            if (!type || !square.dataset.numToGo) return;
+
+            const depth = Math.min(parseInt(square.dataset.numToGo, 10), 5) - 1;
+            square.style.backgroundColor = DEPTH_COLORS[type][depth];
+        }
+
+
+        function renderNumToGo(square) {
+            let label = square.querySelector('.num-to-go');
+
+            if (!label) {
+                label = document.createElement('div');
+                label.className = 'num-to-go';
+                square.appendChild(label);
+            }
+
+            label.textContent = square.dataset.numToGo;
         }
 
         function generateLevel() {
             const squares = document.querySelectorAll('#grid .square');
             const playGrid = document.getElementById('playGrid');
+
             playGrid.innerHTML = '';
             playGrid.style.gridTemplateColumns = `repeat(${gridSize}, 40px)`;
 
             squares.forEach(square => {
                 const playSquare = document.createElement('div');
+
+                // Copy classes
                 playSquare.className = `play-square ${square.className.replace('square ', '')}`;
+
+                // ✅ ALWAYS initialize
+                playSquare.dataset.numToGo = 0;
+
+                // ✅ Override if editor square has depth
+                if (square.dataset.numToGo) {
+                    playSquare.dataset.numToGo = square.dataset.numToGo;
+                    applyDepthColor(playSquare);
+                }
+
                 playGrid.appendChild(playSquare);
             });
         }
+
+
+
+        // function generateLevel() {
+        //     const squares = document.querySelectorAll('#grid .square');
+        //     const playGrid = document.getElementById('playGrid');
+        //     playGrid.innerHTML = '';
+        //     playGrid.style.gridTemplateColumns = `repeat(${gridSize}, 40px)`;
+
+        //     squares.forEach(square => {
+        //         const playSquare = document.createElement('div');
+        //         playSquare.className = `play-square ${square.className.replace('square ', '')}`;
+        //         playGrid.appendChild(playSquare);
+        //     });
+        // }
 
         function numberColorMap() {
             const playSquares = document.querySelectorAll('#playGrid .play-square');
@@ -341,9 +512,21 @@
             });
         }
 
+
+        function isValidSwap(square1, square2) {
+            const isAllowed = (sq) =>
+                sq.classList.contains('regular') ||
+                sq.classList.contains('jelly');
+
+            return isAllowed(square1) && isAllowed(square2);
+        }
+
         
 
         function swapSquares(square1, square2, index1, index2) {
+            if (!isValidSwap(square1, square2)) return;
+
+
             // Animate scaling up
             square1.style.transition = 'transform 0.2s ease-in-out';
             square2.style.transition = 'transform 0.2s ease-in-out';
@@ -939,7 +1122,7 @@
         }
 
         function isRecord(square) {
-            return square.classList.contains('record');
+            return square.classList.contains('record')
         }
 
 
@@ -955,32 +1138,38 @@
                     const idx = row * gridSize + col;
                     const current = playSquares[idx];
 
-                    // Skip if this square blocks gravity
-                    if (isBlocker(current)) continue;
-
                     // =========================
                     // CASE 1: RECORD FALLS
                     // =========================
                     if (isRecord(current)) {
-
                         const belowRow = row + 1;
                         if (belowRow < gridSize) {
-                            const belowIdx = belowRow * gridSize + col;
-                            const below = playSquares[belowIdx];
+                            const below = playSquares[belowRow * gridSize + col];
 
-                            if (isFallTarget(below) && getSquareValue(below) === '') {
+                            // Record can fall onto non-hole squares
+                            if (!isBlocker(below) && getSquareValue(below) === '' && !isRecord(below)) {
 
-                                // Move RECORD class downward
+                                // ---- MOVE RECORD LAYER ----
                                 below.classList.add('record');
+                                below.dataset.numToGo = current.dataset.numToGo;
+
+                                // ---- REMOVE RECORD FROM SOURCE ----
                                 current.classList.remove('record');
-                                current.classList.add('regular');
+                                current.classList.add('regular'); // becomes normal tile after falling
+                                current.dataset.numToGo = 0;
+
+                                // ---- VISUAL UPDATE ----
+                                applyDepthColor(below);
+                                current.style.backgroundColor = ''; // reverts to base tile color
 
                                 moved = true;
                             }
                         }
-
                         continue;
                     }
+
+                    // Skip if this square blocks gravity
+                    if (isBlocker(current)) continue;
 
                     // =========================
                     // CASE 2: NORMAL NUMBER FALL
@@ -1069,14 +1258,28 @@
 
             let numbers = getNumbersArray();
 
-            for (let row = 0; row < gridSize; row++) {
-                for (let col = 0; col < gridSize; col++) {
+            for (let col = 0; col < gridSize; col++) {
+
+                // Walk bottom → top
+                for (let row = gridSize - 1; row >= 0; row--) {
                     const idx = row * gridSize + col;
                     const square = playSquares[idx];
 
-                    // Only fill valid, empty fall targets
-                    if (!isFallTarget(square)) continue;
-                    if (getSquareValue(square) !== '') continue;
+                    // ❌ Never fill record cell itself
+                    if (isRecord(square)) {
+                        continue;
+                    }
+
+                    // Only fill valid empty fall targets
+                    if (!isFallTarget(square)) {
+                        console.log('not a fall target' + idx);
+                        continue;
+                    }
+                    if (getSquareValue(square) !== '') {
+                        console.log('Found filled square at', idx);
+                        continue;
+                    }
+                        
 
                     let value;
                     let attempts = 0;
@@ -1086,10 +1289,7 @@
                         numbers[idx] = value;
                         attempts++;
 
-                        // Difficulty 0: pure random
                         if (difficulty === 0) break;
-
-                        // Difficulty 1: sometimes allow conflicts
                         if (difficulty === 1 && Math.random() < 0.3) break;
 
                     } while (
@@ -1099,12 +1299,13 @@
                     );
 
                     setSquareValue(square, value);
-                    numbers[idx] = value; // commit
+                    numbers[idx] = value;
                 }
             }
 
             numberColorMap();
         }
+
 
 
 
@@ -1154,10 +1355,12 @@
             const maxNumber = parseInt(document.getElementById('maxNumber').value);
             const playSquares = document.querySelectorAll('#playGrid .play-square');
             
-            const validSquares = Array.from(playSquares).filter(square => {
-            const classes = square.className;
-            return classes.includes('jelly') || classes.includes('regular');
-            });
+            // const validSquares = Array.from(playSquares).filter(square => {
+            // const classes = square.className;
+            // return classes.includes('jelly') || classes.includes('regular');
+            // });
+
+
             
             const numbers = new Array(playSquares.length).fill(null);
             const validIndices = Array.from(playSquares).map((square, index) => {
@@ -1187,11 +1390,30 @@
                 numbers[gridIndex] = ((i % maxNumber) + 1);
             }
             }
-            
-            validSquares.forEach((square, index) => {
-            const gridIndex = validIndices[index];
-            square.textContent = numbers[gridIndex];
+
+            const validSquares = Array.from(playSquares).filter(square => {
+                const classes = square.className;
+                return classes.includes('jelly') || classes.includes('regular');
             });
+
+            validSquares.forEach((square, index) => {
+                const gridIndex = validIndices[index];
+
+                square.textContent = numbers[gridIndex];
+
+                // Re-apply depth if this tile type supports it
+                if (square.classList.contains('jelly') ||
+                    square.classList.contains('candy') ||
+                    square.classList.contains('record')) {
+
+                    if (!square.dataset.numToGo) {
+                        square.dataset.numToGo = 1; // default depth
+                    }
+
+                    applyDepthColor(square);
+                }
+            });
+
 
             const btn = event.target;
             btn.textContent = 'Reset Level';
