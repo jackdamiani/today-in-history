@@ -72,11 +72,11 @@
         .square:hover {
             background-color: #e0e0e0;
         }
-        .square.jelly {
+        .square.blue {
             background-color: rgba(173, 216, 230, 0.6);
             border: 1px solid #000;
         }
-        .square.candy {
+        .square.pink {
             background-color: rgba(255, 192, 203, 0.6);
             border: 1px solid #000;
         }
@@ -84,11 +84,11 @@
             background-color: rgba(255, 255, 255, 1);
             border: none;
         }
-        .square.regular {
+        .square.empty {
             background-color: rgba(255, 255, 255, 0.6);
             border: 1px solid #000;
         }
-        .square.record {
+        .square.black {
             background-color: rgba(0, 0, 0, 0.6);
             border: 1px solid #000;
         }
@@ -102,11 +102,11 @@
             justify-content: center;
         }
 
-        .play-square.jelly {
+        .play-square.blue {
             background-color: rgba(173, 216, 230, 0.6);
             border: 1px solid #000;
         }
-        .play-square.candy {
+        .play-square.pink {
             background-color: rgba(255, 192, 203, 0.6);
             border: 1px solid #000;
         }
@@ -114,11 +114,11 @@
             background-color: rgba(255, 255, 255, 1);
             border: none;
         }
-        .play-square.regular {
+        .play-square.empty {
             background-color: rgba(255, 255, 255, 0.6);
             border: 1px solid #000;
         }
-        .play-square.record {
+        .play-square.black {
             background-color: rgba(0, 0, 0, 0.6);
             border: 1px solid #000;
         }
@@ -216,21 +216,21 @@
         };
 
         const DEPTH_COLORS = {
-            jelly: [
+            blue: [
                 'rgba(173, 216, 230, 0.3)',
                 'rgba(173, 216, 230, 0.45)',
                 'rgba(173, 216, 230, 0.6)',
                 'rgba(173, 216, 230, 0.75)',
                 'rgba(173, 216, 230, 0.9)'
             ],
-            candy: [
+            pink: [
                 'rgba(255, 192, 203, 0.3)',
                 'rgba(255, 192, 203, 0.45)',
                 'rgba(255, 192, 203, 0.6)',
                 'rgba(255, 192, 203, 0.75)',
                 'rgba(255, 192, 203, 0.9)'
             ],
-            record: [
+            black: [
                 'rgba(0, 0, 0, 0.25)',
                 'rgba(0, 0, 0, 0.4)',
                 'rgba(0, 0, 0, 0.55)',
@@ -240,11 +240,11 @@
         };
 
         const TILE_TYPES = {
-            regular: 'rgba(255, 255, 255, 0.6)',
+            empty: 'rgba(255, 255, 255, 0.6)',
             hole: 'rgba(255, 255, 255, 1)',
-            jelly: 'rgba(173, 216, 230, 0.6)',
-            candy: 'rgba(255, 192, 203, 0.6)',
-            record: 'rgba(0, 0, 0, 0.6)'
+            blue: 'rgba(173, 216, 230, 0.6)',
+            pink: 'rgba(255, 192, 203, 0.6)',
+            black: 'rgba(0, 0, 0, 0.6)'
         };
 
         let gridSize = 5;
@@ -326,7 +326,7 @@
 
             for (let i = 0; i < size * size; i++) {
                 const square = document.createElement('div');
-                square.className = 'square regular';
+                square.className = 'square empty';
                 square.onclick = () => updateSquare(square);
                 grid.appendChild(square);
             }
@@ -335,10 +335,10 @@
         function updateSquare(square) {
             if (!selectedType) return;
 
-            square.classList.remove('jelly', 'candy', 'record', 'regular', 'hole');
+            square.classList.remove('blue', 'pink', 'black', 'empty', 'hole');
             square.classList.add(selectedType);
 
-            if (['jelly', 'candy', 'record'].includes(selectedType)) {
+            if (['blue', 'pink', 'black'].includes(selectedType)) {
                 square.dataset.numToGo = selectedValue;
                 applyDepthColor(square);
             } else {
@@ -361,9 +361,9 @@
 
 
         function applyDepthColor(square) {
-            const type = square.classList.contains('jelly') ? 'jelly'
-                    : square.classList.contains('candy') ? 'candy'
-                    : square.classList.contains('record') ? 'record'
+            const type = square.classList.contains('blue') ? 'blue'
+                    : square.classList.contains('pink') ? 'pink'
+                    : square.classList.contains('black') ? 'black'
                     : null;
 
             if (!type || !square.dataset.numToGo) return;
@@ -504,7 +504,7 @@
             const specials = ['2', 'L', '4', '5'];
             
             playSquares.forEach((square, index) => {
-                const isPlayable = square.className.includes('jelly') || square.className.includes('regular');
+                const isPlayable = square.className.includes('blue') || square.className.includes('empty');
                 if (isPlayable) {
                     const randomSpecial = specials[Math.floor(Math.random() * specials.length)];
                     addSpecialToSquare(square, randomSpecial);
@@ -604,10 +604,10 @@
 
         function isValidSwap(square1, square2, index1, index2) {
 
-            // Only jelly or regular can be swapped
+            // Only blue or empty can be swapped
             const allowed = sq =>
-                sq.classList.contains('regular') ||
-                sq.classList.contains('jelly');
+                sq.classList.contains('empty') ||
+                sq.classList.contains('blue');
 
             if (!allowed(square1) || !allowed(square2)) return false;
 
@@ -1254,17 +1254,17 @@
 
 
         function isFallTarget(square) {
-            return square.classList.contains('regular') ||
-                square.classList.contains('jelly');
+            return square.classList.contains('empty') ||
+                square.classList.contains('blue');
         }
 
         function isBlocker(square) {
             return square.classList.contains('hole') ||
-                square.classList.contains('candy');
+                square.classList.contains('pink');
         }
 
-        function isRecord(square) {
-            return square.classList.contains('record')
+        function isBlack(square) {
+            return square.classList.contains('black')
         }
 
 
@@ -1283,21 +1283,21 @@
                     // =========================
                     // CASE 1: RECORD FALLS
                     // =========================
-                    if (isRecord(current)) {
+                    if (isBlack(current)) {
                         const belowRow = row + 1;
                         if (belowRow < gridSize) {
                             const below = playSquares[belowRow * gridSize + col];
 
-                            // Record can fall onto non-hole squares
-                            if (!isBlocker(below) && getSquareValue(below) === '' && !isRecord(below)) {
+                            // Black can fall onto non-hole squares
+                            if (!isBlocker(below) && getSquareValue(below) === '' && !isBlack(below)) {
 
                                 // ---- MOVE RECORD LAYER ----
-                                below.classList.add('record');
+                                below.classList.add('black');
                                 below.dataset.numToGo = current.dataset.numToGo;
 
                                 // ---- REMOVE RECORD FROM SOURCE ----
-                                current.classList.remove('record');
-                                current.classList.add('regular'); // becomes normal tile after falling
+                                current.classList.remove('black');
+                                current.classList.add('empty'); // becomes normal tile after falling
                                 current.dataset.numToGo = 0;
 
                                 // ---- VISUAL UPDATE ----
@@ -1407,8 +1407,8 @@
                     const idx = row * gridSize + col;
                     const square = playSquares[idx];
 
-                    // ❌ Never fill record cell itself
-                    if (isRecord(square)) {
+                    // ❌ Never fill black cell itself
+                    if (isBlack(square)) {
                         continue;
                     }
 
@@ -1457,7 +1457,7 @@
             
             playSquares.forEach(square => {
             square.addEventListener('click', function() {
-            const isSwappable = square.className.includes('regular') || square.className.includes('jelly');
+            const isSwappable = square.className.includes('empty') || square.className.includes('blue');
             
             if (!isSwappable) return;
             
@@ -1494,18 +1494,11 @@
         function populateLevel() {
             const maxNumber = parseInt(document.getElementById('maxNumber').value);
             const playSquares = document.querySelectorAll('#playGrid .play-square');
-            
-            // const validSquares = Array.from(playSquares).filter(square => {
-            // const classes = square.className;
-            // return classes.includes('jelly') || classes.includes('regular');
-            // });
-
-
-            
+                      
             const numbers = new Array(playSquares.length).fill(null);
             const validIndices = Array.from(playSquares).map((square, index) => {
                 const classes = square.className;
-                if (classes.includes('jelly') || classes.includes('regular')) {
+                if (classes.includes('blue') || classes.includes('empty')) {
                     return index;
                 }
                 return -1;
@@ -1533,7 +1526,7 @@
 
             const validSquares = Array.from(playSquares).filter(square => {
                 const classes = square.className;
-                return classes.includes('jelly') || classes.includes('regular');
+                return classes.includes('blue') || classes.includes('empty');
             });
 
             validSquares.forEach((square, index) => {
@@ -1542,9 +1535,9 @@
                 square.textContent = numbers[gridIndex];
 
                 // Re-apply depth if this tile type supports it
-                if (square.classList.contains('jelly') ||
-                    square.classList.contains('candy') ||
-                    square.classList.contains('record')) {
+                if (square.classList.contains('blue') ||
+                    square.classList.contains('pink') ||
+                    square.classList.contains('black')) {
 
                     if (!square.dataset.numToGo) {
                         square.dataset.numToGo = 1; // default depth
