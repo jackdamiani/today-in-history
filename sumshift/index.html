@@ -778,14 +778,21 @@
                             allMatches.push(matchGroup);
                             col += 4;
 
-                            // Place special only if caused by last swap
-                            const triggeringIndex = matchGroup.find(i =>
+                            // Determine which square gets the special
+                            let specialIndex = matchGroup.find(i =>
                                 i === lastSwappedSquares.square1 ||
                                 i === lastSwappedSquares.square2
                             );
-                            if (triggeringIndex !== undefined) {
-                                addSpecialToSquare(playSquares[triggeringIndex], '5');
+
+                            // If the 5-match was NOT caused by the swap (gravity case),
+                            // pick a random square from the matchGroup
+                            if (specialIndex === undefined) {
+                                specialIndex = matchGroup[Math.floor(Math.random() * matchGroup.length)];
                             }
+
+                            // Place the special
+                            addSpecialToSquare(playSquares[specialIndex], '5');
+
                             continue;
                         }
                     }
@@ -824,13 +831,21 @@
                             row += 4;
 
                             // Place special only if caused by last swap
-                            const triggeringIndex = matchGroup.find(i =>
+                            // Determine which square gets the special
+                            let specialIndex = matchGroup.find(i =>
                                 i === lastSwappedSquares.square1 ||
                                 i === lastSwappedSquares.square2
                             );
-                            if (triggeringIndex !== undefined) {
-                                addSpecialToSquare(playSquares[triggeringIndex], '5');
+
+                            // If the 5-match was NOT caused by the swap (gravity case),
+                            // pick a random square from the matchGroup
+                            if (specialIndex === undefined) {
+                                specialIndex = matchGroup[Math.floor(Math.random() * matchGroup.length)];
                             }
+
+                            // Place the special
+                            addSpecialToSquare(playSquares[specialIndex], '5');
+
 
                             continue;
                         }
@@ -858,13 +873,21 @@
                         });
                         allMatches.push(matchGroup);
 
-                        const triggeringIndex = matchGroup.find(i =>
+                        // Determine which square gets the special
+                        let specialIndex = matchGroup.find(i =>
                             i === lastSwappedSquares.square1 ||
                             i === lastSwappedSquares.square2
                         );
-                        if (triggeringIndex !== undefined) {
-                            addSpecialToSquare(playSquares[triggeringIndex], special_letter);
+
+                        // If the 5-match was NOT caused by the swap (gravity case),
+                        // pick a random square from the matchGroup
+                        if (specialIndex === undefined) {
+                            specialIndex = matchGroup[Math.floor(Math.random() * matchGroup.length)];
                         }
+
+                        // Place the special
+                        addSpecialToSquare(playSquares[specialIndex], special_letter);
+
                     };
 
                     // ========================
@@ -1011,13 +1034,21 @@
                             col += 3;
 
                             // Place special only if caused by last swap
-                            const triggeringIndex = matchGroup.find(i =>
+                            // Determine which square gets the special
+                            let specialIndex = matchGroup.find(i =>
                                 i === lastSwappedSquares.square1 ||
                                 i === lastSwappedSquares.square2
                             );
-                            if (triggeringIndex !== undefined) {
-                                addSpecialToSquare(playSquares[triggeringIndex], '4');
+
+                            // If the 5-match was NOT caused by the swap (gravity case),
+                            // pick a random square from the matchGroup
+                            if (specialIndex === undefined) {
+                                specialIndex = matchGroup[Math.floor(Math.random() * matchGroup.length)];
                             }
+
+                            // Place the special
+                            addSpecialToSquare(playSquares[specialIndex], '4');
+
                             continue;
                         }
                     }
@@ -1053,14 +1084,21 @@
                             allMatches.push(matchGroup);
                             row += 3;
 
-                            // Place special only if caused by last swap
-                            const triggeringIndex = matchGroup.find(i =>
+                            // Determine which square gets the special
+                            let specialIndex = matchGroup.find(i =>
                                 i === lastSwappedSquares.square1 ||
                                 i === lastSwappedSquares.square2
                             );
-                            if (triggeringIndex !== undefined) {
-                                addSpecialToSquare(playSquares[triggeringIndex], '4');
+
+                            // If the 5-match was NOT caused by the swap (gravity case),
+                            // pick a random square from the matchGroup
+                            if (specialIndex === undefined) {
+                                specialIndex = matchGroup[Math.floor(Math.random() * matchGroup.length)];
                             }
+
+                            // Place the special
+                            addSpecialToSquare(playSquares[specialIndex], '4');
+
                             continue;
                         }
                     }
@@ -1091,14 +1129,21 @@
                         });
                         allMatches.push(matchGroup);
 
-                        // Place special only if caused by last swap
-                        const triggeringIndex = matchGroup.find(i =>
+                        // Determine which square gets the special
+                        let specialIndex = matchGroup.find(i =>
                             i === lastSwappedSquares.square1 ||
                             i === lastSwappedSquares.square2
                         );
-                        if (triggeringIndex !== undefined) {
-                            addSpecialToSquare(playSquares[triggeringIndex], '2');
+
+                        // If the 5-match was NOT caused by the swap (gravity case),
+                        // pick a random square from the matchGroup
+                        if (specialIndex === undefined) {
+                            specialIndex = matchGroup[Math.floor(Math.random() * matchGroup.length)];
                         }
+
+                        // Place the special
+                        addSpecialToSquare(playSquares[specialIndex], '2');
+
                     }
                 }
             }
