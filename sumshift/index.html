@@ -189,13 +189,37 @@
             <label for="difficulty">Difficulty Level: <button type="button" class="info-btn" title="Controls how many matches happen when new tiles are added after a match. 0=random, 1=some, 2=none">?</button></label>
             <input type="number" id="difficulty" min="0" max="2" value="2">
             </div>
+            <div class="controls">
+            <label for="maxSwaps">Max Swaps Allowed:</label>
+            <input type="number" id="maxSwaps" min="1" max="100" value="20">
+            </div>
             <button onclick="generateLevel()">Generate Level</button>
         </div>
         <div class="play-container">
             <h2>Play your level! <button type="button" class="info-btn"  title="Populate level to play. Click on two adjacent squares to swap. Try to get 3 in a row. Hit reset to reset the whole level">?</button></h2>
-            
+            <div style="margin-bottom: 20px; display: flex; gap: 20px; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span>Swaps Remaining:</span>
+                    <strong id="swapsRemaining"></strong>
+                </div>
+            </div>
+            <div id="tracker" style="margin-bottom: 20px; display: flex; gap: 20px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 30px; height: 30px; background-color: rgba(173, 216, 230, 0.6); border: 1px solid #000;"></div>
+                    <span>Blue: <strong id="blueCount">0</strong></span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 30px; height: 30px; background-color: rgba(255, 192, 203, 0.6); border: 1px solid #000;"></div>
+                    <span>Pink: <strong id="pinkCount">0</strong></span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 30px; height: 30px; background-color: rgba(0, 0, 0, 0.6); border: 1px solid #000;"></div>
+                    <span>Black: <strong id="blackCount">0</strong></span>
+                </div>
+            </div>
             <div id="playGrid"></div>
             <button type="button" style="margin-top: 20px;" onclick="populateLevel()">Populate and Play!</button>
+            
         </div>
         </div>
 
@@ -292,7 +316,7 @@
             const plus = document.createElement('button');
             plus.textContent = '+';
             plus.onclick = () => {
-                if (selectedValue < 8) updateValue(selectedValue + 1);
+                if (selectedValue < 5) updateValue(selectedValue + 1);
             };
 
             counter.append(minus, valueDisplay, plus);
@@ -408,6 +432,9 @@
                 }
 
                 playGrid.appendChild(playSquare);
+
+                const maxSwaps = parseInt(document.getElementById('maxSwaps').value);
+                document.getElementById('swapsRemaining').textContent = maxSwaps;
             });
         }
 
@@ -1236,11 +1263,83 @@
 
 
             if (matches.size > 0) {
+                decrementAdjacentDepths();
                 clearMatches();
                 return true;
             }
 
             return false;
+        }
+
+        function decrementAdjacentDepths() {            
+            const playSquares = Array.from(document.querySelectorAll('#playGrid .play-square'));
+            const affectedIndices = new Set();
+
+            // Check all matched squares and their neighbors
+            matches.forEach(idx => {
+            const row = Math.floor(idx / gridSize);
+            const col = idx % gridSize;
+
+            // Check the matched square itself if it's blue
+            const square = playSquares[idx];
+            if (square.classList.contains('blue') && square.dataset.numToGo) {
+                affectedIndices.add(idx);
+            }
+
+            // Check all 4 adjacent neighbors for pink or black
+            const neighbors = [
+                idx - gridSize, // up
+                idx + gridSize, // down
+                idx - 1,        // left
+                idx + 1         // right
+            ];
+
+            neighbors.forEach(nIdx => {
+                if (nIdx >= 0 && nIdx < playSquares.length) {
+                const nRow = Math.floor(nIdx / gridSize);
+                const nCol = nIdx % gridSize;
+
+                // Verify adjacency (don't wrap around grid)
+                if (Math.abs(nRow - row) + Math.abs(nCol - col) === 1) {
+                    const neighbor = playSquares[nIdx];
+                    if ((neighbor.classList.contains('pink') || neighbor.classList.contains('black')) && neighbor.dataset.numToGo) {
+                    affectedIndices.add(nIdx);
+                    }
+                }
+                }
+            });
+            });
+
+            // Decrement all affected squares
+            affectedIndices.forEach(idx => {
+                decrementSquareDepth(playSquares[idx]);
+            });
+
+            updateLevelStatus();
+        }
+
+        function decrementSquareDepth(square) {
+            let depth = parseInt(square.dataset.numToGo, 10);
+            console.log(`Decrementing square: ${depth} → ${depth - 1}`);
+            
+            if (depth > 1) {
+                depth--;
+                square.dataset.numToGo = depth;
+                applyDepthColor(square);
+            } else {
+                // Convert to empty square
+                const type = square.classList.contains('blue') ? 'blue'
+                          : square.classList.contains('pink') ? 'pink'
+                          : square.classList.contains('black') ? 'black'
+                          : null;
+                
+                if (type) {
+                    square.classList.remove(type);
+                    square.classList.add('empty');
+                    square.dataset.numToGo = 0;
+                    square.style.backgroundColor = '';
+                }
+            }
         }
 
         function clearMatches() {
@@ -1417,6 +1516,7 @@
             }
 
             numberColorMap();
+            updateLevelStatus();
 
         }
 
@@ -1519,6 +1619,9 @@
                 const index2 = Array.from(playSquares).indexOf(square);
 
                 swapSquares(selectedSquare, square, index1, index2);
+                document.getElementById('swapsRemaining').textContent = 
+                    parseInt(document.getElementById('swapsRemaining').textContent) - 1;
+                checkGameOver();
 
             selectedSquare.style.border = '1px solid #000';
             selectedSquare = null;
@@ -1600,6 +1703,63 @@
             numberColorMap();
 
             playGame();
+
+            updateLevelStatus();
+
+        }
+
+        function checkGameOver() {
+            const swapsRemaining = parseInt(document.getElementById('swapsRemaining').textContent);
+            
+            if (swapsRemaining === 0) {
+            showGameOverMessage();
+            }
+        }
+
+        function showGameOverMessage() {
+            const gameOverModal = document.createElement('div');
+            gameOverModal.style.position = 'fixed';
+            gameOverModal.style.top = '50%';
+            gameOverModal.style.left = '50%';
+            gameOverModal.style.transform = 'translate(-50%, -50%) scale(0)';
+            gameOverModal.style.backgroundColor = '#f44336';
+            gameOverModal.style.color = 'white';
+            gameOverModal.style.padding = '40px 60px';
+            gameOverModal.style.borderRadius = '15px';
+            gameOverModal.style.fontSize = '32px';
+            gameOverModal.style.fontWeight = 'bold';
+            gameOverModal.style.textAlign = 'center';
+            gameOverModal.style.zIndex = '9999';
+            gameOverModal.style.boxShadow = '0 10px 40px rgba(0,0,0,0.3)';
+            gameOverModal.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            
+            gameOverModal.textContent = 'Game Over!';
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = '✕';
+            closeBtn.style.position = 'absolute';
+            closeBtn.style.top = '10px';
+            closeBtn.style.right = '10px';
+            closeBtn.style.width = '30px';
+            closeBtn.style.height = '30px';
+            closeBtn.style.padding = '0';
+            closeBtn.style.fontSize = '24px';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.backgroundColor = 'transparent';
+            closeBtn.style.color = 'white';
+            closeBtn.style.border = 'none';
+            closeBtn.style.fontWeight = 'bold';
+            closeBtn.style.display = 'flex';
+            closeBtn.style.alignItems = 'center';
+            closeBtn.style.justifyContent = 'center';
+            closeBtn.onclick = () => gameOverModal.remove();
+            
+            gameOverModal.appendChild(closeBtn);
+            document.body.appendChild(gameOverModal);
+            
+            setTimeout(() => {
+            gameOverModal.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, 10);
         }
 
         /**
@@ -1735,6 +1895,90 @@
             const btn = event.target;
             btn.textContent = 'Populate and play!';
             btn.onclick = populateLevel;
+        }
+
+        function updateLevelStatus() {
+            const playSquares = Array.from(document.querySelectorAll('#playGrid .play-square'));
+            
+            let blueTotal = 0;
+            let pinkTotal = 0;
+            let blackTotal = 0;
+            
+            playSquares.forEach(square => {
+                if (square.classList.contains('blue')) {
+                    const depth = parseInt(square.dataset.numToGo) || 1;
+                    blueTotal += depth;
+                } else if (square.classList.contains('pink')) {
+                    const depth = parseInt(square.dataset.numToGo) || 1;
+                    pinkTotal += depth;
+                } else if (square.classList.contains('black')) {
+                    const depth = parseInt(square.dataset.numToGo) || 1;
+                    blackTotal += depth;
+                }
+            });
+            
+            document.getElementById('blueCount').textContent = blueTotal;
+            document.getElementById('pinkCount').textContent = pinkTotal;
+            document.getElementById('blackCount').textContent = blackTotal;
+
+            checkGameWin();
+        }
+
+        function checkGameWin() {
+            const blueCount = parseInt(document.getElementById('blueCount').textContent);
+            const pinkCount = parseInt(document.getElementById('pinkCount').textContent);
+            const blackCount = parseInt(document.getElementById('blackCount').textContent);
+            
+            if (blueCount === 0 && pinkCount === 0 && blackCount === 0) {
+                showWinMessage();
+            }
+        }
+
+        function showWinMessage() {
+            const winModal = document.createElement('div');
+            winModal.style.position = 'fixed';
+            winModal.style.top = '50%';
+            winModal.style.left = '50%';
+            winModal.style.transform = 'translate(-50%, -50%) scale(0)';
+            winModal.style.backgroundColor = '#4CAF50';
+            winModal.style.color = 'white';
+            winModal.style.padding = '40px 60px';
+            winModal.style.borderRadius = '15px';
+            winModal.style.fontSize = '32px';
+            winModal.style.fontWeight = 'bold';
+            winModal.style.textAlign = 'center';
+            winModal.style.zIndex = '9999';
+            winModal.style.boxShadow = '0 10px 40px rgba(0,0,0,0.3)';
+            winModal.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = '✕';
+            closeBtn.style.position = 'absolute';
+            closeBtn.style.top = '10px';
+            closeBtn.style.right = '10px';
+            closeBtn.style.width = '30px';
+            closeBtn.style.height = '30px';
+            closeBtn.style.padding = '0';
+            closeBtn.style.fontSize = '24px';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.backgroundColor = 'transparent';
+            closeBtn.style.color = 'white';
+            closeBtn.style.border = 'none';
+            closeBtn.style.fontWeight = 'bold';
+            closeBtn.style.display = 'flex';
+            closeBtn.style.alignItems = 'center';
+            closeBtn.style.justifyContent = 'center';
+            
+            
+            winModal.textContent = '🎉 You Win! 🎉';
+            winModal.appendChild(closeBtn);
+            document.body.appendChild(winModal);
+
+            closeBtn.onclick = () => winModal.remove();
+            
+            setTimeout(() => {
+                winModal.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, 10);
         }
 
         initializeOptions();
