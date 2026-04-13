@@ -565,219 +565,504 @@ var today_in_history = {
         "1990": "Machine Gun Kelly (Rapper and actor)"
     },
     "0423": {
-        "1954": "Michael Moore (Filmmaker and political commentator)",
-        "1961": "George Lopez (Comedian and actor)",
         "1977": "John Cena (Wrestler and actor)",
-        "1985": "Dev Patel (Actor known for 'Slumdog Millionaire')",
-        "1992": "Gigi Hadid (Model)"
+        "1990": "Dev Patel (Actor known for 'Slumdog Millionaire')",
+        "1995": "Gigi Hadid (Model)"
     },
     "0424": {
         "1942": "Barbra Streisand (Singer and actress)",
-        "1952": "Jean-Paul Gaultier (Fashion designer)",
-        "1973": "Sachin Tendulkar (Cricketer)",
         "1982": "Kelly Clarkson (Singer)",
-        "1990": "Joe Keery (Actor known for 'Stranger Things')"
+        "1992": "Joe Keery (Actor known for 'Stranger Things')"
     },
     "0425": {
         "1940": "Al Pacino (Actor known for 'The Godfather')",
-        "1970": "Jason Lee (Actor and skateboarder)",
         "1981": "Felipe Massa (Formula 1 driver)",
-        "1986": "Daniel Sharman (Actor known for 'Teen Wolf')",
-        "1989": "G-Eazy (Rapper)"
+        "1986": "Daniel Sharman (Actor known for 'Teen Wolf')"
     },
     "0426": {
         "1963": "Jet Li (Martial artist and actor)",
         "1977": "Tom Welling (Actor known for 'Smallville')",
-        "1980": "Channing Tatum (Actor known for 'Magic Mike')",
-        "1991": "Grigor Dimitrov (Tennis player)",
-        "1999": "Anya Taylor-Joy (Actress known for 'The Queen's Gambit')"
+        "1980": "Channing Tatum (Actor known for 'Magic Mike')"
     },
     "0427": {
-        "1961": "Robert Carlyle (Actor known for 'Trainspotting')",
-        "1964": "Russell T Davies (Screenwriter and producer)",
-        "1975": "David Beckham (Footballer)",
+        "1963": "Russell T Davies (Screenwriter and producer)",
         "1986": "Jenna Coleman (Actress known for 'Doctor Who')",
         "1994": "Lizzo (Singer and rapper)"
     },
     "0428": {
         "1941": "Ann-Margret (Actress and singer)",
         "1974": "Penélope Cruz (Actress known for 'Vicky Cristina Barcelona')",
-        "1981": "Jessica Alba (Actress and entrepreneur)",
-        "1987": "Samantha Barks (Actress and singer)",
-        "1990": "Bridget Satterlee (Model)"
+        "1981": "Jessica Alba (Actress and entrepreneur)"
     },
     "0429": {
         "1958": "Michelle Pfeiffer (Actress)",
         "1970": "Uma Thurman (Actress known for 'Kill Bill')",
-        "1982": "Katherine Langford (Actress known for '13 Reasons Why')",
-        "1985": "Gal Gadot (Actress known for 'Wonder Woman')",
-        "1992": "Travis Scott (Rapper)"
+        "1996": "Katherine Langford (Actress known for '13 Reasons Why')"
     },
     "0430": {
-        "1945": "Jill Clayburgh (Actress)",
-        "1965": "Adrian Pasdar (Actor known for 'Heroes')",
-        "1970": "Kirsten Dunst (Actress known for 'Spider-Man')",
-        "1982": "Dianna Agron (Actress known for 'Glee')",
-        "1985": "Blake Griffin (Basketball player)"
+        "1982": "Kirsten Dunst (Actress known for 'Spider-Man')",
+        "1986": "Dianna Agron (Actress known for 'Glee')",
+        "1992": "Travis Scott (Rapper)"
     },
     "0501": {
         "1946": "Joanna Lumley (Actress)",
         "1967": "Tim McGraw (Country singer)",
-        "1975": "Marc-Vivien Foé (Footballer)",
-        "1981": "Wes Anderson (Filmmaker)",
-        "1992": "Sammy Adams (Rapper)"
+        "1969": "Wes Anderson (Filmmaker)"
     },
     "0502": {
-        "1955": "Donatella Versace (Fashion designer)",
         "1972": "Dwayne Johnson (Actor and wrestler)",
         "1983": "Tina Maze (Skier)",
-        "1990": "Paul George (Basketball player)",
-        "1992": "Gigi Hadid (Model)"
+        "1990": "Paul George (Basketball player)"
     },
     "0503": {
         "1965": "Rob Brydon (Comedian and actor)",
-        "1968": "Michael Balzary (Flea, bassist of Red Hot Chili Peppers)",
         "1975": "Christina Hendricks (Actress known for 'Mad Men')",
-        "1985": "Gal Gadot (Actress known for 'Wonder Woman')",
         "1990": "Brooks Koepka (Golfer)"
     },
     "0504": {
         "1959": "Randy Travis (Country singer)",
         "1979": "Lance Bass (Singer, NSYNC)",
-        "1988": "Adele (Singer)",
-        "1989": "Rory McIlroy (Golfer)",
-        "1994": "Tyson Fury (Boxer)"
+        "1989": "Rory McIlroy (Golfer)"
     },
     "0505": {
-        "1948": "Bill Ward (Drummer, Black Sabbath)",
-        "1969": "Cate Blanchett (Actress)",
         "1981": "Craig David (Singer)",
-        "1988": "Adele (Singer)",
-        "1993": "Henry Cavill (Actor known for 'Superman')"
+        "1993": "Henry Cavill (Actor known for 'Superman')",
+        "1988": "Adele (Singer)"
     },
     "0506": {
         "1961": "George Clooney (Actor and director)",
-        "1972": "Martin Brodeur (Hockey player)",
         "1983": "Dani Alves (Footballer)",
-        "1989": "Naomi Scott (Actress known for 'Aladdin')",
-        "1992": "Takumi Minamino (Footballer)"
+        "1989": "Naomi Scott (Actress known for 'Aladdin')"
     },
     "0507": {
-        "1940": "Angela Carter (Writer)",
         "1961": "Phil Campbell (Guitarist, Motörhead)",
-        "1971": "Eagle-Eye Cherry (Singer)",
         "1985": "J Balvin (Singer)",
-        "1995": "Alexander Ludwig (Actor known for 'Vikings')"
+        "1992": "Alexander Ludwig (Actor known for 'Vikings')"
     },
     "0508": {
-        "1951": "Philip Bailey (Singer, Earth Wind & Fire)",
         "1964": "Dave Rowntree (Drummer, Blur)",
         "1975": "Enrique Iglesias (Singer)",
-        "1986": "Megan Fox (Actress)",
-        "1990": "Joe Bonamassa (Guitarist)"
+        "1977": "Joe Bonamassa (Guitarist)"
     },
     "0509": {
         "1949": "Billy Joel (Singer-songwriter)",
-        "1968": "Dave Gahan (Singer, Depeche Mode)",
         "1979": "Rosario Dawson (Actress)",
-        "1986": "Leighton Meester (Actress known for 'Gossip Girl')",
         "1996": "Noah Centineo (Actor)"
     },
     "0510": {
         "1960": "Bono (Singer, U2)",
-        "1972": "Christian Eriksen (Footballer)",
-        "1981": "Rami Malek (Actor)",
-        "1986": "Amber Heard (Actress)",
+        "1978": "Kenan Thompson (Actor and comedian, SNL)",
         "1993": "Halston Sage (Actress)"
     },
     "0511": {
-        "1949": "Billy Squier (Musician)",
         "1963": "Natasha Richardson (Actress)",
-        "1977": "Jonathan Jackson (Actor)",
-        "1989": "Sabrina Carpenter (Actress and singer)",
-        "1992": "Thibaut Courtois (Footballer)"
+        "1992": "Thibaut Courtois (Footballer)",
+        "1999": "Sabrina Carpenter (Actress and singer)"
     },
     "0512": {
-        "1948": "Steve Winwood (Musician)",
-        "1965": "Stephen Baldwin (Actor)",
         "1978": "Jason Biggs (Actor)",
-        "1986": "Emily VanCamp (Actress)",
+        "1981": "Rami Malek (Actor)",
         "1995": "Luke Benward (Actor)"
     },
     "0513": {
         "1950": "Stevie Wonder (Singer)",
-        "1967": "Melanie Thornton (Singer)",
-        "1978": "Jamie Chung (Actress)",
         "1986": "Robert Pattinson (Actor)",
         "1993": "Debby Ryan (Actress)"
     },
     "0514": {
-        "1969": "Cate Blanchett (Actress)",
-        "1977": "Roy Halladay (Baseball player)",
         "1984": "Mark Zuckerberg (Co-founder of Facebook)",
         "1989": "Rob Gronkowski (Football player)",
         "1993": "Miranda Cosgrove (Actress)"
     },
     "0515": {
-        "1940": "Anna Maria Alberghetti (Actress and singer)",
         "1956": "Dan Patrick (Sportscaster)",
         "1978": "David Krumholtz (Actor)",
-        "1986": "Andy Murray (Tennis player)",
-        "1990": "Lee Dong-wook (Actor)"
+        "1986": "Andy Murray (Tennis player)"
     },
     "0516": {
         "1966": "Janet Jackson (Singer)",
-        "1970": "Gabriela Sabatini (Tennis player)",
         "1986": "Megan Fox (Actress)",
-        "1990": "Thomas Brodie-Sangster (Actor)",
-        "1999": "RJ Barrett (Basketball player)"
+        "1990": "Thomas Brodie-Sangster (Actor)"
     },
     "0517": {
         "1955": "Bill Paxton (Actor)",
         "1974": "Andrea Corr (Singer)",
-        "1980": "Venus Williams (Tennis player)",
-        "1983": "Nikki Reed (Actress)",
-        "1990": "Lele Pons (Influencer)"
+        "1988": "Nikki Reed (Actress)"
     },
     "0518": {
-        "1955": "Chow Yun-fat (Actor)",
         "1969": "Martika (Singer)",
         "1975": "Jack Johnson (Singer)",
-        "1982": "Reggie Bush (Football player)",
-        "1988": "Spencer Breslin (Actor)"
+        "1992": "Spencer Breslin (Actor)"
     },
     "0519": {
         "1945": "Pete Townshend (Guitarist, The Who)",
-        "1962": "Sam Smith (Singer)",
-        "1979": "Andrea Pirlo (Footballer)",
         "1986": "Mario Chalmers (Basketball player)",
         "1992": "Marshmello (DJ)"
     },
     "0520": {
         "1946": "Cher (Singer and actress)",
-        "1967": "Tony Goldwyn (Actor)",
         "1972": "Busta Rhymes (Rapper)",
-        "1983": "Oscar Isaac (Actor)",
         "1990": "Josh O'Connor (Actor)"
     },
     "0521": {
-        "1948": "Leo Sayer (Singer)",
-        "1969": "Laurence Fishburne (Actor)",
+        "1952": "Mr. T (Actor and wrestler)",
         "1980": "Gotye (Singer)",
-        "1983": "Mr. T (Actor and wrestler)",
         "1991": "Sarah Ramos (Actress)"
     },
     "0522": {
-        "1946": "George Best (Footballer)",
         "1967": "Brooke Smith (Actress)",
-        "1970": "Naomi Campbell (Model)",
         "1987": "Novak Djokovic (Tennis player)",
-        "1992": "Camren Bicondova (Actress)"
+        "1999": "Camren Bicondova (Actress)"
     },
     "0523": {
         "1958": "Drew Carey (Comedian)",
-        "1974": "Jewel (Singer)",
+        "1974": "Richard Ayoade (Actor and director)",
         "2000": "Jack Damiani (creator of Today in History :))"
+    },
+    "0524": {
+        "1941": "Bob Dylan (Folk singer known for 'Blowin' in the Wind')",
+        "1965": "John C. Reilly (Actor known for 'Step Brothers')",
+        "1989": "G-Eazy (Rapper known for 'Me, Myself & I')"
+    },
+    "0525": {
+        "1963": "Mike Myers (Actor known for 'Austin Powers')",
+        "1976": "Cillian Murphy (Actor known for 'Oppenheimer')",
+        "1994": "Aly Raisman (Olympic gymnast known for 'The Final Five')"
+    },
+    "0526": {
+        "1948": "Stevie Nicks (Singer known for 'Fleetwood Mac')",
+        "1964": "Lenny Kravitz (Musician known for 'Are You Gonna Go My Way')",
+        "1975": "Lauryn Hill (Singer known for 'The Miseducation of Lauryn Hill')"
+    },
+    "0527": {
+        "1971": "Paul Bettany (Actor known for 'Avengers: Infinity War')",
+        "1975": "Andre 3000 (Rapper known for 'Outkast')",
+        "1999": "Lily-Rose Depp (Actress known for 'The Idol')"
+    },
+    "0528": {
+        "1944": "Gladys Knight (Singer known for 'Midnight Train to Georgia')",
+        "1968": "Kylie Minogue (Singer known for 'Can't Get You Out of My Head')",
+        "1999": "Cameron Boyce (Actor known for 'Descendants')"
+    },
+    "0529": {
+        "1953": "Danny Elfman (Composer known for 'The Nightmare Before Christmas')",
+        "1958": "Annette Bening (Actress known for 'American Beauty')",
+        "1984": "Carmelo Anthony (NBA player known for 'New York Knicks')"
+    },
+    "0530": {
+        "1964": "Tom Morello (Musician known for 'Rage Against the Machine')",
+        "1971": "Idina Menzel (Actress known for 'Frozen')",
+        "1980": "Steven Gerrard (Soccer player known for 'Liverpool FC')"
+    },
+    "0531": {
+        "1943": "Joe Namath (NFL player known for 'New York Jets')",
+        "1965": "Brooke Shields (Actress known for 'The Blue Lagoon')",
+        "1976": "Colin Farrell (Actor known for 'The Banshees of Inisherin')"
+    },
+    "0601": {
+        "1947": "Ron Wood (Musician known for 'The Rolling Stones')",
+        "1973": "Heidi Klum (Model known for 'Project Runway')",
+        "1996": "Tom Holland (Actor known for 'Spider-Man')"
+    },
+    "0602": {
+        "1941": "Charlie Watts (Musician known for 'The Rolling Stones')",
+        "1972": "Wentworth Miller (Actor known for 'Prison Break')",
+        "1977": "Zachary Quinto (Actor known for 'Star Trek')"
+    },
+    "0603": {
+        "1967": "Anderson Cooper (Journalist known for 'CNN')",
+        "1986": "Rafael Nadal (Tennis player known for 'French Open')",
+        "1991": "Emma Hunton (Actress known for 'Good Trouble')"
+    },
+    "0604": {
+        "1975": "Angelina Jolie (Actress known for 'Lara Croft: Tomb Raider')",
+        "1985": "Bar Refaeli (Model known for 'Sports Illustrated')",
+        "1991": "Jordan Clarkson (NBA player known for 'Utah Jazz')"
+    },
+    "0605": {
+        "1956": "Kenny G (Musician known for 'Breathless')",
+        "1971": "Mark Wahlberg (Actor known for 'The Departed')",
+        "1979": "Pete Wentz (Musician known for 'Fall Out Boy')"
+    },
+    "0606": {
+        "1960": "Steve Vai (Guitarist known for 'Passion and Warfare')",
+        "1967": "Paul Giamatti (Actor known for 'Sideways')",
+        "1985": "Sebastian Larsson (Soccer player known for 'Sunderland')"
+    },
+    "0607": {
+        "1952": "Liam Neeson (Actor known for 'Taken')",
+        "1958": "Prince (Musician known for 'Purple Rain')",
+        "1990": "Iggy Azalea (Rapper known for 'Fancy')"
+    },
+    "0608": {
+        "1951": "Bonnie Tyler (Singer known for 'Total Eclipse of the Heart')",
+        "1955": "Tim Berners-Lee (Inventor known for 'World Wide Web')",
+        "1977": "Kanye West (Rapper known for 'The College Dropout')"
+    },
+    "0609": {
+        "1961": "Michael J. Fox (Actor known for 'Back to the Future')",
+        "1963": "Johnny Depp (Actor known for 'Pirates of the Caribbean')",
+        "1981": "Natalie Portman (Actress known for 'Black Swan')"
+    },
+    "0610": {
+        "1959": "Carlo Ancelotti (Soccer coach known for 'Real Madrid')",
+        "1992": "Kate Upton (Model known for 'The Other Woman')",
+        "1993": "Jon Bellion (Singer known for 'All Time Low')"
+    },
+    "0611": {
+        "1959": "Hugh Laurie (Actor known for 'House')",
+        "1969": "Peter Dinklage (Actor known for 'Game of Thrones')",
+        "1986": "Shia LaBeouf (Actor known for 'Transformers')"
+    },
+    "0612": {
+        "1941": "Chick Corea (Musician known for 'Return to Forever')",
+        "1981": "Adriana Lima (Model known for 'Victoria's Secret')",
+        "1985": "Dave Franco (Actor known for '21 Jump Street')"
+    },
+    "0613": {
+        "1953": "Tim Allen (Actor known for 'Toy Story')",
+        "1981": "Chris Evans (Actor known for 'Captain America')",
+        "1986": "Mary-Kate Olsen (Actress known for 'Full House')"
+    },
+    "0614": {
+        "1946": "Donald Trump (TV personality known for 'The Apprentice')",
+        "1961": "Boy George (Singer known for 'Culture Club')",
+        "1989": "Lucy Hale (Actress known for 'Pretty Little Liars')"
+    },
+    "0615": {
+        "1964": "Courteney Cox (Actress known for 'Friends')",
+        "1969": "Ice Cube (Rapper known for 'N.W.A')",
+        "1973": "Neil Patrick Harris (Actor known for 'How I Met Your Mother')"
+    },
+    "0616": {
+        "1971": "Tupac Shakur (Rapper known for 'All Eyez on Me')",
+        "1978": "Daniel Brühl (Actor known for 'Inglourious Basterds')",
+        "1987": "Diana DeGarmo (Singer known for 'American Idol')"
+    },
+    "0617": {
+        "1943": "Barry Manilow (Singer known for 'Copacabana')",
+        "1980": "Venus Williams (Tennis player known for 'Wimbledon')",
+        "1987": "Kendrick Lamar (Rapper known for 'DAMN.')"
+    },
+    "0618": {
+        "1942": "Paul McCartney (Musician known for 'The Beatles')",
+        "1976": "Blake Shelton (Singer known for 'The Voice')",
+        "1981": "Nora Zehetner (Actress known for 'Brick')"
+    },
+    "0619": {
+        "1954": "Kathleen Turner (Actress known for 'Romancing the Stone')",
+        "1978": "Zoe Saldana (Actress known for 'Avatar')",
+        "1982": "Macklemore (Rapper known for 'Thrift Shop')"
+    },
+    "0620": {
+        "1942": "Brian Wilson (Musician known for 'The Beach Boys')",
+        "1949": "Lionel Richie (Singer known for 'Hello')",
+        "1967": "Nicole Kidman (Actress known for 'Moulin Rouge!')"
+    },
+    "0621": {
+        "1944": "Tony Scott (Director known for 'Top Gun')",
+        "1973": "Juliette Lewis (Actress known for 'Natural Born Killers')",
+        "1982": "Prince William (Royal known for 'The Royal Family')"
+    },
+    "0622": {
+        "1944": "Peter Asher (Musician known for 'Peter and Gordon')",
+        "1949": "Meryl Streep (Actress known for 'The Devil Wears Prada')",
+        "1953": "Cyndi Lauper (Singer known for 'Girls Just Want to Have Fun')"
+    },
+    "0623": {
+        "1940": "Wilma Rudolph (Athlete known for '1960 Olympics')",
+        "1957": "Frances McDormand (Actress known for 'Fargo')",
+        "1972": "Zinedine Zidane (Soccer player known for 'Real Madrid')"
+    },
+    "0624": {
+        "1944": "Jeff Beck (Guitarist known for 'The Yardbirds')",
+        "1979": "Mindy Kaling (Actress known for 'The Office')",
+        "1987": "Lionel Messi (Soccer player known for 'FC Barcelona')"
+    },
+    "0625": {
+        "1945": "Carly Simon (Singer known for 'You're So Vain')",
+        "1963": "George Michael (Singer known for 'Wham!')",
+        "1996": "Lele Pons (Internet personality known for 'Vine')"
+    },
+    "0626": {
+        "1970": "Sean Hayes (Actor known for 'Will & Grace')",
+        "1980": "Jason Schwartzman (Actor known for 'Rushmore')",
+        "1993": "Ariana Grande (Singer known for 'Thank U, Next')"
+    },
+    "0627": {
+        "1966": "J.J. Abrams (Director known for 'Star Wars: The Force Awakens')",
+        "1975": "Tobey Maguire (Actor known for 'Spider-Man')",
+        "1984": "Khloe Kardashian (TV personality known for 'The Kardashians')"
+    },
+    "0628": {
+        "1948": "Kathy Bates (Actress known for 'Misery')",
+        "1966": "John Cusack (Actor known for 'Say Anything...')",
+        "1971": "Elon Musk (Business magnate known for 'Tesla')"
+    },
+    "0629": {
+        "1947": "Richard Lewis (Comedian known for 'Curb Your Enthusiasm')",
+        "1982": "Lily Rabe (Actress known for 'American Horror Story')",
+        "2003": "Jude Hill (Actor known for 'Belfast')"
+    },
+    "0630": {
+        "1966": "Mike Tyson (Boxer known for 'Heavyweight Champion')",
+        "1982": "Lizzy Caplan (Actress known for 'Mean Girls')",
+        "1985": "Michael Phelps (Olympic swimmer known for 'The Flying Fish')"
+    },
+    "0701": {
+        "1952": "Dan Aykroyd (Actor known for 'Ghostbusters')",
+        "1961": "Princess Diana (Royal known for the British Monarchy)",
+        "1967": "Pamela Anderson (Actress known for 'Baywatch')"
+    },
+    "0702": {
+        "1985": "Ashley Tisdale (Actress known for 'High School Musical')",
+        "1986": "Lindsay Lohan (Actress known for 'Mean Girls')",
+        "1990": "Margot Robbie (Actress known for 'Barbie')"
+    },
+    "0703": {
+        "1962": "Tom Cruise (Actor known for 'Mission: Impossible')",
+        "1973": "Patrick Wilson (Actor known for 'The Conjuring')",
+        "1980": "Olivia Munn (Actress known for 'The Newsroom')"
+    },
+    "0704": {
+        "1952": "John Waite (Singer known for 'Missing You')",
+        "1978": "Becki Newton (Actress known for 'Ugly Betty')",
+        "1995": "Post Malone (Singer known for 'Sunflower')"
+    },
+    "0705": {
+        "1950": "Huey Lewis (Singer known for 'The Power of Love')",
+        "1963": "Edie Falco (Actress known for 'The Sopranos')",
+        "1991": "Shohei Ohtani (MLB Player known for Los Angeles Dodgers)"
+    },
+    "0706": {
+        "1975": "50 Cent (Rapper known for 'In Da Club')",
+        "1979": "Kevin Hart (Comedian known for 'Jumanji')",
+        "1980": "Eva Green (Actress known for 'Casino Royale')"
+    },
+    "0707": {
+        "1969": "Cree Summer (Voice actress known for 'Rugrats')",
+        "1980": "Michelle Kwan (Figure skater known for Olympic medals)",
+        "1993": "Ally Brooke (Singer known for Fifth Harmony)"
+    },
+    "0708": {
+        "1958": "Kevin Bacon (Actor known for 'Footloose')",
+        "1977": "Milo Ventimiglia (Actor known for 'This Is Us')",
+        "1982": "Sophia Bush (Actress known for 'One Tree Hill')"
+    },
+    "0709": {
+        "1956": "Tom Hanks (Actor known for 'Forrest Gump')",
+        "1957": "Kelly McGillis (Actress known for 'Top Gun')",
+        "1976": "Fred Savage (Actor known for 'The Wonder Years')"
+    },
+    "0710": {
+        "1972": "Sofia Vergara (Actress known for 'Modern Family')",
+        "1980": "Jessica Simpson (Singer known for 'With You')",
+        "1991": "Atsuko Maeda (Singer known for AKB48)"
+    },
+    "0711": {
+        "1959": "Richie Sambora (Guitarist known for Bon Jovi)",
+        "1975": "Lil' Kim (Rapper known for 'Lady Marmalade')",
+        "1990": "Caroline Wozniacki (Tennis player known for Australian Open win)"
+    },
+    "0712": {
+        "1970": "Lee Byung-hun (Actor known for 'Squid Game')",
+        "1978": "Michelle Rodriguez (Actress known for 'Fast & Furious')",
+        "1997": "Malala Yousafzai (Activist known for Nobel Peace Prize)"
+    },
+    "0713": {
+        "1962": "Tom Kenny (Voice actor known for 'SpongeBob SquarePants')",
+        "1969": "Ken Jeong (Comedian known for 'The Hangover')",
+        "1988": "Colton Haynes (Actor known for 'Teen Wolf')"
+    },
+    "0714": {
+        "1960": "Jane Lynch (Actress known for 'Glee')",
+        "1987": "Dan Reynolds (Singer known for Imagine Dragons)",
+        "1988": "Conor McGregor (MMA Fighter known for UFC)"
+    },
+    "0715": {
+        "1961": "Forest Whitaker (Actor known for 'The Last King of Scotland')",
+        "1973": "Brian Austin Green (Actor known for 'Beverly Hills, 90210')",
+        "1976": "Diane Kruger (Actress known for 'Inglourious Basterds')"
+    },
+    "0716": {
+        "1967": "Will Ferrell (Actor known for 'Anchorman')",
+        "1982": "Carli Lloyd (Soccer player known for USWNT)",
+        "1989": "Gareth Bale (Soccer player known for Real Madrid)"
+    },
+    "0717": {
+        "1952": "David Hasselhoff (Actor known for 'Knight Rider')",
+        "1963": "Alex Winter (Actor known for 'Bill & Ted's Excellent Adventure')",
+        "1976": "Luke Bryan (Singer known for 'Country Girl')"
+    },
+    "0718": {
+        "1950": "Sir Richard Branson (Entrepreneur known for Virgin Group)",
+        "1967": "Vin Diesel (Actor known for 'Fast & Furious')",
+        "1980": "Kristen Bell (Actress known for 'Frozen')"
+    },
+    "0719": {
+        "1962": "Anthony Edwards (Actor known for 'ER')",
+        "1976": "Benedict Cumberbatch (Actor known for 'Sherlock')",
+        "1982": "Jared Padalecki (Actor known for 'Supernatural')"
+    },
+    "0720": {
+        "1971": "Sandra Oh (Actress known for 'Grey's Anatomy')",
+        "1980": "Gisele Bündchen (Supermodel known for Victoria's Secret)",
+        "1988": "Julianne Hough (Dancer known for 'Dancing with the Stars')"
+    },
+    "0721": {
+        "1951": "Robin Williams (Actor known for 'Good Will Hunting')",
+        "1978": "Josh Hartnett (Actor known for 'Black Hawk Down')",
+        "1998": "Bindi Irwin (Conservationist known for 'Bindi the Jungle Girl')"
+    },
+    "0722": {
+        "1964": "David Spade (Comedian known for 'Joe Dirt')",
+        "1992": "Selena Gomez (Singer known for 'Only Murders in the Building')",
+        "2013": "Prince George of Wales (Royal known for the British Monarchy)"
+    },
+    "0723": {
+        "1952": "Woody Harrelson (Actor known for 'Cheers')",
+        "1967": "Philip Seymour Hoffman (Actor known for 'Capote')",
+        "1989": "Daniel Radcliffe (Actor known for 'Harry Potter')"
+    },
+    "0724": {
+        "1968": "Kristin Chenoweth (Actress known for 'Wicked')",
+        "1969": "Jennifer Lopez (Singer known for 'On the Floor')",
+        "1982": "Elisabeth Moss (Actress known for 'The Handmaid's Tale')"
+    },
+    "0725": {
+        "1967": "Matt LeBlanc (Actor known for 'Friends')",
+        "1985": "James Lafferty (Actor known for 'One Tree Hill')",
+        "1988": "Lin-Manuel Miranda (Composer known for 'Hamilton')"
+    },
+    "0726": {
+        "1959": "Kevin Spacey (Actor known for 'American Beauty')",
+        "1964": "Sandra Bullock (Actress known for 'Gravity')",
+        "1973": "Kate Beckinsale (Actress known for 'Underworld')"
+    },
+    "0727": {
+        "1969": "Triple H (Wrestler known for WWE)",
+        "1970": "Nikolaj Coster-Waldau (Actor known for 'Game of Thrones')",
+        "1972": "Maya Rudolph (Comedian known for 'Saturday Night Live')"
+    },
+    "0728": {
+        "1972": "Elizabeth Berkley (Actress known for 'Saved by the Bell')",
+        "1987": "Pedro Rodriguez (Soccer player known for FC Barcelona)",
+        "1993": "Harry Kane (Soccer player known for Tottenham Hotspur)"
+    },
+    "0729": {
+        "1953": "Geddy Lee (Musician known for Rush)",
+        "1972": "Wil Wheaton (Actor known for 'Star Trek: The Next Generation')",
+        "1981": "Fernando Alonso (F1 Driver known for Renault)"
+    },
+    "0730": {
+        "1961": "Laurence Fishburne (Actor known for 'The Matrix')",
+        "1963": "Lisa Kudrow (Actress known for 'Friends')",
+        "1968": "Terry Crews (Actor known for 'Brooklyn Nine-Nine')"
+    },
+    "0731": {
+        "1962": "Wesley Snipes (Actor known for 'Blade')",
+        "1965": "J.K. Rowling (Author known for 'Harry Potter')",
+        "1994": "Lil Uzi Vert (Rapper known for 'XO Tour Llif3')"
     },
     "0801": {
         "1936": "Yves Saint-Laurent (Fashion designer)",
@@ -927,7 +1212,7 @@ var today_in_history = {
     "0830": {
         "1930": "Warren Buffett (Investor, Berkshire Hathaway)",
         "1972": "Cameron Diaz (Actress)",
-        "2000": "Manavi Jaluka (my pretty girlfriend <3)
+        "2000": "Manavi Jaluka (my pretty girlfriend <3)"
     },
     "0831": {
         "1945": "Van Morrison (Singer, songwriter, *Brown Eyed Girl*)",
